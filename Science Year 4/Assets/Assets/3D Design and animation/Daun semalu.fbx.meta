@@ -1,0 +1,316 @@
+fileFormatVersion: 2
+guid: c122ab627d45145c682ccf4916c81c04
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Controller_Leaf Left.001
+    100002: Controller_Leaf Left_001
+    100004: Controller_Leaf Left_002
+    100006: Controller_Leaf Right
+    100008: Controller_Leaf Right_001
+    100010: Controller_Leaf Right_002
+    100012: //RootNode
+    100014: Leaf Left.001
+    100016: Leaf Left.002
+    100018: Leaf Left_002
+    100020: Leaf Left_No_Animation.001
+    100022: Leaf Left_No_Animation.002
+    100024: Leaf Right_002
+    100026: Left Right.001
+    100028: Left Right.002
+    100030: Left Right_No_Animation.001
+    100032: Left Right_No_Animation.002
+    100034: Main ControllerDaun Semalu
+    100036: Plane.002
+    100038: Plane.004
+    400000: Controller_Leaf Left.001
+    400002: Controller_Leaf Left_001
+    400004: Controller_Leaf Left_002
+    400006: Controller_Leaf Right
+    400008: Controller_Leaf Right_001
+    400010: Controller_Leaf Right_002
+    400012: //RootNode
+    400014: Leaf Left.001
+    400016: Leaf Left.002
+    400018: Leaf Left_002
+    400020: Leaf Left_No_Animation.001
+    400022: Leaf Left_No_Animation.002
+    400024: Leaf Right_002
+    400026: Left Right.001
+    400028: Left Right.002
+    400030: Left Right_No_Animation.001
+    400032: Left Right_No_Animation.002
+    400034: Main ControllerDaun Semalu
+    400036: Plane.002
+    400038: Plane.004
+    2100000: Leaf_Left
+    2100002: Leaf_Right
+    2100004: Wood
+    2300000: Leaf Left.001
+    2300002: Leaf Left.002
+    2300004: Leaf Left_002
+    2300006: Leaf Left_No_Animation.001
+    2300008: Leaf Left_No_Animation.002
+    2300010: Leaf Right_002
+    2300012: Left Right.001
+    2300014: Left Right.002
+    2300016: Left Right_No_Animation.001
+    2300018: Left Right_No_Animation.002
+    2300020: Plane.002
+    2300022: Plane.004
+    3300000: Leaf Left.001
+    3300002: Leaf Left.002
+    3300004: Leaf Left_002
+    3300006: Leaf Left_No_Animation.001
+    3300008: Leaf Left_No_Animation.002
+    3300010: Leaf Right_002
+    3300012: Left Right.001
+    3300014: Left Right.002
+    3300016: Left Right_No_Animation.001
+    3300018: Left Right_No_Animation.002
+    3300020: Plane.002
+    3300022: Plane.004
+    4300000: Leaf Left_002
+    4300002: Leaf Right_002
+    4300004: Left Right.001
+    4300006: Leaf Left.001
+    4300008: Leaf Left.002
+    4300010: Left Right.002
+    4300012: Plane.002
+    4300014: Leaf Left_No_Animation.002
+    4300016: Left Right_No_Animation.002
+    4300018: Left Right_No_Animation.001
+    4300020: Leaf Left_No_Animation.001
+    4300022: Plane.004
+    7400000: Controller_Leaf Left_002|Controller_Leaf Left_001Action
+    7400002: Controller_Leaf Left_002|Controller_Leaf Left_002Action
+    7400004: Controller_Leaf Left_002|Controller_Leaf LeftAction
+    7400006: Controller_Leaf Left_002|Controller_Leaf Right_001Action
+    7400008: Controller_Leaf Left_002|Controller_Leaf Right_002Action
+    7400010: Controller_Leaf Left_002|Controller_Leaf RightAction
+    7400012: Controller_Leaf Left_002|Cube.001Action
+    7400014: Controller_Leaf Left_002|Left RightAction.004
+    7400016: Leaf Left_002|Controller_Leaf Left_001Action
+    7400018: Leaf Left_002|Controller_Leaf Left_002Action
+    7400020: Leaf Left_002|Controller_Leaf LeftAction
+    7400022: Leaf Left_002|Controller_Leaf Right_001Action
+    7400024: Leaf Left_002|Controller_Leaf Right_002Action
+    7400026: Leaf Left_002|Controller_Leaf RightAction
+    7400028: Leaf Left_002|Cube.001Action
+    7400030: Leaf Left_002|Left RightAction.004
+    7400032: Controller_Leaf Right_002|Controller_Leaf Left_001Action
+    7400034: Controller_Leaf Right_002|Controller_Leaf Left_002Action
+    7400036: Controller_Leaf Right_002|Controller_Leaf LeftAction
+    7400038: Controller_Leaf Right_002|Controller_Leaf Right_001Action
+    7400040: Controller_Leaf Right_002|Controller_Leaf Right_002Action
+    7400042: Controller_Leaf Right_002|Controller_Leaf RightAction
+    7400044: Controller_Leaf Right_002|Cube.001Action
+    7400046: Controller_Leaf Right_002|Left RightAction.004
+    7400048: Leaf Right_002|Controller_Leaf Left_001Action
+    7400050: Leaf Right_002|Controller_Leaf Left_002Action
+    7400052: Leaf Right_002|Controller_Leaf LeftAction
+    7400054: Leaf Right_002|Controller_Leaf Right_001Action
+    7400056: Leaf Right_002|Controller_Leaf Right_002Action
+    7400058: Leaf Right_002|Controller_Leaf RightAction
+    7400060: Leaf Right_002|Cube.001Action
+    7400062: Leaf Right_002|Left RightAction.004
+    7400064: Controller_Leaf Right_001|Controller_Leaf Left_001Action
+    7400066: Controller_Leaf Right_001|Controller_Leaf Left_002Action
+    7400068: Controller_Leaf Right_001|Controller_Leaf LeftAction
+    7400070: Controller_Leaf Right_001|Controller_Leaf Right_001Action
+    7400072: Controller_Leaf Right_001|Controller_Leaf Right_002Action
+    7400074: Controller_Leaf Right_001|Controller_Leaf RightAction
+    7400076: Controller_Leaf Right_001|Cube.001Action
+    7400078: Controller_Leaf Right_001|Left RightAction.004
+    7400080: Left Right.001|Controller_Leaf Left_001Action
+    7400082: Left Right.001|Controller_Leaf Left_002Action
+    7400084: Left Right.001|Controller_Leaf LeftAction
+    7400086: Left Right.001|Controller_Leaf Right_001Action
+    7400088: Left Right.001|Controller_Leaf Right_002Action
+    7400090: Left Right.001|Controller_Leaf RightAction
+    7400092: Left Right.001|Cube.001Action
+    7400094: Left Right.001|Left RightAction.004
+    7400096: Controller_Leaf Left_001|Controller_Leaf Left_001Action
+    7400098: Controller_Leaf Left_001|Controller_Leaf Left_002Action
+    7400100: Controller_Leaf Left_001|Controller_Leaf LeftAction
+    7400102: Controller_Leaf Left_001|Controller_Leaf Right_001Action
+    7400104: Controller_Leaf Left_001|Controller_Leaf Right_002Action
+    7400106: Controller_Leaf Left_001|Controller_Leaf RightAction
+    7400108: Controller_Leaf Left_001|Cube.001Action
+    7400110: Controller_Leaf Left_001|Left RightAction.004
+    7400112: Leaf Left.001|Controller_Leaf Left_001Action
+    7400114: Leaf Left.001|Controller_Leaf Left_002Action
+    7400116: Leaf Left.001|Controller_Leaf LeftAction
+    7400118: Leaf Left.001|Controller_Leaf Right_001Action
+    7400120: Leaf Left.001|Controller_Leaf Right_002Action
+    7400122: Leaf Left.001|Controller_Leaf RightAction
+    7400124: Leaf Left.001|Cube.001Action
+    7400126: Leaf Left.001|Left RightAction.004
+    7400128: Controller_Leaf Left.001|Controller_Leaf Left_001Action
+    7400130: Controller_Leaf Left.001|Controller_Leaf Left_002Action
+    7400132: Controller_Leaf Left.001|Controller_Leaf LeftAction
+    7400134: Controller_Leaf Left.001|Controller_Leaf Right_001Action
+    7400136: Controller_Leaf Left.001|Controller_Leaf Right_002Action
+    7400138: Controller_Leaf Left.001|Controller_Leaf RightAction
+    7400140: Controller_Leaf Left.001|Cube.001Action
+    7400142: Controller_Leaf Left.001|Left RightAction.004
+    7400144: Leaf Left.002|Controller_Leaf Left_001Action
+    7400146: Leaf Left.002|Controller_Leaf Left_002Action
+    7400148: Leaf Left.002|Controller_Leaf LeftAction
+    7400150: Leaf Left.002|Controller_Leaf Right_001Action
+    7400152: Leaf Left.002|Controller_Leaf Right_002Action
+    7400154: Leaf Left.002|Controller_Leaf RightAction
+    7400156: Leaf Left.002|Cube.001Action
+    7400158: Leaf Left.002|Left RightAction.004
+    7400160: Controller_Leaf Right|Controller_Leaf Left_001Action
+    7400162: Controller_Leaf Right|Controller_Leaf Left_002Action
+    7400164: Controller_Leaf Right|Controller_Leaf LeftAction
+    7400166: Controller_Leaf Right|Controller_Leaf Right_001Action
+    7400168: Controller_Leaf Right|Controller_Leaf Right_002Action
+    7400170: Controller_Leaf Right|Controller_Leaf RightAction
+    7400172: Controller_Leaf Right|Cube.001Action
+    7400174: Controller_Leaf Right|Left RightAction.004
+    7400176: Left Right.002|Controller_Leaf Left_001Action
+    7400178: Left Right.002|Controller_Leaf Left_002Action
+    7400180: Left Right.002|Controller_Leaf LeftAction
+    7400182: Left Right.002|Controller_Leaf Right_001Action
+    7400184: Left Right.002|Controller_Leaf Right_002Action
+    7400186: Left Right.002|Controller_Leaf RightAction
+    7400188: Left Right.002|Cube.001Action
+    7400190: Left Right.002|Left RightAction.004
+    7400192: Plane.002|Controller_Leaf Left_001Action
+    7400194: Plane.002|Controller_Leaf Left_002Action
+    7400196: Plane.002|Controller_Leaf LeftAction
+    7400198: Plane.002|Controller_Leaf Right_001Action
+    7400200: Plane.002|Controller_Leaf Right_002Action
+    7400202: Plane.002|Controller_Leaf RightAction
+    7400204: Plane.002|Cube.001Action
+    7400206: Plane.002|Left RightAction.004
+    7400208: Leaf Left_No_Animation.002|Controller_Leaf Left_001Action
+    7400210: Leaf Left_No_Animation.002|Controller_Leaf Left_002Action
+    7400212: Leaf Left_No_Animation.002|Controller_Leaf LeftAction
+    7400214: Leaf Left_No_Animation.002|Controller_Leaf Right_001Action
+    7400216: Leaf Left_No_Animation.002|Controller_Leaf Right_002Action
+    7400218: Leaf Left_No_Animation.002|Controller_Leaf RightAction
+    7400220: Leaf Left_No_Animation.002|Cube.001Action
+    7400222: Leaf Left_No_Animation.002|Left RightAction.004
+    7400224: Left Right_No_Animation.002|Controller_Leaf Left_001Action
+    7400226: Left Right_No_Animation.002|Controller_Leaf Left_002Action
+    7400228: Left Right_No_Animation.002|Controller_Leaf LeftAction
+    7400230: Left Right_No_Animation.002|Controller_Leaf Right_001Action
+    7400232: Left Right_No_Animation.002|Controller_Leaf Right_002Action
+    7400234: Left Right_No_Animation.002|Controller_Leaf RightAction
+    7400236: Left Right_No_Animation.002|Cube.001Action
+    7400238: Left Right_No_Animation.002|Left RightAction.004
+    7400240: Left Right_No_Animation.001|Controller_Leaf Left_001Action
+    7400242: Left Right_No_Animation.001|Controller_Leaf Left_002Action
+    7400244: Left Right_No_Animation.001|Controller_Leaf LeftAction
+    7400246: Left Right_No_Animation.001|Controller_Leaf Right_001Action
+    7400248: Left Right_No_Animation.001|Controller_Leaf Right_002Action
+    7400250: Left Right_No_Animation.001|Controller_Leaf RightAction
+    7400252: Left Right_No_Animation.001|Cube.001Action
+    7400254: Left Right_No_Animation.001|Left RightAction.004
+    7400256: Leaf Left_No_Animation.001|Controller_Leaf Left_001Action
+    7400258: Leaf Left_No_Animation.001|Controller_Leaf Left_002Action
+    7400260: Leaf Left_No_Animation.001|Controller_Leaf LeftAction
+    7400262: Leaf Left_No_Animation.001|Controller_Leaf Right_001Action
+    7400264: Leaf Left_No_Animation.001|Controller_Leaf Right_002Action
+    7400266: Leaf Left_No_Animation.001|Controller_Leaf RightAction
+    7400268: Leaf Left_No_Animation.001|Cube.001Action
+    7400270: Leaf Left_No_Animation.001|Left RightAction.004
+    7400272: Plane.004|Controller_Leaf Left_001Action
+    7400274: Plane.004|Controller_Leaf Left_002Action
+    7400276: Plane.004|Controller_Leaf LeftAction
+    7400278: Plane.004|Controller_Leaf Right_001Action
+    7400280: Plane.004|Controller_Leaf Right_002Action
+    7400282: Plane.004|Controller_Leaf RightAction
+    7400284: Plane.004|Cube.001Action
+    7400286: Plane.004|Left RightAction.004
+    9500000: //RootNode
+    2186277476908879412: ImportLogs
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 0.01
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
