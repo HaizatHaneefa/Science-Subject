@@ -13,28 +13,34 @@ public class YearFiveQuizManager : MonoBehaviour
     [SerializeField] private GameObject snakeImage;
     [SerializeField] private GameObject continueButton;
     [SerializeField] private GameObject instructPop;
+    [SerializeField] private GameObject lowBarImage;
     public GameObject continueButtonSecondQuestion;
-    public GameObject yayPop;
+    [SerializeField] public GameObject signBoard;
+    //public GameObject yayPop;
     public GameObject thirdQuestion;
 
     int mcqInt;
 
     [SerializeField] private TextMeshProUGUI questionText;
-    public TextMeshProUGUI secondExplanation;
 
-    public Sprite[] spriteImage;
-
-    public Image exampleImage;
     [SerializeField] private Image[] exampleImagesFirst;
+    [SerializeField] private Image ground;
 
     public bool[] secondBool;
     public bool[] thirdBool;
+
+    [SerializeField] public AudioSource audioSource;
+    [SerializeField] public AudioClip[] sound;
+
+    [SerializeField] public Sprite[] rightWrongSprite;
 
     void Start()
     {
         instructPop.transform.GetChild(0).GetComponent<Animation>().Play("MoreInfoPop");
 
         questionText.enabled = false;
+
+        ground.enabled = false;
 
         secondBool = new bool[6];
         thirdBool = new bool[3];
@@ -50,7 +56,7 @@ public class YearFiveQuizManager : MonoBehaviour
         secondQuestion.SetActive(false);
         snakeImage.SetActive(false);
         thirdQuestion.SetActive(false);
-        yayPop.SetActive(false);
+        //yayPop.SetActive(false);
 
         continueButtonSecondQuestion.SetActive(false);
 
@@ -90,6 +96,9 @@ public class YearFiveQuizManager : MonoBehaviour
 
         StartCoroutine(DisableButton());
 
+        audioSource.clip = sound[0];
+        audioSource.Play();
+
         if (mcqInt == 5)
             return;
 
@@ -126,10 +135,19 @@ public class YearFiveQuizManager : MonoBehaviour
         mcqInt += 1;
     }
 
+    public void _NOMCQ()
+    {
+        audioSource.clip = sound[1];
+        audioSource.Play();
+
+        StartCoroutine(ChangeRedColor());
+    }
+
     public void Continue()
     {
         snakeImage.SetActive(false);
         continueButton.SetActive(false);
+        ground.enabled = true;
 
         secondQuestion.SetActive(true);
         secondQuestion.GetComponent<Animation>().Play("Question-Year 5 Chap 4");
@@ -174,23 +192,9 @@ public class YearFiveQuizManager : MonoBehaviour
         SceneManager.LoadScene("Y5 - C4 AR");
     }
 
-    IEnumerator DisableButton()
+    public void ToGame()
     {
-        for (int i = 0; i < mcq.Length; i++)
-        {
-            mcq[i].transform.GetChild(0).GetComponent<Button>().enabled = false;
-            mcq[i].transform.GetChild(1).GetComponent<Button>().enabled = false;
-            mcq[i].transform.GetChild(2).GetComponent<Button>().enabled = false;
-        }
-
-        yield return new WaitForSeconds(2f);
-
-        for (int i = 0; i < mcq.Length; i++)
-        {
-            mcq[i].transform.GetChild(0).GetComponent<Button>().enabled = true;
-            mcq[i].transform.GetChild(1).GetComponent<Button>().enabled = true;
-            mcq[i].transform.GetChild(2).GetComponent<Button>().enabled = true;
-        }
+        SceneManager.LoadScene("Y5 - C4 Game");
     }
 
     IEnumerator showImage()
@@ -261,9 +265,7 @@ public class YearFiveQuizManager : MonoBehaviour
 
     IEnumerator Whateverthisisbro()
     {
-        ChangeColor();
-
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1f);
 
         if (mcqInt == 2)
         {
@@ -293,6 +295,8 @@ public class YearFiveQuizManager : MonoBehaviour
             snakeImage.SetActive(true);
             snakeImage.GetComponent<Animation>().Play("Question-Year 5 Chap 4");
 
+            lowBarImage.SetActive(false);
+
             questionText.enabled = false;
 
             continueButton.SetActive(true);
@@ -304,5 +308,58 @@ public class YearFiveQuizManager : MonoBehaviour
         Image img = EventSystem.current.currentSelectedGameObject.GetComponent<Image>();
 
         img.color = Color.green;
+    }
+
+    IEnumerator ChangeRedColor()
+    {
+        List<GameObject> disable = new List<GameObject>();
+
+        disable.AddRange(GameObject.FindGameObjectsWithTag("False"));
+
+        foreach (GameObject but in disable)
+        {
+            but.GetComponent<Button>().enabled = false;
+        }
+
+        Image img = EventSystem.current.currentSelectedGameObject.GetComponent<Image>();
+
+        img.color = Color.red;
+
+        yield return new WaitForSeconds(1f);
+
+        img.color = Color.white;
+
+        foreach (GameObject but in disable)
+        {
+            but.GetComponent<Button>().enabled = true;
+        }
+    }
+
+    IEnumerator DisableButton()
+    {
+        ChangeColor();
+
+        List<GameObject> disable = new List<GameObject>();
+
+        disable.AddRange(GameObject.FindGameObjectsWithTag("False"));
+
+        foreach (GameObject but in disable)
+        {
+            but.GetComponent<Button>().enabled = false;
+        }
+
+        if (mcqInt == 0 || mcqInt == 2 || mcqInt == 3)
+        {
+            yield return new WaitForSeconds(2f);
+        }
+        else if (mcqInt == 1 || mcqInt == 4)
+        {
+            yield return new WaitForSeconds(1f);
+        }
+
+        foreach (GameObject but in disable)
+        {
+            but.GetComponent<Button>().enabled = true;
+        }
     }
 }

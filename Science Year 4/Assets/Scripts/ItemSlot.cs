@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class ItemSlot : MonoBehaviour, IDropHandler
 {
@@ -20,6 +21,18 @@ public class ItemSlot : MonoBehaviour, IDropHandler
                 || manager.thirdBool[2] && eventData.pointerDrag.CompareTag("Animal 3"))
             {
                 eventData.pointerDrag.GetComponent<RectTransform>().anchoredPosition = GetComponent<RectTransform>().anchoredPosition;
+
+                manager.audioSource.clip = manager.sound[0];
+                manager.audioSource.Play();
+
+                Image z = transform.GetChild(1).GetComponent<Image>();
+                z.enabled = true;
+                z.sprite = manager.rightWrongSprite[1];
+                z.gameObject.GetComponent<Animation>().Play("GameOverPop");
+
+                transform.GetChild(0).GetComponent<ParticleSystem>().Play();
+
+                StartCoroutine(Teding());
 
                 if (manager.thirdBool[0])
                 {
@@ -56,15 +69,33 @@ public class ItemSlot : MonoBehaviour, IDropHandler
 
                     manager.thirdQuestion.transform.GetChild(5).gameObject.SetActive(false);
 
-                    manager.yayPop.SetActive(true);
-                    manager.yayPop.transform.GetChild(0).GetComponent<Animation>().Play("GameOverPop");
+                    manager.signBoard.SetActive(true);
+                    //manager.yayPop.SetActive(true);
+                    //manager.yayPop.transform.GetChild(0).GetComponent<Animation>().Play("GameOverPop");
                 }
             }
             else if (manager.thirdBool[0] && eventData.pointerDrag.CompareTag("Player") || manager.thirdBool[1] && eventData.pointerDrag.CompareTag("Player")
              || manager.thirdBool[2] && eventData.pointerDrag.CompareTag("Player"))
             {
                 eventData.pointerDrag.SetActive(false);
+
+                manager.audioSource.clip = manager.sound[1];
+                manager.audioSource.Play();
+
+                Image j = transform.GetChild(1).GetComponent<Image>();
+                j.GetComponent<Image>().enabled = true;
+                j.GetComponent<Image>().sprite = manager.rightWrongSprite[0];
+                j.gameObject.GetComponent<Animation>().Play("GameOverPop");
+
+                StartCoroutine(Teding());
             }
         }
+    }
+
+    IEnumerator Teding()
+    {
+        yield return new WaitForSeconds(1f);
+
+        transform.GetChild(1).GetComponent<Image>().enabled = false;
     }
 }

@@ -16,6 +16,9 @@ public class PlantsWaterManager : MonoBehaviour
 
     private AudioSource audioSource;
     [SerializeField] private AudioClip[] sound;
+
+    [SerializeField] private Button[] button;
+
     int cur;
 
     void Start()
@@ -37,26 +40,35 @@ public class PlantsWaterManager : MonoBehaviour
 
     public void _Q1Y()
     {
+        StartCoroutine(ChangeColor());
         StartCoroutine(transition());
 
         audioSource.clip = sound[0];
         audioSource.Play();
+
+        cur += 1;
     }
 
     public void _Q2Y()
     {
+        StartCoroutine(ChangeColor());
         StartCoroutine(ShowGeotropism());
 
         audioSource.clip = sound[0];
         audioSource.Play();
+
+        cur += 1;
     }
 
     public void _Q3Y()
     {
+        StartCoroutine(ChangeColor());
         StartCoroutine(End());
 
         audioSource.clip = sound[0];
         audioSource.Play();
+
+        cur += 1;
     }
 
     public void _QN()
@@ -134,5 +146,28 @@ public class PlantsWaterManager : MonoBehaviour
     public void BackToAR()
     {
         SceneManager.LoadScene("Plants-AR");
+    }
+
+    IEnumerator ChangeColor()
+    {
+        if (cur == 0)
+        {
+            button[0].GetComponent<Image>().color = Color.green;
+        }
+        else if (cur == 1)
+        {
+            button[1].GetComponent<Image>().color = Color.green;
+        }
+        else if (cur == 2)
+        {
+            button[2].GetComponent<Image>().color = Color.green;
+        }
+
+        yield return new WaitForSeconds(0.2f);
+
+        for (int i = 0; i < button.Length; i++)
+        {
+            button[i].GetComponent<Image>().color = Color.white;
+        }
     }
 }

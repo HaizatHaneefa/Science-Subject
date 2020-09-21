@@ -17,9 +17,6 @@ public class ItemSlotTrueFalse : MonoBehaviour, IDropHandler
     {
         manager = GameObject.FindGameObjectWithTag("GameController").GetComponent<YearFiveQuizManager>();
 
-        manager.exampleImage.enabled = false;
-        manager.secondExplanation.enabled = false;
-
         dialogue = new string[4];
 
         dialogue[0] = "Some animals have thick layer of fat to protect themselves from weather.";
@@ -46,6 +43,15 @@ public class ItemSlotTrueFalse : MonoBehaviour, IDropHandler
             manager.secondBool[3] && gameObject.CompareTag("False") && button.CompareTag("False") ||
             manager.secondBool[4] && gameObject.CompareTag("True") && button.CompareTag("True"))
         {
+            manager.audioSource.clip = manager.sound[0];
+            manager.audioSource.Play();
+
+            transform.GetChild(0).GetComponent<Image>().enabled = true;
+            transform.GetChild(0).GetComponent<Image>().sprite = manager.rightWrongSprite[1];
+            transform.GetChild(0).GetComponent<Animation>().Play("GameOverPop");
+
+            transform.GetChild(2).GetComponent<ParticleSystem>().Play();
+
             if (manager.secondBool[0])
             {
                 manager.secondBool[1] = true;
@@ -53,11 +59,6 @@ public class ItemSlotTrueFalse : MonoBehaviour, IDropHandler
                 button.tag = "True";
 
                 button.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = dialogue[0].ToString();
-
-                manager.exampleImage.GetComponent<Animation>().Play("SuccessPop");
-                manager.exampleImage.sprite = manager.spriteImage[0];
-                manager.secondExplanation.enabled = true;
-                manager.secondExplanation.text = "example 1";
             }
             else if (manager.secondBool[1])
             {
@@ -66,10 +67,6 @@ public class ItemSlotTrueFalse : MonoBehaviour, IDropHandler
                 button.tag = "True";
 
                 button.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = dialogue[1].ToString();
-
-                manager.exampleImage.GetComponent<Animation>().Play("SuccessPop");
-                manager.exampleImage.sprite = manager.spriteImage[1];
-                manager.secondExplanation.text = "example 2";
             }
             else if (manager.secondBool[2])
             {
@@ -78,10 +75,6 @@ public class ItemSlotTrueFalse : MonoBehaviour, IDropHandler
                 button.tag = "False";
 
                 button.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = dialogue[2].ToString();
-
-                manager.exampleImage.GetComponent<Animation>().Play("SuccessPop");
-                manager.exampleImage.sprite = manager.spriteImage[2];
-                manager.secondExplanation.text = "example 3";
             }
             else if (manager.secondBool[3])
             {
@@ -90,26 +83,18 @@ public class ItemSlotTrueFalse : MonoBehaviour, IDropHandler
                 button.tag = "True";
 
                 button.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = dialogue[3].ToString();
-
-                manager.exampleImage.GetComponent<Animation>().Play("SuccessPop");
-                manager.exampleImage.sprite = manager.spriteImage[3];
-                manager.secondExplanation.text = "example 4";
             }
             else if (manager.secondBool[4])
             {
                 manager.secondBool[4] = false;
                 manager.secondBool[5] = true;
-
-                manager.exampleImage.GetComponent<Animation>().Play("SuccessPop");
-                manager.exampleImage.sprite = manager.spriteImage[4];
-                manager.secondExplanation.text = "example 5";
             }
 
             button.SetActive(false);
 
-            manager.exampleImage.enabled = true;
-
             yield return new WaitForSeconds(1f);
+
+            transform.GetChild(0).GetComponent<Image>().enabled = false;
 
             if (manager.secondBool[5])
             {
@@ -127,7 +112,7 @@ public class ItemSlotTrueFalse : MonoBehaviour, IDropHandler
 
             gameObject.GetComponent<Image>().raycastTarget = true;
 
-            button.GetComponent<RectTransform>().sizeDelta = new Vector2(700, 60);
+            button.GetComponent<RectTransform>().sizeDelta = new Vector2(700, 160);
             button.transform.GetChild(0).GetComponent<TextMeshProUGUI>().enabled = true;
         }
         else if (manager.secondBool[0] && gameObject.CompareTag("True") && button.CompareTag("False") ||
@@ -136,7 +121,11 @@ public class ItemSlotTrueFalse : MonoBehaviour, IDropHandler
            manager.secondBool[3] && gameObject.CompareTag("True") && button.CompareTag("False") ||
            manager.secondBool[4] && gameObject.CompareTag("False") && button.CompareTag("True"))
         {
+            manager.audioSource.clip = manager.sound[1];
+            manager.audioSource.Play();
+
             transform.GetChild(0).GetComponent<Image>().enabled = true;
+            transform.GetChild(0).GetComponent<Image>().sprite = manager.rightWrongSprite[0];
             transform.GetChild(0).GetComponent<Animation>().Play("GameOverPop");
 
             yield return new WaitForSeconds(1.5f);

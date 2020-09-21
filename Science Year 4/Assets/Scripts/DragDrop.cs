@@ -14,8 +14,12 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
 
     public Transform[] startPos;
 
+    Y5PlantQuiz manager;
+
     private void Awake()
     {
+        manager = GameObject.FindGameObjectWithTag("GameController").GetComponent<Y5PlantQuiz>();
+
         rectTransform = GetComponent<RectTransform>();
         canvasGroup = GetComponent<CanvasGroup>();
     }
@@ -24,6 +28,8 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
     {
         canvasGroup.alpha = 0.6f;
         canvasGroup.blocksRaycasts = false;
+
+        transform.GetChild(0).GetComponent<TextMeshProUGUI>().enabled = false;
     }
 
     public void OnPointerDown(PointerEventData eventData)
@@ -32,13 +38,10 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        Debug.Log("OnEndDrag");
         canvasGroup.alpha = 1f;
         canvasGroup.blocksRaycasts = true;
 
-
-        //rectTransform.sizeDelta = new Vector2(700, 60);
-        //transform.position = startPos.position;
+        transform.GetChild(0).GetComponent<TextMeshProUGUI>().enabled = true;
 
         if (transform.CompareTag("Animal 1"))
         {
@@ -56,7 +59,6 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
 
     public void OnDrag(PointerEventData eventData)
     {
-        Debug.Log("OnDrag");
         rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
     }
 }

@@ -35,8 +35,12 @@ public class ARManager : MonoBehaviour
 
     int cur;
 
+    bool canTouch;
+
     void Start()
     {
+        canTouch = true;
+
         for (int i = 0; i < quizButton.Length; i++)
         {
             quizButton[i].SetActive(false);
@@ -70,7 +74,7 @@ public class ARManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.touchCount == 1)
+        if (Input.touchCount == 1 && canTouch)
         {
             Touch touch0 = Input.GetTouch(0);
 
@@ -404,6 +408,8 @@ public class ARManager : MonoBehaviour
         StartCoroutine(DoStuff());
 
         DefaultCamera();
+
+        //GO.transform.GetChild(0).GetChild(3).GetComponent<Animation>().Play("particleeffecttext");
     }
 
     public void _LungsAndMoistSkin()
@@ -506,6 +512,8 @@ public class ARManager : MonoBehaviour
 
     public void CameraOne()
     {
+        canTouch = true;
+
         for (int i = 0; i < cam.Length; i++)
         {
             cam[i].SetActive(false);
@@ -515,6 +523,8 @@ public class ARManager : MonoBehaviour
 
     public void CameraTwo()
     {
+        canTouch = false;
+
         if (isSelected[0])
         {
             for (int i = 0; i < cam.Length; i++)
@@ -539,6 +549,24 @@ public class ARManager : MonoBehaviour
             {
                 cam[i].SetActive(false);
                 cam[5].SetActive(true);
+            }
+        }
+
+        if (isSelected[3])
+        {
+            for (int i = 0; i < cam.Length; i++)
+            {
+                cam[i].SetActive(false);
+                cam[9].SetActive(true);
+            }
+        }
+
+        if (isSelected[4])
+        {
+            for (int i = 0; i < cam.Length; i++)
+            {
+                cam[i].SetActive(false);
+                cam[7].SetActive(true);
             }
         }
     }
@@ -569,6 +597,8 @@ public class ARManager : MonoBehaviour
 
     public void CameraThree()
     {
+        canTouch = false;
+
         if (isSelected[0])
         {
             for (int i = 0; i < cam.Length; i++)
@@ -593,6 +623,24 @@ public class ARManager : MonoBehaviour
             {
                 cam[i].SetActive(false);
                 cam[6].SetActive(true);
+            }
+        }
+
+        if (isSelected[4])
+        {
+            for (int i = 0; i < cam.Length; i++)
+            {
+                cam[i].SetActive(false);
+                cam[8].SetActive(true);
+            }
+        }
+
+        if (isSelected[3])
+        {
+            for (int i = 0; i < cam.Length; i++)
+            {
+                cam[i].SetActive(false);
+                cam[10].SetActive(true);
             }
         }
     }

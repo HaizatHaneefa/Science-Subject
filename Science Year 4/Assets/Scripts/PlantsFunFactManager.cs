@@ -75,7 +75,7 @@ public class PlantsFunFactManager : MonoBehaviour
 
     public void NextDialogue()
     {
-        if (num == 2)
+        if (num == 1)
         {
             return;
         }
@@ -83,11 +83,6 @@ public class PlantsFunFactManager : MonoBehaviour
         {
             explainText.text = dialogue[1].ToString();
             num = 1;
-        }
-        else if (num == 1)
-        {
-            explainText.text = dialogue[2].ToString();
-            num = 2;
         }
     }
 
@@ -101,11 +96,6 @@ public class PlantsFunFactManager : MonoBehaviour
         {
             explainText.text = dialogue[0].ToString();
             num = 0;
-        }
-        else if (num == 2)
-        {
-            explainText.text = dialogue[1].ToString();
-            num = 1;
         }
     }
 }

@@ -8,12 +8,13 @@ using UnityEngine.EventSystems;
 
 public class YearFiveC4AR : MonoBehaviour
 {
+    [SerializeField] private GameObject signBoard;
     [SerializeField] private string[] explanation;
     [SerializeField] private GameObject[] canvas;
 
     [SerializeField] private TextMeshProUGUI explainText;
 
-    int pageInt;
+    //int pageInt;
 
     bool isPage;
 
@@ -22,16 +23,24 @@ public class YearFiveC4AR : MonoBehaviour
     [SerializeField] private Sprite[] buttonSprite;
     void Start()
     {
+        signBoard.SetActive(false);
+
         explainText.text = explanation[0].ToString();
 
         for (int i = 0; i < canvas.Length; i++)
         {
             canvas[i].SetActive(false);
         }
+
+        buttons[3].gameObject.SetActive(false);
+        buttons[4].gameObject.SetActive(false);
+        buttons[5].gameObject.SetActive(false);
     }
 
     public void Next()
     {
+        signBoard.SetActive(true);
+
         for (int i = 0; i < buttons.Length; i++)
         {
             buttons[0].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "Cold Weather";
@@ -40,31 +49,38 @@ public class YearFiveC4AR : MonoBehaviour
 
         for (int i = 0; i < buttons.Length; i++)
         {
-            buttons[i].GetComponent<Image>().sprite = buttonSprite[1];
+            buttons[0].GetComponent<Image>().sprite = buttonSprite[1];
+            buttons[1].GetComponent<Image>().sprite = buttonSprite[1];
         }
 
-        if (pageInt == 1)
+        //if (pageInt == 1)
+        //{
+        //    return;
+        //}
+
+        //if (pageInt == 0)
+        //{
+        for (int i = 0; i < canvas.Length; i++)
         {
-            return;
+            canvas[i].SetActive(false);
         }
 
-        if (pageInt == 0)
-        {
-            for (int i = 0; i < canvas.Length; i++)
-            {
-                canvas[i].SetActive(false);
-            }
+        explainText.text = explanation[1].ToString();
 
-            explainText.text = explanation[1].ToString();
+        isPage = true;
+        //}
 
-            isPage = true;
-        }
-
-        pageInt += 1;
+        //pageInt += 1;
+        buttons[2].gameObject.SetActive(false);
+        buttons[3].gameObject.SetActive(true);
+        buttons[4].gameObject.SetActive(true);
+        buttons[5].gameObject.SetActive(true);
     }
 
     public void Prev()
     {
+        signBoard.SetActive(false);
+
         for (int i = 0; i < buttons.Length; i++)
         {
             buttons[0].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "Characteristics";
@@ -73,34 +89,40 @@ public class YearFiveC4AR : MonoBehaviour
 
         for (int i = 0; i < buttons.Length; i++)
         {
-            buttons[i].GetComponent<Image>().sprite = buttonSprite[1];
+            buttons[0].GetComponent<Image>().sprite = buttonSprite[1];
+            buttons[1].GetComponent<Image>().sprite = buttonSprite[1];
         }
 
-        if (pageInt == 0)
+        //if (pageInt == 0)
+        //{
+        //    return;
+        //}
+
+        //if (pageInt == 1)
+        //{
+        for (int i = 0; i < canvas.Length; i++)
         {
-            return;
+            canvas[i].SetActive(false);
         }
 
-        if (pageInt == 1)
-        {
-            for (int i = 0; i < canvas.Length; i++)
-            {
-                canvas[i].SetActive(false);
-            }
+        explainText.text = explanation[0].ToString();
 
-            explainText.text = explanation[0].ToString();
+        isPage = false;
+        //}
 
-            isPage = false;
-        }
+        //pageInt -= 1;
 
-        pageInt -= 1;
+        buttons[2].gameObject.SetActive(true);
+        buttons[3].gameObject.SetActive(false);
+        buttons[4].gameObject.SetActive(false);
+        buttons[5].gameObject.SetActive(false);
     }
 
     public void Characteristics()
     {
         for (int i = 0; i < buttons.Length; i++)
         {
-            buttons[i].GetComponent<Image>().sprite = buttonSprite[1];
+            buttons[1].GetComponent<Image>().sprite = buttonSprite[1];
             buttons[0].GetComponent<Image>().sprite = buttonSprite[0];
         }
 
@@ -130,7 +152,7 @@ public class YearFiveC4AR : MonoBehaviour
     {
         for (int i = 0; i < buttons.Length; i++)
         {
-            buttons[i].GetComponent<Image>().sprite = buttonSprite[1];
+            buttons[0].GetComponent<Image>().sprite = buttonSprite[1];
             buttons[1].GetComponent<Image>().sprite = buttonSprite[0];
         }
 
@@ -166,8 +188,8 @@ public class YearFiveC4AR : MonoBehaviour
         SceneManager.LoadScene("Y5 - C4 Quiz");
     }
 
-    public void BackToAR()
+    public void BackToMenu()
     {
-        SceneManager.LoadScene("Y5 - C4 AR");
+        SceneManager.LoadScene("Menu");
     }
 }

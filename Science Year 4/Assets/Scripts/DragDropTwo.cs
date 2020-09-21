@@ -25,7 +25,7 @@ public class DragDropTwo : MonoBehaviour, IPointerDownHandler, IBeginDragHandler
         canvasGroup.alpha = 0.6f;
         canvasGroup.blocksRaycasts = false;
 
-        rectTransform.sizeDelta = new Vector2(50, 50);
+        rectTransform.sizeDelta = new Vector2(100, 100);
 
         transform.GetChild(0).GetComponent<TextMeshProUGUI>().enabled = false;
     }
@@ -40,7 +40,7 @@ public class DragDropTwo : MonoBehaviour, IPointerDownHandler, IBeginDragHandler
         canvasGroup.alpha = 1f;
         canvasGroup.blocksRaycasts = true;
 
-        rectTransform.sizeDelta = new Vector2(700, 60);
+        rectTransform.sizeDelta = new Vector2(700, 160);
         transform.position = startPos.position;
 
         transform.GetChild(0).GetComponent<TextMeshProUGUI>().enabled = true;

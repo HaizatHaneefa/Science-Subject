@@ -7,6 +7,7 @@ using TMPro;
 
 public class MenuManager : MonoBehaviour
 {
+    BoolHolder boolHolderManager;
 
     [SerializeField] private Canvas[] canvas;
     [SerializeField] GameObject arOrFunFactBackground;
@@ -26,25 +27,50 @@ public class MenuManager : MonoBehaviour
 
     void Start()
     {
-        bar.SetActive(false);
+        boolHolderManager = GameObject.FindGameObjectWithTag("EditorOnly").GetComponent<BoolHolder>();
 
-        for (int i = 0; i < canvas.Length; i++)
-        {
-            canvas[i].enabled = false;
-        }
-
-        for (int i = 0; i < chapter.Length; i++)
-        {
-            chapter[i].SetActive(false);
-            chapter[0].SetActive(true);
-        }
-
-        arOrFunFactBackground.SetActive(false);
         blocker.SetActive(false);
+
+        if (boolHolderManager.isOkay)
+        {
+            for (int i = 0; i < itemsInBackground.Length; i++)
+            {
+                itemsInBackground[i].SetActive(false);
+            }
+
+            for (int i = 0; i < canvas.Length; i++)
+            {
+                canvas[i].enabled = false;
+                canvas[1].enabled = true;
+            }
+
+            bar.SetActive(true);
+            canvas[1].GetComponent<Animation>().Play("Year4 Anim");
+        }
+        else if (!boolHolderManager.isOkay)
+        {
+            bar.SetActive(false);
+
+            for (int i = 0; i < canvas.Length; i++)
+            {
+                canvas[i].enabled = false;
+            }
+
+            for (int i = 0; i < chapter.Length; i++)
+            {
+                chapter[i].SetActive(false);
+                chapter[0].SetActive(true);
+            }
+
+            arOrFunFactBackground.SetActive(false);
+            blocker.SetActive(false);
+        }
     }
 
     public void ToMenu()
     {
+        boolHolderManager.isOkay = true;
+
         bar.SetActive(true);
 
         for (int i = 0; i < itemsInBackground.Length; i++)
@@ -181,7 +207,7 @@ public class MenuManager : MonoBehaviour
         }
         else if (l == 2)
         {
-            // chapter 2
+            SceneManager.LoadScene("Y5 - C5 AR");
         }
         else if (l == 3)
         {
@@ -201,11 +227,11 @@ public class MenuManager : MonoBehaviour
     {
         if (l == 1)
         {
-            // chapter 1
+            SceneManager.LoadScene("Y5 - C4 Fun facts"); // animals
         }
         else if (l == 2)
         {
-            // chapter 2
+            SceneManager.LoadScene("Y5 - C5 Fun facts"); // animals
         }
         else if (l == 3)
         {
@@ -214,6 +240,10 @@ public class MenuManager : MonoBehaviour
         else if (l == 4)
         {
             SceneManager.LoadScene("Fun-Facts"); // animals
+        }
+        else if (l == 5)
+        {
+            SceneManager.LoadScene("Plants-Fun-Facts"); // plants
         }
     }
 }

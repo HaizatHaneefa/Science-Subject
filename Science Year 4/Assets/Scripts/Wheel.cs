@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class Wheel : MonoBehaviour
 {
-    FiveAnimalGameManager manager;
+    Y5PlantGame manager;
 
     [SerializeField] private float smooth;
 
     void Start()
     {
-        manager = GameObject.FindGameObjectWithTag("GameController").GetComponent<FiveAnimalGameManager>();
+        manager = GameObject.FindGameObjectWithTag("GameController").GetComponent<Y5PlantGame>();
     }
 
     void Update()

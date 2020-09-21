@@ -60,6 +60,10 @@ public class DefaultInitializationErrorHandler : VuforiaMonoBehaviour
         SetupGUIStyles();
     }
 
+    private void Update()
+    {
+    }
+
     void OnGUI()
     {
         // On error, create a full screen window.
