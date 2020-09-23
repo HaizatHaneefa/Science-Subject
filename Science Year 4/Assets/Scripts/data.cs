@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -49,4 +49,3 @@ public class data : MonoBehaviour
 
     public FifthQuestion d5 = new FifthQuestion();
 }
-
