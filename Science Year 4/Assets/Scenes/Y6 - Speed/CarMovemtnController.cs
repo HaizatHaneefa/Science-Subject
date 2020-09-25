@@ -1,9 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityStandardAssets.CrossPlatformInput;
 
 public class CarMovemtnController : MonoBehaviour
 {
+    [SerializeField] private CarController controller;
+
     private float m_horizontalInput;
     private float m_verticalInput;
     private float m_steeringAngle;
@@ -19,12 +23,20 @@ public class CarMovemtnController : MonoBehaviour
     public float motorForce;
     public float brakeForce;
 
-    bool isBreaking;
+    bool isAccelerating;
 
+    [SerializeField] Vector3 something;
+    public Button throttleButton;
+
+    private void Start()
+    {
+        controller = GameObject.FindGameObjectWithTag("GameController").GetComponent<CarController>();
+        gameObject.GetComponent<Rigidbody>().centerOfMass += something;
+    }
     public void GetInput()
     {
-        m_horizontalInput = Input.GetAxis("Horizontal");
-        m_verticalInput = Input.GetAxis("Vertical");
+        m_horizontalInput = CrossPlatformInputManager.GetAxis("Horizontal");
+        m_verticalInput = CrossPlatformInputManager.GetAxis("Vertical");
     }
 
     private void Steer()
@@ -37,8 +49,22 @@ public class CarMovemtnController : MonoBehaviour
 
     public void Accelerate()
     {
-        rightFrontW.motorTorque = 1f * motorForce; // joystick or button
-        leftFrontW.motorTorque = 1f * motorForce;
+        if (!controller.isBoost)
+        {
+            rightFrontW.motorTorque = m_verticalInput * motorForce; // joystick or button
+            leftFrontW.motorTorque = m_verticalInput * motorForce;
+        }
+        else if (controller.isBoost)
+        {
+            rightFrontW.motorTorque = m_verticalInput * motorForce * controller._nosBoost; // joystick or button
+            leftFrontW.motorTorque = m_verticalInput * motorForce * controller._nosBoost;
+        }
+
+        //if (rightFrontW.rpm > 500)
+        //{
+        //    rightFrontW.motorTorque = 0;// joystick or button
+        //    leftFrontW.motorTorque = 0;
+        //}
     }
 
     private void Brake()
@@ -66,15 +92,26 @@ public class CarMovemtnController : MonoBehaviour
         UpdateWheelPos(leftBackW, leftBackT);
     }
 
+    //public void ReduceSpeed()
+    //{
+    //    if (rightFrontW.motorTorque > 0 && leftFrontW.motorTorque > 0)
+    //    {
+    //        rightFrontW.motorTorque -= motorForce; // joystick or button
+    //        leftFrontW.motorTorque -= motorForce;
+    //    }
+    //    else if (rightFrontW.motorTorque <= 0 && leftFrontW.motorTorque <= 0)
+    //    {
+    //        rightFrontW.motorTorque = 0; // joystick or button
+    //        leftFrontW.motorTorque = 0;
+    //    }
+    //}
     private void FixedUpdate()
     {
-        //brakeForce = 0f;
+        //ReduceSpeed();
         GetInput();
         Steer();
         UpdateWHeelPoses();
         Accelerate();
         Brake();
-
-      
     }
 }
