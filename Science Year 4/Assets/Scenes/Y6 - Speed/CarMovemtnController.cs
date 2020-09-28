@@ -23,10 +23,10 @@ public class CarMovemtnController : MonoBehaviour
     public float motorForce;
     public float brakeForce;
 
-    bool isAccelerating;
-
     [SerializeField] Vector3 something;
     public Button throttleButton;
+
+    [SerializeField] bool isPressing;
 
     private void Start()
     {
@@ -59,12 +59,6 @@ public class CarMovemtnController : MonoBehaviour
             rightFrontW.motorTorque = m_verticalInput * motorForce * controller._nosBoost; // joystick or button
             leftFrontW.motorTorque = m_verticalInput * motorForce * controller._nosBoost;
         }
-
-        //if (rightFrontW.rpm > 500)
-        //{
-        //    rightFrontW.motorTorque = 0;// joystick or button
-        //    leftFrontW.motorTorque = 0;
-        //}
     }
 
     private void Brake()
@@ -92,19 +86,20 @@ public class CarMovemtnController : MonoBehaviour
         UpdateWheelPos(leftBackW, leftBackT);
     }
 
-    //public void ReduceSpeed()
-    //{
-    //    if (rightFrontW.motorTorque > 0 && leftFrontW.motorTorque > 0)
-    //    {
-    //        rightFrontW.motorTorque -= motorForce; // joystick or button
-    //        leftFrontW.motorTorque -= motorForce;
-    //    }
-    //    else if (rightFrontW.motorTorque <= 0 && leftFrontW.motorTorque <= 0)
-    //    {
-    //        rightFrontW.motorTorque = 0; // joystick or button
-    //        leftFrontW.motorTorque = 0;
-    //    }
-    //}
+    public void ssss()
+    {
+        Debug.Log("wwww");
+
+        if (!isPressing)
+        {
+            isPressing = true;
+        }
+        else if (isPressing)
+        {
+            isPressing = false;
+        }
+        //m_verticalInput += 0.1f;
+    }
     private void FixedUpdate()
     {
         //ReduceSpeed();
@@ -113,5 +108,22 @@ public class CarMovemtnController : MonoBehaviour
         UpdateWHeelPoses();
         Accelerate();
         Brake();
+
+        if (isPressing)
+        {
+            if (m_verticalInput == 1)
+            {
+                return;
+            }
+            m_verticalInput += Time.deltaTime;
+        }
+        else if (!isPressing)
+        {
+            if (m_verticalInput == 0)
+            {
+                return;
+            }
+            m_verticalInput -= Time.deltaTime;
+        }
     }
 }
