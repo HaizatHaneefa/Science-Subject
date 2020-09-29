@@ -21,22 +21,24 @@ public class CarMovemtnController : MonoBehaviour
 
     public float maxSteerAngle;
     public float motorForce;
-    public float brakeForce;
+    private float brakeForce;
 
     [SerializeField] Vector3 something;
     public Button throttleButton;
 
     [SerializeField] bool isPressing;
+    [SerializeField] private bool isBraking;
 
     private void Start()
     {
         controller = GameObject.FindGameObjectWithTag("GameController").GetComponent<CarController>();
+
         gameObject.GetComponent<Rigidbody>().centerOfMass += something;
     }
     public void GetInput()
     {
-        m_horizontalInput = CrossPlatformInputManager.GetAxis("Horizontal");
-        m_verticalInput = CrossPlatformInputManager.GetAxis("Vertical");
+        m_horizontalInput = CrossPlatformInputManager.GetAxisRaw("Horizontal");
+        m_verticalInput = CrossPlatformInputManager.GetAxisRaw("Vertical");
     }
 
     private void Steer()
@@ -61,10 +63,36 @@ public class CarMovemtnController : MonoBehaviour
         }
     }
 
-    private void Brake()
+    public void Brake()
     {
+        if (isPressing)
+        {
+            brakeForce = 0f;
+        }
+        else if (!isPressing)
+        {
+            brakeForce = 100f;
+        }
+
+        if (isBraking)
+        {
+            brakeForce = 2000f;
+        }
+
         rightFrontW.brakeTorque = brakeForce;
         leftFrontW.brakeTorque = brakeForce;
+
+        Debug.Log(brakeForce);
+    }
+
+    public void Braking()
+    {
+        isBraking = true;
+    }
+
+    public void NotBraking()
+    {
+        isBraking = false;
     }
 
     private void UpdateWheelPos(WheelCollider _collider, Transform _transform)
@@ -86,44 +114,34 @@ public class CarMovemtnController : MonoBehaviour
         UpdateWheelPos(leftBackW, leftBackT);
     }
 
-    public void ssss()
-    {
-        Debug.Log("wwww");
+    //public void ssss()
+    //{
+    //    if (!isPressing)
+    //    {
+    //        isPressing = true;
+    //    }
+    //    else if (isPressing)
+    //    {
+    //        isPressing = false;
+    //    }
+    //}
 
-        if (!isPressing)
-        {
-            isPressing = true;
-        }
-        else if (isPressing)
-        {
-            isPressing = false;
-        }
-        //m_verticalInput += 0.1f;
+    public void OnPointerDown()
+    {
+        isPressing = true;
     }
+
+    public void OnPointerUp()
+    {
+        isPressing = false;
+    }
+
     private void FixedUpdate()
     {
-        //ReduceSpeed();
         GetInput();
         Steer();
         UpdateWHeelPoses();
         Accelerate();
         Brake();
-
-        if (isPressing)
-        {
-            if (m_verticalInput == 1)
-            {
-                return;
-            }
-            m_verticalInput += Time.deltaTime;
-        }
-        else if (!isPressing)
-        {
-            if (m_verticalInput == 0)
-            {
-                return;
-            }
-            m_verticalInput -= Time.deltaTime;
-        }
     }
 }

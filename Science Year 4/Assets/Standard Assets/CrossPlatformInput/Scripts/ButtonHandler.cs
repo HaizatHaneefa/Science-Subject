@@ -1,11 +1,12 @@
 using System;
 using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace UnityStandardAssets.CrossPlatformInput
 {
     public class ButtonHandler : MonoBehaviour
     {
-
         public string Name;
 
         void OnEnable()
@@ -29,7 +30,6 @@ namespace UnityStandardAssets.CrossPlatformInput
         {
             CrossPlatformInputManager.SetAxisPositive(Name);
         }
-
 
         public void SetAxisNeutralState()
         {

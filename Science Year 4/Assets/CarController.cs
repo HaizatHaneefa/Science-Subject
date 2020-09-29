@@ -30,13 +30,17 @@ public class CarController : MonoBehaviour
 
     public int laps;
 
-    [SerializeField] private TextMeshProUGUI playerTimeText, AITimeText;
+    [SerializeField] private TextMeshProUGUI playerTimeText, AITimeText, lapText, speedmeterText;
 
     bool isRacing;
 
     [SerializeField] public float playerTime, AITime;
+
+    float realSpeed;
     private void Start()
     {
+        laps = 1;
+
         winButton.SetActive(false);
         lostButton.SetActive(false);
 
@@ -57,6 +61,11 @@ public class CarController : MonoBehaviour
 
     private void Update()
     {
+        realSpeed = car.velocity.magnitude * 3.6f;
+
+        lapText.text = laps + "/3";
+        speedmeterText.text = realSpeed.ToString("F0");
+
         playerTimeText.text = playerTime.ToString("F2");
         AITimeText.text = AITime.ToString("F2");
 
@@ -145,13 +154,14 @@ public class CarController : MonoBehaviour
             Debug.Log("game quit");
         }
     }
+
     public void EndGame()
     {
-        if (laps < 2)
+        if (laps < 3)
         {
             laps += 1;
         }
-        else if (laps == 2)
+        else if (laps == 3)
         {
             StartCoroutine(EndTheGame());
             isRacing = false;
