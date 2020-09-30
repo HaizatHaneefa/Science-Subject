@@ -13,17 +13,18 @@ public class CarMovemtnController : MonoBehaviour
     private float m_steeringAngle;
     private float m_brake;
 
+    public float maxSteerAngle;
+    public float motorForce;
+    private float brakeForce;
+
     public WheelCollider rightFrontW, leftFrontW;
     public WheelCollider rightBackW, leftBackW;
 
     public Transform rightFrontT, leftFrontT;
     public Transform rightBackT, leftBackT;
 
-    public float maxSteerAngle;
-    public float motorForce;
-    private float brakeForce;
-
     [SerializeField] Vector3 something;
+
     public Button throttleButton;
 
     [SerializeField] bool isPressing;
@@ -40,7 +41,6 @@ public class CarMovemtnController : MonoBehaviour
         m_horizontalInput = CrossPlatformInputManager.GetAxisRaw("Horizontal");
         m_verticalInput = CrossPlatformInputManager.GetAxisRaw("Vertical");
     }
-
     private void Steer()
     {
         m_steeringAngle = maxSteerAngle * m_horizontalInput;
@@ -48,7 +48,6 @@ public class CarMovemtnController : MonoBehaviour
         rightFrontW.steerAngle = m_steeringAngle;
         leftFrontW.steerAngle = m_steeringAngle;
     }
-
     public void Accelerate()
     {
         if (!controller.isBoost)
@@ -62,7 +61,6 @@ public class CarMovemtnController : MonoBehaviour
             leftFrontW.motorTorque = m_verticalInput * motorForce * controller._nosBoost;
         }
     }
-
     public void Brake()
     {
         if (isPressing)
@@ -81,20 +79,15 @@ public class CarMovemtnController : MonoBehaviour
 
         rightFrontW.brakeTorque = brakeForce;
         leftFrontW.brakeTorque = brakeForce;
-
-        Debug.Log(brakeForce);
     }
-
     public void Braking()
     {
         isBraking = true;
     }
-
     public void NotBraking()
     {
         isBraking = false;
     }
-
     private void UpdateWheelPos(WheelCollider _collider, Transform _transform)
     {
         Vector3 _pos = _transform.position;
@@ -105,7 +98,6 @@ public class CarMovemtnController : MonoBehaviour
         _transform.position = _pos;
         _transform.rotation = _quat;
     }
-
     private void UpdateWHeelPoses()
     {
         UpdateWheelPos(rightFrontW, rightFrontT);
@@ -114,7 +106,7 @@ public class CarMovemtnController : MonoBehaviour
         UpdateWheelPos(leftBackW, leftBackT);
     }
 
-    //public void ssss()
+    //public void ssss() // what the fuck is this shit
     //{
     //    if (!isPressing)
     //    {
@@ -135,7 +127,6 @@ public class CarMovemtnController : MonoBehaviour
     {
         isPressing = false;
     }
-
     private void FixedUpdate()
     {
         GetInput();
