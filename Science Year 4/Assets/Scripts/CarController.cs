@@ -9,10 +9,6 @@ public class CarController : MonoBehaviour
     [SerializeField] private NOS nos;
     [SerializeField] private CarMovemtnController carController;
 
-    [SerializeField] public bool isBoost, isReduce;
-    bool isCam;
-    bool isRacing;
-
     [SerializeField] private Camera mainCam, inCam, rearCam;
 
     [SerializeField] Rigidbody car;
@@ -23,12 +19,17 @@ public class CarController : MonoBehaviour
 
     [SerializeField] GameObject winButton, lostButton, startPop, startText, gameEndPop, pauseCanvas;
 
-    public int laps;
-    int timer;
-
     [SerializeField] private TextMeshProUGUI playerTimeText, AITimeText, lapText, speedmeterText;
 
     [SerializeField] public float playerTime, AITime, minFOV, maxFOV, _timer, _nosBoost, realSpeed;
+
+    [SerializeField] public bool isBoost, isReduce;
+    bool isCam;
+    bool isRacing;
+
+    public int laps;
+    int timer;
+
     private void Start()
     {
         timer = 3;
@@ -74,7 +75,7 @@ public class CarController : MonoBehaviour
 
         if (isRacing)
         {
-             playerTime += Time.deltaTime;
+            playerTime += Time.deltaTime;
         }
 
         AITime += Time.deltaTime;
@@ -98,11 +99,13 @@ public class CarController : MonoBehaviour
             mainCam.fieldOfView = Mathf.Lerp(mainCam.fieldOfView, minFOV, Time.deltaTime);
         }
     }
+
     public void StartGame()
     {
         StartCoroutine(WaitToGetReady());
         startPop.SetActive(false);
     }
+
     IEnumerator WaitToGetReady()
     {
         startText.SetActive(true);
@@ -120,6 +123,7 @@ public class CarController : MonoBehaviour
 
         startText.SetActive(false);
     }
+
     IEnumerator WaitToResumeGame()
     {
         float start = Time.realtimeSinceStartup;
@@ -128,6 +132,7 @@ public class CarController : MonoBehaviour
             yield return 0;
         }
     }
+
     IEnumerator Reduce()
     {
         carController.rightFrontW.motorTorque = carController.motorForce - 100f;
@@ -138,6 +143,7 @@ public class CarController : MonoBehaviour
 
         isReduce = false;
     }
+
     public void ChangeCamera()
     {
         if (!isCam)
@@ -159,6 +165,7 @@ public class CarController : MonoBehaviour
             isCam = false;
         }
     }
+
     public void PauseGame()
     {
         Time.timeScale = 0;
@@ -166,6 +173,7 @@ public class CarController : MonoBehaviour
         pauseCanvas.SetActive(true);
         pauseButton.gameObject.SetActive(false);
     }
+
     public void PauseButtons(int index)
     {
         if (index == 0)
@@ -183,6 +191,7 @@ public class CarController : MonoBehaviour
             Debug.Log("game quit");
         }
     }
+
     public void EndGame()
     {
         if (laps < 3)
@@ -195,6 +204,7 @@ public class CarController : MonoBehaviour
             isRacing = false;
         }
     }
+
     IEnumerator EndTheGame()
     {
         gameEndPop.SetActive(true);
@@ -218,3 +228,4 @@ public class CarController : MonoBehaviour
         Time.timeScale = 0f;
     }
 }
+

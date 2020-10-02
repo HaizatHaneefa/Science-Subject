@@ -67,7 +67,6 @@ namespace UnityStandardAssets.Utility
             Reset();
         }
 
-
         // reset the object to sensible values
         public void Reset()
         {
@@ -79,7 +78,6 @@ namespace UnityStandardAssets.Utility
                 target.rotation = circuit.Waypoints[progressNum].rotation;
             }
         }
-
 
         private void Update()
         {
@@ -93,6 +91,7 @@ namespace UnityStandardAssets.Utility
                     speed = Mathf.Lerp(speed, (lastPosition - transform.position).magnitude/Time.deltaTime,
                                        Time.deltaTime);
                 }
+
                 target.position =
                     circuit.GetRoutePoint(progressDistance + lookAheadForTargetOffset + lookAheadForTargetFactor*speed)
                            .position;
@@ -104,6 +103,7 @@ namespace UnityStandardAssets.Utility
 
                 // get our current progress along the route
                 progressPoint = circuit.GetRoutePoint(progressDistance);
+
                 Vector3 progressDelta = progressPoint.position - transform.position;
                 if (Vector3.Dot(progressDelta, progressPoint.direction) < 0)
                 {
@@ -136,7 +136,6 @@ namespace UnityStandardAssets.Utility
                 lastPosition = transform.position;
             }
         }
-
 
         private void OnDrawGizmos()
         {

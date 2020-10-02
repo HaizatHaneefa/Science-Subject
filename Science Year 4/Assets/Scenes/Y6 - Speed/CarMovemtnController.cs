@@ -36,11 +36,13 @@ public class CarMovemtnController : MonoBehaviour
 
         gameObject.GetComponent<Rigidbody>().centerOfMass += something;
     }
+
     public void GetInput()
     {
         m_horizontalInput = CrossPlatformInputManager.GetAxisRaw("Horizontal");
         m_verticalInput = CrossPlatformInputManager.GetAxisRaw("Vertical");
     }
+
     private void Steer()
     {
         m_steeringAngle = maxSteerAngle * m_horizontalInput;
@@ -48,6 +50,7 @@ public class CarMovemtnController : MonoBehaviour
         rightFrontW.steerAngle = m_steeringAngle;
         leftFrontW.steerAngle = m_steeringAngle;
     }
+
     public void Accelerate()
     {
         if (!controller.isBoost)
@@ -61,6 +64,7 @@ public class CarMovemtnController : MonoBehaviour
             leftFrontW.motorTorque = m_verticalInput * motorForce * controller._nosBoost;
         }
     }
+
     public void Brake()
     {
         if (isPressing)
@@ -80,14 +84,17 @@ public class CarMovemtnController : MonoBehaviour
         rightFrontW.brakeTorque = brakeForce;
         leftFrontW.brakeTorque = brakeForce;
     }
+
     public void Braking()
     {
         isBraking = true;
     }
+
     public void NotBraking()
     {
         isBraking = false;
     }
+
     private void UpdateWheelPos(WheelCollider _collider, Transform _transform)
     {
         Vector3 _pos = _transform.position;
@@ -98,6 +105,7 @@ public class CarMovemtnController : MonoBehaviour
         _transform.position = _pos;
         _transform.rotation = _quat;
     }
+
     private void UpdateWHeelPoses()
     {
         UpdateWheelPos(rightFrontW, rightFrontT);
@@ -127,6 +135,7 @@ public class CarMovemtnController : MonoBehaviour
     {
         isPressing = false;
     }
+
     private void FixedUpdate()
     {
         GetInput();
