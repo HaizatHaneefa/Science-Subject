@@ -59,9 +59,9 @@ public class FunFactY5Plants : MonoBehaviour
         button[3].gameObject.SetActive(true);
     }
 
-    public void BackToAR()
+    public void BackToMenu()
     {
-        SceneManager.LoadScene("Y5 - C4 AR");
+        SceneManager.LoadScene("Menu"); // back to menu
     }
 
     public void Next()

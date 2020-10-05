@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 public class FiveAnimalGameManager : MonoBehaviour
 {
@@ -556,5 +557,10 @@ public class FiveAnimalGameManager : MonoBehaviour
         {
             playerSpeed = speed * multiplier[4];
         }
+    }
+
+    public void BackToWhatever()
+    {
+        SceneManager.LoadScene(""); // to whatever
     }
 }

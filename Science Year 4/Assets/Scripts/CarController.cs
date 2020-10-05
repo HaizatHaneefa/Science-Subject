@@ -24,11 +24,13 @@ public class CarController : MonoBehaviour
     [SerializeField] public float playerTime, AITime, minFOV, maxFOV, _timer, _nosBoost, realSpeed;
 
     [SerializeField] public bool isBoost, isReduce;
+
     bool isCam;
     bool isRacing;
 
     public int laps;
     int timer;
+    int[] placerNum;
 
     private void Start()
     {
@@ -127,6 +129,7 @@ public class CarController : MonoBehaviour
     IEnumerator WaitToResumeGame()
     {
         float start = Time.realtimeSinceStartup;
+
         while (Time.realtimeSinceStartup < start + 1f)
         {
             yield return 0;

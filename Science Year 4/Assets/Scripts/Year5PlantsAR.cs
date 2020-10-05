@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class Year5PlantsAR : MonoBehaviour
 {
     [SerializeField] private GameObject[] canvas;
-
+    [SerializeField] private GameObject dummyObject;
     [SerializeField] private Sprite[] buttonSprite;
 
     [SerializeField] private Image[] imageButtons;
@@ -18,10 +18,14 @@ public class Year5PlantsAR : MonoBehaviour
         {
             canvas[i].SetActive(false);
         }
+
+        dummyObject.SetActive(false);
     }
 
     public void _ProtectionEnemies()
     {
+        dummyObject.SetActive(false);
+
         imageButtons[0].sprite = buttonSprite[0];
         imageButtons[1].sprite = buttonSprite[1];
 
@@ -35,6 +39,8 @@ public class Year5PlantsAR : MonoBehaviour
 
     public void _ProtectionWeather()
     {
+        dummyObject.SetActive(false);
+
         imageButtons[1].sprite = buttonSprite[0];
         imageButtons[0].sprite = buttonSprite[1];
 
@@ -54,5 +60,10 @@ public class Year5PlantsAR : MonoBehaviour
     public void BackToMenu()
     {
         SceneManager.LoadScene("Menu");
+    }
+
+    public void ShowDummyObject()
+    {
+        dummyObject.SetActive(true);
     }
 }

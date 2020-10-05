@@ -8,7 +8,7 @@ using UnityEngine.EventSystems;
 
 public class YearFiveC4AR : MonoBehaviour
 {
-    [SerializeField] private GameObject signBoard;
+    [SerializeField] private GameObject signBoard, dummyObject;
     [SerializeField] private string[] explanation;
     [SerializeField] private GameObject[] canvas;
 
@@ -23,6 +23,7 @@ public class YearFiveC4AR : MonoBehaviour
     [SerializeField] private Sprite[] buttonSprite;
     void Start()
     {
+        dummyObject.SetActive(false);
         signBoard.SetActive(false);
 
         explainText.text = explanation[0].ToString();
@@ -39,6 +40,7 @@ public class YearFiveC4AR : MonoBehaviour
 
     public void Next()
     {
+        dummyObject.SetActive(false);
         signBoard.SetActive(true);
 
         for (int i = 0; i < buttons.Length; i++)
@@ -79,6 +81,7 @@ public class YearFiveC4AR : MonoBehaviour
 
     public void Prev()
     {
+        dummyObject.SetActive(false);
         signBoard.SetActive(false);
 
         for (int i = 0; i < buttons.Length; i++)
@@ -176,6 +179,11 @@ public class YearFiveC4AR : MonoBehaviour
 
             canvas[1].GetComponent<Animation>().Play("Y5 - Animal AR");
         }
+    }
+
+    public void ShowDummy()
+    {
+        dummyObject.SetActive(true);
     }
 
     public void Game()

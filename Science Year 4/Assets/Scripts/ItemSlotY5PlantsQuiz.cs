@@ -8,6 +8,8 @@ public class ItemSlotY5PlantsQuiz : MonoBehaviour, IDropHandler
 {
     Y5PlantQuiz manager;
 
+    [SerializeField] private GameObject[] lastObjects;
+
     private void Awake()
     {
         manager = GameObject.FindGameObjectWithTag("GameController").GetComponent<Y5PlantQuiz>();
@@ -99,6 +101,12 @@ public class ItemSlotY5PlantsQuiz : MonoBehaviour, IDropHandler
         yield return new WaitForSeconds(1f);
 
         manager.signBoard.SetActive(true);
+
+        for (int i = 0; i < lastObjects.Length; i++)
+        {
+            lastObjects[i].SetActive(false);
+        }
+
         //manager.yayPop.SetActive(true);
         //manager.yayPop.transform.GetChild(0).GetComponent<Animation>().Play("GameOverPop");
     }

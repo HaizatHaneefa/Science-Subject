@@ -8,7 +8,7 @@ public class RandomBulletAttribute : MonoBehaviour
 
     void Start()
     {
-        //manager = GameObject.FindGameObjectWithTag("Player").GetComponent<RandomShootPlayer>();
+        manager = GameObject.FindGameObjectWithTag("Player").GetComponent<RandomShootPlayer>();
 
         Destroy(gameObject, 5f);
     }
@@ -25,11 +25,11 @@ public class RandomBulletAttribute : MonoBehaviour
             ContactPoint contact = collision.contacts[0];
             Vector3 conPoint = contact.point;
 
-            //GameObject bulletBreakPrefab = Instantiate(manager.bulletBreak, conPoint, Quaternion.identity);
-            //bulletBreakPrefab.transform.GetChild(0).gameObject.SetActive(true);
+            GameObject bulletBreakPrefab = Instantiate(manager.bulletBreak, conPoint, Quaternion.identity);
+            bulletBreakPrefab.transform.GetChild(0).gameObject.SetActive(true);
 
-            //GameObject planeGO = GameObject.FindGameObjectWithTag("Plane");
-            //bulletBreakPrefab.transform.SetParent(planeGO.transform);
+            GameObject planeGO = GameObject.FindGameObjectWithTag("Plane");
+            bulletBreakPrefab.transform.SetParent(planeGO.transform);
 
             Destroy(gameObject);
         }

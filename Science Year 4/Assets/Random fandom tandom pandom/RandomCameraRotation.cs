@@ -15,6 +15,6 @@ public class RandomCameraRotation : MonoBehaviour
 
     void Update()
     {
-        plane.Rotate(Vector3.up, speed * Time.deltaTime);
+        //plane.Rotate(Vector3.up, speed * Time.deltaTime);
     }
 }
