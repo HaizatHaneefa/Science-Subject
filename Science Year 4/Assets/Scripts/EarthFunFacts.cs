@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class EarthFunFacts : MonoBehaviour
 {
@@ -97,5 +98,10 @@ public class EarthFunFacts : MonoBehaviour
         {
             explanationtext.text = explanationDialogueText[4].ToString();
         }
+    }
+
+    public void BackToMenu()
+    {
+        SceneManager.LoadScene("Menu");
     }
 }

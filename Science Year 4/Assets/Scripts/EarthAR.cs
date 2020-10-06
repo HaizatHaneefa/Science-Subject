@@ -11,7 +11,9 @@ public class EarthAR : MonoBehaviour
     [SerializeField] private TextMeshProUGUI topicText;
     //[SerializeField] private 
     [SerializeField] private Sprite[] sprite;
+
     [SerializeField] private Button[] button;
+
     [SerializeField] private GameObject[] infoGroup, infotextGroup;
     [SerializeField] private GameObject nextButton, prevButton, quizButton;
 

@@ -130,6 +130,16 @@ public class MenuManager : MonoBehaviour
 
             canvas[1].GetComponent<Animation>().Play("Year5 Anim");
         }
+        else if (dropdown.value == 3)
+        {
+            for (int i = 0; i < chapter.Length; i++)
+            {
+                chapter[i].SetActive(false);
+                chapter[2].SetActive(true);
+            }
+
+            canvas[1].GetComponent<Animation>().Play("Year6 Anim");
+        }
     }
 
     public void ChapterSelection(int level)
@@ -138,59 +148,42 @@ public class MenuManager : MonoBehaviour
 
         l = level;
 
-        if (l == 1)
+        if (l == 1) // anatomy
         {
             descriptionText.text = description[0].ToString();
         }
-        else if (l == 2)
+        else if (l == 2) // y4 animal
         {
             descriptionText.text = description[1].ToString();
         }
-        else if (l == 3)
+        else if (l == 3) // y4 plants
         {
             descriptionText.text = description[2].ToString();
         }
-        else if (l == 4)
+        else if (l == 4) // y5 animals
         {
             descriptionText.text = description[3].ToString();
         }
-        else if (l == 5)
+        else if (l == 5) // y5 plants
         {
             descriptionText.text = description[4].ToString();
         }
-
-        arOrFunFactBackground.SetActive(true);
-        arOrFunFactBackground.GetComponent<Animation>().Play("Menu_ConfirmPop");
-    }
-
-    public void ChapterYearFiveSelection(int level)
-    {
-        l = level;
-
-        if (l == 1)
+        else if (l == 6) // y5 earth
         {
             descriptionText.text = description[5].ToString();
         }
-        //else if (l == 2)
-        //{
-        //    descriptionText.text = description[1].ToString();
-        //}
-        //else if (l == 3)
-        //{
-        //    descriptionText.text = description[2].ToString();
-        //}
-        //else if (l == 4)
-        //{
-        //    descriptionText.text = description[3].ToString();
-        //}
-        //else if (l == 5)
-        //{
-        //    descriptionText.text = description[4].ToString();
-        //}
+        else if (l == 7) // y6 speed
+        {
+            descriptionText.text = description[6].ToString();
+        }
+
+        arOrFunFactBackground.SetActive(true);
+        arOrFunFactBackground.GetComponent<Animation>().Play("Menu_ConfirmPop");
 
         arOrFunFactBackground.SetActive(true);
         arOrFunFactBackground.GetComponent<Animation>().Play("Menu_ConfirmPop");
     }
+
 
     public void BackToTopic()
     {
@@ -202,24 +195,38 @@ public class MenuManager : MonoBehaviour
     {
         if (l == 1)
         {
-            // chapter 1
-            SceneManager.LoadScene("Y5 - C4 AR");
+            // anatomy
+            //SceneManager.LoadScene("Y5 - C4 AR");
         }
         else if (l == 2)
         {
-            SceneManager.LoadScene("Y5 - C5 AR");
+            // animal year 4
+            SceneManager.LoadScene("AR-Aspect");
         }
         else if (l == 3)
         {
-            // chpater 3
+            // plants year 4
+            SceneManager.LoadScene("Plants-AR");
         }
         else if (l == 4)
         {
-            SceneManager.LoadScene("AR-Aspect"); // animals
+            // animals year 5
+            SceneManager.LoadScene("Y5 - C4 AR");
         }
         else if (l == 5)
         {
-            SceneManager.LoadScene("Plants-AR"); // plants
+            // plants year 5
+            SceneManager.LoadScene("Y5 - C5 AR");
+        }
+        else if (l == 6)
+        {
+            // earth year 5
+            SceneManager.LoadScene("Y5 - Earth - AR");
+        }
+        else if (l == 7)
+        {
+            // speed year 6
+            //SceneManager.LoadScene("Y5 - Earth - AR");
         }
     }
 
@@ -227,23 +234,38 @@ public class MenuManager : MonoBehaviour
     {
         if (l == 1)
         {
-            SceneManager.LoadScene("Y5 - C4 Fun facts"); // animals
+            // anatomy
+            //SceneManager.LoadScene("Y5 - C4 Fun facts"); // animals
         }
         else if (l == 2)
         {
-            SceneManager.LoadScene("Y5 - C5 Fun facts"); // animals
+            // y4 animal
+            SceneManager.LoadScene("Fun Facts"); // animals
         }
         else if (l == 3)
         {
-            // chpater 3
+            // y4 plants
+            SceneManager.LoadScene("Plant-Game"); // animals
         }
         else if (l == 4)
         {
-            SceneManager.LoadScene("Fun-Facts"); // animals
+            // y5 animals
+            SceneManager.LoadScene("Y5 - C4 Fun Facts"); // animals
         }
         else if (l == 5)
         {
-            SceneManager.LoadScene("Plants-Fun-Facts"); // plants
+            // y5 plants
+            SceneManager.LoadScene("Y5 - C5 Fun Facts"); // plants
+        }
+        else if (l == 6)
+        {
+            // y5 earth
+            SceneManager.LoadScene("Y5 - Earth Fun Fact"); // plants
+        }
+        else if (l == 7)
+        {
+            // y6 speed
+            //SceneManager.LoadScene("Plants-Fun-Facts"); // plants
         }
     }
 }

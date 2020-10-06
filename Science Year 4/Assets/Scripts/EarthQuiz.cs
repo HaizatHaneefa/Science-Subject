@@ -282,4 +282,14 @@ public class EarthQuiz : MonoBehaviour
         aSource.clip = sound[1];
         aSource.Play();
     }
+
+    public void Retry()
+    {
+        SceneManager.LoadScene("Y5 - Earth Quiz");
+    }
+
+    public void BackToAR()
+    {
+        SceneManager.LoadScene("Y5 - Earth - AR");
+    }
 }

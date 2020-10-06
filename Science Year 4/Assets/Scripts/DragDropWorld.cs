@@ -14,9 +14,13 @@ public class DragDropWorld : MonoBehaviour, IPointerDownHandler, IBeginDragHandl
 
     public Transform[] startPos;
 
+    WorldMapManager manager;
+
 
     private void Awake()
     {
+        manager = GameObject.FindGameObjectWithTag("GameController").GetComponent<WorldMapManager>();
+
         rectTransform = GetComponent<RectTransform>();
         canvasGroup = GetComponent<CanvasGroup>();
     }

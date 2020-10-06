@@ -230,12 +230,12 @@ public class DragShadow : MonoBehaviour
 
     public void Restart()
     {
-        SceneManager.LoadScene("i dont know");
+        SceneManager.LoadScene("Y5 - Shadow Game");
     }
 
     public void BackToAR()
     {
-        SceneManager.LoadScene(""); // back to AR
+        SceneManager.LoadScene("Y5 - Earth - AR"); // back to AR
     }
 
     public void Continue()

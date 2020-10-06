@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class WorldMapManager : MonoBehaviour
 {
@@ -13,19 +14,22 @@ public class WorldMapManager : MonoBehaviour
     [SerializeField] public bool[] conditionBool;
 
     [SerializeField] public GameObject[] roundStuff;
-    [SerializeField] public GameObject introPop, EndPop, contButton, moreInfo;
+    [SerializeField] public GameObject introPop, EndPop, contButton, moreInfo, transitionImage;
 
     [SerializeField] private TextMeshProUGUI descriptionText, levelText, titleText;
     [SerializeField] private Image countryImage;
 
     int level;
 
-    [SerializeField] private GameObject transitionImage;
-
     [SerializeField] private Sprite[] countrySprite;
+
+    [SerializeField] public AudioSource audioSource;
+    [SerializeField] public AudioClip[] sound;
 
     private void Start()
     {
+        audioSource = GetComponent<AudioSource>();
+
         transitionImage.SetActive(false);
 
         level = 1;
@@ -338,5 +342,16 @@ public class WorldMapManager : MonoBehaviour
             round[4] = false;
             round[5] = true;
         }
+    }
+
+    public void BackToAR()
+    {
+        SceneManager.LoadScene("Y5 - Earth - AR");
+    }
+
+    public void RestartGame()
+    {
+        SceneManager.LoadScene("Y5 C World Map");
+
     }
 }
