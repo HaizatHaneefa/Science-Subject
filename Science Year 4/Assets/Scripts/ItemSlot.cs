@@ -70,6 +70,12 @@ public class ItemSlot : MonoBehaviour, IDropHandler
                     manager.thirdQuestion.transform.GetChild(5).gameObject.SetActive(false);
 
                     manager.signBoard.SetActive(true);
+
+                    for (int i = 0; i < manager.thingstoDisableEnd.Length; i++)
+                    {
+                        manager.thingstoDisableEnd[i].SetActive(false);
+                    }
+                    //manager.signBoard.SetActive(true);
                     //manager.yayPop.SetActive(true);
                     //manager.yayPop.transform.GetChild(0).GetComponent<Animation>().Play("GameOverPop");
                 }

@@ -9,13 +9,12 @@ using UnityEngine.EventSystems;
 public class YearFiveQuizManager : MonoBehaviour
 {
     [SerializeField] private GameObject[] mcq;
-    [SerializeField] private GameObject secondQuestion;
-    [SerializeField] private GameObject snakeImage;
-    [SerializeField] private GameObject continueButton;
-    [SerializeField] private GameObject instructPop;
-    [SerializeField] private GameObject lowBarImage;
+    [SerializeField] private GameObject secondQuestion, snakeImage, continueButton, instructPop, lowBarImage;
+
     public GameObject continueButtonSecondQuestion;
     [SerializeField] public GameObject signBoard;
+    [SerializeField] public GameObject[] thingstoDisableEnd;
+
     //public GameObject yayPop;
     public GameObject thirdQuestion;
 
@@ -36,6 +35,7 @@ public class YearFiveQuizManager : MonoBehaviour
 
     void Start()
     {
+        signBoard.SetActive(false);
         instructPop.transform.GetChild(0).GetComponent<Animation>().Play("MoreInfoPop");
 
         questionText.enabled = false;

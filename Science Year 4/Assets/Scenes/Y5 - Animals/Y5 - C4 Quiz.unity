@@ -1953,6 +1953,10 @@ MonoBehaviour:
   lowBarImage: {fileID: 586364908}
   continueButtonSecondQuestion: {fileID: 518600504}
   signBoard: {fileID: 1644144941}
+  thingstoDisableEnd:
+  - {fileID: 1950198687}
+  - {fileID: 1617263690}
+  - {fileID: 1709204779}
   thirdQuestion: {fileID: 1463159862}
   questionText: {fileID: 1709204781}
   exampleImagesFirst:

@@ -6,7 +6,7 @@ using UnityStandardAssets.CrossPlatformInput;
 
 public class CarMovemtnController : MonoBehaviour
 {
-    [SerializeField] private CarController controller;
+    [SerializeField] private myCarController controller;
 
     private float m_horizontalInput;
     private float m_verticalInput;
@@ -32,7 +32,7 @@ public class CarMovemtnController : MonoBehaviour
 
     private void Start()
     {
-        controller = GameObject.FindGameObjectWithTag("GameController").GetComponent<CarController>();
+        controller = GameObject.FindGameObjectWithTag("GameController").GetComponent<myCarController>();
 
         gameObject.GetComponent<Rigidbody>().centerOfMass += something;
     }

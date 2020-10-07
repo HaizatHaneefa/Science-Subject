@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class LapCondition : MonoBehaviour
 {
-    [SerializeField] CarController controller;
+    [SerializeField] myCarController controller;
 
     private void Start()
     {
-        controller = GameObject.FindGameObjectWithTag("GameController").GetComponent<CarController>();
+        controller = GameObject.FindGameObjectWithTag("GameController").GetComponent<myCarController>();
     }
     private void OnTriggerEnter(Collider other)
     {
