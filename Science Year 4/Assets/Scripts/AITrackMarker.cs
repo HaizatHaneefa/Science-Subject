@@ -43,6 +43,71 @@ public class AITrackMarker : MonoBehaviour
         {
             transform.position = markers[5].transform.position;
         }
+        else if (markNumber == 6)
+        {
+            transform.position = markers[6].transform.position;
+        }
+        else if (markNumber == 7)
+        {
+            transform.position = markers[7].transform.position;
+        }
+        else if (markNumber == 8)
+        {
+            transform.position = markers[8].transform.position;
+        }
+        else if (markNumber == 9)
+        {
+            transform.position = markers[9].transform.position;
+        }
+        else if (markNumber == 10)
+        {
+            transform.position = markers[10].transform.position;
+        }
+        else if (markNumber == 11)
+        {
+            transform.position = markers[11].transform.position;
+        }
+        else if (markNumber == 12)
+        {
+            transform.position = markers[12].transform.position;
+        }
+        else if (markNumber == 13)
+        {
+            transform.position = markers[13].transform.position;
+        }
+        else if (markNumber == 14)
+        {
+            transform.position = markers[14].transform.position;
+        }
+        else if (markNumber == 15)
+        {
+            transform.position = markers[15].transform.position;
+        }
+        else if (markNumber == 16)
+        {
+            transform.position = markers[16].transform.position;
+        }
+        else if (markNumber == 17)
+        {
+            transform.position = markers[17].transform.position;
+        }
+        else if (markNumber == 18)
+        {
+            transform.position = markers[18].transform.position;
+        }
+        else if (markNumber == 19)
+        {
+            transform.position = markers[19].transform.position;
+        }
+        else if (markNumber == 20)
+        {
+            transform.position = markers[20].transform.position;
+        }
+        else if (markNumber == 21)
+        {
+            transform.position = markers[21].transform.position;
+        }
+
     }
 
     private IEnumerator OnTriggerEnter(Collider other)
@@ -52,14 +117,14 @@ public class AITrackMarker : MonoBehaviour
             GetComponent<BoxCollider>().enabled = false;
         }
 
-        markNumber += 1;
+        markNumber = markNumber + 1;
 
-        if (markNumber == 5)
+        if (markNumber == 21)
         {
             markNumber = 0;
         }
 
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(1f);
 
         GetComponent<BoxCollider>().enabled = true;
     }
