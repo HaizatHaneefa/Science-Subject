@@ -4,48 +4,90 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityStandardAssets.Vehicles.Car;
+using UnityEngine.SceneManagement;
 
 public class myCarController : MonoBehaviour
 {
     [SerializeField] private NOS nos;
     [SerializeField] private CarController carController;
+    [SerializeField] private CarSelectionData carSelect;
+    //[SerializeField] private MeshFilter carMesh;
 
     [SerializeField] private Camera mainCam, inCam, rearCam;
 
-    [SerializeField] Rigidbody car;
+    [SerializeField] private GameObject[] car;
 
     [SerializeField] Button pauseButton;
 
     [SerializeField] RawImage rearImage;
 
     [SerializeField] GameObject winButton, lostButton, startPop, startText, gameEndPop, pauseCanvas;
+    public GameObject enemyMarkerGO;
 
-    [SerializeField] private TextMeshProUGUI playerTimeText, AITimeText, lapText, speedmeterText;
+    [SerializeField] private TextMeshProUGUI playerTimeText, AITimeText, lapText, speedmeterText, winLoseText;
 
     [SerializeField] public float playerTime, AITime, minFOV, maxFOV, _timer, _nosBoost, realSpeed;
 
     [SerializeField] public bool isBoost, isReduce;
 
+    //[SerializeField] private MeshFilter[] carMeshFilter;
+
     bool isCam;
     bool isRacing;
 
     public int laps;
+    public int enemyLaps;
+
     int timer;
     int[] placerNum;
 
     private void Start()
     {
+        carSelect = GameObject.FindGameObjectWithTag("Respawn").GetComponent<CarSelectionData>();
+        carController = GameObject.FindGameObjectWithTag("Car").GetComponent<CarController>();
+
+        if (carSelect.carSelection[0])
+        {
+            // car 1
+            for (int i = 0; i < car.Length; i++)
+            {
+                car[i].SetActive(false);
+                car[0].SetActive(true);
+            }
+        }
+        else if (carSelect.carSelection[1])
+        {
+            // car 2
+            for (int i = 0; i < car.Length; i++)
+            {
+                car[i].SetActive(false);
+                car[1].SetActive(true);
+            }
+        }
+        else if (carSelect.carSelection[2])
+        {
+            // car 3
+            for (int i = 0; i < car.Length; i++)
+            {
+                car[i].SetActive(false);
+                car[2].SetActive(true);
+            }
+        }
+
         timer = 3;
         Time.timeScale = 0f;
 
         laps = 1;
+        enemyLaps = 1;
+
+        //carMesh = car.GetComponent<MeshFilter>();
+        //carMesh = carMeshFilter[1];
 
         winButton.SetActive(false); // if win
         lostButton.SetActive(false); // if lose, i doubt it
         startText.SetActive(false); // timertext
         gameEndPop.SetActive(false); // gameend thing
 
-        carController = GameObject.FindGameObjectWithTag("Car").GetComponent<CarController>();
 
         _nosBoost = 10f;
 
@@ -57,19 +99,23 @@ public class myCarController : MonoBehaviour
         isRacing = true;
     }
 
+    //private void Awake()
+    //{
+        
+    //}
     private void Update()
     {
-        int seconds = (int)(playerTime % 60);
-        int minutes = (int)(playerTime / 60);
+        //int seconds = (int)(playerTime % 60);
+        //int minutes = (int)(playerTime / 60);
 
-        string playertimerString = string.Format("{0:0}:{1:00}", minutes, seconds);
-        playerTimeText.text = playertimerString; // time format for player
+        //string playertimerString = string.Format("{0:0}:{1:00}", minutes, seconds);
+        //playerTimeText.text = playertimerString; // time format for player
 
-        int _seconds = (int)(AITime % 60);
-        int _minutes = (int)(AITime / 60);
+        //int _seconds = (int)(AITime % 60);
+        //int _minutes = (int)(AITime / 60);
 
-        string AItimerString = string.Format("{0:0}:{1:00}", _minutes, _seconds);
-        AITimeText.text = AItimerString; // time format for AI
+        //string AItimerString = string.Format("{0:0}:{1:00}", _minutes, _seconds);
+        //AITimeText.text = AItimerString; // time format for AI
 
         //realSpeed = car.velocity.magnitude * 3.6f; // speed on meter
         //carController.testSpeed = car.velocity.magnitude * 3.6f; // speed on meter
@@ -189,11 +235,12 @@ public class myCarController : MonoBehaviour
         }
         else if (index == 1)
         {
-            Debug.Log("game restarted");
+            SceneManager.LoadSceneAsync("Y6 - Speed Race");
+
         }
         else if (index == 2)
         {
-            Debug.Log("game quit");
+            SceneManager.LoadSceneAsync("Menu");
         }
     }
 
@@ -206,6 +253,8 @@ public class myCarController : MonoBehaviour
         else if (laps == 3)
         {
             StartCoroutine(EndTheGame());
+            winButton.SetActive(true);
+            winLoseText.text = "Win!"; 
             isRacing = false;
         }
     }
@@ -215,22 +264,23 @@ public class myCarController : MonoBehaviour
         gameEndPop.SetActive(true);
         gameEndPop.transform.GetChild(0).GetComponent<Animation>().Play("GameOverPop");
 
-        yield return new WaitForSeconds(0.01f);
-
-        if (playerTime < AITime)
-        {
-            winButton.SetActive(true);
-            lostButton.SetActive(false);
-        }
-        else if (playerTime > AITime)
-        {
-            winButton.SetActive(false);
-            lostButton.SetActive(true);
-        }
-
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
 
         Time.timeScale = 0f;
+    }
+
+    public void EnemyLaps()
+    {
+        if (enemyLaps < 3)
+        {
+            enemyLaps += 1;
+        }
+        else if (enemyLaps == 3)
+        {
+            StartCoroutine(EndTheGame());
+            winLoseText.text = "Lose!";
+            lostButton.SetActive(true);
+        }
     }
 }
 

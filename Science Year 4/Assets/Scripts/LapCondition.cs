@@ -16,5 +16,20 @@ public class LapCondition : MonoBehaviour
         {
             controller.EndGame();
         }
+
+        if (other.CompareTag("Enemy"))
+        {
+            controller.EnemyLaps();
+            StartCoroutine(DisableEnemyMarker());
+        }
+    }
+
+    IEnumerator DisableEnemyMarker()
+    {
+        controller.enemyMarkerGO.SetActive(false);
+
+        yield return new WaitForSeconds(1f);
+
+        controller.enemyMarkerGO.SetActive(true);
     }
 }

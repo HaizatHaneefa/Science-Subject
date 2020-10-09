@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 public class RaceCarManager : MonoBehaviour
 {
     [SerializeField] private RaceCarData data;
+    [SerializeField] private CarSelectionData carSelect;
     [SerializeField] private GameObject carStatsHolder, goButton;
     [SerializeField] private GameObject[] cars;
 
@@ -16,14 +17,14 @@ public class RaceCarManager : MonoBehaviour
     [SerializeField] private Slider[] statsSlider;
 
     [SerializeField] private Material[] carMats;
-    [SerializeField] private GameObject[] colorPalette;
+    //[SerializeField] private GameObject[] colorPalette;
     [SerializeField] private Material[] carTexture;
 
     void Start()
     {
         data = GameObject.FindGameObjectWithTag("GameController").GetComponent<RaceCarData>();
+        carSelect = GameObject.FindGameObjectWithTag("Respawn").GetComponent<CarSelectionData>();
 
-        
         carStatsHolder.SetActive(false);
         goButton.SetActive(false);
 
@@ -32,10 +33,10 @@ public class RaceCarManager : MonoBehaviour
             cars[i].SetActive(false);
         }
 
-        for (int i = 0; i < colorPalette.Length; i++)
-        {
-            colorPalette[i].SetActive(false);
-        }
+        //for (int i = 0; i < colorPalette.Length; i++)
+        //{
+        //    colorPalette[i].SetActive(false);
+        //}
     }
 
     public void ChooseCar(int index)
@@ -57,6 +58,12 @@ public class RaceCarManager : MonoBehaviour
             statsSlider[1].value = data.c1.accel;
             statsSlider[2].value = data.c1.control;
             statsSlider[3].value = data.c1.strength;
+
+            for (int i = 0; i < carSelect.carSelection.Length; i++)
+            {
+                carSelect.carSelection[i] = false;
+                carSelect.carSelection[0] = true;
+            }
         }
         else if (index == 1)
         {
@@ -72,6 +79,12 @@ public class RaceCarManager : MonoBehaviour
             statsSlider[1].value = data.c2.accel;
             statsSlider[2].value = data.c2.control;
             statsSlider[3].value = data.c2.strength;
+
+            for (int i = 0; i < carSelect.carSelection.Length; i++)
+            {
+                carSelect.carSelection[i] = false;
+                carSelect.carSelection[1] = true;
+            }
         }
         else if (index == 2)
         {
@@ -87,6 +100,12 @@ public class RaceCarManager : MonoBehaviour
             statsSlider[1].value = data.c3.accel;
             statsSlider[2].value = data.c3.control;
             statsSlider[3].value = data.c3.strength;
+
+            for (int i = 0; i < carSelect.carSelection.Length; i++)
+            {
+                carSelect.carSelection[i] = false;
+                carSelect.carSelection[2] = true;
+            }
         }
     }
 
@@ -141,7 +160,7 @@ public class RaceCarManager : MonoBehaviour
 
     public void GoRace()
     {
-        SceneManager.LoadScene(""); // to the bloody race
+        SceneManager.LoadScene("Y6 - Speed Race"); // to the bloody race
     }
 
     public void GoBack()
