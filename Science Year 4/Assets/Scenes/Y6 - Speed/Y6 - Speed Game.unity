@@ -7544,6 +7544,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   carSelection: 000000
+  cars:
+  - {fileID: 6805173993910150737, guid: dac0309e727074e5cbd95a8e380728ea, type: 3}
+  - {fileID: 1912761045870025086, guid: 7b49205b13af445d5889e325035b3fdc, type: 3}
+  - {fileID: 7530942564949407924, guid: 26acfcbd49b034afb846dd4ce1d61d65, type: 3}
+  carSelected: {fileID: 0}
 --- !u!4 &1976675887
 Transform:
   m_ObjectHideFlags: 0
@@ -7552,7 +7557,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1976675885}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -7.93, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 
 public class myCarController : MonoBehaviour
 {
-    [SerializeField] private NOS nos;
+    //[SerializeField] private NOS nos;
     [SerializeField] private CarController carController;
     [SerializeField] private CarSelectionData carSelect;
     //[SerializeField] private MeshFilter carMesh;
@@ -16,6 +16,9 @@ public class myCarController : MonoBehaviour
     [SerializeField] private Camera mainCam, inCam, rearCam;
 
     [SerializeField] private GameObject[] car;
+    [SerializeField] private GameObject selectedCar;
+    [SerializeField] private Transform carSpwn;
+    //[SerializeField] private 
 
     [SerializeField] Button pauseButton;
 
@@ -24,9 +27,9 @@ public class myCarController : MonoBehaviour
     [SerializeField] GameObject winButton, lostButton, startPop, startText, gameEndPop, pauseCanvas;
     public GameObject enemyMarkerGO;
 
-    [SerializeField] private TextMeshProUGUI playerTimeText, AITimeText, lapText, speedmeterText, winLoseText;
+    [SerializeField] private TextMeshProUGUI lapText, speedmeterText, winLoseText;
 
-    [SerializeField] public float playerTime, AITime, minFOV, maxFOV, _timer, _nosBoost, realSpeed;
+    [SerializeField] public float minFOV, maxFOV, _timer, _nosBoost, realSpeed;
 
     [SerializeField] public bool isBoost, isReduce;
 
@@ -34,6 +37,7 @@ public class myCarController : MonoBehaviour
 
     bool isCam;
     bool isRacing;
+    bool isStarting;
 
     public int laps;
     public int enemyLaps;
@@ -43,12 +47,15 @@ public class myCarController : MonoBehaviour
 
     private void Start()
     {
+        mainCam.GetComponent<CarFollowCamera>().enabled = false;
+
         carSelect = GameObject.FindGameObjectWithTag("Respawn").GetComponent<CarSelectionData>();
-        carController = GameObject.FindGameObjectWithTag("Car").GetComponent<CarController>();
 
         if (carSelect.carSelection[0])
         {
             // car 1
+            //selectedCar = Instantiate(car[0], carSpwn.transform.position, Quaternion.identity);
+
             for (int i = 0; i < car.Length; i++)
             {
                 car[i].SetActive(false);
@@ -58,6 +65,7 @@ public class myCarController : MonoBehaviour
         else if (carSelect.carSelection[1])
         {
             // car 2
+            //selectedCar = Instantiate(car[1], carSpwn.transform.position, Quaternion.identity);
             for (int i = 0; i < car.Length; i++)
             {
                 car[i].SetActive(false);
@@ -69,10 +77,15 @@ public class myCarController : MonoBehaviour
             // car 3
             for (int i = 0; i < car.Length; i++)
             {
+                //selectedCar = Instantiate(car[2], carSpwn.transform.position, Quaternion.identity);
+
                 car[i].SetActive(false);
                 car[2].SetActive(true);
             }
         }
+
+        carController = GameObject.FindGameObjectWithTag("Car").GetComponent<CarController>();
+        //speedmeterText.text = carController.testSpeed.ToString("F0");
 
         timer = 3;
         Time.timeScale = 0f;
@@ -80,14 +93,10 @@ public class myCarController : MonoBehaviour
         laps = 1;
         enemyLaps = 1;
 
-        //carMesh = car.GetComponent<MeshFilter>();
-        //carMesh = carMeshFilter[1];
-
         winButton.SetActive(false); // if win
         lostButton.SetActive(false); // if lose, i doubt it
         startText.SetActive(false); // timertext
         gameEndPop.SetActive(false); // gameend thing
-
 
         _nosBoost = 10f;
 
@@ -99,54 +108,19 @@ public class myCarController : MonoBehaviour
         isRacing = true;
     }
 
-    //private void Awake()
-    //{
-        
-    //}
     private void Update()
     {
-        //int seconds = (int)(playerTime % 60);
-        //int minutes = (int)(playerTime / 60);
-
-        //string playertimerString = string.Format("{0:0}:{1:00}", minutes, seconds);
-        //playerTimeText.text = playertimerString; // time format for player
-
-        //int _seconds = (int)(AITime % 60);
-        //int _minutes = (int)(AITime / 60);
-
-        //string AItimerString = string.Format("{0:0}:{1:00}", _minutes, _seconds);
-        //AITimeText.text = AItimerString; // time format for AI
-
-        //realSpeed = car.velocity.magnitude * 3.6f; // speed on meter
-        //carController.testSpeed = car.velocity.magnitude * 3.6f; // speed on meter
-
-        lapText.text = laps + "/3";
-        speedmeterText.text = carController.testSpeed.ToString("F0");
-
-        if (isRacing)
+        if (isStarting)
         {
-            playerTime += Time.deltaTime;
-        }
+            lapText.text = laps + "/3";
+            speedmeterText.text = carController.testSpeed.ToString("F0");
 
-        AITime += Time.deltaTime;
-
-        if (isBoost)
-        {
-            //carController.rightFrontW.motorTorque = carController.motorForce + _nosBoost;
-
-            _timer += Time.deltaTime;
-            mainCam.fieldOfView = Mathf.Lerp(mainCam.fieldOfView, maxFOV, Time.deltaTime);
-        }
-        else if (isReduce)
-        {
-            StartCoroutine(Reduce());
-        }
-
-        if (_timer >= 3.0f || _timer == 0)
-        {
-            isBoost = false;
-            _timer = 0f;
-            mainCam.fieldOfView = Mathf.Lerp(mainCam.fieldOfView, minFOV, Time.deltaTime);
+            if (_timer >= 3.0f || _timer == 0)
+            {
+                isBoost = false;
+                _timer = 0f;
+                mainCam.fieldOfView = Mathf.Lerp(mainCam.fieldOfView, minFOV, Time.deltaTime);
+            }
         }
     }
 
@@ -154,6 +128,8 @@ public class myCarController : MonoBehaviour
     {
         StartCoroutine(WaitToGetReady());
         startPop.SetActive(false);
+
+        isStarting = true;
     }
 
     IEnumerator WaitToGetReady()
@@ -182,17 +158,6 @@ public class myCarController : MonoBehaviour
         {
             yield return 0;
         }
-    }
-
-    IEnumerator Reduce()
-    {
-        //carController.rightFrontW.motorTorque = carController.motorForce - 100f;
-
-        yield return new WaitForSeconds(0.5f);
-
-        //carController.rightFrontW.motorTorque = carController.motorForce + 100f;
-
-        isReduce = false;
     }
 
     public void ChangeCamera()
@@ -283,4 +248,20 @@ public class myCarController : MonoBehaviour
         }
     }
 }
+
+
+//int seconds = (int)(playerTime % 60);
+//int minutes = (int)(playerTime / 60);
+
+//string playertimerString = string.Format("{0:0}:{1:00}", minutes, seconds);
+//playerTimeText.text = playertimerString; // time format for player
+
+//int _seconds = (int)(AITime % 60);
+//int _minutes = (int)(AITime / 60);
+
+//string AItimerString = string.Format("{0:0}:{1:00}", _minutes, _seconds);
+//AITimeText.text = AItimerString; // time format for AI
+
+//realSpeed = car.velocity.magnitude * 3.6f; // speed on meter
+//carController.testSpeed = car.velocity.magnitude * 3.6f; // speed on meter
 

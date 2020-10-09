@@ -13,8 +13,10 @@ public class CarFollowCamera : MonoBehaviour
 
     private void Start()
     {
+        //StartCoroutine(sdsdsd());
         objToFollow = GameObject.FindGameObjectWithTag("Animal 2").transform;
     }
+
     public void LookAtTarget()
     {
         Vector3 _lookDir = objToFollow.position - transform.position;
@@ -34,5 +36,12 @@ public class CarFollowCamera : MonoBehaviour
     {
         LookAtTarget();
         MoveToTarget();
+    }
+
+    IEnumerator sdsdsd()
+    {
+        yield return new WaitForSeconds(1f);
+
+        objToFollow = GameObject.FindGameObjectWithTag("Animal 2").transform;
     }
 }
