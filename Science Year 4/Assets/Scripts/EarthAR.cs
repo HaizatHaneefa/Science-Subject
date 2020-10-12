@@ -420,11 +420,11 @@ public class EarthAR : MonoBehaviour
 
     public void ToQuiz()
     {
-        SceneManager.LoadScene(""); // to quiz
+        SceneManager.LoadScene("Y5 - Earth Quiz"); // to quiz
     }
 
     public void ToMenu()
     {
-        SceneManager.LoadScene(""); // to menu
+        SceneManager.LoadScene("Menu"); // to menu
     }
 }

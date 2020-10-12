@@ -24,14 +24,15 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private GameObject bar;
 
     public TMP_Dropdown dropdown;
-
+    int dropDownValue;
+   
     void Start()
     {
         boolHolderManager = GameObject.FindGameObjectWithTag("EditorOnly").GetComponent<BoolHolder>();
 
         blocker.SetActive(false);
 
-        if (boolHolderManager.isOkay)
+        if (boolHolderManager.menuChapter[0])
         {
             for (int i = 0; i < itemsInBackground.Length; i++)
             {
@@ -45,9 +46,37 @@ public class MenuManager : MonoBehaviour
             }
 
             bar.SetActive(true);
-            canvas[1].GetComponent<Animation>().Play("Year4 Anim");
+            //canvas[1].GetComponent<Animation>().Play("Year4 Anim");
+            arOrFunFactBackground.SetActive(false);
+
+            if (boolHolderManager.menuChapter[1])
+            {
+                for (int i = 0; i < chapter.Length; i++)
+                {
+                    chapter[i].SetActive(false);
+                    chapter[0].SetActive(true);
+                }
+            }
+            else if (boolHolderManager.menuChapter[2])
+            {
+                for (int i = 0; i < chapter.Length; i++)
+                {
+                    chapter[i].SetActive(false);
+                    chapter[1].SetActive(true);
+                }
+            }
+            if (boolHolderManager.menuChapter[3])
+            {
+                for (int i = 0; i < chapter.Length; i++)
+                {
+                    chapter[i].SetActive(false);
+                    chapter[2].SetActive(true);
+                }
+            }
+
+            dropdown.value = boolHolderManager.dropdownValue;
         }
-        else if (!boolHolderManager.isOkay)
+        else if (!boolHolderManager.menuChapter[0])
         {
             bar.SetActive(false);
 
@@ -65,11 +94,13 @@ public class MenuManager : MonoBehaviour
             arOrFunFactBackground.SetActive(false);
             blocker.SetActive(false);
         }
+
+        //boolHolderManager.isOkay = true;
     }
 
     public void ToMenu()
     {
-        boolHolderManager.isOkay = true;
+        boolHolderManager.menuChapter[0] = true;
 
         bar.SetActive(true);
 
@@ -197,36 +228,85 @@ public class MenuManager : MonoBehaviour
         {
             // anatomy
             //SceneManager.LoadScene("Y5 - C4 AR");
+
+            //for (int i = 0; i < chapter.Length; i++)
+            //{
+            //    chapter[i].SetActive(false);
+            //    chapter[0].SetActive(false);
+            //}
+            boolHolderManager.menuChapter[1] = true;
         }
         else if (l == 2)
         {
             // animal year 4
             SceneManager.LoadScene("AR-Aspect");
+
+            //for (int i = 0; i < chapter.Length; i++)
+            //{
+            //    chapter[i].SetActive(false);
+            //    chapter[0].SetActive(false);
+            //}
+            boolHolderManager.menuChapter[1] = true;
         }
         else if (l == 3)
         {
             // plants year 4
             SceneManager.LoadScene("Plants-AR");
+
+            //for (int i = 0; i < chapter.Length; i++)
+            //{
+            //    chapter[i].SetActive(false);
+            //    chapter[0].SetActive(false);
+            //}
+            boolHolderManager.menuChapter[1] = true;
         }
         else if (l == 4)
         {
             // animals year 5
             SceneManager.LoadScene("Y5 - C4 AR");
+
+            //for (int i = 0; i < chapter.Length; i++)
+            //{
+            //    chapter[i].SetActive(false);
+            //    chapter[1].SetActive(false);
+            //}
+            boolHolderManager.menuChapter[2] = true;
         }
         else if (l == 5)
         {
             // plants year 5
             SceneManager.LoadScene("Y5 - C5 AR");
+
+            //for (int i = 0; i < chapter.Length; i++)
+            //{
+            //    chapter[i].SetActive(false);
+            //    chapter[1].SetActive(false);
+            //}
+            boolHolderManager.menuChapter[2] = true;
         }
         else if (l == 6)
         {
             // earth year 5
             SceneManager.LoadScene("Y5 - Earth - AR");
+
+            //for (int i = 0; i < chapter.Length; i++)
+            //{
+            //    chapter[i].SetActive(false);
+            //    chapter[1].SetActive(false);
+            //}
+            boolHolderManager.menuChapter[2] = true;
         }
         else if (l == 7)
         {
             // speed year 6
             //SceneManager.LoadScene("Y5 - Earth - AR");
+
+            //for (int i = 0; i < chapter.Length; i++)
+            //{
+            //    chapter[i].SetActive(false);
+            //    chapter[2].SetActive(false);
+            //}
+            boolHolderManager.menuChapter[3] = true;
         }
     }
 
@@ -236,36 +316,57 @@ public class MenuManager : MonoBehaviour
         {
             // anatomy
             //SceneManager.LoadScene("Y5 - C4 Fun facts"); // animals
+            boolHolderManager.menuChapter[1] = true;
+
+            boolHolderManager.dropdownValue = 1;
         }
         else if (l == 2)
         {
             // y4 animal
-            SceneManager.LoadScene("Fun Facts"); // animals
+            SceneManager.LoadScene("Fun-Facts"); // animals
+            boolHolderManager.menuChapter[1] = true;
+            boolHolderManager.dropdownValue = 1;
+
         }
         else if (l == 3)
         {
             // y4 plants
-            SceneManager.LoadScene("Plant-Game"); // animals
+            SceneManager.LoadScene("Plants-Fun-Facts"); // animals
+            boolHolderManager.menuChapter[1] = true;
+            boolHolderManager.dropdownValue = 1;
+
         }
         else if (l == 4)
         {
             // y5 animals
             SceneManager.LoadScene("Y5 - C4 Fun Facts"); // animals
+            boolHolderManager.menuChapter[2] = true;
+            boolHolderManager.dropdownValue = 2;
+
         }
         else if (l == 5)
         {
             // y5 plants
             SceneManager.LoadScene("Y5 - C5 Fun Facts"); // plants
+            boolHolderManager.menuChapter[2] = true;
+            boolHolderManager.dropdownValue = 2;
+
         }
         else if (l == 6)
         {
             // y5 earth
             SceneManager.LoadScene("Y5 - Earth Fun Fact"); // plants
+            boolHolderManager.menuChapter[2] = true;
+            boolHolderManager.dropdownValue = 2;
+
         }
         else if (l == 7)
         {
             // y6 speed
             //SceneManager.LoadScene("Plants-Fun-Facts"); // plants
+            boolHolderManager.menuChapter[3] = true;
+            boolHolderManager.dropdownValue = 3;
+
         }
     }
 }
