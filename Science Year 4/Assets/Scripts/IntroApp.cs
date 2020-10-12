@@ -7,6 +7,8 @@ public class IntroApp : MonoBehaviour
     void Start()
     {
         StartCoroutine(Wait());
+
+        PlayerPrefs.DeleteAll();
     }
 
     void Update()

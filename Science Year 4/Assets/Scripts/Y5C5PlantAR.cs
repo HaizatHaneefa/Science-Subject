@@ -154,6 +154,7 @@ public class Y5C5PlantAR : MonoBehaviour
 
         managerSun.gameObject.transform.position = oriPos;
         root.gameObject.transform.rotation = rot[0];
+
         batangKayu.gameObject.transform.rotation = new Quaternion(0, 0, 0, 0);
 
         for (int i = 0; i < cam.Length; i++)
@@ -167,11 +168,13 @@ public class Y5C5PlantAR : MonoBehaviour
         ps.gameObject.SetActive(true);
         ps.Play();
 
+        root.GetComponent<Animation>().Play("Root-To-Water");
+
         managerSun.gameObject.SetActive(false);
         managerSun.enabled = false;
 
         batangKayu.GetComponent<Animation>().Stop();
-        root.GetComponent<Animation>().Stop();
+        //root.GetComponent<Animation>().Stop();
 
         upArrow.SetActive(false);
         upArrow.GetComponent<Animation>().Stop();

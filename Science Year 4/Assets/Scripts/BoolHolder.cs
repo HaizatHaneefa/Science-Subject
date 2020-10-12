@@ -4,25 +4,37 @@ using UnityEngine;
 
 public class BoolHolder : MonoBehaviour
 {
-    public bool[] menuChapter;
-    private static BoolHolder playerInstance;
+    private static BoolHolder _playerInstance;
 
-    [SerializeField] public int dropdownValue;
+    [SerializeField] public static int dropdownValue;
+    public static bool[] menuChapter;
 
+    public static BoolHolder playerInstance
+    {
+        get { return playerInstance; }
+    }
+
+   
     void Awake()
+    {
+        NoDestroy();   
+    }
+
+   
+
+    void NoDestroy()
     {
         DontDestroyOnLoad(this);
 
-        if (playerInstance == null)
+        if (_playerInstance == null)
         {
-            playerInstance = this;
+            _playerInstance = this;
         }
         else
         {
             Destroy(gameObject);
         }
     }
-
     void Update()
     {
         

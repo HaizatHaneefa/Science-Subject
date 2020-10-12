@@ -221,6 +221,11 @@ public class Y5PlantQuiz : MonoBehaviour
         SceneManager.LoadScene("Y5 - C5 Quiz");
     }
 
+    public void ToGame()
+    {
+        SceneManager.LoadScene("Y5 - C5 Game");
+    }
+
     IEnumerator ChangeRedColor()
     {
         List<GameObject> disable = new List<GameObject>();

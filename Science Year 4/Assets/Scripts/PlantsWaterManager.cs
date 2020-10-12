@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
 public class PlantsWaterManager : MonoBehaviour
 {
@@ -40,7 +41,7 @@ public class PlantsWaterManager : MonoBehaviour
 
     public void _Q1Y()
     {
-        StartCoroutine(ChangeColor());
+        StartCoroutine(ButtonChangeColor());
         StartCoroutine(transition());
 
         audioSource.clip = sound[0];
@@ -51,7 +52,7 @@ public class PlantsWaterManager : MonoBehaviour
 
     public void _Q2Y()
     {
-        StartCoroutine(ChangeColor());
+        StartCoroutine(ButtonChangeColor());
         StartCoroutine(ShowGeotropism());
 
         audioSource.clip = sound[0];
@@ -62,7 +63,7 @@ public class PlantsWaterManager : MonoBehaviour
 
     public void _Q3Y()
     {
-        StartCoroutine(ChangeColor());
+        StartCoroutine(ButtonChangeColor());
         StartCoroutine(End());
 
         audioSource.clip = sound[0];
@@ -75,6 +76,8 @@ public class PlantsWaterManager : MonoBehaviour
     {
         audioSource.clip = sound[1];
         audioSource.Play();
+
+        StartCoroutine(ChangeRedColor());
     }
 
     IEnumerator ShowGeotropism()
@@ -168,6 +171,57 @@ public class PlantsWaterManager : MonoBehaviour
         for (int i = 0; i < button.Length; i++)
         {
             button[i].GetComponent<Image>().color = Color.white;
+        }
+    }
+
+    IEnumerator ButtonChangeColor()
+    {
+        List<GameObject> disable = new List<GameObject>();
+
+        disable.AddRange(GameObject.FindGameObjectsWithTag("False"));
+
+        foreach (GameObject but in disable)
+        {
+            but.GetComponent<Button>().enabled = false;
+        }
+
+        Image i = EventSystem.current.currentSelectedGameObject.GetComponent<Image>();
+        i.color = Color.green;
+
+        yield return new WaitForSeconds(1f);
+
+        i.color = Color.white;
+
+        foreach (GameObject but in disable)
+        {
+            but.GetComponent<Button>().enabled = true;
+        }
+
+        //cur += 1;
+    }
+
+    IEnumerator ChangeRedColor()
+    {
+        List<GameObject> disable = new List<GameObject>();
+
+        disable.AddRange(GameObject.FindGameObjectsWithTag("False"));
+
+        foreach (GameObject but in disable)
+        {
+            but.GetComponent<Button>().enabled = false;
+        }
+
+        Image img = EventSystem.current.currentSelectedGameObject.GetComponent<Image>();
+
+        img.color = Color.red;
+
+        yield return new WaitForSeconds(1f);
+
+        img.color = Color.white;
+
+        foreach (GameObject but in disable)
+        {
+            but.GetComponent<Button>().enabled = true;
         }
     }
 }
