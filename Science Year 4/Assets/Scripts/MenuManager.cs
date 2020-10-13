@@ -26,7 +26,7 @@ public class MenuManager : MonoBehaviour
     public TMP_Dropdown dropdown;
     int dropDownValue;
    
-    void Start()
+    void Awake()
     {
         boolHolderManager = GameObject.FindGameObjectWithTag("EditorOnly").GetComponent<BoolHolder>();
 
