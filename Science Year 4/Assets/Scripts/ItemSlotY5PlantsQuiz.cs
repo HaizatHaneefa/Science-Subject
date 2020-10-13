@@ -20,7 +20,7 @@ public class ItemSlotY5PlantsQuiz : MonoBehaviour, IDropHandler
         if (eventData.pointerDrag != null)
         {
             if (manager.thirdBool[0] && eventData.pointerDrag.CompareTag("Animal 2") || manager.thirdBool[1] && eventData.pointerDrag.CompareTag("Animal 1")
-                || manager.thirdBool[2] && eventData.pointerDrag.CompareTag("Animal 2"))
+                || manager.thirdBool[2] && eventData.pointerDrag.CompareTag("Animal 1"))
             {
                 manager.audioSource.clip = manager.sound[0];
                 manager.audioSource.Play();
@@ -79,15 +79,15 @@ public class ItemSlotY5PlantsQuiz : MonoBehaviour, IDropHandler
                 manager.thirdBool[0] && eventData.pointerDrag.CompareTag("Animal 3") ||
                 manager.thirdBool[1] && eventData.pointerDrag.CompareTag("Animal 2") ||
                 manager.thirdBool[1] && eventData.pointerDrag.CompareTag("Animal 3") ||
-                manager.thirdBool[2] && eventData.pointerDrag.CompareTag("Animal 1") ||
+                manager.thirdBool[2] && eventData.pointerDrag.CompareTag("Animal 2") ||
                 manager.thirdBool[2] && eventData.pointerDrag.CompareTag("Animal 3"))
             {
                 manager.audioSource.clip = manager.sound[1];
                 manager.audioSource.Play();
 
-                transform.GetChild(0).GetComponent<Image>().enabled = true;
-                transform.GetChild(0).GetComponent<Image>().sprite = manager.rightWrongSprite[0];
-                transform.GetChild(0).GetComponent<Animation>().Play("GameOverPop");
+                transform.GetChild(1).GetComponent<Image>().enabled = true;
+                transform.GetChild(1).GetComponent<Image>().sprite = manager.rightWrongSprite[0];
+                transform.GetChild(1).GetComponent<Animation>().Play("GameOverPop");
 
                 StartCoroutine(ShowSprite());
             }

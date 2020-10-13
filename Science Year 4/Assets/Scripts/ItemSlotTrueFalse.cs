@@ -20,7 +20,7 @@ public class ItemSlotTrueFalse : MonoBehaviour, IDropHandler
         dialogue = new string[4];
 
         dialogue[0] = "Some animals have thick layer of fat to protect themselves from weather.";
-        dialogue[1] = "Buffaloes wallow in mud to keep themselves col during sunny days.";
+        dialogue[1] = "Buffaloes wallow in mud to keep themselves cold during sunny days.";
         dialogue[2] = "Lizard break their tails to get food from enemies.";
         dialogue[3] = "To continue living in cold regions, bears hibernate for a few months.";
     }

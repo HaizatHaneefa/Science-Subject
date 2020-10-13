@@ -2215,8 +2215,6 @@ MonoBehaviour:
       m_Image: {fileID: 0}
     - m_Text: Year 6
       m_Image: {fileID: 0}
-    - m_Text: 
-      m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -10184,7 +10182,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 7b11dbb28c9754838a25de6eb733d055, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 051b10225accf2d45b8b50fa3306a78d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -11265,7 +11263,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: d90a8faf6fb9540b084ef2825cc3a5dc, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 80ca41c508bf81447b7a3f1878f5b554, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -12436,7 +12434,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 23a326c6a78aa47dc86633acd28238e6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b75657af9fc12574cb5dbbac6b5bfed6, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

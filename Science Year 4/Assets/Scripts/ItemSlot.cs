@@ -80,8 +80,12 @@ public class ItemSlot : MonoBehaviour, IDropHandler
                     //manager.yayPop.transform.GetChild(0).GetComponent<Animation>().Play("GameOverPop");
                 }
             }
-            else if (manager.thirdBool[0] && eventData.pointerDrag.CompareTag("Player") || manager.thirdBool[1] && eventData.pointerDrag.CompareTag("Player")
-             || manager.thirdBool[2] && eventData.pointerDrag.CompareTag("Player"))
+            else if (manager.thirdBool[0] && eventData.pointerDrag.CompareTag("Animal 1") ||
+                manager.thirdBool[0] && eventData.pointerDrag.CompareTag("Animal 3") ||
+                manager.thirdBool[1] && eventData.pointerDrag.CompareTag("Animal 2") ||
+                manager.thirdBool[1] && eventData.pointerDrag.CompareTag("Animal 3") ||
+                manager.thirdBool[2] && eventData.pointerDrag.CompareTag("Animal 1") ||
+                manager.thirdBool[2] && eventData.pointerDrag.CompareTag("Animal 2"))
             {
                 eventData.pointerDrag.SetActive(false);
 
