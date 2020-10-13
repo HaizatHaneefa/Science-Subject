@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CarFollowCamera : MonoBehaviour
 {
-    [SerializeField] private Transform objToFollow;
+    [SerializeField] public Transform objToFollow;
 
     public Vector3 offset;
 
@@ -14,7 +14,7 @@ public class CarFollowCamera : MonoBehaviour
     private void Start()
     {
         //StartCoroutine(sdsdsd());
-        objToFollow = GameObject.FindGameObjectWithTag("Animal 2").transform;
+        //objToFollow = GameObject.FindGameObjectWithTag("Car").transform;
     }
 
     public void LookAtTarget()
@@ -24,6 +24,7 @@ public class CarFollowCamera : MonoBehaviour
 
         transform.rotation = Quaternion.Lerp(transform.rotation, _rot, lookSpeed * Time.deltaTime);
     }
+
     public void MoveToTarget()
     {
         Vector3 _targetPos = objToFollow.position + objToFollow.forward * offset.z +
@@ -32,16 +33,17 @@ public class CarFollowCamera : MonoBehaviour
 
         transform.position = Vector3.Lerp(transform.position, _targetPos, followSpeed * Time.deltaTime);
     }
+
     private void FixedUpdate()
     {
         LookAtTarget();
         MoveToTarget();
     }
 
-    IEnumerator sdsdsd()
-    {
-        yield return new WaitForSeconds(1f);
+    //IEnumerator sdsdsd()
+    //{
+    //    yield return new WaitForSeconds(1f);
 
-        objToFollow = GameObject.FindGameObjectWithTag("Animal 2").transform;
-    }
+    //    objToFollow = GameObject.FindGameObjectWithTag("Animal 2").transform;
+    //}
 }

@@ -10,7 +10,7 @@ public class myCarController : MonoBehaviour
 {
     //[SerializeField] private NOS nos;
     [SerializeField] private CarController carController;
-    [SerializeField] private CarSelectionData carSelect;
+    //[SerializeField] private CarSelectionData carSelect;
     //[SerializeField] private MeshFilter carMesh;
 
     [SerializeField] private Camera mainCam, inCam, rearCam;
@@ -27,12 +27,13 @@ public class myCarController : MonoBehaviour
     [SerializeField] GameObject winButton, lostButton, startPop, startText, gameEndPop, pauseCanvas;
     public GameObject enemyMarkerGO;
 
-    [SerializeField] private TextMeshProUGUI lapText, speedmeterText, winLoseText;
+    [SerializeField] private TextMeshProUGUI playerTimeText, lapText, speedmeterText, winLoseText;
 
     [SerializeField] public float minFOV, maxFOV, _timer, _nosBoost, realSpeed;
 
     [SerializeField] public bool isBoost, isReduce;
 
+    [SerializeField] private float playerTime;
     //[SerializeField] private MeshFilter[] carMeshFilter;
 
     bool isCam;
@@ -47,42 +48,9 @@ public class myCarController : MonoBehaviour
 
     private void Start()
     {
-        mainCam.GetComponent<CarFollowCamera>().enabled = false;
+        mainCam.GetComponent<CarFollowCamera>().enabled = true;
 
-        carSelect = GameObject.FindGameObjectWithTag("Respawn").GetComponent<CarSelectionData>();
-
-        if (carSelect.carSelection[0])
-        {
-            // car 1
-            //selectedCar = Instantiate(car[0], carSpwn.transform.position, Quaternion.identity);
-
-            for (int i = 0; i < car.Length; i++)
-            {
-                car[i].SetActive(false);
-                car[0].SetActive(true);
-            }
-        }
-        else if (carSelect.carSelection[1])
-        {
-            // car 2
-            //selectedCar = Instantiate(car[1], carSpwn.transform.position, Quaternion.identity);
-            for (int i = 0; i < car.Length; i++)
-            {
-                car[i].SetActive(false);
-                car[1].SetActive(true);
-            }
-        }
-        else if (carSelect.carSelection[2])
-        {
-            // car 3
-            for (int i = 0; i < car.Length; i++)
-            {
-                //selectedCar = Instantiate(car[2], carSpwn.transform.position, Quaternion.identity);
-
-                car[i].SetActive(false);
-                car[2].SetActive(true);
-            }
-        }
+        //carSelect = GameObject.FindGameObjectWithTag("Respawn").GetComponent<CarSelectionData>();
 
         carController = GameObject.FindGameObjectWithTag("Car").GetComponent<CarController>();
         //speedmeterText.text = carController.testSpeed.ToString("F0");
@@ -112,6 +80,12 @@ public class myCarController : MonoBehaviour
     {
         if (isStarting)
         {
+            int seconds = (int)(playerTime % 60);
+            int minutes = (int)(playerTime / 60);
+
+            string playertimerString = string.Format("{0:0}:{1:00}", minutes, seconds);
+            playerTimeText.text = playertimerString; // time format for player
+
             lapText.text = laps + "/3";
             speedmeterText.text = carController.testSpeed.ToString("F0");
 
@@ -250,11 +224,7 @@ public class myCarController : MonoBehaviour
 }
 
 
-//int seconds = (int)(playerTime % 60);
-//int minutes = (int)(playerTime / 60);
 
-//string playertimerString = string.Format("{0:0}:{1:00}", minutes, seconds);
-//playerTimeText.text = playertimerString; // time format for player
 
 //int _seconds = (int)(AITime % 60);
 //int _minutes = (int)(AITime / 60);

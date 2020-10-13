@@ -8,16 +8,16 @@ public class GameMenuEarth : MonoBehaviour
 {
     public void ToGameOne()
     {
-        SceneManager.LoadScene(""); // to game 1
+        SceneManager.LoadScene("Y5 - C World Map"); // to game 1
     }
 
     public void ToGameTwo()
     {
-        SceneManager.LoadScene(""); // to game 2
+        SceneManager.LoadScene("Y5 - Shadow Game"); // to game 2
     }
 
-    public void ToAR()
+    public void ToQuiz()
     {
-        SceneManager.LoadScene(""); // to AR
+        SceneManager.LoadScene("Y5 - Earth Quiz"); // to AR
     }
 }

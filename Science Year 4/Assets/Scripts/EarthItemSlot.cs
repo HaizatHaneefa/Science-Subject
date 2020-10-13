@@ -155,7 +155,8 @@ public class EarthItemSlot : MonoBehaviour, IDropHandler
     {
         yield return new WaitForSeconds(1f);
 
-        manager.gameOverPop.SetActive(true);
-        manager.gameOverPop.GetComponent<Animation>().Play("GameOverPop");
+        manager.signBoard.SetActive(true);
+        //manager.gameOverPop.SetActive(true);
+        //manager.gameOverPop.GetComponent<Animation>().Play("GameOverPop");
     }
 }

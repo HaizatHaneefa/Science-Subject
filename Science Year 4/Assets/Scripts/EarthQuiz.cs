@@ -34,12 +34,13 @@ public class EarthQuiz : MonoBehaviour
 
     [SerializeField] private Image transImage;
 
-    [SerializeField] public GameObject gameOverPop;
+    [SerializeField] public GameObject gameOverPop, signBoard;
 
     //[SerializeField] private TextMeshProUGUI 
     void Start()
     {
         gameOverPop.SetActive(false);
+        signBoard.SetActive(false);
 
         transImage.enabled = false;
 
@@ -291,5 +292,10 @@ public class EarthQuiz : MonoBehaviour
     public void BackToAR()
     {
         SceneManager.LoadScene("Y5 - Earth - AR");
+    }
+
+    public void ToGame()
+    {
+        SceneManager.LoadScene("Y5 - Earth Menu");
     }
 }
