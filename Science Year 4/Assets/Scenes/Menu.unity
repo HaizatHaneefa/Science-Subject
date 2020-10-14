@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657838, g: 0.49641234, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -515,7 +515,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Life Processes in Plants
+  m_text: ......
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7043f2a6a7a744a8cb8adf07d35b7d97, type: 2}
   m_sharedMaterial: {fileID: 21956330007947570, guid: 7043f2a6a7a744a8cb8adf07d35b7d97,
@@ -585,12 +585,12 @@ MonoBehaviour:
   m_margin: {x: 0, y: 54.028244, z: 0, w: 33.53471}
   m_textInfo:
     textComponent: {fileID: 66413231}
-    characterCount: 24
+    characterCount: 6
     spriteCount: 0
-    spaceCount: 3
-    wordCount: 4
+    spaceCount: 0
+    wordCount: 1
     linkCount: 0
-    lineCount: 2
+    lineCount: 1
     pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
@@ -3204,7 +3204,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 5627a1e072b0d4d509370ac30ceac069, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -7462,7 +7462,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_textAlignment: 257
+  m_textAlignment: 264
   m_characterSpacing: 0
   m_wordSpacing: 0
   m_lineSpacing: 0
@@ -7472,7 +7472,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: 68
+  m_firstOverflowCharacterIndex: 196
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -7493,7 +7493,7 @@ MonoBehaviour:
   m_firstVisibleCharacter: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: -22.755333, z: 0, w: -72.05858}
   m_textInfo:
     textComponent: {fileID: 978031611}
     characterCount: 216
@@ -8260,7 +8260,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Earth, Moon, and Sun
+  m_text: ......
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7043f2a6a7a744a8cb8adf07d35b7d97, type: 2}
   m_sharedMaterial: {fileID: 21956330007947570, guid: 7043f2a6a7a744a8cb8adf07d35b7d97,
@@ -8330,10 +8330,10 @@ MonoBehaviour:
   m_margin: {x: 0, y: 54.028244, z: 0, w: 33.53471}
   m_textInfo:
     textComponent: {fileID: 1066776677}
-    characterCount: 20
+    characterCount: 6
     spriteCount: 0
-    spaceCount: 3
-    wordCount: 4
+    spaceCount: 0
+    wordCount: 1
     linkCount: 0
     lineCount: 1
     pageCount: 1
@@ -9219,7 +9219,7 @@ MonoBehaviour:
   - It's time to explore the Earth and Space Science! Let's dive into the movement
     of the Earth!
   - You can definitely relate this topic with your real life activities. Let's learn
-    more about speech and how it affects our daily routines.
+    more about speed and how it affects our daily routines.
   - We are back at Earth and Space Science again! Now, it's time for Eclipse. Aren't
     you exicted to know more about Lunar and Solar Eclipses?
   - You have covered the knowledge on Eclipse, let's explore about constellations!

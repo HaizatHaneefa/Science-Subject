@@ -242,6 +242,8 @@ public class MenuManager : MonoBehaviour
             //}
             //BoolHolder.menuChapter[1] = true;
             PlayerPrefs.SetInt("C4", 1);
+            PlayerPrefs.SetInt("C5", 0);
+            PlayerPrefs.SetInt("C6", 0);
         }
         else if (l == 2)
         {
@@ -255,6 +257,8 @@ public class MenuManager : MonoBehaviour
             //}
             //BoolHolder.menuChapter[1] = true;
             PlayerPrefs.SetInt("C4", 1);
+            PlayerPrefs.SetInt("C5", 0);
+            PlayerPrefs.SetInt("C6", 0);
         }
         else if (l == 3)
         {
@@ -268,6 +272,8 @@ public class MenuManager : MonoBehaviour
             //}
             //BoolHolder.menuChapter[1] = true;
             PlayerPrefs.SetInt("C4", 1);
+            PlayerPrefs.SetInt("C5", 0);
+            PlayerPrefs.SetInt("C6", 0);
         }
         else if (l == 4)
         {
@@ -280,8 +286,9 @@ public class MenuManager : MonoBehaviour
             //    chapter[1].SetActive(false);
             //}
             //BoolHolder.menuChapter[2] = true;
+            PlayerPrefs.SetInt("C4", 0);
             PlayerPrefs.SetInt("C5", 1);
-
+            PlayerPrefs.SetInt("C6", 0);
         }
         else if (l == 5)
         {
@@ -294,8 +301,9 @@ public class MenuManager : MonoBehaviour
             //    chapter[1].SetActive(false);
             //}
             //BoolHolder.menuChapter[2] = true;
+            PlayerPrefs.SetInt("C4", 0);
             PlayerPrefs.SetInt("C5", 1);
-
+            PlayerPrefs.SetInt("C6", 0);
         }
         else if (l == 6)
         {
@@ -308,13 +316,14 @@ public class MenuManager : MonoBehaviour
             //    chapter[1].SetActive(false);
             //}
             //BoolHolder.menuChapter[2] = true;
+            PlayerPrefs.SetInt("C4", 0);
             PlayerPrefs.SetInt("C5", 1);
-
+            PlayerPrefs.SetInt("C6", 0);
         }
         else if (l == 7)
         {
             // speed year 6
-            //SceneManager.LoadScene("Y5 - Earth - AR");
+            SceneManager.LoadScene("Y6 - Speed Race");
 
             //for (int i = 0; i < chapter.Length; i++)
             //{
@@ -322,6 +331,8 @@ public class MenuManager : MonoBehaviour
             //    chapter[2].SetActive(false);
             //}
             //BoolHolder.menuChapter[3] = true;
+            PlayerPrefs.SetInt("C4", 0);
+            PlayerPrefs.SetInt("C5", 0);
             PlayerPrefs.SetInt("C6", 1);
         }
     }
@@ -336,55 +347,58 @@ public class MenuManager : MonoBehaviour
 
             //BoolHolder.dropdownValue = 1;
             PlayerPrefs.SetInt("C4", 1);
-
+            PlayerPrefs.SetInt("C5", 0);
+            PlayerPrefs.SetInt("C6", 0);
         }
         else if (l == 2)
         {
             // y4 animal
             SceneManager.LoadScene("Fun-Facts"); // animals
-            //BoolHolder.menuChapter[1] = true;
-            //BoolHolder.dropdownValue = 1;
+                                                 //BoolHolder.menuChapter[1] = true;
+                                                 //BoolHolder.dropdownValue = 1;
             PlayerPrefs.SetInt("C4", 1);
-
+            PlayerPrefs.SetInt("C5", 0);
+            PlayerPrefs.SetInt("C6", 0);
         }
         else if (l == 3)
         {
             // y4 plants
             SceneManager.LoadScene("Plants-Fun-Facts"); // animals
-            //BoolHolder.menuChapter[1] = true;
-            //BoolHolder.dropdownValue = 1;
+                                                        //BoolHolder.menuChapter[1] = true;
+                                                        //BoolHolder.dropdownValue = 1;
             PlayerPrefs.SetInt("C4", 1);
-
-
+            PlayerPrefs.SetInt("C5", 0);
+            PlayerPrefs.SetInt("C6", 0);
         }
         else if (l == 4)
         {
             // y5 animals
             SceneManager.LoadScene("Y5 - C4 Fun Facts"); // animals
-            //BoolHolder.menuChapter[2] = true;
-            //BoolHolder.dropdownValue = 2;
+                                                         //BoolHolder.menuChapter[2] = true;
+                                                         //BoolHolder.dropdownValue = 2;
+            PlayerPrefs.SetInt("C4", 0);
             PlayerPrefs.SetInt("C5", 1);
-
+            PlayerPrefs.SetInt("C6", 0);
         }
         else if (l == 5)
         {
             // y5 plants
             SceneManager.LoadScene("Y5 - C5 Fun Facts"); // plants
-            //BoolHolder.menuChapter[2] = true;
-            //BoolHolder.dropdownValue = 2;
+                                                         //BoolHolder.menuChapter[2] = true;
+                                                         //BoolHolder.dropdownValue = 2;
+            PlayerPrefs.SetInt("C4", 0);
             PlayerPrefs.SetInt("C5", 1);
-
-
+            PlayerPrefs.SetInt("C6", 0);
         }
         else if (l == 6)
         {
             // y5 earth
             SceneManager.LoadScene("Y5 - Earth Fun Fact"); // plants
-            //BoolHolder.menuChapter[2] = true;
-            //BoolHolder.dropdownValue = 2;
+                                                           //BoolHolder.menuChapter[2] = true;
+                                                           //BoolHolder.dropdownValue = 2;
+            PlayerPrefs.SetInt("C4", 0);
             PlayerPrefs.SetInt("C5", 1);
-
-
+            PlayerPrefs.SetInt("C6", 0);
         }
         else if (l == 7)
         {
@@ -393,8 +407,9 @@ public class MenuManager : MonoBehaviour
             //BoolHolder.menuChapter[3] = true;
             //BoolHolder.dropdownValue = 3;
 
+            PlayerPrefs.SetInt("C4", 0);
+            PlayerPrefs.SetInt("C5", 0);
             PlayerPrefs.SetInt("C6", 1);
-
         }
     }
 }

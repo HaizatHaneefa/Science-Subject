@@ -106,10 +106,6 @@ public class EarthQuiz : MonoBehaviour
         }
     }
 
-    public void ToAR()
-    {
-        SceneManager.LoadScene(""); // to ar
-    }
 
     IEnumerator ChangeColor()
     {
