@@ -10,9 +10,8 @@ public class GillsManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI answerText;
     [SerializeField] private Button answerButton;
 
-    [SerializeField] private GameObject nextButton, prevButton;
+    [SerializeField] private GameObject nextButton, prevButton, example;
     [SerializeField] private GameObject[] reference;
-    [SerializeField] private GameObject example;
 
     public int number;
 
@@ -46,7 +45,7 @@ public class GillsManager : MonoBehaviour
 
     public void NextReference()
     {
-        if (number >= 4)
+        if (number >= 3)
         {
             return;
         }

@@ -16,7 +16,7 @@ public class PlantsClass : MonoBehaviour
         public string hint8 = "Organs of a plant that lie in the soil.";
         public string hint9 = "Plant tropism that responds to light.";
         public string hint10 = "Plant tropism that responds to water.";
-        public string hint11 = "A stimulus that make plants respond to it and fold up.";
+        public string hint11 = "A stimulus that makes plants respond to it and fold up.";
         public string hint12 = "A plant hormone that promotes cell elongation.";
         public string hint13 = "Plant tropism that responds to gravity.";
         public string hint14 = "Parts of a plant that are usually green.";

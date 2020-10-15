@@ -9,18 +9,19 @@ using UnityEngine.EventSystems;
 public class YearFiveC4AR : MonoBehaviour
 {
     [SerializeField] private GameObject signBoard, dummyObject;
+
     [SerializeField] private string[] explanation;
+
     [SerializeField] private GameObject[] canvas;
 
     [SerializeField] private TextMeshProUGUI explainText;
-
-    //int pageInt;
 
     bool isPage;
 
     [SerializeField] private Button[] buttons;
 
     [SerializeField] private Sprite[] buttonSprite;
+
     void Start()
     {
         dummyObject.SetActive(false);
@@ -55,13 +56,6 @@ public class YearFiveC4AR : MonoBehaviour
             buttons[1].GetComponent<Image>().sprite = buttonSprite[1];
         }
 
-        //if (pageInt == 1)
-        //{
-        //    return;
-        //}
-
-        //if (pageInt == 0)
-        //{
         for (int i = 0; i < canvas.Length; i++)
         {
             canvas[i].SetActive(false);
@@ -70,9 +64,7 @@ public class YearFiveC4AR : MonoBehaviour
         explainText.text = explanation[1].ToString();
 
         isPage = true;
-        //}
 
-        //pageInt += 1;
         buttons[2].gameObject.SetActive(false);
         buttons[3].gameObject.SetActive(true);
         buttons[4].gameObject.SetActive(true);
@@ -96,13 +88,6 @@ public class YearFiveC4AR : MonoBehaviour
             buttons[1].GetComponent<Image>().sprite = buttonSprite[1];
         }
 
-        //if (pageInt == 0)
-        //{
-        //    return;
-        //}
-
-        //if (pageInt == 1)
-        //{
         for (int i = 0; i < canvas.Length; i++)
         {
             canvas[i].SetActive(false);
@@ -111,9 +96,6 @@ public class YearFiveC4AR : MonoBehaviour
         explainText.text = explanation[0].ToString();
 
         isPage = false;
-        //}
-
-        //pageInt -= 1;
 
         buttons[2].gameObject.SetActive(true);
         buttons[3].gameObject.SetActive(false);

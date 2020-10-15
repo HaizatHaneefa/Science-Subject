@@ -16,8 +16,10 @@ public class Y5PlantQuiz : MonoBehaviour
     [SerializeField] public GameObject thirdQuestion;
     [SerializeField] public GameObject[] thirdAnswers;
     [SerializeField] public GameObject continueButton;
-    [SerializeField] public GameObject blocker;
+    //[SerializeField] public GameObject blocker;
     [SerializeField] private GameObject introPop;
+    [SerializeField] private GameObject conButton;
+    [SerializeField] private GameObject instructTextGO;
     //public GameObject yayPop;
     [SerializeField] public GameObject signBoard;
 
@@ -38,6 +40,8 @@ public class Y5PlantQuiz : MonoBehaviour
     private void Start()
     {
         signBoard.SetActive(false);
+        instructTextGO.SetActive(false);
+        conButton.SetActive(false);
         ground.enabled = false;
         introPop.transform.GetChild(0).GetComponent<Animation>().Play("MoreInfoPop");
 
@@ -51,7 +55,7 @@ public class Y5PlantQuiz : MonoBehaviour
         thirdBool[0] = true;
 
         //yayPop.SetActive(false);
-        blocker.SetActive(false);
+        //blocker.SetActive(true);
 
         for (int i = 0; i < thirdAnswers.Length; i++)
         {
@@ -68,7 +72,6 @@ public class Y5PlantQuiz : MonoBehaviour
         secondQuestion.SetActive(false);
         thirdQuestion.SetActive(false);
         continueButton.SetActive(false);
-        blocker.SetActive(true);
     }
 
     public void StartQuiz()
@@ -91,7 +94,7 @@ public class Y5PlantQuiz : MonoBehaviour
             mcq[0].GetComponent<Animation>().Play("MCQ Year 5 Chapter 4");
         }
 
-        blocker.SetActive(false);
+        //blocker.SetActive(false);
     }
 
     public void _MCQ()
@@ -136,6 +139,10 @@ public class Y5PlantQuiz : MonoBehaviour
         if (cur == 0)
         {
             exampleImage.SetActive(true);
+            conButton.SetActive(true);
+
+            Debug.Log("qq");
+
             instructionText[0].enabled = false;
 
             for (int o = 0; o < mcq.Length; o++)
@@ -180,6 +187,7 @@ public class Y5PlantQuiz : MonoBehaviour
             secondQuestion.SetActive(true);
             instructionText[0].text = "Determine if the statement is true or false.";
             ground.enabled = true;
+            instructTextGO.SetActive(true);
         }
 
         foreach (GameObject but in disable)
@@ -193,6 +201,7 @@ public class Y5PlantQuiz : MonoBehaviour
     public void Continue()
     {
         exampleImage.SetActive(false);
+        conButton.SetActive(false);
 
         for (int o = 0; o < mcq.Length; o++)
         {
@@ -209,6 +218,7 @@ public class Y5PlantQuiz : MonoBehaviour
     {
         continueButton.SetActive(false);
         thirdQuestion.SetActive(true);
+        instructTextGO.SetActive(false);
 
         instructionText[0].enabled = false;
         instructionText[1].text = "Place the correct plant that suits the characteristics and behaviours in the holder";

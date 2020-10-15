@@ -96,7 +96,7 @@ public class ItemSlotY5PlantsQuiz : MonoBehaviour, IDropHandler
 
     IEnumerator EndGame()
     {
-        manager.blocker.SetActive(false);
+        //manager.blocker.SetActive(false);
 
         yield return new WaitForSeconds(1f);
 

@@ -80,6 +80,8 @@ public class myCarController : MonoBehaviour
     {
         if (isStarting)
         {
+            playerTime += Time.deltaTime;
+
             int seconds = (int)(playerTime % 60);
             int minutes = (int)(playerTime / 60);
 
@@ -89,12 +91,12 @@ public class myCarController : MonoBehaviour
             lapText.text = laps + "/3";
             speedmeterText.text = carController.testSpeed.ToString("F0");
 
-            if (_timer >= 3.0f || _timer == 0)
-            {
-                isBoost = false;
-                _timer = 0f;
-                mainCam.fieldOfView = Mathf.Lerp(mainCam.fieldOfView, minFOV, Time.deltaTime);
-            }
+            //if (_timer >= 3.0f || _timer == 0)
+            //{
+            //    isBoost = false;
+            //    _timer = 0f;
+            //    mainCam.fieldOfView = Mathf.Lerp(mainCam.fieldOfView, minFOV, Time.deltaTime);
+            //}
         }
     }
 
@@ -175,11 +177,10 @@ public class myCarController : MonoBehaviour
         else if (index == 1)
         {
             SceneManager.LoadSceneAsync("Y6 - Speed Race");
-
         }
         else if (index == 2)
         {
-            SceneManager.LoadSceneAsync("Menu");
+            SceneManager.LoadSceneAsync("Menu"); // should be back to AR
         }
     }
 

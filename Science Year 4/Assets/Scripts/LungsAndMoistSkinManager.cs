@@ -7,10 +7,8 @@ using UnityEngine.SceneManagement;
 
 public class LungsAndMoistSkinManager : MonoBehaviour
 {
-    [SerializeField] private GameObject[] questions;
-    [SerializeField] private GameObject example;
-    [SerializeField] private GameObject[] reference;
-    [SerializeField] private GameObject questiontext;
+    [SerializeField] private GameObject[] questions, reference;
+    [SerializeField] private GameObject example, questiontext;
 
     [SerializeField] private AudioSource audioSource;
 

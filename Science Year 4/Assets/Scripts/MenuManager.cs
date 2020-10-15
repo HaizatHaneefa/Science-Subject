@@ -26,9 +26,11 @@ public class MenuManager : MonoBehaviour
    
     void Awake()
     {
+        Time.timeScale = 1;
+
         blocker.SetActive(false);
+
         if (PlayerPrefs.GetInt("CheckMenu") == 1)
-        //if (BoolHolder.menuChapter[0])
         {
             for (int i = 0; i < itemsInBackground.Length; i++)
             {
@@ -42,11 +44,9 @@ public class MenuManager : MonoBehaviour
             }
 
             bar.SetActive(true);
-            //canvas[1].GetComponent<Animation>().Play("Year4 Anim");
             arOrFunFactBackground.SetActive(false);
 
             if (PlayerPrefs.GetInt("C4") == 1)
-            //if (BoolHolder.menuChapter[1])
             {
                 for (int i = 0; i < chapter.Length; i++)
                 {
@@ -56,7 +56,6 @@ public class MenuManager : MonoBehaviour
 
                 dropdown.value = 1;
             }
-            //else if (BoolHolder.menuChapter[2])
             else if (PlayerPrefs.GetInt("C5") == 1)
                 {
                     for (int i = 0; i < chapter.Length; i++)
@@ -68,7 +67,6 @@ public class MenuManager : MonoBehaviour
                 dropdown.value = 2;
             }
             else if (PlayerPrefs.GetInt("C6") == 1)
-                //if (BoolHolder.menuChapter[3])
             {
                 for (int i = 0; i < chapter.Length; i++)
                 {
@@ -78,8 +76,6 @@ public class MenuManager : MonoBehaviour
 
                 dropdown.value = 3;
             }
-
-            dropdown.value = BoolHolder.dropdownValue;
         }
         else if (PlayerPrefs.GetInt("CheckMenu") == 0)
         {
@@ -103,10 +99,7 @@ public class MenuManager : MonoBehaviour
 
     public void ToMenu()
     {
-        //bool skip = true;
-        //BoolHolder.menuChapter[0] = true;
         PlayerPrefs.SetInt("CheckMenu", 1);
-        //PlayerPrefs.SetInt("SkipMenu", skip ? 1 : 0);
 
         bar.SetActive(true);
 
@@ -114,7 +107,6 @@ public class MenuManager : MonoBehaviour
         {
             itemsInBackground[i].SetActive(false);
         }
-
 
         for (int i = 0; i < canvas.Length; i++)
         {
@@ -216,11 +208,7 @@ public class MenuManager : MonoBehaviour
 
         arOrFunFactBackground.SetActive(true);
         arOrFunFactBackground.GetComponent<Animation>().Play("Menu_ConfirmPop");
-
-        //arOrFunFactBackground.SetActive(true);
-        //arOrFunFactBackground.GetComponent<Animation>().Play("Menu_ConfirmPop");
     }
-
 
     public void BackToTopic()
     {
@@ -235,12 +223,6 @@ public class MenuManager : MonoBehaviour
             // anatomy
             //SceneManager.LoadScene("Y5 - C4 AR");
 
-            //for (int i = 0; i < chapter.Length; i++)
-            //{
-            //    chapter[i].SetActive(false);
-            //    chapter[0].SetActive(false);
-            //}
-            //BoolHolder.menuChapter[1] = true;
             PlayerPrefs.SetInt("C4", 1);
             PlayerPrefs.SetInt("C5", 0);
             PlayerPrefs.SetInt("C6", 0);
@@ -250,12 +232,6 @@ public class MenuManager : MonoBehaviour
             // animal year 4
             SceneManager.LoadScene("AR-Aspect");
 
-            //for (int i = 0; i < chapter.Length; i++)
-            //{
-            //    chapter[i].SetActive(false);
-            //    chapter[0].SetActive(false);
-            //}
-            //BoolHolder.menuChapter[1] = true;
             PlayerPrefs.SetInt("C4", 1);
             PlayerPrefs.SetInt("C5", 0);
             PlayerPrefs.SetInt("C6", 0);
@@ -265,12 +241,6 @@ public class MenuManager : MonoBehaviour
             // plants year 4
             SceneManager.LoadScene("Plants-AR");
 
-            //for (int i = 0; i < chapter.Length; i++)
-            //{
-            //    chapter[i].SetActive(false);
-            //    chapter[0].SetActive(false);
-            //}
-            //BoolHolder.menuChapter[1] = true;
             PlayerPrefs.SetInt("C4", 1);
             PlayerPrefs.SetInt("C5", 0);
             PlayerPrefs.SetInt("C6", 0);
@@ -280,12 +250,6 @@ public class MenuManager : MonoBehaviour
             // animals year 5
             SceneManager.LoadScene("Y5 - C4 AR");
 
-            //for (int i = 0; i < chapter.Length; i++)
-            //{
-            //    chapter[i].SetActive(false);
-            //    chapter[1].SetActive(false);
-            //}
-            //BoolHolder.menuChapter[2] = true;
             PlayerPrefs.SetInt("C4", 0);
             PlayerPrefs.SetInt("C5", 1);
             PlayerPrefs.SetInt("C6", 0);
@@ -295,12 +259,6 @@ public class MenuManager : MonoBehaviour
             // plants year 5
             SceneManager.LoadScene("Y5 - C5 AR");
 
-            //for (int i = 0; i < chapter.Length; i++)
-            //{
-            //    chapter[i].SetActive(false);
-            //    chapter[1].SetActive(false);
-            //}
-            //BoolHolder.menuChapter[2] = true;
             PlayerPrefs.SetInt("C4", 0);
             PlayerPrefs.SetInt("C5", 1);
             PlayerPrefs.SetInt("C6", 0);
@@ -310,12 +268,6 @@ public class MenuManager : MonoBehaviour
             // earth year 5
             SceneManager.LoadScene("Y5 - Earth - AR");
 
-            //for (int i = 0; i < chapter.Length; i++)
-            //{
-            //    chapter[i].SetActive(false);
-            //    chapter[1].SetActive(false);
-            //}
-            //BoolHolder.menuChapter[2] = true;
             PlayerPrefs.SetInt("C4", 0);
             PlayerPrefs.SetInt("C5", 1);
             PlayerPrefs.SetInt("C6", 0);
@@ -323,14 +275,8 @@ public class MenuManager : MonoBehaviour
         else if (l == 7)
         {
             // speed year 6
-            SceneManager.LoadScene("Y6 - Speed Race");
+            SceneManager.LoadScene("");
 
-            //for (int i = 0; i < chapter.Length; i++)
-            //{
-            //    chapter[i].SetActive(false);
-            //    chapter[2].SetActive(false);
-            //}
-            //BoolHolder.menuChapter[3] = true;
             PlayerPrefs.SetInt("C4", 0);
             PlayerPrefs.SetInt("C5", 0);
             PlayerPrefs.SetInt("C6", 1);
@@ -342,10 +288,8 @@ public class MenuManager : MonoBehaviour
         if (l == 1)
         {
             // anatomy
-            //SceneManager.LoadScene("Y5 - C4 Fun facts"); // animals
-            //BoolHolder.menuChapter[1] = true;
+            SceneManager.LoadScene(""); // anatomy
 
-            //BoolHolder.dropdownValue = 1;
             PlayerPrefs.SetInt("C4", 1);
             PlayerPrefs.SetInt("C5", 0);
             PlayerPrefs.SetInt("C6", 0);
@@ -354,8 +298,7 @@ public class MenuManager : MonoBehaviour
         {
             // y4 animal
             SceneManager.LoadScene("Fun-Facts"); // animals
-                                                 //BoolHolder.menuChapter[1] = true;
-                                                 //BoolHolder.dropdownValue = 1;
+
             PlayerPrefs.SetInt("C4", 1);
             PlayerPrefs.SetInt("C5", 0);
             PlayerPrefs.SetInt("C6", 0);
@@ -364,8 +307,7 @@ public class MenuManager : MonoBehaviour
         {
             // y4 plants
             SceneManager.LoadScene("Plants-Fun-Facts"); // animals
-                                                        //BoolHolder.menuChapter[1] = true;
-                                                        //BoolHolder.dropdownValue = 1;
+
             PlayerPrefs.SetInt("C4", 1);
             PlayerPrefs.SetInt("C5", 0);
             PlayerPrefs.SetInt("C6", 0);
@@ -374,8 +316,7 @@ public class MenuManager : MonoBehaviour
         {
             // y5 animals
             SceneManager.LoadScene("Y5 - C4 Fun Facts"); // animals
-                                                         //BoolHolder.menuChapter[2] = true;
-                                                         //BoolHolder.dropdownValue = 2;
+
             PlayerPrefs.SetInt("C4", 0);
             PlayerPrefs.SetInt("C5", 1);
             PlayerPrefs.SetInt("C6", 0);
@@ -384,8 +325,7 @@ public class MenuManager : MonoBehaviour
         {
             // y5 plants
             SceneManager.LoadScene("Y5 - C5 Fun Facts"); // plants
-                                                         //BoolHolder.menuChapter[2] = true;
-                                                         //BoolHolder.dropdownValue = 2;
+
             PlayerPrefs.SetInt("C4", 0);
             PlayerPrefs.SetInt("C5", 1);
             PlayerPrefs.SetInt("C6", 0);
@@ -394,8 +334,7 @@ public class MenuManager : MonoBehaviour
         {
             // y5 earth
             SceneManager.LoadScene("Y5 - Earth Fun Fact"); // plants
-                                                           //BoolHolder.menuChapter[2] = true;
-                                                           //BoolHolder.dropdownValue = 2;
+
             PlayerPrefs.SetInt("C4", 0);
             PlayerPrefs.SetInt("C5", 1);
             PlayerPrefs.SetInt("C6", 0);
@@ -403,9 +342,74 @@ public class MenuManager : MonoBehaviour
         else if (l == 7)
         {
             // y6 speed
-            //SceneManager.LoadScene("Plants-Fun-Facts"); // plants
-            //BoolHolder.menuChapter[3] = true;
-            //BoolHolder.dropdownValue = 3;
+            SceneManager.LoadScene(""); // speed fun fact
+
+            PlayerPrefs.SetInt("C4", 0);
+            PlayerPrefs.SetInt("C5", 0);
+            PlayerPrefs.SetInt("C6", 1);
+        }
+    }
+
+    public void YesGame()
+    {
+        if (l == 1)
+        {
+            // anatomy
+            SceneManager.LoadScene(""); // anatomy
+
+            PlayerPrefs.SetInt("C4", 1);
+            PlayerPrefs.SetInt("C5", 0);
+            PlayerPrefs.SetInt("C6", 0);
+        }
+        else if (l == 2)
+        {
+            // y4 animal
+            SceneManager.LoadScene("Game-Chapter-4"); // animals
+
+            PlayerPrefs.SetInt("C4", 1);
+            PlayerPrefs.SetInt("C5", 0);
+            PlayerPrefs.SetInt("C6", 0);
+        }
+        else if (l == 3)
+        {
+            // y4 plants
+            SceneManager.LoadScene("Plant-Game"); // animals
+
+            PlayerPrefs.SetInt("C4", 1);
+            PlayerPrefs.SetInt("C5", 0);
+            PlayerPrefs.SetInt("C6", 0);
+        }
+        else if (l == 4)
+        {
+            // y5 animals
+            SceneManager.LoadScene("Y5 - C4 Game"); // animals
+
+            PlayerPrefs.SetInt("C4", 0);
+            PlayerPrefs.SetInt("C5", 1);
+            PlayerPrefs.SetInt("C6", 0);
+        }
+        else if (l == 5)
+        {
+            // y5 plants
+            SceneManager.LoadScene("Y5 - C5 Game"); // plants
+
+            PlayerPrefs.SetInt("C4", 0);
+            PlayerPrefs.SetInt("C5", 1);
+            PlayerPrefs.SetInt("C6", 0);
+        }
+        else if (l == 6)
+        {
+            // y5 earth
+            SceneManager.LoadScene("Y5 - Earth Menu"); // plants
+
+            PlayerPrefs.SetInt("C4", 0);
+            PlayerPrefs.SetInt("C5", 1);
+            PlayerPrefs.SetInt("C6", 0);
+        }
+        else if (l == 7)
+        {
+            // y6 speed
+            SceneManager.LoadScene("Y6 - Speed Race"); // speed fun fact
 
             PlayerPrefs.SetInt("C4", 0);
             PlayerPrefs.SetInt("C5", 0);
