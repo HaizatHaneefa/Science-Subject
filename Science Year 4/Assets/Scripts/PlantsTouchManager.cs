@@ -18,9 +18,12 @@ public class PlantsTouchManager : MonoBehaviour
     private AudioSource audioSource;
     [SerializeField] private AudioClip[] sound;
 
+    [SerializeField] private GameObject ps;
+
     void Start()
     {
         congratsText.SetActive(false);
+        ps.SetActive(false);
 
         audioSource = GetComponent<AudioSource>();
 
@@ -67,6 +70,9 @@ public class PlantsTouchManager : MonoBehaviour
         questions[1].GetComponent<Animation>().Play("Q1-Plants-Light-2");
 
         yield return new WaitForSeconds(1f);
+
+        ps.SetActive(true);
+        ps.GetComponent<ParticleSystem>().Play();
 
         questionText.enabled = false;
         congratsText.SetActive(true);

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657838, g: 0.49641234, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2331,8 +2331,8 @@ MonoBehaviour:
     scattered all around the world.
   exampleImage: {fileID: 1733797602}
   sprite:
-  - {fileID: 21300000, guid: 81b0d317ec61d4d89bc09e19d9219d83, type: 3}
-  - {fileID: 21300000, guid: 474f5b9b7a716403eb511b1a9ff7da76, type: 3}
+  - {fileID: 21300000, guid: 4a0942a45433b4c3f9c5527c60e64dbf, type: 3}
+  - {fileID: 21300000, guid: 462be4ae2b1564bbb8744cc5ca1aebbe, type: 3}
   buttonSprite:
   - {fileID: 21300000, guid: 5f1dbe588e6614375a8ac54ff0460949, type: 3}
   - {fileID: 21300000, guid: 67a406e22d12e47c29708fbdae1db0ba, type: 3}
@@ -2638,8 +2638,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 3.7250001}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -8, y: -1}
-  m_SizeDelta: {x: 380, y: 380}
+  m_AnchoredPosition: {x: -8, y: -4}
+  m_SizeDelta: {x: 413.06, y: 393.3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1733797602
 MonoBehaviour:

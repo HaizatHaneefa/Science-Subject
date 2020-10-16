@@ -20,7 +20,7 @@ public class DragShadow : MonoBehaviour
     [SerializeField] private GameObject[] dashedLines;
     [SerializeField] private GameObject introPop, endPop;
     [SerializeField] private GameObject contButton, theOtherButton;
-    [SerializeField] private GameObject secondItem, thirdItems;
+    [SerializeField] private GameObject secondItem, thirdItems, yayPop;
 
     [SerializeField] private Button[] joypadButton;
 
@@ -42,6 +42,7 @@ public class DragShadow : MonoBehaviour
         introPop.GetComponent<Animation>().Play("SuccessPop");
 
         endPop.SetActive(false);
+        yayPop.SetActive(false);
 
         contButton.SetActive(false);
         theOtherButton.SetActive(false);
@@ -102,7 +103,7 @@ public class DragShadow : MonoBehaviour
         {
             shadowTakeImage.sprite = shadowTake[1];
 
-            shadowImage.rectTransform.anchoredPosition = new Vector2(-96, 290);
+            shadowImage.rectTransform.anchoredPosition = new Vector2(-96, 0);
 
             theOtherShadowImage.rectTransform.anchoredPosition = new Vector2(-96, -229);
             theOtherShadowImage.sprite = shadowSprite[4];
@@ -149,7 +150,7 @@ public class DragShadow : MonoBehaviour
         {
             shadowTakeImage.sprite = shadowTake[2];
 
-            shadowImage.rectTransform.anchoredPosition = new Vector2(96, 290);
+            shadowImage.rectTransform.anchoredPosition = new Vector2(96, 0);
 
             theOtherShadowImage.rectTransform.anchoredPosition = new Vector2(96, -229);
             theOtherShadowImage.sprite = shadowSprite[5];
@@ -162,7 +163,7 @@ public class DragShadow : MonoBehaviour
         {
             shadowTakeImage.sprite = shadowTake[0];
 
-            shadowImage.rectTransform.anchoredPosition = new Vector2(0, 290);
+            shadowImage.rectTransform.anchoredPosition = new Vector2(0, 0);
 
             theOtherShadowImage.rectTransform.anchoredPosition = new Vector2(0, -229);
             theOtherShadowImage.sprite = shadowSprite[3];
@@ -175,8 +176,8 @@ public class DragShadow : MonoBehaviour
         {
             if (rectTransform.anchoredPosition.y == -80f)
             {
-                contButton.SetActive(true);
-                contButton.GetComponent<Animation>().Play("GameOverPop");
+                yayPop.SetActive(true);
+                yayPop.GetComponent<Animation>().Play("SuccessPop");
 
                 CorrectSound();
             }
@@ -191,8 +192,8 @@ public class DragShadow : MonoBehaviour
         {
             if (rectTransform.anchoredPosition.x == 76)
             {
-                contButton.SetActive(true);
-                contButton.GetComponent<Animation>().Play("GameOverPop");
+                yayPop.SetActive(true);
+                yayPop.GetComponent<Animation>().Play("SuccessPop");
 
                 CorrectSound();
             }
@@ -205,19 +206,18 @@ public class DragShadow : MonoBehaviour
         }
         else if (round[2])
         {
-            if (shadowImage.rectTransform.anchoredPosition == new Vector2(-96, 290))
+            if (shadowImage.rectTransform.anchoredPosition == new Vector2(-96, 0))
             {
                 endPop.SetActive(true);
                 endPop.GetComponent<Animation>().Play("SuccessPop");
 
                 CorrectSound();
+                //levelText.text = "";
             }
-            else if (shadowImage.rectTransform.anchoredPosition != new Vector2(-96, 290))
+            else if (shadowImage.rectTransform.anchoredPosition != new Vector2(-96, 0))
             {
                 IncorrectSound();
             }
-
-            levelText.text = "";
         }
     }
 
@@ -248,7 +248,7 @@ public class DragShadow : MonoBehaviour
             rectTransform.gameObject.GetComponent<Image>().sprite = objectSprite[0];
             rectTransform.anchoredPosition = new Vector2(0, -36);
 
-            contButton.SetActive(false);
+            yayPop.SetActive(false);
 
             theOtherShadowImage.rectTransform.sizeDelta = new Vector2(200, 110);
 
@@ -278,11 +278,11 @@ public class DragShadow : MonoBehaviour
                 dashedLines[2].SetActive(true);
             }
 
-            contButton.SetActive(false);
+            yayPop.SetActive(false);
             theOtherButton.SetActive(true);
 
             shadowImage.rectTransform.sizeDelta = new Vector2(100, 100);
-            shadowImage.rectTransform.anchoredPosition = new Vector2(0, 290);
+            shadowImage.rectTransform.anchoredPosition = new Vector2(0, 0);
 
             rectTransform.anchoredPosition = new Vector2(0, -70);
 

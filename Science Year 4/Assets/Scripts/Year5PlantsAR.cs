@@ -11,12 +11,18 @@ public class Year5PlantsAR : MonoBehaviour
     [SerializeField] private Sprite[] buttonSprite;
 
     [SerializeField] private Image[] imageButtons;
+    [SerializeField] private GameObject[] weatherButtons;
 
     void Start()
     {
         for (int i = 0; i < canvas.Length; i++)
         {
             canvas[i].SetActive(false);
+        }
+
+        for (int i = 0; i < weatherButtons.Length; i++)
+        {
+            weatherButtons[i].SetActive(false);
         }
 
         dummyObject.SetActive(false);
@@ -35,6 +41,11 @@ public class Year5PlantsAR : MonoBehaviour
             canvas[0].SetActive(true);
             canvas[0].GetComponent<Animation>().Play("Y5 - Animal AR");
         }
+
+        for (int i = 0; i < weatherButtons.Length; i++)
+        {
+            weatherButtons[i].SetActive(false);
+        }
     }
 
     public void _ProtectionWeather()
@@ -47,8 +58,31 @@ public class Year5PlantsAR : MonoBehaviour
         for (int i = 0; i < canvas.Length; i++)
         {
             canvas[i].SetActive(false);
+        }
+
+        for (int i = 0; i < weatherButtons.Length; i++)
+        {
+            weatherButtons[i].SetActive(true);
+        }
+    }
+
+    public void _DryRegion()
+    {
+        for (int i = 0; i < canvas.Length; i++)
+        {
+            canvas[i].SetActive(false);
             canvas[1].SetActive(true);
             canvas[1].GetComponent<Animation>().Play("Y5 - Animal AR");
+        }
+    }
+
+    public void _StrongWindRegion()
+    {
+        for (int i = 0; i < canvas.Length; i++)
+        {
+            canvas[i].SetActive(false);
+            canvas[2].SetActive(true);
+            canvas[2].GetComponent<Animation>().Play("Y5 - Animal AR");
         }
     }
 

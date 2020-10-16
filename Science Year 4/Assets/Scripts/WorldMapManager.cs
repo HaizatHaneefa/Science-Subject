@@ -14,12 +14,14 @@ public class WorldMapManager : MonoBehaviour
     [SerializeField] public bool[] conditionBool;
 
     [SerializeField] public GameObject[] roundStuff;
-    [SerializeField] public GameObject introPop, EndPop, contButton, moreInfo, transitionImage;
+    [SerializeField] public GameObject introPop, EndPop, contButton, moreInfo, transitionImage, nextButton;
 
     [SerializeField] private TextMeshProUGUI descriptionText, levelText, titleText;
     [SerializeField] private Image countryImage;
 
     int level;
+
+    [SerializeField] public Sprite[] rightWrongSprite;
 
     [SerializeField] private Sprite[] countrySprite;
 
@@ -28,6 +30,8 @@ public class WorldMapManager : MonoBehaviour
 
     private void Start()
     {
+        nextButton.SetActive(false);
+
         audioSource = GetComponent<AudioSource>();
 
         transitionImage.SetActive(false);
@@ -206,74 +210,80 @@ public class WorldMapManager : MonoBehaviour
         moreInfo.SetActive(false);
     }
 
-    public void GoNext()
+    //public void GoNext()
+    //{
+    //    level += 1;
+    //    levelText.text = "Level " + level;
+
+    //    contButton.SetActive(false);
+
+    //    if (round[0])
+    //    {
+    //        for (int i = 0; i < roundStuff.Length; i++)
+    //        {
+    //            roundStuff[i].SetActive(false);
+    //            roundStuff[1].SetActive(true);
+    //        }
+
+
+    //        round[0] = false;
+    //        round[1] = true;
+    //    }
+    //    else if (round[1])
+    //    {
+    //        for (int i = 0; i < roundStuff.Length; i++)
+    //        {
+    //            roundStuff[i].SetActive(false);
+    //            roundStuff[2].SetActive(true);
+    //        }
+
+    //        round[1] = false;
+    //        round[2] = true;
+    //    }
+    //    else if (round[2])
+    //    {
+    //        for (int i = 0; i < roundStuff.Length; i++)
+    //        {
+    //            roundStuff[i].SetActive(false);
+    //            roundStuff[3].SetActive(true);
+    //        }
+
+    //        round[2] = false;
+    //        round[3] = true;
+    //    }
+    //    else if (round[3])
+    //    {
+    //        for (int i = 0; i < roundStuff.Length; i++)
+    //        {
+    //            roundStuff[i].SetActive(false);
+    //            roundStuff[4].SetActive(true);
+    //        }
+
+    //        round[3] = false;
+    //        round[4] = true;
+    //    }
+    //    else if (round[4])
+    //    {
+    //        for (int i = 0; i < roundStuff.Length; i++)
+    //        {
+    //            roundStuff[i].SetActive(false);
+    //            roundStuff[5].SetActive(true);
+    //        }
+
+    //        round[4] = false;
+    //        round[5] = true;
+    //    }
+    //}
+
+    public void NextQuestion() // advancing to questions
     {
-        level += 1;
-        levelText.text = "Level " + level;
-
-        contButton.SetActive(false);
-
-        if (round[0])
-        {
-            for (int i = 0; i < roundStuff.Length; i++)
-            {
-                roundStuff[i].SetActive(false);
-                roundStuff[1].SetActive(true);
-            }
-
-
-            round[0] = false;
-            round[1] = true;
-        }
-        else if (round[1])
-        {
-            for (int i = 0; i < roundStuff.Length; i++)
-            {
-                roundStuff[i].SetActive(false);
-                roundStuff[2].SetActive(true);
-            }
-
-            round[1] = false;
-            round[2] = true;
-        }
-        else if (round[2])
-        {
-            for (int i = 0; i < roundStuff.Length; i++)
-            {
-                roundStuff[i].SetActive(false);
-                roundStuff[3].SetActive(true);
-            }
-
-            round[2] = false;
-            round[3] = true;
-        }
-        else if (round[3])
-        {
-            for (int i = 0; i < roundStuff.Length; i++)
-            {
-                roundStuff[i].SetActive(false);
-                roundStuff[4].SetActive(true);
-            }
-
-            round[3] = false;
-            round[4] = true;
-        }
-        else if (round[4])
-        {
-            for (int i = 0; i < roundStuff.Length; i++)
-            {
-                roundStuff[i].SetActive(false);
-                roundStuff[5].SetActive(true);
-            }
-
-            round[4] = false;
-            round[5] = true;
-        }
+        StartCoroutine(DelayThatThang());
+        nextButton.SetActive(false);
     }
 
     public IEnumerator DelayThatThang()
     {
-        yield return new WaitForSeconds(1.5f);
+        //yield return new WaitForSeconds(1.5f);
 
         transitionImage.SetActive(true);
         transitionImage.GetComponent<Animation>().Play("Transition");
@@ -346,12 +356,11 @@ public class WorldMapManager : MonoBehaviour
 
     public void BackToAR()
     {
-        SceneManager.LoadScene("Y5 - Earth - AR");
+        SceneManager.LoadScene("Y5 - Earth Menu");
     }
 
     public void RestartGame()
     {
-        SceneManager.LoadScene("Y5 C World Map");
-
+        SceneManager.LoadScene("Y5 - C World Map");
     }
 }

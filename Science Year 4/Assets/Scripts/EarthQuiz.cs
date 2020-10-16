@@ -34,13 +34,13 @@ public class EarthQuiz : MonoBehaviour
 
     [SerializeField] private Image transImage;
 
-    [SerializeField] public GameObject gameOverPop, signBoard;
+    [SerializeField] public GameObject gameOverPop, signBoard, bottomInstrucion;
 
-    //[SerializeField] private TextMeshProUGUI 
     void Start()
     {
         gameOverPop.SetActive(false);
         signBoard.SetActive(false);
+        bottomInstrucion.SetActive(false);
 
         transImage.enabled = false;
 
@@ -105,7 +105,6 @@ public class EarthQuiz : MonoBehaviour
             Wrong();
         }
     }
-
 
     IEnumerator ChangeColor()
     {
@@ -261,6 +260,7 @@ public class EarthQuiz : MonoBehaviour
 
         yield return new WaitForSeconds(0.5f);
 
+        bottomInstrucion.SetActive(true);
         secondQuestion.SetActive(true);
         firstQuestion.SetActive(false);
 

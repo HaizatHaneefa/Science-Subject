@@ -22,9 +22,12 @@ public class PlantsWaterManager : MonoBehaviour
 
     int cur;
 
+    [SerializeField] private GameObject ps;
+
     void Start()
     {
         congratsText.SetActive(false);
+        ps.SetActive(false);
 
         audioSource = GetComponent<AudioSource>();
 
@@ -100,10 +103,14 @@ public class PlantsWaterManager : MonoBehaviour
     {
         questions[2].GetComponent<Animation>().Play("Q1-Plants-Light-2");
 
+       
         yield return new WaitForSeconds(1f);
 
         questionText.enabled = false;
         congratsText.SetActive(true);
+
+        ps.SetActive(true);
+        ps.GetComponent<ParticleSystem>().Play();
 
         for (int i = 0; i < questions.Length; i++)
         {

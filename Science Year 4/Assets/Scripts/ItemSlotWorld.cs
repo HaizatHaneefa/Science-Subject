@@ -13,7 +13,6 @@ public class ItemSlotWorld : MonoBehaviour, IDropHandler
 
     private void Start()
     {
-        //transform.GetChild(2).GetComponent<ParticleSystem>().Stop();
         gameObject.transform.parent.GetChild(2).gameObject.SetActive(false);
     }
 
@@ -38,14 +37,27 @@ public class ItemSlotWorld : MonoBehaviour, IDropHandler
         {
             if (gameObject.CompareTag("Day") && button.CompareTag("Day") || gameObject.CompareTag("Night") && button.CompareTag("Night"))
             {
+                // put image in circle
+                if (gameObject.CompareTag("Day"))
+                {
+                    // put sun image
+                    gameObject.transform.GetChild(0).GetComponent<Image>().enabled = true;
+                    gameObject.transform.GetChild(0).GetComponent<Image>().sprite = manager.rightWrongSprite[0];
+
+                }
+                else if (gameObject.CompareTag("Night"))
+                {
+                    // put night image
+                    gameObject.transform.GetChild(0).GetComponent<Image>().enabled = true;
+                    gameObject.transform.GetChild(0).GetComponent<Image>().sprite = manager.rightWrongSprite[1];
+                }
+
                 gameObject.GetComponent<Image>().raycastTarget = false;
                 gameObject.transform.parent.GetChild(2).gameObject.SetActive(true);
                 gameObject.transform.parent.GetChild(2).GetComponent<Animation>().Play("GameOverPop");
 
                 manager.audioSource.clip = manager.sound[0];
                 manager.audioSource.Play();
-
-                Debug.Log("Yay!");
 
                 if (manager.conditionBool[0])
                 {
@@ -62,14 +74,11 @@ public class ItemSlotWorld : MonoBehaviour, IDropHandler
                     manager.conditionBool[2] = false;
                     manager.conditionBool[0] = true;
 
-                    StartCoroutine(manager.DelayThatThang());
+                    manager.nextButton.SetActive(true);
                 }
             }
             else if (gameObject.CompareTag("Day") && button.CompareTag("Night") || gameObject.CompareTag("Night") && button.CompareTag("Day"))
             {
-                //denied!
-                Debug.Log("Nay!");
-
                 manager.audioSource.clip = manager.sound[1];
                 manager.audioSource.Play();
             }
@@ -82,7 +91,20 @@ public class ItemSlotWorld : MonoBehaviour, IDropHandler
                 gameObject.transform.parent.GetChild(2).gameObject.SetActive(true);
                 gameObject.transform.parent.GetChild(2).GetComponent<Animation>().Play("GameOverPop");
 
-                Debug.Log("Yay!");
+                // put image in circle
+                if (gameObject.CompareTag("Day"))
+                {
+                    // put sun image
+                    gameObject.transform.GetChild(0).GetComponent<Image>().enabled = true;
+                    gameObject.transform.GetChild(0).GetComponent<Image>().sprite = manager.rightWrongSprite[0];
+
+                }
+                else if (gameObject.CompareTag("Night"))
+                {
+                    // put night image
+                    gameObject.transform.GetChild(0).GetComponent<Image>().enabled = true;
+                    gameObject.transform.GetChild(0).GetComponent<Image>().sprite = manager.rightWrongSprite[1];
+                }
 
                 manager.audioSource.clip = manager.sound[0];
                 manager.audioSource.Play();
@@ -102,15 +124,11 @@ public class ItemSlotWorld : MonoBehaviour, IDropHandler
                     manager.conditionBool[2] = false;
                     manager.conditionBool[0] = true;
 
-                    // change some shit
-
                     StartCoroutine(Delay());
                 }
             }
             else if (gameObject.CompareTag("Day") && button.CompareTag("Night") || gameObject.CompareTag("Night") && button.CompareTag("Day"))
             {
-                //denied!
-                Debug.Log("Nay!");
 
                 manager.audioSource.clip = manager.sound[1];
                 manager.audioSource.Play();

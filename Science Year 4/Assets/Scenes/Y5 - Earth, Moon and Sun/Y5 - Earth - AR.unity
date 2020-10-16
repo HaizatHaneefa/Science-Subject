@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657838, g: 0.49641234, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2151,7 +2151,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: The Earth rotate on the axis from west to east in the anti-clockwise direction.
+  m_text: The Earth rotates on the axis from west to east in the anti-clockwise direction.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9282aad9a60f84d42aa2f91562ff2c3b, type: 2}
   m_sharedMaterial: {fileID: 21644512276358156, guid: 9282aad9a60f84d42aa2f91562ff2c3b,
@@ -2221,7 +2221,7 @@ MonoBehaviour:
   m_margin: {x: 13.170624, y: -32.838135, z: 17.72237, w: -27.365139}
   m_textInfo:
     textComponent: {fileID: 376545355}
-    characterCount: 79
+    characterCount: 80
     spriteCount: 0
     spaceCount: 13
     wordCount: 14
@@ -11513,7 +11513,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: Revolution of the Earth is its movement around the Sun from west to east
-    in the anti-clockwise dirction
+    in the anti-clockwise direction
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9282aad9a60f84d42aa2f91562ff2c3b, type: 2}
   m_sharedMaterial: {fileID: 21644512276358156, guid: 9282aad9a60f84d42aa2f91562ff2c3b,
@@ -11583,7 +11583,7 @@ MonoBehaviour:
   m_margin: {x: 13.658837, y: -32.838135, z: 18.03726, w: -27.365139}
   m_textInfo:
     textComponent: {fileID: 2033174894}
-    characterCount: 103
+    characterCount: 104
     spriteCount: 0
     spaceCount: 17
     wordCount: 18
