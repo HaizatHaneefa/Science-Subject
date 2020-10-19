@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlantsFunFactManager : MonoBehaviour
 {
@@ -11,10 +12,13 @@ public class PlantsFunFactManager : MonoBehaviour
     [SerializeField] private string[] explain;
     [SerializeField] private string[] dialogue;
 
-    [SerializeField] private GameObject image;
-    [SerializeField] private GameObject[] buttons;
+    //[SerializeField] private GameObject image;
+    [SerializeField] private GameObject[] image;
+    [SerializeField] private GameObject[] buttons, plantButtons;
 
     int num;
+
+    [SerializeField] private Sprite[] sprite;
 
     void Start()
     {
@@ -25,7 +29,10 @@ public class PlantsFunFactManager : MonoBehaviour
 
         explainText.enabled = false;
 
-        image.SetActive(false);
+        for (int i = 0; i < image.Length; i++)
+        {
+            image[i].SetActive(false);
+        }
     }
 
     public void PlantsResponse()
@@ -34,7 +41,11 @@ public class PlantsFunFactManager : MonoBehaviour
 
         explainText.text = explain[0].ToString();
 
-        image.SetActive(false);
+        for (int i = 0; i < image.Length; i++)
+        {
+            image[i].SetActive(false);
+            image[0].SetActive(true);
+        }
 
         for (int i = 0; i < buttons.Length; i++)
         {
@@ -42,13 +53,21 @@ public class PlantsFunFactManager : MonoBehaviour
         }
 
         num = 0;
+        
+        plantButtons[0].GetComponent<Image>().sprite = sprite[1];
+        plantButtons[1].GetComponent<Image>().sprite = sprite[0];
+
     }
 
     public void PlantsTropism()
     {
         explainText.enabled = true;
 
-        image.SetActive(true);
+        for (int i = 0; i < image.Length; i++)
+        {
+            image[i].SetActive(false);
+            image[1].SetActive(true);
+        }
 
         for (int i = 0; i < buttons.Length; i++)
         {
@@ -59,6 +78,9 @@ public class PlantsFunFactManager : MonoBehaviour
         {
             explainText.text = dialogue[0].ToString();
         }
+
+        plantButtons[1].GetComponent<Image>().sprite = sprite[1];
+        plantButtons[0].GetComponent<Image>().sprite = sprite[0];
     }
 
     public void Back()

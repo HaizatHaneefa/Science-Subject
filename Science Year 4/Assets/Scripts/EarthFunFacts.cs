@@ -16,9 +16,11 @@ public class EarthFunFacts : MonoBehaviour
     [SerializeField] private Image exampleImage;
 
     [SerializeField] private Sprite[] exampleSprites;
+    [SerializeField] private GameObject[] buttons;
 
     int point;
 
+    [SerializeField] private Sprite[] buttonSprite;
     void Start()
     {
         nextButton.gameObject.SetActive(false);
@@ -38,6 +40,12 @@ public class EarthFunFacts : MonoBehaviour
         exampleImage.sprite = exampleSprites[0];
 
         point = 1;
+
+        for (int i = 0; i < buttons.Length; i++)
+        {
+            buttons[i].GetComponent<Image>().sprite = buttonSprite[0];
+            buttons[0].GetComponent<Image>().sprite = buttonSprite[1];
+        }
     }
 
     public void _EarthPath()
@@ -51,6 +59,12 @@ public class EarthFunFacts : MonoBehaviour
         exampleImage.sprite = exampleSprites[1];
 
         point = 0;
+
+        for (int i = 0; i < buttons.Length; i++)
+        {
+            buttons[i].GetComponent<Image>().sprite = buttonSprite[0];
+            buttons[1].GetComponent<Image>().sprite = buttonSprite[1];
+        }
     }
 
     public void _LeapYear()
@@ -64,6 +78,12 @@ public class EarthFunFacts : MonoBehaviour
         exampleImage.sprite = exampleSprites[2];
 
         point = 2;
+
+        for (int i = 0; i < buttons.Length; i++)
+        {
+            buttons[i].GetComponent<Image>().sprite = buttonSprite[0];
+            buttons[2].GetComponent<Image>().sprite = buttonSprite[1];
+        }
     }
 
     public void _Prev()

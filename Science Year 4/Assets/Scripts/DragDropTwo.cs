@@ -32,7 +32,6 @@ public class DragDropTwo : MonoBehaviour, IPointerDownHandler, IBeginDragHandler
 
     public void OnPointerDown(PointerEventData eventData)
     {
-      
     }
 
     public void OnEndDrag(PointerEventData eventData)
@@ -40,7 +39,7 @@ public class DragDropTwo : MonoBehaviour, IPointerDownHandler, IBeginDragHandler
         canvasGroup.alpha = 1f;
         canvasGroup.blocksRaycasts = true;
 
-        rectTransform.sizeDelta = new Vector2(700, 160);
+        rectTransform.sizeDelta = new Vector2(700, 120);
         transform.position = startPos.position;
 
         transform.GetChild(0).GetComponent<TextMeshProUGUI>().enabled = true;

@@ -124,12 +124,12 @@ public class ItemSlotWorld : MonoBehaviour, IDropHandler
                     manager.conditionBool[2] = false;
                     manager.conditionBool[0] = true;
 
-                    StartCoroutine(Delay());
+                    //StartCoroutine(Delay());
+                    manager.nextButton.SetActive(true);
                 }
             }
             else if (gameObject.CompareTag("Day") && button.CompareTag("Night") || gameObject.CompareTag("Night") && button.CompareTag("Day"))
             {
-
                 manager.audioSource.clip = manager.sound[1];
                 manager.audioSource.Play();
             }

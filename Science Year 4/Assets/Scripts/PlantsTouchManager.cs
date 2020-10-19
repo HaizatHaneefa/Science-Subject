@@ -71,11 +71,11 @@ public class PlantsTouchManager : MonoBehaviour
 
         yield return new WaitForSeconds(1f);
 
-        ps.SetActive(true);
-        ps.GetComponent<ParticleSystem>().Play();
-
         questionText.enabled = false;
         congratsText.SetActive(true);
+
+        ps.SetActive(true);
+        ps.GetComponent<ParticleSystem>().Play();
 
         for (int i = 0; i < questions.Length; i++)
         {

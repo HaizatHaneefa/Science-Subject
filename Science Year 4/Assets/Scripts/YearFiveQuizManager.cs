@@ -12,7 +12,7 @@ public class YearFiveQuizManager : MonoBehaviour
     [SerializeField] private GameObject secondQuestion, snakeImage, continueButton, instructPop, lowBarImage;
 
     public GameObject continueButtonSecondQuestion;
-    [SerializeField] public GameObject signBoard;
+    [SerializeField] public GameObject signBoard, instructText;
     [SerializeField] public GameObject[] thingstoDisableEnd;
 
     //public GameObject yayPop;
@@ -56,6 +56,8 @@ public class YearFiveQuizManager : MonoBehaviour
         secondQuestion.SetActive(false);
         snakeImage.SetActive(false);
         thirdQuestion.SetActive(false);
+        instructText.SetActive(false);
+
         //yayPop.SetActive(false);
 
         continueButtonSecondQuestion.SetActive(false);
@@ -145,6 +147,7 @@ public class YearFiveQuizManager : MonoBehaviour
 
     public void Continue()
     {
+        instructText.SetActive(true);
         snakeImage.SetActive(false);
         continueButton.SetActive(false);
         ground.enabled = true;
@@ -174,6 +177,7 @@ public class YearFiveQuizManager : MonoBehaviour
 
     public void ToThirdQuestion()
     {
+        instructText.SetActive(false);
         secondQuestion.SetActive(false);
         thirdQuestion.SetActive(true);
 

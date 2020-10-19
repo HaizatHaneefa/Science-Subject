@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657838, g: 0.49641234, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2224,11 +2224,11 @@ RectTransform:
   - {fileID: 1973159249}
   - {fileID: 1587959559}
   - {fileID: 101077518}
+  - {fileID: 924853614}
   - {fileID: 600139774}
   - {fileID: 1111667132}
   - {fileID: 2094306411}
   - {fileID: 1531532250}
-  - {fileID: 924853614}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2426,7 +2426,7 @@ RectTransform:
   m_Children:
   - {fileID: 113830373}
   m_Father: {fileID: 552943826}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
@@ -2894,7 +2894,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: String Wind
+  m_text: Strong Wind
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7043f2a6a7a744a8cb8adf07d35b7d97, type: 2}
   m_sharedMaterial: {fileID: 21956330007947570, guid: 7043f2a6a7a744a8cb8adf07d35b7d97,
@@ -3421,7 +3421,7 @@ RectTransform:
   - {fileID: 2142031757}
   - {fileID: 178521903}
   m_Father: {fileID: 552943826}
-  m_RootOrder: 7
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3712,7 +3712,7 @@ RectTransform:
   - {fileID: 1805157588}
   - {fileID: 1851045607}
   m_Father: {fileID: 552943826}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
@@ -5018,7 +5018,7 @@ RectTransform:
   m_Children:
   - {fileID: 2041543831}
   m_Father: {fileID: 552943826}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
@@ -6580,7 +6580,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 552943826}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}

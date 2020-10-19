@@ -277,24 +277,35 @@ public class WorldMapManager : MonoBehaviour
 
     public void NextQuestion() // advancing to questions
     {
-        StartCoroutine(DelayThatThang());
-        nextButton.SetActive(false);
+        if (round[5])
+        {
+            EndGame();
+        }
+        else if (!round[5])
+        {
+            StartCoroutine(DelayThatThang());
+            nextButton.SetActive(false);
+        }
     }
 
     public IEnumerator DelayThatThang()
     {
-        //yield return new WaitForSeconds(1.5f);
+        if (!round[5])
+        {
+            transitionImage.SetActive(true);
+            transitionImage.GetComponent<Animation>().Play("Transition");
 
-        transitionImage.SetActive(true);
-        transitionImage.GetComponent<Animation>().Play("Transition");
-
-        level += 1;
+            level += 1;
+        }
 
         yield return new WaitForSeconds(4f);
 
-        levelText.text = "Level " + level;
+        if (!round[5])
+        {
+            levelText.text = "Level " + level;
 
-        transitionImage.SetActive(false);
+            transitionImage.SetActive(false);
+        }
 
         if (round[0])
         {
@@ -352,6 +363,12 @@ public class WorldMapManager : MonoBehaviour
             round[4] = false;
             round[5] = true;
         }
+    }
+
+    void EndGame()
+    {
+        EndPop.SetActive(true);
+        EndPop.transform.GetChild(0).GetComponent<Animation>().Play("GameOverPop");
     }
 
     public void BackToAR()

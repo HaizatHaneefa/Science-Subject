@@ -46,6 +46,9 @@ public class Year5PlantsAR : MonoBehaviour
         {
             weatherButtons[i].SetActive(false);
         }
+
+        weatherButtons[1].GetComponent<Image>().sprite = buttonSprite[1];
+        weatherButtons[0].GetComponent<Image>().sprite = buttonSprite[1];
     }
 
     public void _ProtectionWeather()
@@ -74,6 +77,9 @@ public class Year5PlantsAR : MonoBehaviour
             canvas[1].SetActive(true);
             canvas[1].GetComponent<Animation>().Play("Y5 - Animal AR");
         }
+
+        weatherButtons[0].GetComponent<Image>().sprite = buttonSprite[0];
+        weatherButtons[1].GetComponent<Image>().sprite = buttonSprite[1];
     }
 
     public void _StrongWindRegion()
@@ -84,6 +90,9 @@ public class Year5PlantsAR : MonoBehaviour
             canvas[2].SetActive(true);
             canvas[2].GetComponent<Animation>().Play("Y5 - Animal AR");
         }
+
+        weatherButtons[1].GetComponent<Image>().sprite = buttonSprite[0];
+        weatherButtons[0].GetComponent<Image>().sprite = buttonSprite[1];
     }
 
     public void Quiz()
