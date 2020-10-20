@@ -12,7 +12,7 @@ public class YearFiveC4AR : MonoBehaviour
 
     [SerializeField] private string[] explanation;
 
-    [SerializeField] private GameObject[] canvas;
+    [SerializeField] private GameObject[] canvas, animals;
 
     [SerializeField] private TextMeshProUGUI explainText;
 
@@ -21,7 +21,6 @@ public class YearFiveC4AR : MonoBehaviour
     [SerializeField] private Button[] buttons;
 
     [SerializeField] private Sprite[] buttonSprite;
-
     void Start()
     {
         dummyObject.SetActive(false);
@@ -32,6 +31,11 @@ public class YearFiveC4AR : MonoBehaviour
         for (int i = 0; i < canvas.Length; i++)
         {
             canvas[i].SetActive(false);
+        }
+
+        for (int i = 0; i < animals.Length; i++)
+        {
+            animals[i].SetActive(false);
         }
 
         buttons[3].gameObject.SetActive(false);
@@ -67,8 +71,6 @@ public class YearFiveC4AR : MonoBehaviour
 
         buttons[2].gameObject.SetActive(false);
         buttons[3].gameObject.SetActive(true);
-        buttons[4].gameObject.SetActive(true);
-        buttons[5].gameObject.SetActive(true);
     }
 
     public void Prev()
@@ -99,8 +101,8 @@ public class YearFiveC4AR : MonoBehaviour
 
         buttons[2].gameObject.SetActive(true);
         buttons[3].gameObject.SetActive(false);
-        buttons[4].gameObject.SetActive(false);
-        buttons[5].gameObject.SetActive(false);
+        //buttons[4].gameObject.SetActive(false);
+        //buttons[5].gameObject.SetActive(false);
     }
 
     public void Characteristics()
@@ -163,9 +165,40 @@ public class YearFiveC4AR : MonoBehaviour
         }
     }
 
-    public void ShowDummy()
+    public void ShowAnimal(int index)
     {
-        dummyObject.SetActive(true);
+        if (index == 0)
+        {
+            // show bat
+            for (int i = 0; i < animals.Length; i++)
+            {
+                animals[i].SetActive(false);
+                animals[0].SetActive(true);
+                animals[0].GetComponent<Animation>().Play("bat-hibernate");
+            }
+        }
+        else if (index == 1)
+        {
+            for (int i = 0; i < animals.Length; i++)
+            {
+                animals[i].SetActive(false);
+                animals[1].SetActive(true);
+                animals[1].GetComponent<Animation>().Play("lizard-buang-ekor");
+            }
+        }
+        else if (index == 2)
+        {
+            for (int i = 0; i < animals.Length; i++)
+            {
+                animals[i].SetActive(false);
+                animals[2].SetActive(true);
+                animals[2].GetComponent<Animation>().Play("turtle-hiding-shell");
+            }
+        }
+        else if (index != 0 || index != 1 || index != 2)
+        {
+            dummyObject.SetActive(true);
+        }
     }
 
     public void Game()

@@ -23,9 +23,14 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private GameObject bar;
 
     public TMP_Dropdown dropdown;
-   
+
+    [SerializeField] private AudioClip clip;
+    [SerializeField] private AudioSource aSource;
+
     void Awake()
     {
+        aSource = GetComponent<AudioSource>();
+
         Time.timeScale = 1;
 
         blocker.SetActive(false);
@@ -99,6 +104,8 @@ public class MenuManager : MonoBehaviour
 
     public void ToMenu()
     {
+        SoundSelection();
+
         PlayerPrefs.SetInt("CheckMenu", 1);
 
         bar.SetActive(true);
@@ -119,6 +126,8 @@ public class MenuManager : MonoBehaviour
 
     public void ToSubject()
     {
+        SoundSelection();
+
         for (int i = 0; i < canvas.Length; i++)
         {
             canvas[i].enabled = false;
@@ -128,6 +137,8 @@ public class MenuManager : MonoBehaviour
 
     public void ToTopic()
     {
+        SoundSelection();
+
         for (int i = 0; i < canvas.Length; i++)
         {
             canvas[i].enabled = false;
@@ -139,6 +150,8 @@ public class MenuManager : MonoBehaviour
 
     public void HandleInputData()
     {
+        SoundSelection();
+
         if (dropdown.value == 1)
         {
             for (int i = 0; i < chapter.Length; i++)
@@ -173,6 +186,8 @@ public class MenuManager : MonoBehaviour
 
     public void ChapterSelection(int level)
     {
+        SoundSelection();
+
         blocker.SetActive(true);
 
         l = level;
@@ -218,6 +233,8 @@ public class MenuManager : MonoBehaviour
 
     public void YesAR()
     {
+        SoundSelection();
+
         if (l == 1)
         {
             // anatomy
@@ -285,6 +302,8 @@ public class MenuManager : MonoBehaviour
 
     public void YesFuncFact()
     {
+        SoundSelection();
+
         if (l == 1)
         {
             // anatomy
@@ -352,6 +371,8 @@ public class MenuManager : MonoBehaviour
 
     public void YesGame()
     {
+        SoundSelection();
+
         if (l == 1)
         {
             // anatomy
@@ -409,11 +430,18 @@ public class MenuManager : MonoBehaviour
         else if (l == 7)
         {
             // y6 speed
-            SceneManager.LoadScene("Y6 - Speed Race"); // speed fun fact
+            //SceneManager.LoadScene("Y6 - Speed Race"); // speed fun fact
+            SceneManager.LoadScene("Loading Scene");
 
             PlayerPrefs.SetInt("C4", 0);
             PlayerPrefs.SetInt("C5", 0);
             PlayerPrefs.SetInt("C6", 1);
         }
+    }
+
+    void SoundSelection()
+    {
+        aSource.clip = clip;
+        aSource.Play();
     }
 }

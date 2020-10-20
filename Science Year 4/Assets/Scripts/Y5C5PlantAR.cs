@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class Y5C5PlantAR : MonoBehaviour
 {
@@ -10,19 +11,28 @@ public class Y5C5PlantAR : MonoBehaviour
 
     [SerializeField] private GameObject batangKayu, root, rootRoot, upArrow, downArrow, zoomImage, mainCam;
     [SerializeField] private GameObject quizButton, gameButton;
+    [SerializeField] private GameObject[] arrowImage;
 
     [SerializeField] private Camera[] cam;
 
     [SerializeField] private Vector3 oriPos;
     [SerializeField] private Quaternion[] rot;
     [SerializeField] private ParticleSystem ps;
-
+    [SerializeField] private TextMeshProUGUI instructionText;
+    [SerializeField] private Image leftImage, rightImage;
     int cur;
 
     [SerializeField] public bool isMoving;
 
     void Start()
     {
+        InvokeRepeating("Arrow", 2f, 2f);
+
+        leftImage.gameObject.SetActive(false);
+        rightImage.gameObject.SetActive(false);
+
+        instructionText.gameObject.SetActive(false);
+
         rot = new Quaternion[2];
 
         rot[0] = new Quaternion(root.transform.rotation.x, root.transform.rotation.y, root.transform.rotation.z, 1);
@@ -46,6 +56,14 @@ public class Y5C5PlantAR : MonoBehaviour
         upArrow.SetActive(false);
         downArrow.SetActive(false);
         zoomImage.SetActive(false);
+    }
+
+    public void Arrow()
+    {
+        for (int i = 0; i < arrowImage.Length; i++)
+        {
+            arrowImage[i].GetComponent<Animation>().Play("ArrowPointer Anim");
+        }
     }
 
     private void Update()
@@ -77,6 +95,14 @@ public class Y5C5PlantAR : MonoBehaviour
 
     public void _Light() // Later
     {
+        leftImage.gameObject.SetActive(true);
+        rightImage.gameObject.SetActive(true);
+
+        instructionText.gameObject.SetActive(true);
+        instructionText.text = "Tap on the right or left side of the screen to change the light direction";
+
+        CancelInvoke();
+
         isMoving = true;
 
         cur = 1;
@@ -113,6 +139,12 @@ public class Y5C5PlantAR : MonoBehaviour
 
     public void _Gravity()
     {
+        leftImage.gameObject.SetActive(false);
+        rightImage.gameObject.SetActive(false);
+
+        instructionText.gameObject.SetActive(false);
+
+        CancelInvoke();
         isMoving = false;
 
         cur = 2;
@@ -146,6 +178,12 @@ public class Y5C5PlantAR : MonoBehaviour
 
     public void _Water()
     {
+        leftImage.gameObject.SetActive(false);
+        rightImage.gameObject.SetActive(false);
+
+        instructionText.gameObject.SetActive(false);
+
+        CancelInvoke();
         zoomImage.SetActive(false);
 
         isMoving = false;
@@ -185,6 +223,13 @@ public class Y5C5PlantAR : MonoBehaviour
 
     public void _Touch()
     {
+        leftImage.gameObject.SetActive(false);
+        rightImage.gameObject.SetActive(false);
+
+        instructionText.gameObject.SetActive(true);
+        instructionText.text = "Tap on the Mimosa leaves to see the response";
+
+        CancelInvoke();
         zoomImage.SetActive(false);
 
         isMoving = false;
