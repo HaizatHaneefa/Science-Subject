@@ -39,7 +39,7 @@ public class DragDropTwo : MonoBehaviour, IPointerDownHandler, IBeginDragHandler
         canvasGroup.alpha = 1f;
         canvasGroup.blocksRaycasts = true;
 
-        rectTransform.sizeDelta = new Vector2(700, 120);
+        rectTransform.sizeDelta = new Vector2(700, 160);
         transform.position = startPos.position;
 
         transform.GetChild(0).GetComponent<TextMeshProUGUI>().enabled = true;

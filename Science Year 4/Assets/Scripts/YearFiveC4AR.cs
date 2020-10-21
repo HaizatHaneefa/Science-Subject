@@ -21,8 +21,13 @@ public class YearFiveC4AR : MonoBehaviour
     [SerializeField] private Button[] buttons;
 
     [SerializeField] private Sprite[] buttonSprite;
+
+    [SerializeField] private AudioSource aSource;
+    [SerializeField] private AudioClip[] clip;
+
     void Start()
     {
+        aSource = GetComponent<AudioSource>();
         dummyObject.SetActive(false);
         signBoard.SetActive(false);
 
@@ -45,6 +50,7 @@ public class YearFiveC4AR : MonoBehaviour
 
     public void Next()
     {
+        PressSFX();
         dummyObject.SetActive(false);
         signBoard.SetActive(true);
 
@@ -75,6 +81,7 @@ public class YearFiveC4AR : MonoBehaviour
 
     public void Prev()
     {
+        BackSFX();
         dummyObject.SetActive(false);
         signBoard.SetActive(false);
 
@@ -107,6 +114,7 @@ public class YearFiveC4AR : MonoBehaviour
 
     public void Characteristics()
     {
+        PressSFX();
         for (int i = 0; i < buttons.Length; i++)
         {
             buttons[1].GetComponent<Image>().sprite = buttonSprite[1];
@@ -137,6 +145,7 @@ public class YearFiveC4AR : MonoBehaviour
 
     public void Behaviours()
     {
+        PressSFX();
         for (int i = 0; i < buttons.Length; i++)
         {
             buttons[0].GetComponent<Image>().sprite = buttonSprite[1];
@@ -167,6 +176,7 @@ public class YearFiveC4AR : MonoBehaviour
 
     public void ShowAnimal(int index)
     {
+        PressSFX();
         if (index == 0)
         {
             // show bat
@@ -203,16 +213,49 @@ public class YearFiveC4AR : MonoBehaviour
 
     public void Game()
     {
+        PressSFX();
         SceneManager.LoadScene("Y5 - C4 Game");
     }
 
     public void Quiz()
     {
+        PressSFX();
         SceneManager.LoadScene("Y5 - C4 Quiz");
     }
 
     public void BackToMenu()
     {
+        BackSFX();
         SceneManager.LoadScene("Menu");
+    }
+
+    public void PressSFX() // button press yes
+    {
+        aSource.clip = clip[0];
+        aSource.Play();
+    }
+
+    public void WrongPressSFX() // button press no
+    {
+        aSource.clip = clip[4];
+        aSource.Play();
+    }
+
+    public void BackSFX() // back button press
+    {
+        aSource.clip = clip[1];
+        aSource.Play();
+    }
+
+    public void RightSFX() // right answer
+    {
+        aSource.clip = clip[2];
+        aSource.Play();
+    }
+
+    public void WrongSFX() // wrong answer
+    {
+        aSource.clip = clip[3];
+        aSource.Play();
     }
 }

@@ -13,12 +13,13 @@ public class PlantLightManager : MonoBehaviour
 
     [SerializeField] private GameObject[] questions;
 
-    [SerializeField] private AudioSource audioSource;
-    [SerializeField] private AudioClip[] sound;
+    [SerializeField] private AudioSource aSource;
+    [SerializeField] private AudioClip[] clip;
+
 
     void Start()
     {
-        audioSource = GetComponent<AudioSource>();
+        aSource = GetComponent<AudioSource>();
 
         for (int i = 0; i < exampleImages.Length; i++)
         {
@@ -38,8 +39,7 @@ public class PlantLightManager : MonoBehaviour
     {
         StartCoroutine(transition());
 
-        audioSource.clip = sound[0];
-        audioSource.Play();
+        RightSFX();
 
         StartCoroutine(ButtonChangeColor());
     }
@@ -48,9 +48,7 @@ public class PlantLightManager : MonoBehaviour
     {
         StartCoroutine(ShowPhotosynthesis());
 
-        audioSource.clip = sound[0];
-        audioSource.Play();
-
+        RightSFX();
         StartCoroutine(ButtonChangeColor());
 
     }
@@ -59,8 +57,7 @@ public class PlantLightManager : MonoBehaviour
     {
         StartCoroutine(ShowPhototropism());
 
-        audioSource.clip = sound[0];
-        audioSource.Play();
+        RightSFX();
 
         StartCoroutine(ButtonChangeColor());
 
@@ -68,8 +65,7 @@ public class PlantLightManager : MonoBehaviour
 
     public void _QN()
     {
-        audioSource.clip = sound[1];
-        audioSource.Play();
+        WrongPressSFX();
 
         StartCoroutine(ChangeRedColor());
     }
@@ -95,8 +91,7 @@ public class PlantLightManager : MonoBehaviour
     {
         StartCoroutine(Next());
 
-        audioSource.clip = sound[0];
-        audioSource.Play();
+        PressSFX();
     }
 
     IEnumerator Next()
@@ -152,6 +147,7 @@ public class PlantLightManager : MonoBehaviour
 
     public void BackToAR()
     {
+        BackSFX();
         SceneManager.LoadScene("Plants-AR");
     }
 
@@ -204,5 +200,35 @@ public class PlantLightManager : MonoBehaviour
         {
             but.GetComponent<Button>().enabled = true;
         }
+    }
+
+    public void PressSFX() // button press yes
+    {
+        aSource.clip = clip[0];
+        aSource.Play();
+    }
+
+    public void WrongPressSFX() // button press no
+    {
+        aSource.clip = clip[4];
+        aSource.Play();
+    }
+
+    public void BackSFX() // back button press
+    {
+        aSource.clip = clip[1];
+        aSource.Play();
+    }
+
+    public void RightSFX() // right answer
+    {
+        aSource.clip = clip[2];
+        aSource.Play();
+    }
+
+    public void WrongSFX() // wrong answer
+    {
+        aSource.clip = clip[3];
+        aSource.Play();
     }
 }

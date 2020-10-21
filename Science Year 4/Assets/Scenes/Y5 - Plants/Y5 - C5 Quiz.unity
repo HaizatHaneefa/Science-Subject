@@ -14052,13 +14052,16 @@ MonoBehaviour:
   ground: {fileID: 1779657138}
   secondBool: 
   thirdBool: 
-  sound:
-  - {fileID: 8300000, guid: cc2ea2a28713e48eb8aba1f6f051fc6a, type: 3}
-  - {fileID: 8300000, guid: cc82217a72fec485ca8a00c0e86dce24, type: 3}
-  audioSource: {fileID: 608411015}
   rightWrongSprite:
   - {fileID: 21300000, guid: 4c986ee843c21449ea524e9bcbe8ad14, type: 3}
   - {fileID: 21300000, guid: 446496bbf8d244f4c8674c387edd37cb, type: 3}
+  aSource: {fileID: 0}
+  clip:
+  - {fileID: 8300000, guid: ffb159a21c8a04135a5616979c828fab, type: 3}
+  - {fileID: 8300000, guid: d46323e22e74e46baa241cbf48c85671, type: 3}
+  - {fileID: 8300000, guid: 52320e590bf774734a288886eba557ba, type: 3}
+  - {fileID: 8300000, guid: cc82217a72fec485ca8a00c0e86dce24, type: 3}
+  - {fileID: 8300000, guid: e3fa38bc886f9da4995046e8b5f6e1c2, type: 3}
 --- !u!4 &608411014
 Transform:
   m_ObjectHideFlags: 0
@@ -14084,8 +14087,8 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
-  m_Volume: 0.4
+  m_PlayOnAwake: 0
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0

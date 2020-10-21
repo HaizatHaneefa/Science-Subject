@@ -24,7 +24,7 @@ public class MenuManager : MonoBehaviour
 
     public TMP_Dropdown dropdown;
 
-    [SerializeField] private AudioClip clip;
+    [SerializeField] private AudioClip[] clip;
     [SerializeField] private AudioSource aSource;
 
     void Awake()
@@ -227,6 +227,8 @@ public class MenuManager : MonoBehaviour
 
     public void BackToTopic()
     {
+        BackSFX();
+
         arOrFunFactBackground.SetActive(false);
         blocker.SetActive(false);
     }
@@ -441,7 +443,13 @@ public class MenuManager : MonoBehaviour
 
     void SoundSelection()
     {
-        aSource.clip = clip;
+        aSource.clip = clip[0];
+        aSource.Play();
+    }
+
+    void BackSFX()
+    {
+        aSource.clip = clip[1];
         aSource.Play();
     }
 }

@@ -13,9 +13,13 @@ public class SpeedARManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI descriptionText, definitionText;
 
     int cur;
+    [SerializeField] public AudioSource aSource;
+    [SerializeField] public AudioClip[] clip;
 
     void Start()
     {
+
+        aSource = GetComponent<AudioSource>();
         go.SetActive(false);
         imageSlider.SetActive(false);
         hideSliderButton.SetActive(false);
@@ -30,6 +34,7 @@ public class SpeedARManager : MonoBehaviour
 
     public void StartAR()
     {
+        PressSFX();
         descriptionText.transform.parent.gameObject.SetActive(true);
         definitionText.transform.parent.gameObject.SetActive(true);
 
@@ -48,16 +53,19 @@ public class SpeedARManager : MonoBehaviour
 
     public void HideSlider()
     {
+        BackSFX();
         StartCoroutine(HideButton());
     }
 
     public void ShowSlider()
     {
+        PressSFX();
         StartCoroutine(ShowButton());
     }
 
     public void NextButton()
     {
+        PressSFX();
         if (cur == 0)
         {
             buttons[0].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "Relationship between speed, distance and time";
@@ -86,6 +94,7 @@ public class SpeedARManager : MonoBehaviour
 
     public void PrevButton()
     {
+        BackSFX();
         if (cur == 2)
         {
             buttons[0].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "Relationship between speed, distance and time";
@@ -129,6 +138,7 @@ public class SpeedARManager : MonoBehaviour
 
     public void TimeIsSet()
     {
+        PressSFX();
         descriptionText.text = dialogue[1].ToString();
         descriptionText.fontSize = 15;
 
@@ -138,6 +148,7 @@ public class SpeedARManager : MonoBehaviour
 
     public void DistanceIsSet()
     {
+        PressSFX();
         descriptionText.text = dialogue[2].ToString();
         descriptionText.fontSize = 15;
 
@@ -148,11 +159,13 @@ public class SpeedARManager : MonoBehaviour
 
     public void ToMenu()
     {
+        BackSFX();
         SceneManager.LoadScene("Menu");
     }
 
     public void ToQuiz()
     {
+        PressSFX();
         SceneManager.LoadScene("Y6 - Speed Quiz"); // to quiz
     }
 
@@ -172,5 +185,35 @@ public class SpeedARManager : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
 
         imageSlider.GetComponent<Animation>().Play("ShowSlide Anim");
+    }
+
+    public void PressSFX() // button press yes
+    {
+        aSource.clip = clip[0];
+        aSource.Play();
+    }
+
+    public void WrongPressSFX() // button press no
+    {
+        aSource.clip = clip[4];
+        aSource.Play();
+    }
+
+    public void BackSFX() // back button press
+    {
+        aSource.clip = clip[1];
+        aSource.Play();
+    }
+
+    public void RightSFX() // right answer
+    {
+        aSource.clip = clip[2];
+        aSource.Play();
+    }
+
+    public void WrongSFX() // wrong answer
+    {
+        aSource.clip = clip[3];
+        aSource.Play();
     }
 }

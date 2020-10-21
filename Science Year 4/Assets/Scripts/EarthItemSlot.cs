@@ -54,8 +54,7 @@ public class EarthItemSlot : MonoBehaviour, IDropHandler
             manager.secondBool[3] && gameObject.CompareTag("False") && button.CompareTag("False") ||
             manager.secondBool[4] && gameObject.CompareTag("False") && button.CompareTag("False"))
         {
-            manager.aSource.clip = manager.sound[0];
-            manager.aSource.Play();
+            manager.RightSFX();
 
             transform.GetChild(0).GetComponent<Image>().enabled = true;
             transform.GetChild(0).GetComponent<Image>().sprite = manager.rightWrongSprite[1];
@@ -138,9 +137,7 @@ public class EarthItemSlot : MonoBehaviour, IDropHandler
            manager.secondBool[3] && gameObject.CompareTag("True") && button.CompareTag("False") ||
            manager.secondBool[4] && gameObject.CompareTag("True") && button.CompareTag("False"))
         {
-            manager.aSource.clip = manager.sound[1];
-            manager.aSource.Play();
-
+            manager.WrongPressSFX();
             transform.GetChild(0).GetComponent<Image>().enabled = true;
             transform.GetChild(0).GetComponent<Image>().sprite = manager.rightWrongSprite[0];
             transform.GetChild(0).GetComponent<Animation>().Play("GameOverPop");

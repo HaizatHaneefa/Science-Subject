@@ -32,13 +32,15 @@ public class Y5PlantQuiz : MonoBehaviour
     public bool[] secondBool;
     public bool[] thirdBool;
 
-    [SerializeField] public AudioClip[] sound;
-    [SerializeField] public AudioSource audioSource;
 
     [SerializeField] public Sprite[] rightWrongSprite;
 
-    private void Start()
+    [SerializeField] public AudioSource aSource;
+    [SerializeField] public AudioClip[] clip;
+
+    void Start()
     {
+        aSource = GetComponent<AudioSource>();
         signBoard.SetActive(false);
         instructTextGO.SetActive(false);
         conButton.SetActive(false);
@@ -76,6 +78,7 @@ public class Y5PlantQuiz : MonoBehaviour
 
     public void StartQuiz()
     {
+        PressSFX();
         for (int i = 0; i < mcq.Length; i++)
         {
             mcq[i].SetActive(false);
@@ -99,22 +102,21 @@ public class Y5PlantQuiz : MonoBehaviour
 
     public void _MCQ()
     {
-        audioSource.clip = sound[0];
-        audioSource.Play();
+        RightSFX();
 
         StartCoroutine(ButtonChangeColor());
     }
 
     public void _NOMCQ()
     {
-        audioSource.clip = sound[1];
-        audioSource.Play();
+        WrongPressSFX();
 
         StartCoroutine(ChangeRedColor());
     }
 
     public void BackToAR()
     {
+        BackSFX();
         SceneManager.LoadScene("Y5 - C5 AR");
     }
 
@@ -200,6 +202,7 @@ public class Y5PlantQuiz : MonoBehaviour
 
     public void Continue()
     {
+        PressSFX();
         exampleImage.SetActive(false);
         conButton.SetActive(false);
 
@@ -216,6 +219,7 @@ public class Y5PlantQuiz : MonoBehaviour
 
     public void ContinueSomeMore()
     {
+        PressSFX();
         continueButton.SetActive(false);
         thirdQuestion.SetActive(true);
         instructTextGO.SetActive(false);
@@ -228,11 +232,13 @@ public class Y5PlantQuiz : MonoBehaviour
 
     public void Restart()
     {
+        PressSFX();
         SceneManager.LoadScene("Y5 - C5 Quiz");
     }
 
     public void ToGame()
     {
+        PressSFX();
         SceneManager.LoadScene("Y5 - C5 Game");
     }
 
@@ -259,5 +265,35 @@ public class Y5PlantQuiz : MonoBehaviour
         {
             but.GetComponent<Button>().enabled = true;
         }
+    }
+
+    public void PressSFX() // button press yes
+    {
+        aSource.clip = clip[0];
+        aSource.Play();
+    }
+
+    public void WrongPressSFX() // button press no
+    {
+        aSource.clip = clip[4];
+        aSource.Play();
+    }
+
+    public void BackSFX() // back button press
+    {
+        aSource.clip = clip[1];
+        aSource.Play();
+    }
+
+    public void RightSFX() // right answer
+    {
+        aSource.clip = clip[2];
+        aSource.Play();
+    }
+
+    public void WrongSFX() // wrong answer
+    {
+        aSource.clip = clip[3];
+        aSource.Play();
     }
 }

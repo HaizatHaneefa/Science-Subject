@@ -19,8 +19,13 @@ public class FunFactY5Plants : MonoBehaviour
 
     [SerializeField] private Button[] button;
 
+    [SerializeField] public AudioSource aSource;
+    [SerializeField] public AudioClip[] clip;
+
     void Start()
     {
+        aSource = GetComponent<AudioSource>();
+
         explainText.enabled = false;
         exampleImage.enabled = false;
 
@@ -30,6 +35,7 @@ public class FunFactY5Plants : MonoBehaviour
 
     public void _Catnip()
     {
+        PressSFX();
         explainText.enabled = true;
         explainText.text = explanation[0].ToString();
 
@@ -45,6 +51,7 @@ public class FunFactY5Plants : MonoBehaviour
 
     public void _Desert()
     {
+        PressSFX();
         explainText.enabled = true;
         explainText.text = explanation[1].ToString();
 
@@ -61,16 +68,49 @@ public class FunFactY5Plants : MonoBehaviour
 
     public void BackToMenu()
     {
+        BackSFX();
         SceneManager.LoadScene("Menu"); // back to menu
     }
 
     public void Next()
     {
+        PressSFX();
         explainText.text = explanation[2].ToString();
     }
 
     public void Prev()
     {
+        BackSFX();
         explainText.text = explanation[1].ToString();
+    }
+
+    public void PressSFX() // button press yes
+    {
+        aSource.clip = clip[0];
+        aSource.Play();
+    }
+
+    public void WrongPressSFX() // button press no
+    {
+        aSource.clip = clip[4];
+        aSource.Play();
+    }
+
+    public void BackSFX() // back button press
+    {
+        aSource.clip = clip[1];
+        aSource.Play();
+    }
+
+    public void RightSFX() // right answer
+    {
+        aSource.clip = clip[2];
+        aSource.Play();
+    }
+
+    public void WrongSFX() // wrong answer
+    {
+        aSource.clip = clip[3];
+        aSource.Play();
     }
 }

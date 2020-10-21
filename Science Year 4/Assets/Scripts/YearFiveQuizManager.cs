@@ -15,7 +15,6 @@ public class YearFiveQuizManager : MonoBehaviour
     [SerializeField] public GameObject signBoard, instructText;
     [SerializeField] public GameObject[] thingstoDisableEnd;
 
-    //public GameObject yayPop;
     public GameObject thirdQuestion;
 
     int mcqInt;
@@ -28,13 +27,15 @@ public class YearFiveQuizManager : MonoBehaviour
     public bool[] secondBool;
     public bool[] thirdBool;
 
-    [SerializeField] public AudioSource audioSource;
-    [SerializeField] public AudioClip[] sound;
+    [SerializeField] public AudioSource aSource;
+    [SerializeField] public AudioClip[] clip;
 
     [SerializeField] public Sprite[] rightWrongSprite;
 
     void Start()
     {
+        aSource = GetComponent<AudioSource>();
+
         signBoard.SetActive(false);
         instructPop.transform.GetChild(0).GetComponent<Animation>().Play("MoreInfoPop");
 
@@ -57,8 +58,6 @@ public class YearFiveQuizManager : MonoBehaviour
         snakeImage.SetActive(false);
         thirdQuestion.SetActive(false);
         instructText.SetActive(false);
-
-        //yayPop.SetActive(false);
 
         continueButtonSecondQuestion.SetActive(false);
 
@@ -98,8 +97,7 @@ public class YearFiveQuizManager : MonoBehaviour
 
         StartCoroutine(DisableButton());
 
-        audioSource.clip = sound[0];
-        audioSource.Play();
+        RightSFX();
 
         if (mcqInt == 5)
             return;
@@ -139,14 +137,14 @@ public class YearFiveQuizManager : MonoBehaviour
 
     public void _NOMCQ()
     {
-        audioSource.clip = sound[1];
-        audioSource.Play();
+        WrongPressSFX();
 
         StartCoroutine(ChangeRedColor());
     }
 
     public void Continue()
     {
+        PressSFX();
         instructText.SetActive(true);
         snakeImage.SetActive(false);
         continueButton.SetActive(false);
@@ -161,6 +159,8 @@ public class YearFiveQuizManager : MonoBehaviour
 
     public void StartGame()
     {
+        PressSFX();
+
         instructPop.SetActive(false);
 
         questionText.enabled = true;
@@ -177,6 +177,8 @@ public class YearFiveQuizManager : MonoBehaviour
 
     public void ToThirdQuestion()
     {
+        PressSFX();
+
         instructText.SetActive(false);
         secondQuestion.SetActive(false);
         thirdQuestion.SetActive(true);
@@ -188,16 +190,20 @@ public class YearFiveQuizManager : MonoBehaviour
 
     public void Retry()
     {
+        PressSFX();
+
         SceneManager.LoadScene("Y5 - C4 Quiz");
     }
 
     public void BackToAR()
     {
+        BackSFX();
         SceneManager.LoadScene("Y5 - C4 AR");
     }
 
     public void ToGame()
     {
+        PressSFX();
         SceneManager.LoadScene("Y5 - C4 Game");
     }
 
@@ -365,5 +371,35 @@ public class YearFiveQuizManager : MonoBehaviour
         {
             but.GetComponent<Button>().enabled = true;
         }
+    }
+
+    public void PressSFX() // button press yes
+    {
+        aSource.clip = clip[0];
+        aSource.Play();
+    }
+
+    public void WrongPressSFX() // button press no
+    {
+        aSource.clip = clip[4];
+        aSource.Play();
+    }
+
+    public void BackSFX() // back button press
+    {
+        aSource.clip = clip[1];
+        aSource.Play();
+    }
+
+    public void RightSFX() // right answer
+    {
+        aSource.clip = clip[2];
+        aSource.Play();
+    }
+
+    public void WrongSFX() // wrong answer
+    {
+        aSource.clip = clip[3];
+        aSource.Play();
     }
 }

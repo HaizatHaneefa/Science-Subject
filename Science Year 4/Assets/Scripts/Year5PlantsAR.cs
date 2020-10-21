@@ -13,8 +13,13 @@ public class Year5PlantsAR : MonoBehaviour
     [SerializeField] private Image[] imageButtons;
     [SerializeField] private GameObject[] weatherButtons;
 
+    [SerializeField] public AudioSource aSource;
+    [SerializeField] public AudioClip[] clip;
+
     void Start()
     {
+        aSource = GetComponent<AudioSource>();
+
         for (int i = 0; i < canvas.Length; i++)
         {
             canvas[i].SetActive(false);
@@ -30,6 +35,7 @@ public class Year5PlantsAR : MonoBehaviour
 
     public void _ProtectionEnemies()
     {
+        PressSFX();
         dummyObject.SetActive(false);
 
         imageButtons[0].sprite = buttonSprite[0];
@@ -53,6 +59,7 @@ public class Year5PlantsAR : MonoBehaviour
 
     public void _ProtectionWeather()
     {
+        PressSFX();
         dummyObject.SetActive(false);
 
         imageButtons[1].sprite = buttonSprite[0];
@@ -71,6 +78,7 @@ public class Year5PlantsAR : MonoBehaviour
 
     public void _DryRegion()
     {
+        PressSFX();
         for (int i = 0; i < canvas.Length; i++)
         {
             canvas[i].SetActive(false);
@@ -84,6 +92,7 @@ public class Year5PlantsAR : MonoBehaviour
 
     public void _StrongWindRegion()
     {
+        PressSFX();
         for (int i = 0; i < canvas.Length; i++)
         {
             canvas[i].SetActive(false);
@@ -97,16 +106,49 @@ public class Year5PlantsAR : MonoBehaviour
 
     public void Quiz()
     {
+        PressSFX();
         SceneManager.LoadScene("Y5 - C5 Quiz");
     }
 
     public void BackToMenu()
     {
+        BackSFX();
         SceneManager.LoadScene("Menu");
     }
 
     public void ShowDummyObject()
     {
+        PressSFX();
         dummyObject.SetActive(true);
+    }
+
+    public void PressSFX() // button press yes
+    {
+        aSource.clip = clip[0];
+        aSource.Play();
+    }
+
+    public void WrongPressSFX() // button press no
+    {
+        aSource.clip = clip[4];
+        aSource.Play();
+    }
+
+    public void BackSFX() // back button press
+    {
+        aSource.clip = clip[1];
+        aSource.Play();
+    }
+
+    public void RightSFX() // right answer
+    {
+        aSource.clip = clip[2];
+        aSource.Play();
+    }
+
+    public void WrongSFX() // wrong answer
+    {
+        aSource.clip = clip[3];
+        aSource.Play();
     }
 }

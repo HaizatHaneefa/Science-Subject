@@ -21,8 +21,14 @@ public class EarthFunFacts : MonoBehaviour
     int point;
 
     [SerializeField] private Sprite[] buttonSprite;
+
+    [SerializeField] public AudioSource aSource;
+    [SerializeField] public AudioClip[] clip;
+
     void Start()
     {
+        aSource = GetComponent<AudioSource>();
+
         nextButton.gameObject.SetActive(false);
         prevButton.gameObject.SetActive(false);
 
@@ -31,6 +37,7 @@ public class EarthFunFacts : MonoBehaviour
 
     public void _EarthRotation()
     {
+        PressSFX();
         explanationtext.text = explanationDialogueText[0].ToString();
 
         nextButton.gameObject.SetActive(true);
@@ -50,6 +57,7 @@ public class EarthFunFacts : MonoBehaviour
 
     public void _EarthPath()
     {
+        PressSFX();
         explanationtext.text = explanationDialogueText[2].ToString();
 
         nextButton.gameObject.SetActive(false);
@@ -69,6 +77,7 @@ public class EarthFunFacts : MonoBehaviour
 
     public void _LeapYear()
     {
+        PressSFX();
         explanationtext.text = explanationDialogueText[3].ToString();
 
         nextButton.gameObject.SetActive(true);
@@ -93,6 +102,7 @@ public class EarthFunFacts : MonoBehaviour
             return;
         }
 
+        PressSFX();
         if (point == 1)
         {
             explanationtext.text = explanationDialogueText[0].ToString();
@@ -110,6 +120,7 @@ public class EarthFunFacts : MonoBehaviour
             return;
         }
 
+        PressSFX();
         if (point == 1)
         {
             explanationtext.text = explanationDialogueText[1].ToString();
@@ -122,6 +133,43 @@ public class EarthFunFacts : MonoBehaviour
 
     public void BackToMenu()
     {
+        BackSFX();
         SceneManager.LoadScene("Menu");
+    }
+
+    public void ToMenu()
+    {
+        BackSFX();
+        SceneManager.LoadScene("Menu"); // to menu
+    }
+
+    public void PressSFX() // button press yes
+    {
+        aSource.clip = clip[0];
+        aSource.Play();
+    }
+
+    public void WrongPressSFX() // button press no
+    {
+        aSource.clip = clip[4];
+        aSource.Play();
+    }
+
+    public void BackSFX() // back button press
+    {
+        aSource.clip = clip[1];
+        aSource.Play();
+    }
+
+    public void RightSFX() // right answer
+    {
+        aSource.clip = clip[2];
+        aSource.Play();
+    }
+
+    public void WrongSFX() // wrong answer
+    {
+        aSource.clip = clip[3];
+        aSource.Play();
     }
 }

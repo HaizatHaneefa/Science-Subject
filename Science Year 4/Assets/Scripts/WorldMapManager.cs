@@ -25,14 +25,14 @@ public class WorldMapManager : MonoBehaviour
 
     [SerializeField] private Sprite[] countrySprite;
 
-    [SerializeField] public AudioSource audioSource;
-    [SerializeField] public AudioClip[] sound;
+    [SerializeField] public AudioSource aSource;
+    [SerializeField] public AudioClip[] clip;
 
     private void Start()
     {
         nextButton.SetActive(false);
 
-        audioSource = GetComponent<AudioSource>();
+        aSource = GetComponent<AudioSource>();
 
         transitionImage.SetActive(false);
 
@@ -61,6 +61,7 @@ public class WorldMapManager : MonoBehaviour
 
     public void PlayGame()
     {
+        PressSFX();
         introPop.SetActive(false);
 
         for (int i = 0; i < roundStuff.Length; i++)
@@ -74,6 +75,7 @@ public class WorldMapManager : MonoBehaviour
 
     public void MoreInfo(int index)
     {
+        PressSFX();
         moreInfo.SetActive(true);
         moreInfo.transform.GetChild(0).GetComponent<Animation>().Play("Intro_Anim");
 
@@ -207,6 +209,7 @@ public class WorldMapManager : MonoBehaviour
 
     public void CloseMoreInfo()
     {
+        BackSFX();
         moreInfo.SetActive(false);
     }
 
@@ -277,6 +280,7 @@ public class WorldMapManager : MonoBehaviour
 
     public void NextQuestion() // advancing to questions
     {
+        PressSFX();
         if (round[5])
         {
             EndGame();
@@ -290,12 +294,14 @@ public class WorldMapManager : MonoBehaviour
 
     public IEnumerator DelayThatThang()
     {
+
         if (!round[5])
         {
             transitionImage.SetActive(true);
             transitionImage.GetComponent<Animation>().Play("Transition");
 
             level += 1;
+            //weeshunnn();
         }
 
         yield return new WaitForSeconds(4f);
@@ -367,17 +373,57 @@ public class WorldMapManager : MonoBehaviour
 
     void EndGame()
     {
+        RightSFX();
         EndPop.SetActive(true);
         EndPop.transform.GetChild(0).GetComponent<Animation>().Play("GameOverPop");
     }
 
     public void BackToAR()
     {
+        BackSFX();
         SceneManager.LoadScene("Y5 - Earth Menu");
     }
 
     public void RestartGame()
     {
+        PressSFX();
         SceneManager.LoadScene("Y5 - C World Map");
     }
+
+
+    public void PressSFX() // button press yes
+    {
+        aSource.clip = clip[0];
+        aSource.Play();
+    }
+
+    public void WrongPressSFX() // button press no
+    {
+        aSource.clip = clip[4];
+        aSource.Play();
+    }
+
+    public void BackSFX() // back button press
+    {
+        aSource.clip = clip[1];
+        aSource.Play();
+    }
+
+    public void RightSFX() // right answer
+    {
+        aSource.clip = clip[2];
+        aSource.Play();
+    }
+
+    public void WrongSFX() // wrong answer
+    {
+        aSource.clip = clip[3];
+        aSource.Play();
+    }
+
+    //    public void weeshunnn()
+    //    {
+    //        aSource.clip = clip[5];
+    //        aSource.Play();
+    //    }
 }

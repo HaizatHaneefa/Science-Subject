@@ -62,8 +62,13 @@ public class HangmanManager : MonoBehaviour
     [SerializeField] private int cur;
     public int hangmanCount = 6;
 
+    [SerializeField] private AudioSource aSource;
+    [SerializeField] private AudioClip[] clip;
+
     void Start()
     {
+        aSource = GetComponent<AudioSource>();
+
         levelText.text = "";
 
         for (int i = 0; i < star.Length; i++)
@@ -418,6 +423,7 @@ public class HangmanManager : MonoBehaviour
     // when user fails the level
     public void Retry()
     {
+        PressSFX();
         hangmanCount = 6;
 
         imageblocker.enabled = false;
@@ -507,6 +513,7 @@ public class HangmanManager : MonoBehaviour
     // going back to AR scene
     public void Quit()
     {
+        BackSFX();
         SceneManager.LoadScene("AR-Aspect");
     }
 
@@ -521,6 +528,7 @@ public class HangmanManager : MonoBehaviour
     // start playing the game
     public void StartGame()
     {
+        PressSFX();
         for (int i = 0; i < thingsToRemoveEarly.Length; i++)
         {
             thingsToRemoveEarly[i].SetActive(true);
@@ -546,6 +554,7 @@ public class HangmanManager : MonoBehaviour
     // happens when user succesfully completed the current level
     void Success()
     {
+        RightSFX();
         successPop.SetActive(true);
         imageblocker.enabled = true;
 
@@ -556,21 +565,25 @@ public class HangmanManager : MonoBehaviour
 
     public void ReturnToAR()
     {
+        BackSFX();
         SceneManager.LoadScene("AR-Aspect");
     }
 
     public void Home()
     {
+        BackSFX();
         SceneManager.LoadScene("Menu");
     }
 
     public void ReturnTopic()
     {
+        BackSFX();
         SceneManager.LoadScene("Menu");
     }
 
     public void ShowScore()
     {
+        PressSFX();
         gameEndPop.SetActive(false);
         scoreboardPop.SetActive(true);
 
@@ -579,6 +592,7 @@ public class HangmanManager : MonoBehaviour
 
     public void BackToGameEnd()
     {
+        BackSFX();
         gameEndPop.SetActive(true);
         scoreboardPop.SetActive(false);
 
@@ -588,6 +602,7 @@ public class HangmanManager : MonoBehaviour
     // level changer of the game
     public void GameChanger()
     {
+        PressSFX();
         if (game[0])
         {
             for (int i = 0; i < game1Holder.Length; i++)
@@ -859,8 +874,43 @@ public class HangmanManager : MonoBehaviour
                     gameoverPop.GetComponent<Animation>().Play("GameOverPop");
 
                     test = false;
+
+                    WrongSFX();
                 }
                 break;
         }
+    }
+
+
+    // ---------------------------------------  sound effects ---------------------------------------  //
+
+    public void PressSFX()
+    {
+        aSource.clip = clip[0];
+        aSource.Play();
+    }
+
+    public void WrongPressSFX()
+    {
+        aSource.clip = clip[4];
+        aSource.Play();
+    }
+
+    public void BackSFX()
+    {
+        aSource.clip = clip[1];
+        aSource.Play();
+    }
+
+    public void RightSFX()
+    {
+        aSource.clip = clip[2];
+        aSource.Play();
+    }
+
+    public void WrongSFX()
+    {
+        aSource.clip = clip[3];
+        aSource.Play();
     }
 }

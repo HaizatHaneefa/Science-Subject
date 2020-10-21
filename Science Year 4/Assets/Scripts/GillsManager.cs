@@ -16,7 +16,7 @@ public class GillsManager : MonoBehaviour
     public int number;
 
     [SerializeField] AudioSource aSource;
-    [SerializeField] AudioClip sound;
+    [SerializeField] AudioClip[] clip;
 
     void Start()
     {
@@ -37,7 +37,8 @@ public class GillsManager : MonoBehaviour
     }
 
     public void Answer()
-    { 
+    {
+        PressSFX();
         StartCoroutine(ShowTheRest());
 
         answerButton.GetComponent<Button>().interactable = false;
@@ -50,6 +51,7 @@ public class GillsManager : MonoBehaviour
             return;
         }
 
+        PressSFX();
         number += 1;
     }
 
@@ -60,14 +62,12 @@ public class GillsManager : MonoBehaviour
             return;
         }
 
+        BackSFX();
         number -= 1;
     }
 
     IEnumerator ShowTheRest()
     {
-        aSource.clip = sound;
-        aSource.Play();
-
         answerText.enabled = true;
         answerText.GetComponent<Animation>().Play("FadeIn");
 
@@ -81,6 +81,19 @@ public class GillsManager : MonoBehaviour
 
     public void ReturnToAR()
     {
+        BackSFX();
         SceneManager.LoadScene("AR-Aspect");
+    }
+
+    void PressSFX()
+    {
+        aSource.clip = clip[0];
+        aSource.Play();
+    }
+
+    void BackSFX()
+    {
+        aSource.clip = clip[1];
+        aSource.Play();
     }
 }

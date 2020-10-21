@@ -15,21 +15,21 @@ public class PlantsWaterManager : MonoBehaviour
     public TextMeshProUGUI questionText;
     public GameObject congratsText;
 
-    private AudioSource audioSource;
-    [SerializeField] private AudioClip[] sound;
-
     [SerializeField] private Button[] button;
 
     int cur;
 
     [SerializeField] private GameObject ps;
 
+    [SerializeField] private AudioSource aSource;
+    [SerializeField] private AudioClip[] clip;
+
     void Start()
     {
         congratsText.SetActive(false);
         ps.SetActive(false);
 
-        audioSource = GetComponent<AudioSource>();
+        aSource = GetComponent<AudioSource>();
 
         exampleImage.SetActive(false);
 
@@ -47,8 +47,7 @@ public class PlantsWaterManager : MonoBehaviour
         StartCoroutine(ButtonChangeColor());
         StartCoroutine(transition());
 
-        audioSource.clip = sound[0];
-        audioSource.Play();
+        RightSFX();
 
         cur += 1;
     }
@@ -58,9 +57,7 @@ public class PlantsWaterManager : MonoBehaviour
         StartCoroutine(ButtonChangeColor());
         StartCoroutine(ShowGeotropism());
 
-        audioSource.clip = sound[0];
-        audioSource.Play();
-
+        RightSFX();
         cur += 1;
     }
 
@@ -69,16 +66,13 @@ public class PlantsWaterManager : MonoBehaviour
         StartCoroutine(ButtonChangeColor());
         StartCoroutine(End());
 
-        audioSource.clip = sound[0];
-        audioSource.Play();
-
+        RightSFX();
         cur += 1;
     }
 
     public void _QN()
     {
-        audioSource.clip = sound[1];
-        audioSource.Play();
+        WrongPressSFX();
 
         StartCoroutine(ChangeRedColor());
     }
@@ -132,8 +126,7 @@ public class PlantsWaterManager : MonoBehaviour
     {
         StartCoroutine(TWistedTransister());
 
-        audioSource.clip = sound[0];
-        audioSource.Play();
+        PressSFX();
     }
 
     IEnumerator TWistedTransister()
@@ -155,6 +148,7 @@ public class PlantsWaterManager : MonoBehaviour
 
     public void BackToAR()
     {
+        BackSFX();
         SceneManager.LoadScene("Plants-AR");
     }
 
@@ -203,8 +197,6 @@ public class PlantsWaterManager : MonoBehaviour
         {
             but.GetComponent<Button>().enabled = true;
         }
-
-        //cur += 1;
     }
 
     IEnumerator ChangeRedColor()
@@ -230,5 +222,35 @@ public class PlantsWaterManager : MonoBehaviour
         {
             but.GetComponent<Button>().enabled = true;
         }
+    }
+
+    public void PressSFX() // button press yes
+    {
+        aSource.clip = clip[0];
+        aSource.Play();
+    }
+
+    public void WrongPressSFX() // button press no
+    {
+        aSource.clip = clip[4];
+        aSource.Play();
+    }
+
+    public void BackSFX() // back button press
+    {
+        aSource.clip = clip[1];
+        aSource.Play();
+    }
+
+    public void RightSFX() // right answer
+    {
+        aSource.clip = clip[2];
+        aSource.Play();
+    }
+
+    public void WrongSFX() // wrong answer
+    {
+        aSource.clip = clip[3];
+        aSource.Play();
     }
 }

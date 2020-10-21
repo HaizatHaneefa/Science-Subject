@@ -30,7 +30,7 @@ public class SpiracleManager : MonoBehaviour
     int whodat;
 
     [SerializeField] AudioSource aSource;
-    [SerializeField] AudioClip[] sound;
+    [SerializeField] AudioClip[] clip;
 
     void Start()
     {
@@ -71,6 +71,7 @@ public class SpiracleManager : MonoBehaviour
 
     public void View3D()
     {
+        PressSFX();
         for (int i = 0; i < canvas.Length; i++)
         {
             canvas[i].enabled = false;
@@ -84,6 +85,8 @@ public class SpiracleManager : MonoBehaviour
 
     public void Quiz()
     {
+        PressSFX();
+
         for (int i = 0; i < canvas.Length; i++)
         {
             canvas[i].enabled = false;
@@ -93,6 +96,7 @@ public class SpiracleManager : MonoBehaviour
 
     public void BackToSpiracles()
     {
+        BackSFX();
         for (int i = 0; i < canvas.Length; i++)
         {
             canvas[i].enabled = false;
@@ -102,6 +106,8 @@ public class SpiracleManager : MonoBehaviour
 
     public void Back()
     {
+        BackSFX();
+
         for (int i = 0; i < canvas.Length; i++)
         {
             canvas[i].enabled = false;
@@ -125,30 +131,28 @@ public class SpiracleManager : MonoBehaviour
     public void _P()
     {
         StartCoroutine(ShowP());
-        aSource.clip = sound[1];
-        aSource.Play();
+        WrongSFX();
     }
 
     public void _Q()
     {
         StartCoroutine(ShowQ());
-        aSource.clip = sound[1];
-        aSource.Play();
+        WrongSFX();
+
     }
 
     public void _R()
     {
         StartCoroutine(ShowR());
-        aSource.clip = sound[1];
-        aSource.Play();
+        WrongSFX();
+
     }
 
     public void _S()
     {
         // betul
         StartCoroutine(ShowS());
-        aSource.clip = sound[0];
-        aSource.Play();
+        RightSFX();
     }
 
     #region quiz buttons
@@ -196,6 +200,7 @@ public class SpiracleManager : MonoBehaviour
 
     public void ReturnToAR()
     {
+        BackSFX();
         SceneManager.LoadScene("AR-Aspect");
     }
 
@@ -222,6 +227,7 @@ public class SpiracleManager : MonoBehaviour
     #region camera angles
     public void dotView1()
     {
+        PressSFX();
         for (int i = 0; i < camView.Length; i++)
         {
             camView[i] = false;
@@ -236,6 +242,7 @@ public class SpiracleManager : MonoBehaviour
 
     public void dotView2()
     {
+        PressSFX();
         for (int i = 0; i < camView.Length; i++)
         {
             camView[i] = false;
@@ -250,6 +257,7 @@ public class SpiracleManager : MonoBehaviour
 
     public void dotView3()
     {
+        PressSFX();
         for (int i = 0; i < camView.Length; i++)
         {
             camView[i] = false;
@@ -302,4 +310,29 @@ public class SpiracleManager : MonoBehaviour
         }
     }
     #endregion
+
+
+    void PressSFX()
+    {
+        aSource.clip = clip[0];
+        aSource.Play();
+    }
+
+    void BackSFX()
+    {
+        aSource.clip = clip[1];
+        aSource.Play();
+    }
+
+    void RightSFX()
+    {
+        aSource.clip = clip[2];
+        aSource.Play();
+    }
+
+    void WrongSFX()
+    {
+        aSource.clip = clip[3];
+        aSource.Play();
+    }
 }

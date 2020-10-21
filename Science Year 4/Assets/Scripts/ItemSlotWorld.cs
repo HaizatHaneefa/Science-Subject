@@ -56,8 +56,7 @@ public class ItemSlotWorld : MonoBehaviour, IDropHandler
                 gameObject.transform.parent.GetChild(2).gameObject.SetActive(true);
                 gameObject.transform.parent.GetChild(2).GetComponent<Animation>().Play("GameOverPop");
 
-                manager.audioSource.clip = manager.sound[0];
-                manager.audioSource.Play();
+                manager.RightSFX();
 
                 if (manager.conditionBool[0])
                 {
@@ -79,8 +78,7 @@ public class ItemSlotWorld : MonoBehaviour, IDropHandler
             }
             else if (gameObject.CompareTag("Day") && button.CompareTag("Night") || gameObject.CompareTag("Night") && button.CompareTag("Day"))
             {
-                manager.audioSource.clip = manager.sound[1];
-                manager.audioSource.Play();
+                manager.WrongPressSFX();
             }
         }
         else if (manager.round[5])
@@ -106,8 +104,7 @@ public class ItemSlotWorld : MonoBehaviour, IDropHandler
                     gameObject.transform.GetChild(0).GetComponent<Image>().sprite = manager.rightWrongSprite[1];
                 }
 
-                manager.audioSource.clip = manager.sound[0];
-                manager.audioSource.Play();
+                manager.RightSFX();
 
                 if (manager.conditionBool[0])
                 {
@@ -130,8 +127,7 @@ public class ItemSlotWorld : MonoBehaviour, IDropHandler
             }
             else if (gameObject.CompareTag("Day") && button.CompareTag("Night") || gameObject.CompareTag("Night") && button.CompareTag("Day"))
             {
-                manager.audioSource.clip = manager.sound[1];
-                manager.audioSource.Play();
+                manager.WrongPressSFX();
             }
         }
 

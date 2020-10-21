@@ -29,15 +29,17 @@ public class EarthQuiz : MonoBehaviour
 
     [SerializeField] public Sprite[] rightWrongSprite;
 
-    [SerializeField] public AudioSource aSource;
-    [SerializeField] public AudioClip[] sound;
-
     [SerializeField] private Image transImage;
 
     [SerializeField] public GameObject gameOverPop, signBoard, bottomInstrucion;
 
+    [SerializeField] public AudioSource aSource;
+    [SerializeField] public AudioClip[] clip;
+
     void Start()
     {
+        aSource = GetComponent<AudioSource>();
+
         gameOverPop.SetActive(false);
         signBoard.SetActive(false);
         bottomInstrucion.SetActive(false);
@@ -69,12 +71,12 @@ public class EarthQuiz : MonoBehaviour
         if (round[3])
         {
             StartCoroutine(ChangeColor());
-            Right();
+            PressSFX();
         }
         else if (round[0] || round[1] || round[2] || round[4])
         {
+            WrongPressSFX();
             StartCoroutine(WrongColor());
-            Wrong();
         }
     }
 
@@ -82,13 +84,13 @@ public class EarthQuiz : MonoBehaviour
     {
         if (round[0] || round[1])
         {
+            RightSFX();
             StartCoroutine(ChangeColor());
-            Right();
         }
         else if (round[2] || round[3] || round[4])
         {
+            WrongPressSFX();
             StartCoroutine(WrongColor());
-            Wrong();
         }
     }
 
@@ -96,13 +98,13 @@ public class EarthQuiz : MonoBehaviour
     {
         if (round[2] || round[4])
         {
+            RightSFX();
             StartCoroutine(ChangeColor());
-            Right();
         }
         else if (round[0] || round[1] || round[3])
         {
+            WrongPressSFX();
             StartCoroutine(WrongColor());
-            Wrong();
         }
     }
 
@@ -268,30 +270,53 @@ public class EarthQuiz : MonoBehaviour
         transImage.enabled = false;
     }
 
-    void Right()
-    {
-        aSource.clip = sound[0];
-        aSource.Play();
-    }
-
-    void Wrong()
-    {
-        aSource.clip = sound[1];
-        aSource.Play();
-    }
 
     public void Retry()
     {
+        PressSFX();
         SceneManager.LoadScene("Y5 - Earth Quiz");
     }
 
     public void BackToAR()
     {
+        BackSFX();
         SceneManager.LoadScene("Y5 - Earth - AR");
     }
 
     public void ToGame()
     {
+        PressSFX();
         SceneManager.LoadScene("Y5 - Earth Menu");
+    }
+
+
+    public void PressSFX() // button press yes
+    {
+        aSource.clip = clip[0];
+        aSource.Play();
+    }
+
+    public void WrongPressSFX() // button press no
+    {
+        aSource.clip = clip[4];
+        aSource.Play();
+    }
+
+    public void BackSFX() // back button press
+    {
+        aSource.clip = clip[1];
+        aSource.Play();
+    }
+
+    public void RightSFX() // right answer
+    {
+        aSource.clip = clip[2];
+        aSource.Play();
+    }
+
+    public void WrongSFX() // wrong answer
+    {
+        aSource.clip = clip[3];
+        aSource.Play();
     }
 }

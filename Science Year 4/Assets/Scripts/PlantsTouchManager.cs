@@ -16,16 +16,18 @@ public class PlantsTouchManager : MonoBehaviour
     public GameObject congratsText;
 
     private AudioSource audioSource;
-    [SerializeField] private AudioClip[] sound;
 
     [SerializeField] private GameObject ps;
+
+    [SerializeField] private AudioSource aSource;
+    [SerializeField] private AudioClip[] clip;
 
     void Start()
     {
         congratsText.SetActive(false);
         ps.SetActive(false);
 
-        audioSource = GetComponent<AudioSource>();
+        aSource = GetComponent<AudioSource>();
 
         exampleImage.SetActive(false);
 
@@ -42,8 +44,7 @@ public class PlantsTouchManager : MonoBehaviour
     {
         StartCoroutine(transition());
 
-        audioSource.clip = sound[0];
-        audioSource.Play();
+        RightSFX();
         StartCoroutine(ButtonChangeColor());
     }
 
@@ -51,16 +52,14 @@ public class PlantsTouchManager : MonoBehaviour
     {
         StartCoroutine(End());
 
-        audioSource.clip = sound[0];
-        audioSource.Play();
+        RightSFX();
 
         StartCoroutine(ButtonChangeColor());
     }
 
     public void _QN()
     {
-        audioSource.clip = sound[1];
-        audioSource.Play();
+        WrongPressSFX();
 
         StartCoroutine(ChangeRedColor());
     }
@@ -97,8 +96,7 @@ public class PlantsTouchManager : MonoBehaviour
     {
         StartCoroutine(NextQuestion());
 
-        audioSource.clip = sound[0];
-        audioSource.Play();
+        PressSFX();
     }
 
     IEnumerator NextQuestion()
@@ -120,6 +118,7 @@ public class PlantsTouchManager : MonoBehaviour
 
     public void BackToAR()
     {
+        BackSFX();
         SceneManager.LoadScene("Plants-AR");
     }
 
@@ -172,5 +171,35 @@ public class PlantsTouchManager : MonoBehaviour
         {
             but.GetComponent<Button>().enabled = true;
         }
+    }
+
+    public void PressSFX() // button press yes
+    {
+        aSource.clip = clip[0];
+        aSource.Play();
+    }
+
+    public void WrongPressSFX() // button press no
+    {
+        aSource.clip = clip[4];
+        aSource.Play();
+    }
+
+    public void BackSFX() // back button press
+    {
+        aSource.clip = clip[1];
+        aSource.Play();
+    }
+
+    public void RightSFX() // right answer
+    {
+        aSource.clip = clip[2];
+        aSource.Play();
+    }
+
+    public void WrongSFX() // wrong answer
+    {
+        aSource.clip = clip[3];
+        aSource.Play();
     }
 }

@@ -22,8 +22,7 @@ public class ItemSlotY5PlantsQuiz : MonoBehaviour, IDropHandler
             if (manager.thirdBool[0] && eventData.pointerDrag.CompareTag("Animal 2") || manager.thirdBool[1] && eventData.pointerDrag.CompareTag("Animal 1")
                 || manager.thirdBool[2] && eventData.pointerDrag.CompareTag("Animal 1"))
             {
-                manager.audioSource.clip = manager.sound[0];
-                manager.audioSource.Play();
+                manager.RightSFX();
 
                 transform.GetChild(1).GetComponent<Image>().enabled = true;
                 transform.GetChild(1).GetComponent<Image>().sprite = manager.rightWrongSprite[1];
@@ -82,8 +81,7 @@ public class ItemSlotY5PlantsQuiz : MonoBehaviour, IDropHandler
                 manager.thirdBool[2] && eventData.pointerDrag.CompareTag("Animal 2") ||
                 manager.thirdBool[2] && eventData.pointerDrag.CompareTag("Animal 3"))
             {
-                manager.audioSource.clip = manager.sound[1];
-                manager.audioSource.Play();
+                manager.WrongPressSFX();
 
                 transform.GetChild(1).GetComponent<Image>().enabled = true;
                 transform.GetChild(1).GetComponent<Image>().sprite = manager.rightWrongSprite[0];
@@ -96,7 +94,6 @@ public class ItemSlotY5PlantsQuiz : MonoBehaviour, IDropHandler
 
     IEnumerator EndGame()
     {
-        //manager.blocker.SetActive(false);
 
         yield return new WaitForSeconds(1f);
 
@@ -106,9 +103,6 @@ public class ItemSlotY5PlantsQuiz : MonoBehaviour, IDropHandler
         {
             lastObjects[i].SetActive(false);
         }
-
-        //manager.yayPop.SetActive(true);
-        //manager.yayPop.transform.GetChild(0).GetComponent<Animation>().Play("GameOverPop");
     }
 
     IEnumerator ShowSprite()

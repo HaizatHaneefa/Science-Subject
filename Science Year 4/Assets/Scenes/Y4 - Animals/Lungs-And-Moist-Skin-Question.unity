@@ -2592,7 +2592,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 864964661}
-        m_MethodName: _Wrong
+        m_MethodName: Wrong
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2678,8 +2678,10 @@ MonoBehaviour:
   - {fileID: 53670456}
   example: {fileID: 1546758008}
   questiontext: {fileID: 1094846531}
-  audioSource: {fileID: 864964663}
-  sound:
+  aSource: {fileID: 864964663}
+  clip:
+  - {fileID: 8300000, guid: ffb159a21c8a04135a5616979c828fab, type: 3}
+  - {fileID: 8300000, guid: d46323e22e74e46baa241cbf48c85671, type: 3}
   - {fileID: 8300000, guid: cc2ea2a28713e48eb8aba1f6f051fc6a, type: 3}
   - {fileID: 8300000, guid: cc82217a72fec485ca8a00c0e86dce24, type: 3}
 --- !u!4 &864964662
@@ -2708,7 +2710,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.3
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -2888,7 +2890,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 864964661}
-        m_MethodName: _Wrong
+        m_MethodName: Wrong
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3379,7 +3381,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 864964661}
-        m_MethodName: _Wrong
+        m_MethodName: Wrong
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6575,7 +6577,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 864964661}
-        m_MethodName: _Wrong
+        m_MethodName: Wrong
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

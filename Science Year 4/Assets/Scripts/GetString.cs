@@ -19,10 +19,13 @@ public class GetString : MonoBehaviour
 
     public void thisButton()
     {
+
         if (manager.game[0])
         {
             if (transform.GetChild(0).GetComponent<TextMeshProUGUI>().text == "S")
             {
+                gc.GetComponent<HangmanManager>().PressSFX();
+
                 foreach (GameObject but in manager.game1Holder)
                 {
                     if (but.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text == "S")
@@ -33,6 +36,8 @@ public class GetString : MonoBehaviour
             }
             else if (transform.GetChild(0).GetComponent<TextMeshProUGUI>().text == "A")
             {
+                gc.GetComponent<HangmanManager>().PressSFX();
+
                 foreach (GameObject but in manager.game1Holder)
                 {
                     if (but.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text == "A")
@@ -41,9 +46,9 @@ public class GetString : MonoBehaviour
                     }
                 }
             }
-
             else if (transform.GetChild(0).GetComponent<TextMeshProUGUI>().text == "L")
             {
+                gc.GetComponent<HangmanManager>().PressSFX();
                 foreach (GameObject but in manager.game1Holder)
                 {
                     if (but.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text == "L")
@@ -54,6 +59,7 @@ public class GetString : MonoBehaviour
             }
             else if (transform.GetChild(0).GetComponent<TextMeshProUGUI>().text == "M")
             {
+                gc.GetComponent<HangmanManager>().PressSFX();
                 foreach (GameObject but in manager.game1Holder)
                 {
                     if (but.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text == "M")
@@ -64,6 +70,7 @@ public class GetString : MonoBehaviour
             }
             else if (transform.GetChild(0).GetComponent<TextMeshProUGUI>().text == "N")
             {
+                gc.GetComponent<HangmanManager>().PressSFX();
                 foreach (GameObject but in manager.game1Holder)
                 {
                     if (but.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text == "N")
@@ -74,6 +81,7 @@ public class GetString : MonoBehaviour
             }
             else if (transform.GetChild(0).GetComponent<TextMeshProUGUI>().text == "D")
             {
+                gc.GetComponent<HangmanManager>().PressSFX();
                 foreach (GameObject but in manager.game1Holder)
                 {
                     if (but.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text == "D")
@@ -84,6 +92,7 @@ public class GetString : MonoBehaviour
             }
             else if (transform.GetChild(0).GetComponent<TextMeshProUGUI>().text == "E")
             {
+                gc.GetComponent<HangmanManager>().PressSFX();
                 foreach (GameObject but in manager.game1Holder)
                 {
                     if (but.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text == "E")
@@ -94,6 +103,7 @@ public class GetString : MonoBehaviour
             }
             else if (transform.GetChild(0).GetComponent<TextMeshProUGUI>().text == "R")
             {
+                gc.GetComponent<HangmanManager>().PressSFX();
                 foreach (GameObject but in manager.game1Holder)
                 {
                     if (but.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text == "R")
@@ -110,8 +120,9 @@ public class GetString : MonoBehaviour
                 transform.GetChild(0).GetComponent<TextMeshProUGUI>().text != "D" ||
                 transform.GetChild(0).GetComponent<TextMeshProUGUI>().text != "E" ||
                 transform.GetChild(0).GetComponent<TextMeshProUGUI>().text != "R")
-
             {
+                gc.GetComponent<HangmanManager>().WrongPressSFX();
+
                 manager.hangmanCount = manager.hangmanCount - 1;
 
                 manager.test = true;
@@ -119,6 +130,7 @@ public class GetString : MonoBehaviour
         }
         else if (manager.game[1])
         {
+            gc.GetComponent<HangmanManager>().PressSFX();
             if (transform.GetChild(0).GetComponent<TextMeshProUGUI>().text == "S")
             {
                 foreach (GameObject but in manager.game2Holder)
@@ -131,6 +143,7 @@ public class GetString : MonoBehaviour
             }
             else if (transform.GetChild(0).GetComponent<TextMeshProUGUI>().text == "P")
             {
+                gc.GetComponent<HangmanManager>().PressSFX();
                 foreach (GameObject but in manager.game2Holder)
                 {
                     if (but.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text == "P")
@@ -141,6 +154,7 @@ public class GetString : MonoBehaviour
             }
             else if (transform.GetChild(0).GetComponent<TextMeshProUGUI>().text == "I")
             {
+                gc.GetComponent<HangmanManager>().PressSFX();
                 foreach (GameObject but in manager.game2Holder)
                 {
                     if (but.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text == "I")
@@ -151,6 +165,7 @@ public class GetString : MonoBehaviour
             }
             else if (transform.GetChild(0).GetComponent<TextMeshProUGUI>().text == "R")
             {
+                gc.GetComponent<HangmanManager>().PressSFX();
                 foreach (GameObject but in manager.game2Holder)
                 {
                     if (but.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text == "R")
@@ -161,6 +176,7 @@ public class GetString : MonoBehaviour
             }
             else if (transform.GetChild(0).GetComponent<TextMeshProUGUI>().text == "A")
             {
+                gc.GetComponent<HangmanManager>().PressSFX();
                 foreach (GameObject but in manager.game2Holder)
                 {
                     if (but.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text == "A")
@@ -171,6 +187,7 @@ public class GetString : MonoBehaviour
             }
             else if (transform.GetChild(0).GetComponent<TextMeshProUGUI>().text == "C")
             {
+                gc.GetComponent<HangmanManager>().PressSFX();
                 foreach (GameObject but in manager.game2Holder)
                 {
                     if (but.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text == "C")
@@ -181,6 +198,7 @@ public class GetString : MonoBehaviour
             }
             else if (transform.GetChild(0).GetComponent<TextMeshProUGUI>().text == "L")
             {
+                gc.GetComponent<HangmanManager>().PressSFX();
                 foreach (GameObject but in manager.game2Holder)
                 {
                     if (but.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text == "L")
@@ -191,6 +209,7 @@ public class GetString : MonoBehaviour
             }
             else if (transform.GetChild(0).GetComponent<TextMeshProUGUI>().text == "E")
             {
+                gc.GetComponent<HangmanManager>().PressSFX();
                 foreach (GameObject but in manager.game2Holder)
                 {
                     if (but.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text == "E")
@@ -209,6 +228,7 @@ public class GetString : MonoBehaviour
                transform.GetChild(0).GetComponent<TextMeshProUGUI>().text != "E" ||
                transform.GetChild(0).GetComponent<TextMeshProUGUI>().text != "R")
             {
+                gc.GetComponent<HangmanManager>().WrongPressSFX();
                 manager.hangmanCount = manager.hangmanCount - 1;
 
                 manager.test = true;
@@ -218,6 +238,7 @@ public class GetString : MonoBehaviour
         {
             if (transform.GetChild(0).GetComponent<TextMeshProUGUI>().text == "E")
             {
+                gc.GetComponent<HangmanManager>().PressSFX();
                 foreach (GameObject but in manager.game3Holder)
                 {
                     if (but.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text == "E")
@@ -228,6 +249,7 @@ public class GetString : MonoBehaviour
             }
             else if (transform.GetChild(0).GetComponent<TextMeshProUGUI>().text == "X")
             {
+                gc.GetComponent<HangmanManager>().PressSFX();
                 foreach (GameObject but in manager.game3Holder)
                 {
                     if (but.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text == "X")
@@ -238,6 +260,7 @@ public class GetString : MonoBehaviour
             }
             else if (transform.GetChild(0).GetComponent<TextMeshProUGUI>().text == "H")
             {
+                gc.GetComponent<HangmanManager>().PressSFX();
                 foreach (GameObject but in manager.game3Holder)
                 {
                     if (but.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text == "H")
@@ -248,6 +271,7 @@ public class GetString : MonoBehaviour
             }
             else if (transform.GetChild(0).GetComponent<TextMeshProUGUI>().text == "A")
             {
+                gc.GetComponent<HangmanManager>().PressSFX();
                 foreach (GameObject but in manager.game3Holder)
                 {
                     if (but.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text == "A")
@@ -258,6 +282,7 @@ public class GetString : MonoBehaviour
             }
             else if (transform.GetChild(0).GetComponent<TextMeshProUGUI>().text == "L")
             {
+                gc.GetComponent<HangmanManager>().PressSFX();
                 foreach (GameObject but in manager.game3Holder)
                 {
                     if (but.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text == "L")
@@ -272,6 +297,7 @@ public class GetString : MonoBehaviour
            transform.GetChild(0).GetComponent<TextMeshProUGUI>().text != "A" ||
            transform.GetChild(0).GetComponent<TextMeshProUGUI>().text != "L")
             {
+                gc.GetComponent<HangmanManager>().WrongPressSFX();
                 manager.hangmanCount = manager.hangmanCount - 1;
 
                 manager.test = true;
@@ -282,6 +308,7 @@ public class GetString : MonoBehaviour
         {
             if (transform.GetChild(0).GetComponent<TextMeshProUGUI>().text == "S")
             {
+                gc.GetComponent<HangmanManager>().PressSFX();
                 foreach (GameObject but in manager.game4Holder)
                 {
                     if (but.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text == "S")
@@ -292,6 +319,7 @@ public class GetString : MonoBehaviour
             }
             else if (transform.GetChild(0).GetComponent<TextMeshProUGUI>().text == "N")
             {
+                gc.GetComponent<HangmanManager>().PressSFX();
                 foreach (GameObject but in manager.game4Holder)
                 {
                     if (but.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text == "N")
@@ -302,6 +330,7 @@ public class GetString : MonoBehaviour
             }
             else if (transform.GetChild(0).GetComponent<TextMeshProUGUI>().text == "A")
             {
+                gc.GetComponent<HangmanManager>().PressSFX();
                 foreach (GameObject but in manager.game4Holder)
                 {
                     if (but.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text == "A")
@@ -312,6 +341,7 @@ public class GetString : MonoBehaviour
             }
             else if (transform.GetChild(0).GetComponent<TextMeshProUGUI>().text == "K")
             {
+                gc.GetComponent<HangmanManager>().PressSFX();
                 foreach (GameObject but in manager.game4Holder)
                 {
                     if (but.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text == "K")
@@ -322,6 +352,7 @@ public class GetString : MonoBehaviour
             }
             else if (transform.GetChild(0).GetComponent<TextMeshProUGUI>().text == "E")
             {
+                gc.GetComponent<HangmanManager>().PressSFX();
                 foreach (GameObject but in manager.game4Holder)
                 {
                     if (but.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text == "E")
@@ -336,6 +367,7 @@ public class GetString : MonoBehaviour
          transform.GetChild(0).GetComponent<TextMeshProUGUI>().text != "K" ||
          transform.GetChild(0).GetComponent<TextMeshProUGUI>().text != "E")
             {
+                gc.GetComponent<HangmanManager>().WrongPressSFX();
                 manager.hangmanCount = manager.hangmanCount - 1;
                 manager.test = true;
             }
@@ -344,6 +376,7 @@ public class GetString : MonoBehaviour
         {
             if (transform.GetChild(0).GetComponent<TextMeshProUGUI>().text == "S")
             {
+                gc.GetComponent<HangmanManager>().PressSFX();
                 foreach (GameObject but in manager.game5Holder)
                 {
                     if (but.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text == "S")
@@ -354,6 +387,7 @@ public class GetString : MonoBehaviour
             }
             else if (transform.GetChild(0).GetComponent<TextMeshProUGUI>().text == "K")
             {
+                gc.GetComponent<HangmanManager>().PressSFX();
                 foreach (GameObject but in manager.game5Holder)
                 {
                     if (but.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text == "K")
@@ -364,6 +398,7 @@ public class GetString : MonoBehaviour
             }
             else if (transform.GetChild(0).GetComponent<TextMeshProUGUI>().text == "I")
             {
+                gc.GetComponent<HangmanManager>().PressSFX();
                 foreach (GameObject but in manager.game5Holder)
                 {
                     if (but.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text == "I")
@@ -374,6 +409,7 @@ public class GetString : MonoBehaviour
             }
             else if (transform.GetChild(0).GetComponent<TextMeshProUGUI>().text == "N")
             {
+                gc.GetComponent<HangmanManager>().PressSFX();
                 foreach (GameObject but in manager.game5Holder)
                 {
                     if (but.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text == "N")
@@ -387,6 +423,7 @@ public class GetString : MonoBehaviour
        transform.GetChild(0).GetComponent<TextMeshProUGUI>().text != "I" ||
        transform.GetChild(0).GetComponent<TextMeshProUGUI>().text != "N")
             {
+                gc.GetComponent<HangmanManager>().WrongPressSFX();
                 manager.hangmanCount = manager.hangmanCount - 1;
 
                 manager.test = true;

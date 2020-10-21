@@ -4,15 +4,15 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
 public class LungsAndMoistSkinManager : MonoBehaviour
 {
     [SerializeField] private GameObject[] questions, reference;
     [SerializeField] private GameObject example, questiontext;
 
-    [SerializeField] private AudioSource audioSource;
-
-    [SerializeField] private AudioClip[] sound;
+    [SerializeField] private AudioSource aSource;
+    [SerializeField] private AudioClip[] clip;
 
     int number;
 
@@ -45,6 +45,7 @@ public class LungsAndMoistSkinManager : MonoBehaviour
             return;
         }
 
+        PressSFX();
         number += 1;
     }
 
@@ -55,20 +56,16 @@ public class LungsAndMoistSkinManager : MonoBehaviour
             return;
         }
 
+        BackSFX();
         number -= 1;
     }
 
     #region first question
-    public void _Wrong()
-    {
-        audioSource.clip = sound[1];
-        audioSource.Play();
-    }
 
     public void _RightQ1()
     {
         StartCoroutine(_RightAnswer());
-
+        RightSFX();
         questions[0].transform.GetChild(1).GetComponent<Image>().color = Color.green;
     }
     #endregion
@@ -77,16 +74,19 @@ public class LungsAndMoistSkinManager : MonoBehaviour
     public void _RightQ2()
     {
         StartCoroutine(_RightAnswerQ2());
-
+        RightSFX();
         questions[1].transform.GetChild(2).GetComponent<Image>().color = Color.green;
     }
     #endregion
 
+    public void Wrong()
+    {
+        StartCoroutine(ChangeRedColor());
+        WrongSFX();
+    }
+
     IEnumerator _RightAnswer()
     {
-        audioSource.clip = sound[0];
-        audioSource.Play();
-
         yield return new WaitForSeconds(1f);
 
         questions[0].SetActive(false);
@@ -97,9 +97,6 @@ public class LungsAndMoistSkinManager : MonoBehaviour
 
     IEnumerator _RightAnswerQ2()
     {
-        audioSource.clip = sound[0];
-        audioSource.Play();
-
         yield return new WaitForSeconds(1f);
 
         questiontext.SetActive(false);
@@ -110,8 +107,87 @@ public class LungsAndMoistSkinManager : MonoBehaviour
         example.GetComponent<Animation>().Play("Example_LAMS");
     }
 
+
+
     public void ReturnToAR()
     {
+        BackSFX();
         SceneManager.LoadScene("AR-Aspect");
+    }
+
+    IEnumerator ButtonChangeColor()
+    {
+        List<GameObject> disable = new List<GameObject>();
+
+        disable.AddRange(GameObject.FindGameObjectsWithTag("False"));
+
+        foreach (GameObject but in disable)
+        {
+            but.GetComponent<Button>().enabled = false;
+        }
+
+        Image i = EventSystem.current.currentSelectedGameObject.GetComponent<Image>();
+        i.color = Color.green;
+
+        yield return new WaitForSeconds(1f);
+
+        i.color = Color.white;
+
+        foreach (GameObject but in disable)
+        {
+            but.GetComponent<Button>().enabled = true;
+        }
+
+        //cur += 1;
+    }
+
+    IEnumerator ChangeRedColor()
+    {
+        List<GameObject> disable = new List<GameObject>();
+
+        disable.AddRange(GameObject.FindGameObjectsWithTag("False"));
+
+        foreach (GameObject but in disable)
+        {
+            but.GetComponent<Button>().enabled = false;
+        }
+
+        Image img = EventSystem.current.currentSelectedGameObject.GetComponent<Image>();
+
+        img.color = Color.red;
+
+        yield return new WaitForSeconds(1f);
+
+        img.color = Color.white;
+
+        foreach (GameObject but in disable)
+        {
+            but.GetComponent<Button>().enabled = true;
+        }
+    }
+
+
+    void PressSFX()
+    {
+        aSource.clip = clip[0];
+        aSource.Play();
+    }
+
+    void BackSFX()
+    {
+        aSource.clip = clip[1];
+        aSource.Play();
+    }
+
+    void RightSFX()
+    {
+        aSource.clip = clip[2];
+        aSource.Play();
+    }
+
+    void WrongSFX()
+    {
+        aSource.clip = clip[3];
+        aSource.Play();
     }
 }

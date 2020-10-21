@@ -2,15 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class FunFactManager : MonoBehaviour
 {
     [SerializeField] private GameObject[] example;
 
-    [SerializeField] private GameObject[] explanation;
+    [SerializeField] private GameObject[] explanation, buttons;
+    [SerializeField] private Sprite[] spriteButtons;
+
+    [SerializeField] private AudioSource aSource;
+    [SerializeField] private AudioClip[] clip;
 
     void Start()
     {
+        aSource = GetComponent<AudioSource>();
+
         for (int i = 0; i < example.Length; i++)
         {
             example[i].SetActive(false);
@@ -24,6 +31,11 @@ public class FunFactManager : MonoBehaviour
 
     public void _Spiders()
     {
+        PressSFX();
+        buttons[0].GetComponent<Image>().sprite = spriteButtons[1];
+        buttons[1].GetComponent<Image>().sprite = spriteButtons[0];
+        buttons[2].GetComponent<Image>().sprite = spriteButtons[0];
+
         for (int i = 0; i < example.Length; i++)
         {
             example[i].SetActive(false);
@@ -39,6 +51,11 @@ public class FunFactManager : MonoBehaviour
 
     public void _Scorpion()
     {
+        PressSFX();
+        buttons[0].GetComponent<Image>().sprite = spriteButtons[0];
+        buttons[1].GetComponent<Image>().sprite = spriteButtons[1];
+        buttons[2].GetComponent<Image>().sprite = spriteButtons[0];
+
         for (int i = 0; i < example.Length; i++)
         {
             example[i].SetActive(false);
@@ -54,6 +71,11 @@ public class FunFactManager : MonoBehaviour
 
     public void _BookLungs()
     {
+        PressSFX();
+        buttons[0].GetComponent<Image>().sprite = spriteButtons[0];
+        buttons[1].GetComponent<Image>().sprite = spriteButtons[0];
+        buttons[2].GetComponent<Image>().sprite = spriteButtons[1];
+
         for (int i = 0; i < example.Length; i++)
         {
             example[i].SetActive(false);
@@ -69,6 +91,19 @@ public class FunFactManager : MonoBehaviour
 
     public void Back()
     {
+        BackSFX();
         SceneManager.LoadScene("Menu");
+    }
+
+    void PressSFX()
+    {
+        aSource.clip = clip[0];
+        aSource.Play();
+    }
+
+    void BackSFX()
+    {
+        aSource.clip = clip[1];
+        aSource.Play();
     }
 }

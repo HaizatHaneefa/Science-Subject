@@ -38,15 +38,15 @@ public class FiveAnimalGameManager : MonoBehaviour
     bool isTimer;
     public bool isReady;
 
-    [SerializeField] private AudioSource audioSource;
-    [SerializeField] private AudioClip[] sound;
+    [SerializeField] private AudioSource aSource;
+    [SerializeField] private AudioClip[] clip;
 
     void Start()
     {
         spawntrack = GameObject.FindGameObjectWithTag("GameController").GetComponent<SpawnTrack>();
         spawntrack.enabled = false;
 
-        audioSource = GetComponent<AudioSource>();
+        aSource = GetComponent<AudioSource>();
 
         oriPos = new Vector2[2];
 
@@ -114,6 +114,7 @@ public class FiveAnimalGameManager : MonoBehaviour
 
     public void Play()
     {
+        PressSFX();
         introPop.SetActive(false);
         isTimer = true;
 
@@ -422,15 +423,13 @@ public class FiveAnimalGameManager : MonoBehaviour
 
             player.transform.GetChild(3).GetComponent<Animation>().Play("Go Splat");
 
-            audioSource.clip = sound[0];
-            audioSource.Play();
+            RightSFX();
         }
         else if (cur != index)
         {
             playerSpeed = speed;
 
-            audioSource.clip = sound[1];
-            audioSource.Play();
+            WrongPressSFX();
 
             StartCoroutine(Wrong());
         }
@@ -438,6 +437,7 @@ public class FiveAnimalGameManager : MonoBehaviour
 
     public void PlayAgain()
     {
+        PressSFX();
         for (int i = 0; i < tstbool.Length; i++)
         {
             tstbool[i] = false;
@@ -561,6 +561,37 @@ public class FiveAnimalGameManager : MonoBehaviour
 
     public void BackToWhatever()
     {
+        BackSFX();
         SceneManager.LoadScene("Y5 - C4 AR"); // to whatever
+    }
+
+    public void PressSFX() // button press yes
+    {
+        aSource.clip = clip[0];
+        aSource.Play();
+    }
+
+    public void WrongPressSFX() // button press no
+    {
+        aSource.clip = clip[4];
+        aSource.Play();
+    }
+
+    public void BackSFX() // back button press
+    {
+        aSource.clip = clip[1];
+        aSource.Play();
+    }
+
+    public void RightSFX() // right answer
+    {
+        aSource.clip = clip[2];
+        aSource.Play();
+    }
+
+    public void WrongSFX() // wrong answer
+    {
+        aSource.clip = clip[3];
+        aSource.Play();
     }
 }

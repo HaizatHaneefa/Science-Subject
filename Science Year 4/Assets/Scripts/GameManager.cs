@@ -3,13 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private Image answerImage, tickImage;
-
-    [SerializeField] AudioClip audioRight, audioWrong;
-    [SerializeField] AudioSource audioSource;
 
     [SerializeField] private GameObject rightAnswerPop;
 
@@ -17,8 +15,12 @@ public class GameManager : MonoBehaviour
 
     bool choice;
 
+    [SerializeField] private AudioSource aSource;
+    [SerializeField] private AudioClip[] clip;
+
     void Start()
     {
+        aSource = GetComponent<AudioSource>();
         rightAnswerPop.SetActive(false);
 
         answerImage.enabled = false;
@@ -33,29 +35,25 @@ public class GameManager : MonoBehaviour
 
     public void _WrongAnswer()
     {
+        StartCoroutine(ChangeRedColor());
+
         choice = false;
-        AutheDio();
+        WrongSFX();
     }
 
-    void AutheDio()
-    {
-        audioSource.clip = audioWrong;
-        audioSource.Play();
-    }
 
     IEnumerator RightAnswer()
     {
+        RightSFX();
         for (int i = 0; i < button.Length; i++)
         {
             button[i].interactable = false;
         }
 
-        audioSource.clip = audioRight;
         StartCoroutine(ShowAnswer());
+        StartCoroutine(ButtonChangeColor());
 
-        audioSource.Play();
-
-        yield return new WaitForSeconds(audioSource.clip.length);
+        yield return new WaitForSeconds(aSource.clip.length);
 
         if (choice)
         {
@@ -81,6 +79,80 @@ public class GameManager : MonoBehaviour
 
     public void ReturnToAR()
     {
+        BackSFX();
         SceneManager.LoadScene("AR-Aspect");
+    }
+
+    IEnumerator ButtonChangeColor()
+    {
+        List<GameObject> disable = new List<GameObject>();
+
+        disable.AddRange(GameObject.FindGameObjectsWithTag("False"));
+
+        foreach (GameObject but in disable)
+        {
+            but.GetComponent<Button>().enabled = false;
+        }
+
+        Image i = EventSystem.current.currentSelectedGameObject.GetComponent<Image>();
+        i.color = Color.green;
+
+        yield return new WaitForSeconds(1f);
+
+        i.color = Color.white;
+
+        foreach (GameObject but in disable)
+        {
+            but.GetComponent<Button>().enabled = true;
+        }
+    }
+
+    IEnumerator ChangeRedColor()
+    {
+        List<GameObject> disable = new List<GameObject>();
+
+        disable.AddRange(GameObject.FindGameObjectsWithTag("False"));
+
+        foreach (GameObject but in disable)
+        {
+            but.GetComponent<Button>().enabled = false;
+        }
+
+        Image img = EventSystem.current.currentSelectedGameObject.GetComponent<Image>();
+
+        img.color = Color.red;
+
+        yield return new WaitForSeconds(1f);
+
+        img.color = Color.white;
+
+        foreach (GameObject but in disable)
+        {
+            but.GetComponent<Button>().enabled = true;
+        }
+    }
+
+    void PressSFX()
+    {
+        aSource.clip = clip[0];
+        aSource.Play();
+    }
+
+    void BackSFX()
+    {
+        aSource.clip = clip[1];
+        aSource.Play();
+    }
+
+    void RightSFX()
+    {
+        aSource.clip = clip[2];
+        aSource.Play();
+    }
+
+    void WrongSFX()
+    {
+        aSource.clip = clip[3];
+        aSource.Play();
     }
 }

@@ -515,7 +515,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: ......
+  m_text: Eclipse
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7043f2a6a7a744a8cb8adf07d35b7d97, type: 2}
   m_sharedMaterial: {fileID: 21956330007947570, guid: 7043f2a6a7a744a8cb8adf07d35b7d97,
@@ -585,7 +585,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 54.028244, z: 0, w: 33.53471}
   m_textInfo:
     textComponent: {fileID: 66413231}
-    characterCount: 6
+    characterCount: 7
     spriteCount: 0
     spaceCount: 0
     wordCount: 1
@@ -3926,7 +3926,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Highlighted
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 520404901}
   m_OnClick:
     m_PersistentCalls:
@@ -3961,7 +3961,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: ce6c1bc11fc6ced44bbe35c6e5c6a6fb, type: 3}
+  m_Sprite: {fileID: 21300000, guid: bfa2b98fcf8beed43b42a6ea8400e10b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5217,7 +5217,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 9105d5159a621c54ab57d14589f89da6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 23697ab173aebbe48ae02e6fb4d10653, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -8562,7 +8562,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: ......
+  m_text: Constellation
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7043f2a6a7a744a8cb8adf07d35b7d97, type: 2}
   m_sharedMaterial: {fileID: 21956330007947570, guid: 7043f2a6a7a744a8cb8adf07d35b7d97,
@@ -8632,7 +8632,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 54.028244, z: 0, w: 33.53471}
   m_textInfo:
     textComponent: {fileID: 1066776677}
-    characterCount: 6
+    characterCount: 13
     spriteCount: 0
     spaceCount: 0
     wordCount: 1
@@ -9543,7 +9543,9 @@ MonoBehaviour:
   blocker: {fileID: 9054767}
   bar: {fileID: 202940478}
   dropdown: {fileID: 316950350}
-  clip: {fileID: 8300000, guid: 702accd0eb71c6f4e902ddbd24f1b438, type: 3}
+  clip:
+  - {fileID: 8300000, guid: ffb159a21c8a04135a5616979c828fab, type: 3}
+  - {fileID: 8300000, guid: d46323e22e74e46baa241cbf48c85671, type: 3}
   aSource: {fileID: 0}
 --- !u!4 &1245323866
 Transform:
@@ -9571,7 +9573,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.4
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0

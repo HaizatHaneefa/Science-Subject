@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.44657838, g: 0.49641234, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -323,7 +323,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 15.599976, y: -4}
+  m_AnchoredPosition: {x: 15.600098, y: -4}
   m_SizeDelta: {x: 50, y: 40}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &332852860
@@ -778,7 +778,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 43.6, y: -89.3}
+  m_AnchoredPosition: {x: 43.600098, y: -89.29999}
   m_SizeDelta: {x: 150, y: 184}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &486568037
@@ -1734,14 +1734,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   answerImage: {fileID: 2037820903}
   tickImage: {fileID: 370803540}
-  audioRight: {fileID: 8300000, guid: cc2ea2a28713e48eb8aba1f6f051fc6a, type: 3}
-  audioWrong: {fileID: 8300000, guid: cc82217a72fec485ca8a00c0e86dce24, type: 3}
-  audioSource: {fileID: 864964663}
   rightAnswerPop: {fileID: 1485471302}
   button:
   - {fileID: 785471528}
   - {fileID: 938876436}
   - {fileID: 543035527}
+  aSource: {fileID: 0}
+  clip:
+  - {fileID: 8300000, guid: ffb159a21c8a04135a5616979c828fab, type: 3}
+  - {fileID: 8300000, guid: d46323e22e74e46baa241cbf48c85671, type: 3}
+  - {fileID: 8300000, guid: cc2ea2a28713e48eb8aba1f6f051fc6a, type: 3}
+  - {fileID: 8300000, guid: cc82217a72fec485ca8a00c0e86dce24, type: 3}
 --- !u!4 &864964662
 Transform:
   m_ObjectHideFlags: 0
@@ -1768,7 +1771,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.3
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -3389,7 +3392,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 95.599976, y: -3.999939}
+  m_AnchoredPosition: {x: 95.6001, y: -4}
   m_SizeDelta: {x: 152.41, y: 40}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1650593258

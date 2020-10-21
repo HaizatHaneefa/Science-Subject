@@ -19,8 +19,12 @@ public class EarthAR : MonoBehaviour
 
     bool isNext;
 
+    [SerializeField] public AudioSource aSource;
+    [SerializeField] public AudioClip[] clip;
     void Start()
     {
+        aSource = GetComponent<AudioSource>();
+
         prevButton.SetActive(false);
         quizButton.SetActive(false);
 
@@ -44,6 +48,7 @@ public class EarthAR : MonoBehaviour
 
     public void _RotationEarth()
     {
+        PressSFX();
         button[0].GetComponent<Image>().sprite = sprite[1];
         button[1].GetComponent<Image>().sprite = sprite[0];
 
@@ -99,6 +104,7 @@ public class EarthAR : MonoBehaviour
 
     public void _RevolutionGroup()
     {
+        PressSFX();
         button[1].GetComponent<Image>().sprite = sprite[1];
         button[0].GetComponent<Image>().sprite = sprite[0];
 
@@ -154,6 +160,7 @@ public class EarthAR : MonoBehaviour
 
     public void NextPage()
     {
+        PressSFX();
         isNext = true;
 
         button[0].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "The Occurence of Day and Night";
@@ -186,6 +193,7 @@ public class EarthAR : MonoBehaviour
 
     public void PrevPage()
     {
+        BackSFX();
         isNext = false;
 
         button[0].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "Rotation of the Earth";
@@ -218,6 +226,7 @@ public class EarthAR : MonoBehaviour
 
     public void ShowInfo(int index)
     {
+        PressSFX();
         if (index == 0)
         {
             infotextGroup[0].transform.GetChild(0).gameObject.SetActive(true);
@@ -368,6 +377,7 @@ public class EarthAR : MonoBehaviour
 
     public void CloseMoreInfo(int index)
     {
+        BackSFX();
         if (index == 0)
         {
             foreach (Transform s in infoGroup[0].transform)
@@ -420,11 +430,43 @@ public class EarthAR : MonoBehaviour
 
     public void ToQuiz()
     {
+        PressSFX();
         SceneManager.LoadScene("Y5 - Earth Quiz"); // to quiz
     }
 
     public void ToMenu()
     {
+        BackSFX();
         SceneManager.LoadScene("Menu"); // to menu
+    }
+
+    public void PressSFX() // button press yes
+    {
+        aSource.clip = clip[0];
+        aSource.Play();
+    }
+
+    public void WrongPressSFX() // button press no
+    {
+        aSource.clip = clip[4];
+        aSource.Play();
+    }
+
+    public void BackSFX() // back button press
+    {
+        aSource.clip = clip[1];
+        aSource.Play();
+    }
+
+    public void RightSFX() // right answer
+    {
+        aSource.clip = clip[2];
+        aSource.Play();
+    }
+
+    public void WrongSFX() // wrong answer
+    {
+        aSource.clip = clip[3];
+        aSource.Play();
     }
 }

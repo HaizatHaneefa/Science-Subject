@@ -26,17 +26,17 @@ public class DragShadow : MonoBehaviour
 
     bool[] round;
 
-    [SerializeField] private AudioClip[] sound;
-    [SerializeField] private AudioSource audioSource;
 
     [SerializeField] private TextMeshProUGUI levelText;
 
-    private void Awake()
+    [SerializeField] public AudioSource aSource;
+    [SerializeField] public AudioClip[] clip;
+
+    void Awake()
     {
+        aSource = GetComponent<AudioSource>();
         thirdItems.SetActive(false);
         levelText.enabled = false;
-
-        audioSource = GetComponent<AudioSource>();
 
         introPop.SetActive(true);
         introPop.GetComponent<Animation>().Play("SuccessPop");
@@ -63,6 +63,7 @@ public class DragShadow : MonoBehaviour
 
     public void Up()
     {
+        PressSFX();
         if (round[0])
         {
             if (rectTransform.anchoredPosition.y >= -40f)
@@ -112,6 +113,7 @@ public class DragShadow : MonoBehaviour
 
     public void Down()
     {
+        PressSFX();
         if (round[0])
         {
             if (rectTransform.anchoredPosition.y <= -160f)
@@ -159,6 +161,7 @@ public class DragShadow : MonoBehaviour
 
     public void Center()
     {
+        PressSFX();
         if (round[2])
         {
             shadowTakeImage.sprite = shadowTake[0];
@@ -174,55 +177,66 @@ public class DragShadow : MonoBehaviour
     {
         if (round[0])
         {
+
             if (rectTransform.anchoredPosition.y == -80f)
             {
+                RightSFX();
+
                 yayPop.SetActive(true);
                 yayPop.GetComponent<Animation>().Play("SuccessPop");
 
-                CorrectSound();
+                //CorrectSound();
             }
             else if (rectTransform.anchoredPosition.y != -80f)
             {
-                IncorrectSound();
+                WrongPressSFX();
+                //IncorrectSound();
             }
 
             //levelText.text = "Level 2";
         }
         else if (round[1])
         {
+
             if (rectTransform.anchoredPosition.x == 76)
             {
                 yayPop.SetActive(true);
                 yayPop.GetComponent<Animation>().Play("SuccessPop");
 
-                CorrectSound();
+                //CorrectSound();
+                RightSFX();
+
             }
             else if (rectTransform.anchoredPosition.x != 76)
             {
-                IncorrectSound();
+                //IncorrectSound();
+                WrongPressSFX();
             }
 
             //levelText.text = "Level 2";
         }
         else if (round[2])
         {
+
             if (shadowImage.rectTransform.anchoredPosition == new Vector2(-96, 0))
             {
                 endPop.SetActive(true);
                 endPop.GetComponent<Animation>().Play("SuccessPop");
+                RightSFX();
 
-                CorrectSound();
                 //levelText.text = "";
             }
             else if (shadowImage.rectTransform.anchoredPosition != new Vector2(-96, 0))
             {
-                IncorrectSound();
+                //IncorrectSound();
+                WrongPressSFX();
             }
         }
     }
 
     public void Play()
     {
+        PressSFX();
         introPop.SetActive(false);
         levelText.enabled = true;
         levelText.text = "Level 1";
@@ -230,16 +244,19 @@ public class DragShadow : MonoBehaviour
 
     public void Restart()
     {
+        PressSFX();
         SceneManager.LoadScene("Y5 - Shadow Game");
     }
 
     public void BackToAR()
     {
+        BackSFX();
         SceneManager.LoadScene("Y5 - Earth - AR"); // back to AR
     }
 
     public void Continue()
     {
+        PressSFX();
         if (round[0])
         {
             round[0] = false;
@@ -297,15 +314,34 @@ public class DragShadow : MonoBehaviour
         }
     }
 
-    void CorrectSound()
+
+    public void PressSFX() // button press yes
     {
-        audioSource.clip = sound[0];
-        audioSource.Play();
+        aSource.clip = clip[0];
+        aSource.Play();
     }
 
-    void IncorrectSound()
+    public void WrongPressSFX() // button press no
     {
-        audioSource.clip = sound[1];
-        audioSource.Play();
+        aSource.clip = clip[4];
+        aSource.Play();
+    }
+
+    public void BackSFX() // back button press
+    {
+        aSource.clip = clip[1];
+        aSource.Play();
+    }
+
+    public void RightSFX() // right answer
+    {
+        aSource.clip = clip[2];
+        aSource.Play();
+    }
+
+    public void WrongSFX() // wrong answer
+    {
+        aSource.clip = clip[3];
+        aSource.Play();
     }
 }

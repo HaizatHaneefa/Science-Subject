@@ -21,9 +21,8 @@ public class ItemSlot : MonoBehaviour, IDropHandler
                 || manager.thirdBool[2] && eventData.pointerDrag.CompareTag("Animal 3"))
             {
                 eventData.pointerDrag.GetComponent<RectTransform>().anchoredPosition = GetComponent<RectTransform>().anchoredPosition;
-
-                manager.audioSource.clip = manager.sound[0];
-                manager.audioSource.Play();
+                
+                manager.RightSFX();
 
                 Image z = transform.GetChild(1).GetComponent<Image>();
                 z.enabled = true;
@@ -89,8 +88,7 @@ public class ItemSlot : MonoBehaviour, IDropHandler
             {
                 eventData.pointerDrag.SetActive(false);
 
-                manager.audioSource.clip = manager.sound[1];
-                manager.audioSource.Play();
+                manager.WrongPressSFX();
 
                 Image j = transform.GetChild(1).GetComponent<Image>();
                 j.GetComponent<Image>().enabled = true;

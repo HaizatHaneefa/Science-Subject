@@ -20,6 +20,7 @@ public class PlantKeyboard : MonoBehaviour
     {
         if (manager.phase[0]) // CHLOROPHYLL
         {
+            manager.PressSFX();
             if (transform.GetChild(0).GetComponent<TextMeshProUGUI>().text == "C")
             {
                 foreach (GameObject but in manager.word1)
@@ -29,8 +30,6 @@ public class PlantKeyboard : MonoBehaviour
                         but.transform.GetChild(0).GetComponent<TextMeshProUGUI>().enabled = true;
                     }
                 }
-
-                Debug.Log("paradise");
             }
             else if (transform.GetChild(0).GetComponent<TextMeshProUGUI>().text == "R")
             {
@@ -100,6 +99,7 @@ public class PlantKeyboard : MonoBehaviour
                      transform.GetChild(0).GetComponent<TextMeshProUGUI>().text != "O" ||
                      transform.GetChild(0).GetComponent<TextMeshProUGUI>().text != "L")
                      {
+                        manager.WrongPressSFX();
                         manager.hangmanCount = manager.hangmanCount - 1;
 
                         manager.test = true;
@@ -110,6 +110,7 @@ public class PlantKeyboard : MonoBehaviour
 
         if (manager.phase[1]) // WATER
         {
+            manager.PressSFX();
             if (transform.GetChild(0).GetComponent<TextMeshProUGUI>().text == "A")
             {
                 foreach (GameObject but in manager.word2)
@@ -166,6 +167,7 @@ public class PlantKeyboard : MonoBehaviour
                      transform.GetChild(0).GetComponent<TextMeshProUGUI>().text != "E" ||
                      transform.GetChild(0).GetComponent<TextMeshProUGUI>().text != "R")
                      {
+                        manager.WrongPressSFX();
                         manager.hangmanCount = manager.hangmanCount - 1;
 
                         manager.test = true;
@@ -177,6 +179,7 @@ public class PlantKeyboard : MonoBehaviour
 
         if (manager.phase[2]) // SHOOTS
         {
+            manager.PressSFX();
             if (transform.GetChild(0).GetComponent<TextMeshProUGUI>().text == "S")
             {
                 foreach (GameObject but in manager.word3)
@@ -222,6 +225,7 @@ public class PlantKeyboard : MonoBehaviour
                     transform.GetChild(0).GetComponent<TextMeshProUGUI>().text != "O" ||
                     transform.GetChild(0).GetComponent<TextMeshProUGUI>().text != "T")
                     {
+                        manager.WrongPressSFX();
                         manager.hangmanCount = manager.hangmanCount - 1;
 
 
@@ -233,6 +237,7 @@ public class PlantKeyboard : MonoBehaviour
 
         if (manager.phase[3]) // MIMOSA
         {
+            manager.PressSFX();
             if (transform.GetChild(0).GetComponent<TextMeshProUGUI>().text == "M")
             {
                 foreach (GameObject but in manager.word4)
@@ -289,6 +294,7 @@ public class PlantKeyboard : MonoBehaviour
                      transform.GetChild(0).GetComponent<TextMeshProUGUI>().text != "S" ||
                      transform.GetChild(0).GetComponent<TextMeshProUGUI>().text != "A")
                      {
+                        manager.WrongPressSFX();
                         manager.hangmanCount = manager.hangmanCount - 1;
 
                         manager.test = true;
@@ -299,6 +305,7 @@ public class PlantKeyboard : MonoBehaviour
 
         if (manager.phase[4]) // SUN
         {
+            manager.PressSFX();
             if (transform.GetChild(0).GetComponent<TextMeshProUGUI>().text == "S")
             {
                 foreach (GameObject but in manager.word5)
@@ -333,6 +340,7 @@ public class PlantKeyboard : MonoBehaviour
                      transform.GetChild(0).GetComponent<TextMeshProUGUI>().text != "U" ||
                      transform.GetChild(0).GetComponent<TextMeshProUGUI>().text != "N")
                      {
+                        manager.WrongPressSFX();
                         manager.hangmanCount = manager.hangmanCount - 1;
 
                         manager.test = true;
@@ -343,6 +351,7 @@ public class PlantKeyboard : MonoBehaviour
 
         if (manager.phase[5]) // GRAVITY
         {
+            manager.PressSFX();
             if (transform.GetChild(0).GetComponent<TextMeshProUGUI>().text == "G")
             {
                 foreach (GameObject but in manager.word6)
@@ -421,6 +430,7 @@ public class PlantKeyboard : MonoBehaviour
                      transform.GetChild(0).GetComponent<TextMeshProUGUI>().text != "T"||
                      transform.GetChild(0).GetComponent<TextMeshProUGUI>().text != "Y")
                      {
+                        manager.WrongPressSFX();
                         manager.hangmanCount = manager.hangmanCount - 1;
 
                         manager.test = true;
@@ -431,6 +441,7 @@ public class PlantKeyboard : MonoBehaviour
 
         if (manager.phase[6]) // PHOTOSYNTHESIS
         {
+            manager.PressSFX();
             if (transform.GetChild(0).GetComponent<TextMeshProUGUI>().text == "P")
             {
                 foreach (GameObject but in manager.word7)
@@ -531,6 +542,7 @@ public class PlantKeyboard : MonoBehaviour
                      transform.GetChild(0).GetComponent<TextMeshProUGUI>().text != "N" ||
                      transform.GetChild(0).GetComponent<TextMeshProUGUI>().text != "E")
                      {
+                        manager.WrongPressSFX();
                         manager.hangmanCount = manager.hangmanCount - 1;
 
                         manager.test = true;
@@ -541,6 +553,7 @@ public class PlantKeyboard : MonoBehaviour
 
         if (manager.phase[7]) // ROOTS
         {
+            manager.PressSFX();
             if (transform.GetChild(0).GetComponent<TextMeshProUGUI>().text == "R")
             {
                 foreach (GameObject but in manager.word8)
@@ -586,6 +599,7 @@ public class PlantKeyboard : MonoBehaviour
                      transform.GetChild(0).GetComponent<TextMeshProUGUI>().text != "T" ||
                      transform.GetChild(0).GetComponent<TextMeshProUGUI>().text != "S")
                      {
+                        manager.WrongPressSFX();
                         manager.hangmanCount = manager.hangmanCount - 1;
 
                         manager.test = true;
@@ -596,6 +610,7 @@ public class PlantKeyboard : MonoBehaviour
 
         if (manager.phase[8]) // PHOTOTROPISM
         {
+            manager.PressSFX();
             if (transform.GetChild(0).GetComponent<TextMeshProUGUI>().text == "P")
             {
                 foreach (GameObject but in manager.word9)
@@ -684,7 +699,8 @@ public class PlantKeyboard : MonoBehaviour
                      transform.GetChild(0).GetComponent<TextMeshProUGUI>().text != "I" ||
                      transform.GetChild(0).GetComponent<TextMeshProUGUI>().text != "S" ||
                      transform.GetChild(0).GetComponent<TextMeshProUGUI>().text != "M")
-                     { 
+                     {
+                        manager.WrongPressSFX();
                         manager.hangmanCount = manager.hangmanCount - 1;
 
                         manager.test = true;
@@ -695,6 +711,7 @@ public class PlantKeyboard : MonoBehaviour
 
         if (manager.phase[9]) // HYDROTROPISM
         {
+            manager.PressSFX();
             if (transform.GetChild(0).GetComponent<TextMeshProUGUI>().text == "H")
             {
                 foreach (GameObject but in manager.word10)
@@ -807,6 +824,7 @@ public class PlantKeyboard : MonoBehaviour
                     transform.GetChild(0).GetComponent<TextMeshProUGUI>().text != "S" ||
                     transform.GetChild(0).GetComponent<TextMeshProUGUI>().text != "M")
                     {
+                        manager.WrongPressSFX();
                         manager.hangmanCount = manager.hangmanCount - 1;
 
                         manager.test = true;
@@ -817,6 +835,7 @@ public class PlantKeyboard : MonoBehaviour
 
         if (manager.phase[10]) // TOUCH
         {
+            manager.PressSFX();
             if (transform.GetChild(0).GetComponent<TextMeshProUGUI>().text == "T")
             {
                 foreach (GameObject but in manager.word11)
@@ -873,6 +892,7 @@ public class PlantKeyboard : MonoBehaviour
                     transform.GetChild(0).GetComponent<TextMeshProUGUI>().text != "C" ||
                     transform.GetChild(0).GetComponent<TextMeshProUGUI>().text != "H")
                     {
+                        manager.WrongPressSFX();
                         manager.hangmanCount = manager.hangmanCount - 1;
 
                         manager.test = true;
@@ -883,6 +903,7 @@ public class PlantKeyboard : MonoBehaviour
 
         if (manager.phase[11]) // AUXIN
         {
+            manager.PressSFX();
             if (transform.GetChild(0).GetComponent<TextMeshProUGUI>().text == "A")
             {
                 foreach (GameObject but in manager.word12)
@@ -939,6 +960,7 @@ public class PlantKeyboard : MonoBehaviour
                     transform.GetChild(0).GetComponent<TextMeshProUGUI>().text != "I" ||
                     transform.GetChild(0).GetComponent<TextMeshProUGUI>().text != "N")
                     {
+                        manager.WrongPressSFX();
                         manager.hangmanCount = manager.hangmanCount - 1;
 
                         manager.test = true;
@@ -949,6 +971,7 @@ public class PlantKeyboard : MonoBehaviour
 
         if (manager.phase[12]) // GEOTROPISM
         {
+            manager.PressSFX();
             if (transform.GetChild(0).GetComponent<TextMeshProUGUI>().text == "G")
             {
                 foreach (GameObject but in manager.word13)
@@ -1049,6 +1072,7 @@ public class PlantKeyboard : MonoBehaviour
                 transform.GetChild(0).GetComponent<TextMeshProUGUI>().text != "S" ||
                 transform.GetChild(0).GetComponent<TextMeshProUGUI>().text != "M")
             {
+                manager.WrongPressSFX();
                 manager.hangmanCount = manager.hangmanCount - 1;
 
                 manager.test = true;
@@ -1059,6 +1083,7 @@ public class PlantKeyboard : MonoBehaviour
 
         if (manager.phase[13]) // LEAVES
         {
+            manager.PressSFX();
             if (transform.GetChild(0).GetComponent<TextMeshProUGUI>().text == "L")
             {
                 foreach (GameObject but in manager.word14)
@@ -1115,6 +1140,7 @@ public class PlantKeyboard : MonoBehaviour
                 transform.GetChild(0).GetComponent<TextMeshProUGUI>().text != "V" ||
                 transform.GetChild(0).GetComponent<TextMeshProUGUI>().text != "S")
             {
+                manager.WrongPressSFX();
                 manager.hangmanCount = manager.hangmanCount - 1;
 
                 manager.test = true;
@@ -1125,6 +1151,7 @@ public class PlantKeyboard : MonoBehaviour
 
         if (manager.phase[14]) // STEM
         {
+            manager.PressSFX();
             if (transform.GetChild(0).GetComponent<TextMeshProUGUI>().text == "S")
             {
                 foreach (GameObject but in manager.word15)
@@ -1170,6 +1197,7 @@ public class PlantKeyboard : MonoBehaviour
                     transform.GetChild(0).GetComponent<TextMeshProUGUI>().text != "E" ||
                     transform.GetChild(0).GetComponent<TextMeshProUGUI>().text != "M")
                     {
+                        manager.WrongPressSFX();
                         manager.hangmanCount = manager.hangmanCount - 1;
 
                         manager.test = true;
@@ -1180,6 +1208,7 @@ public class PlantKeyboard : MonoBehaviour
 
         if (manager.phase[15]) // PROTECT
         {
+            manager.PressSFX();
             if (transform.GetChild(0).GetComponent<TextMeshProUGUI>().text == "P")
             {
                 foreach (GameObject but in manager.word16)
@@ -1247,6 +1276,7 @@ public class PlantKeyboard : MonoBehaviour
                     transform.GetChild(0).GetComponent<TextMeshProUGUI>().text != "E" ||
                     transform.GetChild(0).GetComponent<TextMeshProUGUI>().text != "C")
                     {
+                        manager.WrongPressSFX();
                         manager.hangmanCount = manager.hangmanCount - 1;
 
                         manager.test = true;
@@ -1257,6 +1287,7 @@ public class PlantKeyboard : MonoBehaviour
 
         if (manager.phase[16]) // FOOD
         {
+            manager.PressSFX();
             if (transform.GetChild(0).GetComponent<TextMeshProUGUI>().text == "F")
             {
                 foreach (GameObject but in manager.word17)
@@ -1291,6 +1322,7 @@ public class PlantKeyboard : MonoBehaviour
                     transform.GetChild(0).GetComponent<TextMeshProUGUI>().text != "O" ||
                     transform.GetChild(0).GetComponent<TextMeshProUGUI>().text != "D")
                     {
+                        manager.WrongPressSFX();
                         manager.hangmanCount = manager.hangmanCount - 1;
 
                         manager.test = true;
@@ -1301,6 +1333,7 @@ public class PlantKeyboard : MonoBehaviour
 
         if (manager.phase[17]) // ORCHID
         {
+            manager.PressSFX();
             if (transform.GetChild(0).GetComponent<TextMeshProUGUI>().text == "O")
             {
                 foreach (GameObject but in manager.word18)
@@ -1368,6 +1401,7 @@ public class PlantKeyboard : MonoBehaviour
                     transform.GetChild(0).GetComponent<TextMeshProUGUI>().text != "I" ||
                     transform.GetChild(0).GetComponent<TextMeshProUGUI>().text != "D")
                     {
+                        manager.WrongPressSFX();
                         manager.hangmanCount = manager.hangmanCount - 1;
 
                         manager.test = true;
@@ -1378,6 +1412,7 @@ public class PlantKeyboard : MonoBehaviour
 
         if (manager.phase[18]) // STIMULI
         {
+            manager.PressSFX();
             if (transform.GetChild(0).GetComponent<TextMeshProUGUI>().text == "S")
             {
                 foreach (GameObject but in manager.word19)
@@ -1445,6 +1480,7 @@ public class PlantKeyboard : MonoBehaviour
                     transform.GetChild(0).GetComponent<TextMeshProUGUI>().text != "U" ||
                     transform.GetChild(0).GetComponent<TextMeshProUGUI>().text != "L")
                     {
+                        manager.WrongPressSFX();
                         manager.hangmanCount = manager.hangmanCount - 1;
 
                         manager.test = true;
@@ -1455,6 +1491,7 @@ public class PlantKeyboard : MonoBehaviour
 
         if (manager.phase[19]) // RESPONSE
         {
+            manager.PressSFX();
             if (transform.GetChild(0).GetComponent<TextMeshProUGUI>().text == "R")
             {
                 foreach (GameObject but in manager.word20)
@@ -1522,6 +1559,7 @@ public class PlantKeyboard : MonoBehaviour
                     transform.GetChild(0).GetComponent<TextMeshProUGUI>().text != "O" ||
                     transform.GetChild(0).GetComponent<TextMeshProUGUI>().text != "N")
                     {
+                        manager.WrongPressSFX();
                         manager.hangmanCount = manager.hangmanCount - 1;
 
                         manager.test = true;

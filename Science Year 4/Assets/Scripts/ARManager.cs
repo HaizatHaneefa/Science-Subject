@@ -38,8 +38,13 @@ public class ARManager : MonoBehaviour
 
     bool canTouch;
 
+    [SerializeField] private AudioClip[] clip;
+    [SerializeField] private AudioSource aSource;
+
     void Start()
     {
+        aSource = GetComponent<AudioSource>();
+
         canTouch = true;
 
         for (int i = 0; i < quizButton.Length; i++)
@@ -85,28 +90,13 @@ public class ARManager : MonoBehaviour
                     -touch0.deltaPosition.x * rotationSpeed, 0f, Space.World); // apply rotation to an object
             }
         }
-
-        //if (backgroundImage.GetComponent<Animation>().isPlaying)
-        //{
-        //    moreOptions.GetComponent<Button>().interactable = false;
-        //}
-        //else if (!backgroundImage.GetComponent<Animation>().isPlaying)
-        //{
-        //    moreOptions.GetComponent<Button>().interactable = true;
-        //}
-
-        //if (isOpen)
-        //{
-        //    moreOptions.GetComponent<Image>().sprite = moreButtonImages[1];
-        //}
-        //else if (!isOpen)
-        //{
-        //    moreOptions.GetComponent<Image>().sprite = moreButtonImages[0];
-        //}
     }
 
     public void Backerrr()
     {
+        BackSFX();
+        Debug.Log("wwqqq");
+
         imageBlocker.enabled = false;
         infoPop[0].SetActive(false);
         infoPop[1].SetActive(false);
@@ -118,30 +108,21 @@ public class ARManager : MonoBehaviour
 
     public void HandleInputData() // dropdown
     {
+
         if (dropdown.GetComponent<TMP_Dropdown>().value == 1 && cur == 1) // lungs
         {
+            PressSFX();
+
             infoPop[1].transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = arClass.d1.showInfo1;
             infoPop[1].SetActive(true);
             infoPop[1].GetComponent<Animation>().Play("MoreInfoPop");
             imageBlocker.enabled = true;
         }
-        //else if (dropdown.GetComponent<TMP_Dropdown>().value == 2 && cur == 1)
-        //{
-        //    infoPop.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = arClass.d1.showInfo2;
-        //    infoPop.SetActive(true);
-        //    infoPop.GetComponent<Animation>().Play("MoreInfoPop");
-        //    imageBlocker.enabled = true;
-        //}
-        //else if (dropdown.GetComponent<TMP_Dropdown>().value == 3 && cur == 1)
-        //{
-        //    infoPop.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = arClass.d1.showInfo3;
-        //    infoPop.SetActive(true);
-        //    infoPop.GetComponent<Animation>().Play("MoreInfoPop");
-        //    imageBlocker.enabled = true;
-        //}
 
         if (dropdown.GetComponent<TMP_Dropdown>().value == 1 && cur == 2) // gills
         {
+            PressSFX();
+
             infoPop[1].transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = arClass.d2.showInfo1;
             infoPop[1].SetActive(true);
             infoPop[1].GetComponent<Animation>().Play("MoreInfoPop");
@@ -149,22 +130,19 @@ public class ARManager : MonoBehaviour
         }
         else if (dropdown.GetComponent<TMP_Dropdown>().value == 2 && cur == 2)
         {
+            PressSFX();
+
             infoPop[0].transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = arClass.d2.showInfo2;
             infoPop[0].SetActive(true);
             infoPop[0].GetComponent<Animation>().Play("MoreInfoPop");
             imageBlocker.enabled = true;
             fishGillsImage.SetActive(true);
         }
-        //else if (dropdown.GetComponent<TMP_Dropdown>().value == 3 && cur == 2)
-        //{
-        //    infoPop.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = arClass.d2.showInfo3;
-        //    infoPop.SetActive(true);
-        //    infoPop.GetComponent<Animation>().Play("MoreInfoPop");
-        //    imageBlocker.enabled = true;
-        //}
 
         if (dropdown.GetComponent<TMP_Dropdown>().value == 1 && cur == 3) // spiracle
         {
+            PressSFX();
+
             infoPop[1].transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = arClass.d3.showInfo1;
             infoPop[1].SetActive(true);
             infoPop[1].GetComponent<Animation>().Play("MoreInfoPop");
@@ -172,21 +150,18 @@ public class ARManager : MonoBehaviour
         }
         else if (dropdown.GetComponent<TMP_Dropdown>().value == 2 && cur == 3)
         {
+            PressSFX();
+
             infoPop[1].transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = arClass.d3.showInfo2;
             infoPop[1].SetActive(true);
             infoPop[1].GetComponent<Animation>().Play("MoreInfoPop");
             imageBlocker.enabled = true;
         }
-        //else if (dropdown.GetComponent<TMP_Dropdown>().value == 3 && cur == 3)
-        //{
-        //    infoPop.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = arClass.d3.showInfo3;
-        //    infoPop.SetActive(true);
-        //    infoPop.GetComponent<Animation>().Play("MoreInfoPop");
-        //    imageBlocker.enabled = true;
-        //}
         
         if (dropdown.GetComponent<TMP_Dropdown>().value == 1 && cur == 4) // moist skin
         {
+            PressSFX();
+
             infoPop[1].transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = arClass.d4.showInfo1;
             infoPop[1].SetActive(true);
             infoPop[1].GetComponent<Animation>().Play("MoreInfoPop");
@@ -194,21 +169,18 @@ public class ARManager : MonoBehaviour
         }
         else if (dropdown.GetComponent<TMP_Dropdown>().value == 2 && cur == 4)
         {
+            PressSFX();
+
             infoPop[0].transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = arClass.d4.showInfo2;
             infoPop[0].SetActive(true);
             infoPop[0].GetComponent<Animation>().Play("MoreInfoPop");
             imageBlocker.enabled = true;
         }
-        //else if (dropdown.GetComponent<TMP_Dropdown>().value == 3 && cur == 4)
-        //{
-        //    infoPop.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = arClass.d4.showInfo3;
-        //    infoPop.SetActive(true);
-        //    infoPop.GetComponent<Animation>().Play("MoreInfoPop");
-        //    imageBlocker.enabled = true;
-        //}
 
         if (dropdown.GetComponent<TMP_Dropdown>().value == 1 && cur == 5) // moist skin
         {
+            PressSFX();
+
             infoPop[1].transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = arClass.d5.showInfo1;
             infoPop[1].SetActive(true);
             infoPop[1].GetComponent<Animation>().Play("MoreInfoPop");
@@ -216,6 +188,8 @@ public class ARManager : MonoBehaviour
         }
         else if (dropdown.GetComponent<TMP_Dropdown>().value == 2 && cur == 5)
         {
+            PressSFX();
+
             infoPop[1].transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = arClass.d5.showInfo2;
             infoPop[1].SetActive(true);
             infoPop[1].GetComponent<Animation>().Play("MoreInfoPop");
@@ -225,6 +199,8 @@ public class ARManager : MonoBehaviour
 
     public void _Lungs()
     {
+        PressSFX();
+
         for (int i = 0; i < Objects.Length; i++)
         {
             Objects[i].SetActive(false);
@@ -248,8 +224,6 @@ public class ARManager : MonoBehaviour
         dropdown.SetActive(true);
 
         dropdown.GetComponent<TMP_Dropdown>().options[1].text = arClass.d1.option1.ToString();
-        //dropdown.GetComponent<TMP_Dropdown>().options[2].text = arClass.d1.option2.ToString();
-        //dropdown.GetComponent<TMP_Dropdown>().options[3].text = arClass.d1.option3.ToString();
 
         dropdown.GetComponent<TMP_Dropdown>().value = 0;
 
@@ -272,6 +246,8 @@ public class ARManager : MonoBehaviour
 
     public void _Gills()
     {
+        PressSFX();
+
         for (int i = 0; i < Objects.Length; i++)
         {
             Objects[i].SetActive(false);
@@ -305,7 +281,6 @@ public class ARManager : MonoBehaviour
 
         dropdown.GetComponent<TMP_Dropdown>().options[1].text = arClass.d2.option1.ToString();
         dropdown.GetComponent<TMP_Dropdown>().options[2].text = arClass.d2.option2.ToString();
-        //dropdown.GetComponent<TMP_Dropdown>().options[3].text = arClass.d2.option3.ToString();
 
         cur = 2;
 
@@ -319,6 +294,8 @@ public class ARManager : MonoBehaviour
 
     public void _Spiracle()
     {
+        PressSFX();
+
         for (int i = 0; i < Objects.Length; i++)
         {
             Objects[i].SetActive(false);
@@ -352,7 +329,6 @@ public class ARManager : MonoBehaviour
 
         dropdown.GetComponent<TMP_Dropdown>().options[1].text = arClass.d3.option1.ToString();
         dropdown.GetComponent<TMP_Dropdown>().options[2].text = arClass.d3.option2.ToString();
-        //dropdown.GetComponent<TMP_Dropdown>().options[3].text = arClass.d3.option3.ToString();
       
         cur = 3;
 
@@ -366,6 +342,8 @@ public class ARManager : MonoBehaviour
 
     public void _MoistSkin()
     {
+        PressSFX();
+
         for (int i = 0; i < Objects.Length; i++)
         {
             Objects[i].SetActive(false);
@@ -399,7 +377,6 @@ public class ARManager : MonoBehaviour
 
         dropdown.GetComponent<TMP_Dropdown>().options[1].text = arClass.d4.option1.ToString();
         dropdown.GetComponent<TMP_Dropdown>().options[2].text = arClass.d4.option2.ToString();
-        //dropdown.GetComponent<TMP_Dropdown>().options[3].text = arClass.d4.option3.ToString();
 
         cur = 4;
 
@@ -409,12 +386,12 @@ public class ARManager : MonoBehaviour
         StartCoroutine(DoStuff());
 
         DefaultCamera();
-
-        //GO.transform.GetChild(0).GetChild(3).GetComponent<Animation>().Play("particleeffecttext");
     }
 
     public void _LungsAndMoistSkin()
     {
+        PressSFX();
+
         for (int i = 0; i < Objects.Length; i++)
         {
             Objects[i].SetActive(false);
@@ -448,7 +425,6 @@ public class ARManager : MonoBehaviour
 
         dropdown.GetComponent<TMP_Dropdown>().options[1].text = arClass.d5.option1.ToString();
         dropdown.GetComponent<TMP_Dropdown>().options[2].text = arClass.d5.option2.ToString();
-        //dropdown.GetComponent<TMP_Dropdown>().options[3].text = arClass.d4.option3.ToString();
 
         cur = 5;
 
@@ -462,16 +438,20 @@ public class ARManager : MonoBehaviour
 
     public void GoToGame()
     {
+        PressSFX();
         SceneManager.LoadScene("Game-Chapter-4");
     }
 
     public void Back()
     {
+        BackSFX();
         SceneManager.LoadScene("Menu");
     }
 
     public void MoreOptions()
     {
+        PressSFX();
+
         if (!isSlide)
         {
             isSlide = true;
@@ -495,6 +475,7 @@ public class ARManager : MonoBehaviour
 
     IEnumerator MenuCollapse()
     {
+        BackSFX();
         isSlide = false;
 
         backgroundImage.GetComponent<Animation>().Play("MoveLeft");
@@ -513,6 +494,7 @@ public class ARManager : MonoBehaviour
 
     public void CameraOne()
     {
+        PressSFX();
         canTouch = true;
 
         for (int i = 0; i < cam.Length; i++)
@@ -524,6 +506,7 @@ public class ARManager : MonoBehaviour
 
     public void CameraTwo()
     {
+        PressSFX();
         canTouch = false;
 
         if (isSelected[0])
@@ -572,32 +555,9 @@ public class ARManager : MonoBehaviour
         }
     }
 
-    public void GoToQuiz()
-    {
-        if (cur == 1) // lungs
-        {
-            SceneManager.LoadScene("Lungs-Question");
-        }
-        else if (cur == 2) // gills
-        {
-            SceneManager.LoadScene("Gills-Question");
-        }
-        else if (cur == 3) // spiracle
-        {
-            SceneManager.LoadScene("Spiracle-Question");
-        }
-        else if (cur == 4) // moist skin
-        {
-            SceneManager.LoadScene("Moist-Skin-Question");
-        }
-        else if (cur == 5) // moist skin
-        {
-            SceneManager.LoadScene("Lungs-And-Moist-Skin-Question");
-        }
-    }
-
     public void CameraThree()
     {
+        PressSFX();
         canTouch = false;
 
         if (isSelected[0])
@@ -655,6 +615,32 @@ public class ARManager : MonoBehaviour
         }
     }
 
+    public void GoToQuiz()
+    {
+        PressSFX();
+
+        if (cur == 1) // lungs
+        {
+            SceneManager.LoadScene("Lungs-Question");
+        }
+        else if (cur == 2) // gills
+        {
+            SceneManager.LoadScene("Gills-Question");
+        }
+        else if (cur == 3) // spiracle
+        {
+            SceneManager.LoadScene("Spiracle-Question");
+        }
+        else if (cur == 4) // moist skin
+        {
+            SceneManager.LoadScene("Moist-Skin-Question");
+        }
+        else if (cur == 5) // moist skin
+        {
+            SceneManager.LoadScene("Lungs-And-Moist-Skin-Question");
+        }
+    }
+
     IEnumerator DoStuff()
     {
         backgroundImage.GetComponent<Animation>().Play("MoveLeft");
@@ -667,5 +653,17 @@ public class ARManager : MonoBehaviour
         }
 
         moreButton.SetActive(true);
+    }
+
+    void PressSFX()
+    {
+        aSource.clip = clip[0];
+        aSource.Play();
+    }
+
+    public void BackSFX()
+    {
+        aSource.clip = clip[1];
+        aSource.Play();
     }
 }

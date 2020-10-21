@@ -49,8 +49,7 @@ public class ItemSlotPlantY5 : MonoBehaviour, IDropHandler
             manager.secondBool[3] && gameObject.CompareTag("True") && button.CompareTag("True") ||
             manager.secondBool[4] && gameObject.CompareTag("False") && button.CompareTag("False"))
         {
-            manager.audioSource.clip = manager.sound[0];
-            manager.audioSource.Play();
+            manager.RightSFX();
 
             transform.GetChild(0).GetComponent<Image>().enabled = true;
             transform.GetChild(0).GetComponent<Image>().sprite = manager.rightWrongSprite[1];
@@ -133,8 +132,7 @@ public class ItemSlotPlantY5 : MonoBehaviour, IDropHandler
            manager.secondBool[3] && gameObject.CompareTag("False") && button.CompareTag("True") ||
            manager.secondBool[4] && gameObject.CompareTag("True") && button.CompareTag("False"))
         {
-            manager.audioSource.clip = manager.sound[1];
-            manager.audioSource.Play();
+            manager.WrongPressSFX();
 
             transform.GetChild(0).GetComponent<Image>().enabled = true;
             transform.GetChild(0).GetComponent<Image>().sprite = manager.rightWrongSprite[0];
