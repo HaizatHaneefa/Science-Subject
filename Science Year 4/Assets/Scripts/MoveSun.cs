@@ -16,30 +16,39 @@ public class MoveSun : MonoBehaviour
     void Start()
     {
         manager = GameObject.FindGameObjectWithTag("GameController").GetComponent<Y5C5PlantAR>();
-     }
+    }
 
     void Update()
     {
+        //Vector2 viewPos = Camera.main.WorldToViewportPoint(new Vector2(Screen.width, Screen.height));
+        //viewPos.x = Mathf.Clamp01(viewPos.x);
+        //sun.transform.position = Camera.main.ViewportToWorldPoint(viewPos);
+
+        //Debug.Log(Camera.main.pixelWidth);
         if (right)
         {
-            if (sun.transform.position.x > 50f)
+            if (sun.transform.position.x > 15)
             {
-                sun.transform.position = new Vector3(50f, sun.transform.position.y, sun.transform.position.z);
+                return;
+                sun.transform.position = new Vector3(15, sun.transform.position.y, sun.transform.position.z);
             }
 
             sun.transform.Translate(Vector3.right * speedModifier * Time.deltaTime);
         }
         else if (left)
         {
-            if (sun.transform.position.x < -45f)
+            if (sun.transform.position.x < -15)
             {
-                sun.transform.position = new Vector3(-45f, sun.transform.position.y, sun.transform.position.z);
+                return;
+                sun.transform.position = new Vector3(-15, sun.transform.position.y, sun.transform.position.z);
 
             }
 
             sun.transform.Translate(Vector3.left * speedModifier * Time.deltaTime);
         }
 
+
+        
         //if (Input.touchCount > 0)
         //{
         //    if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Stationary)

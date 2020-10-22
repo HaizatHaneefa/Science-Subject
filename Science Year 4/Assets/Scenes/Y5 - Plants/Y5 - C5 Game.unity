@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657838, g: 0.49641234, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2681,7 +2681,7 @@ MonoBehaviour:
   pop: {fileID: 1551089401}
   player: {fileID: 1179255870}
   bot: {fileID: 1433116956}
-  tstbool: 
+  tstbool: 000000000000
   isPlaying: 0
   isReady: 0
   aSource: {fileID: 0}
@@ -2691,6 +2691,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 52320e590bf774734a288886eba557ba, type: 3}
   - {fileID: 8300000, guid: cc82217a72fec485ca8a00c0e86dce24, type: 3}
   - {fileID: 8300000, guid: e3fa38bc886f9da4995046e8b5f6e1c2, type: 3}
+  intList: 
 --- !u!4 &292706446
 Transform:
   m_ObjectHideFlags: 0

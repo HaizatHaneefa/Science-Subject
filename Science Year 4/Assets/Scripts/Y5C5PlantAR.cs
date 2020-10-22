@@ -85,7 +85,6 @@ public class Y5C5PlantAR : MonoBehaviour
                 {
                     if (hit.transform.CompareTag("Player"))
                     {
-                        Debug.Log("whateher");
                         hit.transform.parent.parent.parent.GetComponent<Animation>().Play("tah");
                     }
                 }

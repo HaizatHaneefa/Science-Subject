@@ -16,6 +16,8 @@ public class LungsAndMoistSkinManager : MonoBehaviour
 
     int number;
 
+    [SerializeField] private GameObject prevButton, nextButton;
+
     void Start()
     {
         for (int i = 0; i < questions.Length; i++)
@@ -35,6 +37,17 @@ public class LungsAndMoistSkinManager : MonoBehaviour
         {
             reference[i].SetActive(false);
             reference[number].SetActive(true);
+        }
+
+        if (number <= 0)
+        {
+            prevButton.SetActive(false);
+            nextButton.SetActive(true);
+        }
+        else if (number >= 2)
+        {
+            nextButton.SetActive(false);
+            prevButton.SetActive(true);
         }
     }
 

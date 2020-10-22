@@ -376,6 +376,8 @@ public class WorldMapManager : MonoBehaviour
         RightSFX();
         EndPop.SetActive(true);
         EndPop.transform.GetChild(0).GetComponent<Animation>().Play("GameOverPop");
+
+        StartCoroutine(Star());
     }
 
     public void BackToAR()
@@ -426,4 +428,11 @@ public class WorldMapManager : MonoBehaviour
     //        aSource.clip = clip[5];
     //        aSource.Play();
     //    }
+
+    IEnumerator Star()
+    {
+        yield return new WaitForSeconds(.5f);
+        EndPop.transform.GetChild(4).GetComponent<ParticleSystem>().Play();
+
+    }
 }

@@ -34,6 +34,18 @@ public class GillsManager : MonoBehaviour
             reference[i].SetActive(false);
             reference[number].SetActive(true);
         }
+
+        if (number <= 0)
+        {
+            prevButton.SetActive(false);
+            nextButton.SetActive(true);
+        }
+        else if (number >= 3)
+        {
+            nextButton.SetActive(false);
+            prevButton.SetActive(true);
+
+        }
     }
 
     public void Answer()

@@ -35,6 +35,24 @@ public class EarthFunFacts : MonoBehaviour
         exampleImage.enabled = false;
     }
 
+    private void Update()
+    {
+        if (point == 0)
+        {
+
+        }
+        //if (point == 0)
+        //{
+        //    nextButton.gameObject.SetActive(true);
+        //    prevButton.gameObject.SetActive(false);
+        //}
+        //else if (point == 1)
+        //{
+        //    nextButton.gameObject.SetActive(false);
+        //    prevButton.gameObject.SetActive(true);
+        //}
+    }
+
     public void _EarthRotation()
     {
         PressSFX();
@@ -53,6 +71,9 @@ public class EarthFunFacts : MonoBehaviour
             buttons[i].GetComponent<Image>().sprite = buttonSprite[0];
             buttons[0].GetComponent<Image>().sprite = buttonSprite[1];
         }
+
+        prevButton.gameObject.SetActive(false);
+        nextButton.gameObject.SetActive(true);
     }
 
     public void _EarthPath()
@@ -93,6 +114,8 @@ public class EarthFunFacts : MonoBehaviour
             buttons[i].GetComponent<Image>().sprite = buttonSprite[0];
             buttons[2].GetComponent<Image>().sprite = buttonSprite[1];
         }
+        prevButton.gameObject.SetActive(false);
+        nextButton.gameObject.SetActive(true);
     }
 
     public void _Prev()
@@ -106,10 +129,14 @@ public class EarthFunFacts : MonoBehaviour
         if (point == 1)
         {
             explanationtext.text = explanationDialogueText[0].ToString();
+            nextButton.gameObject.SetActive(true);
+            prevButton.gameObject.SetActive(false);
         }
         else if (point == 2)
         {
             explanationtext.text = explanationDialogueText[3].ToString();
+            nextButton.gameObject.SetActive(true);
+            prevButton.gameObject.SetActive(false);
         }
     }
 
@@ -124,10 +151,14 @@ public class EarthFunFacts : MonoBehaviour
         if (point == 1)
         {
             explanationtext.text = explanationDialogueText[1].ToString();
+            nextButton.gameObject.SetActive(false);
+            prevButton.gameObject.SetActive(true);
         }
         else if (point == 2)
         {
             explanationtext.text = explanationDialogueText[4].ToString();
+            nextButton.gameObject.SetActive(false);
+            prevButton.gameObject.SetActive(true);
         }
     }
 

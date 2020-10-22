@@ -50,6 +50,11 @@ public class YearFiveC4AR : MonoBehaviour
 
     public void Next()
     {
+        for (int i = 0; i < animals.Length; i++)
+        {
+            animals[i].SetActive(false);
+        }
+
         PressSFX();
         dummyObject.SetActive(false);
         signBoard.SetActive(true);
@@ -81,6 +86,11 @@ public class YearFiveC4AR : MonoBehaviour
 
     public void Prev()
     {
+        for (int i = 0; i < animals.Length; i++)
+        {
+            animals[i].SetActive(false);
+        }
+
         BackSFX();
         dummyObject.SetActive(false);
         signBoard.SetActive(false);
@@ -114,6 +124,11 @@ public class YearFiveC4AR : MonoBehaviour
 
     public void Characteristics()
     {
+        for (int i = 0; i < animals.Length; i++)
+        {
+            animals[i].SetActive(false);
+        }
+
         PressSFX();
         for (int i = 0; i < buttons.Length; i++)
         {
@@ -145,6 +160,11 @@ public class YearFiveC4AR : MonoBehaviour
 
     public void Behaviours()
     {
+        for (int i = 0; i < animals.Length; i++)
+        {
+            animals[i].SetActive(false);
+        }
+
         PressSFX();
         for (int i = 0; i < buttons.Length; i++)
         {

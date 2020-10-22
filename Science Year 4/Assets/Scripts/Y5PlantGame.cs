@@ -42,6 +42,11 @@ public class Y5PlantGame : MonoBehaviour
     [SerializeField] public AudioSource aSource;
     [SerializeField] public AudioClip[] clip;
 
+    //int[] intArray = new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19 };
+
+    //public List<int> intList;
+    //int index;
+
     void Start()
     {
         aSource = GetComponent<AudioSource>();
@@ -57,7 +62,7 @@ public class Y5PlantGame : MonoBehaviour
 
         pop.SetActive(false);
 
-        LookForQuestion();
+        //LookForQuestion();
 
         tstbool = new bool[6];
         tstbool[0] = true;
@@ -73,6 +78,9 @@ public class Y5PlantGame : MonoBehaviour
         {
             thingsToRemoveFirst[i].SetActive(false);
         }
+
+        //intList.AddRange(intArray);
+
     }
 
     void Update()
@@ -127,6 +135,8 @@ public class Y5PlantGame : MonoBehaviour
             thingsToRemoveFirst[i].SetActive(true);
             thingsToRemoveFirst[0].SetActive(false);
         }
+
+        LookForQuestion();
     }
 
     void LookForQuestion()
@@ -141,6 +151,7 @@ public class Y5PlantGame : MonoBehaviour
         else if (diff != index)
         {
             diff = index;
+
 
             if (index == 0)
             {
@@ -383,8 +394,6 @@ public class Y5PlantGame : MonoBehaviour
                 cur = data.q20.num;
             }
         }
-
-     
     }
 
     void BotSpeed()
@@ -428,7 +437,7 @@ public class Y5PlantGame : MonoBehaviour
 
             player.transform.GetChild(3).GetComponent<Animation>().Play("Go Splat");
 
-            PressSFX();
+            RightSFX();
         }
         else if (cur != index)
         {

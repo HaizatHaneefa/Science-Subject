@@ -9,10 +9,17 @@ public class GameMenuEarth : MonoBehaviour
     [SerializeField] public AudioSource aSource;
     [SerializeField] public AudioClip[] clip;
 
+    [SerializeField] private GameObject[] buttons;
+
     void Start()
     {
         aSource = GetComponent<AudioSource>();
 
+
+        for (int i = 0; i < buttons.Length; i++)
+        {
+            buttons[i].GetComponent<Animation>().Play("SuccessPop");
+        }
     }
 
     public void ToGameOne()

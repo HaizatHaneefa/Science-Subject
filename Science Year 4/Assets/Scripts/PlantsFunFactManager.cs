@@ -23,6 +23,8 @@ public class PlantsFunFactManager : MonoBehaviour
     [SerializeField] private AudioSource aSource;
     [SerializeField] private AudioClip[] clip;
 
+    [SerializeField] private GameObject buttonPrev, buttonNext;
+
     void Start()
     {
         aSource = GetComponent<AudioSource>();
@@ -36,6 +38,21 @@ public class PlantsFunFactManager : MonoBehaviour
         for (int i = 0; i < image.Length; i++)
         {
             image[i].SetActive(false);
+        }
+    }
+
+    private void Update()
+    {
+        if (num == 0)
+        {
+            buttonPrev.SetActive(false);
+            buttonNext.SetActive(true);
+
+        }
+        else if (num == 1)
+        {
+            buttonPrev.SetActive(true);
+            buttonNext.SetActive(false);
         }
     }
 
@@ -107,6 +124,7 @@ public class PlantsFunFactManager : MonoBehaviour
     {
         if (num == 1)
         {
+
             return;
         }
         if (num == 0)

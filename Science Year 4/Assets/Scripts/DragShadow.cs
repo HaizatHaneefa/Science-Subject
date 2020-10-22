@@ -222,6 +222,9 @@ public class DragShadow : MonoBehaviour
             {
                 endPop.SetActive(true);
                 endPop.GetComponent<Animation>().Play("SuccessPop");
+
+
+                StartCoroutine(Stars());
                 RightSFX();
 
                 //levelText.text = "";
@@ -343,5 +346,12 @@ public class DragShadow : MonoBehaviour
     {
         aSource.clip = clip[3];
         aSource.Play();
+    }
+
+    IEnumerator Stars()
+    {
+        yield return new WaitForSeconds(.5f);
+
+        endPop.transform.GetChild(4).GetComponent<ParticleSystem>().Play();
     }
 }
