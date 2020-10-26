@@ -7,8 +7,10 @@ public class FinishRacePlantGame : MonoBehaviour
 {
     public Y5PlantGame manager;
 
+    [SerializeField] private GameObject ps;
     private void Start()
     {
+        ps.SetActive(false);
     }
 
     public void OnTriggerEnter2D(Collider2D collision)
@@ -22,6 +24,9 @@ public class FinishRacePlantGame : MonoBehaviour
         {
             manager.pop.SetActive(true);
             manager.pop.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = "Well done!";
+
+            ps.SetActive(true);
+            ps.GetComponent<ParticleSystem>().Play();
         }
 
         Time.timeScale = 0f;

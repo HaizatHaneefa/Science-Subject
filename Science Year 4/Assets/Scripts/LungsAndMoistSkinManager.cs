@@ -49,6 +49,11 @@ public class LungsAndMoistSkinManager : MonoBehaviour
             nextButton.SetActive(false);
             prevButton.SetActive(true);
         }
+        else if (number > 0 && number < 2)
+        {
+            nextButton.SetActive(true);
+            prevButton.SetActive(true);
+        }
     }
 
     public void NextReference()
@@ -120,8 +125,6 @@ public class LungsAndMoistSkinManager : MonoBehaviour
         example.GetComponent<Animation>().Play("Example_LAMS");
     }
 
-
-
     public void ReturnToAR()
     {
         BackSFX();
@@ -150,8 +153,6 @@ public class LungsAndMoistSkinManager : MonoBehaviour
         {
             but.GetComponent<Button>().enabled = true;
         }
-
-        //cur += 1;
     }
 
     IEnumerator ChangeRedColor()

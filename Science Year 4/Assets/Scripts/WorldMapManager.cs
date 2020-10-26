@@ -10,42 +10,41 @@ public class WorldMapManager : MonoBehaviour
 {
     [SerializeField] private WorldMapData data;
 
-    [SerializeField] public bool[] round;
-    [SerializeField] public bool[] conditionBool;
+    [SerializeField] public bool[] round, conditionBool;
 
-    [SerializeField] public GameObject[] roundStuff;
-    [SerializeField] public GameObject introPop, EndPop, contButton, moreInfo, transitionImage, nextButton;
+    [SerializeField] public GameObject[] roundStuff, indicatorGroups;
+    [SerializeField] public GameObject introPop, EndPop, moreInfo, transitionImage, nextButton;
 
     [SerializeField] private TextMeshProUGUI descriptionText, levelText, titleText;
     [SerializeField] private Image countryImage;
 
     int level;
 
-    [SerializeField] public Sprite[] rightWrongSprite;
-
-    [SerializeField] private Sprite[] countrySprite;
+    [SerializeField] public Sprite[] rightWrongSprite, countrySprite;
 
     [SerializeField] public AudioSource aSource;
     [SerializeField] public AudioClip[] clip;
 
     private void Start()
     {
-        nextButton.SetActive(false);
+        data = GameObject.FindGameObjectWithTag("GameController").GetComponent<WorldMapData>();
 
         aSource = GetComponent<AudioSource>();
 
         transitionImage.SetActive(false);
+        nextButton.SetActive(false);
+        EndPop.SetActive(false);
+        moreInfo.SetActive(false);
+
+        for (int i = 0; i < indicatorGroups.Length; i++)
+        {
+            indicatorGroups[i].SetActive(false);
+        }
 
         level = 1;
         levelText.enabled = false;
 
         introPop.transform.GetChild(0).GetComponent<Animation>().Play("Intro_Anim");
-
-        EndPop.SetActive(false);
-        contButton.SetActive(false);
-        moreInfo.SetActive(false);
-
-        data = GameObject.FindGameObjectWithTag("GameController").GetComponent<WorldMapData>();
 
         round = new bool[6];
         round[0] = true;
@@ -62,6 +61,7 @@ public class WorldMapManager : MonoBehaviour
     public void PlayGame()
     {
         PressSFX();
+
         introPop.SetActive(false);
 
         for (int i = 0; i < roundStuff.Length; i++)
@@ -76,6 +76,7 @@ public class WorldMapManager : MonoBehaviour
     public void MoreInfo(int index)
     {
         PressSFX();
+
         moreInfo.SetActive(true);
         moreInfo.transform.GetChild(0).GetComponent<Animation>().Play("Intro_Anim");
 

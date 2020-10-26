@@ -9,7 +9,7 @@ public class Y5C5PlantAR : MonoBehaviour
 {
     [SerializeField] private MoveSun managerSun;
 
-    [SerializeField] private GameObject batangKayu, root, rootRoot, upArrow, downArrow, zoomImage, mainCam;
+    [SerializeField] private GameObject batangKayu, root, rootRoot, upArrow, downArrow, zoomImage, mainCam, waterArrow;
     [SerializeField] private GameObject quizButton, gameButton;
     [SerializeField] private GameObject[] arrowImage;
 
@@ -61,6 +61,7 @@ public class Y5C5PlantAR : MonoBehaviour
         upArrow.SetActive(false);
         downArrow.SetActive(false);
         zoomImage.SetActive(false);
+        waterArrow.SetActive(false);
     }
 
     public void Arrow()
@@ -102,6 +103,7 @@ public class Y5C5PlantAR : MonoBehaviour
         PressSFX();
         leftImage.gameObject.SetActive(true);
         rightImage.gameObject.SetActive(true);
+        waterArrow.SetActive(false);
 
         instructionText.gameObject.SetActive(true);
         instructionText.text = "Tap on the right or left side of the screen to change the light direction";
@@ -147,6 +149,8 @@ public class Y5C5PlantAR : MonoBehaviour
         PressSFX();
         leftImage.gameObject.SetActive(false);
         rightImage.gameObject.SetActive(false);
+        waterArrow.SetActive(false);
+
 
         instructionText.gameObject.SetActive(false);
 
@@ -187,6 +191,8 @@ public class Y5C5PlantAR : MonoBehaviour
         PressSFX();
         leftImage.gameObject.SetActive(false);
         rightImage.gameObject.SetActive(false);
+        waterArrow.SetActive(true);
+        waterArrow.transform.GetChild(0).GetComponent<Animation>().Play("Water-C4Y4-Anim Arrow");
 
         instructionText.gameObject.SetActive(false);
 
@@ -233,6 +239,7 @@ public class Y5C5PlantAR : MonoBehaviour
         PressSFX();
         leftImage.gameObject.SetActive(false);
         rightImage.gameObject.SetActive(false);
+        waterArrow.SetActive(false);
 
         instructionText.gameObject.SetActive(true);
         instructionText.text = "Tap on the Mimosa leaves to see the response";

@@ -71,7 +71,7 @@ public class EarthQuiz : MonoBehaviour
         if (round[3])
         {
             StartCoroutine(ChangeColor());
-            PressSFX();
+            RightSFX();
         }
         else if (round[0] || round[1] || round[2] || round[4])
         {
