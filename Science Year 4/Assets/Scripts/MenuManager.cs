@@ -294,7 +294,7 @@ public class MenuManager : MonoBehaviour
         else if (l == 7)
         {
             // speed year 6
-            SceneManager.LoadScene("");
+            SceneManager.LoadScene("Y6 - Speed AR");
 
             PlayerPrefs.SetInt("C4", 0);
             PlayerPrefs.SetInt("C5", 0);
@@ -363,7 +363,7 @@ public class MenuManager : MonoBehaviour
         else if (l == 7)
         {
             // y6 speed
-            SceneManager.LoadScene(""); // speed fun fact
+            SceneManager.LoadScene("Y6 - Speed Fun Fact"); // speed fun fact
 
             PlayerPrefs.SetInt("C4", 0);
             PlayerPrefs.SetInt("C5", 0);

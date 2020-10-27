@@ -136,6 +136,21 @@ public class SpeedARManager : MonoBehaviour
         }
     }
 
+    public void _centi()
+    {
+
+    }
+
+    public void _metre()
+    {
+
+    }
+
+    public void _kilo()
+    {
+
+    }
+
     public void TimeIsSet()
     {
         PressSFX();

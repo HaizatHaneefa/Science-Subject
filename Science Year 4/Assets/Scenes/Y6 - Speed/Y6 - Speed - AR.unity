@@ -1370,7 +1370,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 381083080}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 56380072}
+        m_MethodName: _kilo
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &381083080
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1489,7 +1500,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 453233624}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 56380072}
+        m_MethodName: _centi
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &453233624
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4722,7 +4744,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1792542639}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 56380072}
+        m_MethodName: _metre
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1792542639
 MonoBehaviour:
   m_ObjectHideFlags: 0
