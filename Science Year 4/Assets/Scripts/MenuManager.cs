@@ -300,6 +300,15 @@ public class MenuManager : MonoBehaviour
             PlayerPrefs.SetInt("C5", 0);
             PlayerPrefs.SetInt("C6", 1);
         }
+        else if (l == 8)
+        {
+            // speed year 6
+            SceneManager.LoadScene("Y6 - Eclipse AR");
+
+            PlayerPrefs.SetInt("C4", 0);
+            PlayerPrefs.SetInt("C5", 0);
+            PlayerPrefs.SetInt("C6", 1);
+        }
     }
 
     public void YesFuncFact()
