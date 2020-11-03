@@ -4,7 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using UnityEditor.Experimental.GraphView;
+using UnityEngine.EventSystems;
 
 public class EclipseARManager : MonoBehaviour
 {
@@ -18,7 +18,7 @@ public class EclipseARManager : MonoBehaviour
     [SerializeField] private Button moreExplanationButton, nextButton;
 
     [SerializeField] private GameObject[] moreInfo;
-    [SerializeField] private GameObject popup, slider, sliderBut, blueborder;
+    [SerializeField] private GameObject popup, slider, sliderBut, blueborder, eclipseModel, quizObject, sliderImage;
 
     [SerializeField] private AudioSource aSource;
     [SerializeField] private AudioClip[] clip;
@@ -45,6 +45,8 @@ public class EclipseARManager : MonoBehaviour
         popup.gameObject.SetActive(false);
         sliderBut.SetActive(false);
         blueborder.SetActive(false);
+        eclipseModel.SetActive(false);
+        quizObject.SetActive(false);
 
         cur = new int[2];
     }
@@ -54,6 +56,7 @@ public class EclipseARManager : MonoBehaviour
         
     }
 
+    // -------------------------- solar and lunar eclipse explanation buttons --------------------------- //
     public void _penumbral()
     {
         PressSFX();
@@ -134,6 +137,7 @@ public class EclipseARManager : MonoBehaviour
             blueborder.SetActive(false);
         }
     }
+    // -------------------------- end of solar and lunar eclipse explanation buttons --------------------------- //
 
     public void back()
     {
@@ -160,6 +164,9 @@ public class EclipseARManager : MonoBehaviour
         moreExplanationButton.gameObject.SetActive(false);
 
         titleText.text = "Type of Eclipse";
+        quizObject.SetActive(false);
+        sliderImage.SetActive(true);
+        eclipseModel.SetActive(false);
     }
 
     public void NextButton()
@@ -226,6 +233,9 @@ public class EclipseARManager : MonoBehaviour
             {
                 clickables[i].gameObject.SetActive(false);
                 // show the eclipse model
+                eclipseModel.SetActive(true);
+                quizObject.SetActive(true);
+                sliderImage.SetActive(false);
             }
         }
     }
@@ -255,6 +265,22 @@ public class EclipseARManager : MonoBehaviour
             popup.SetActive(false);
         }
     }
+    // -------------- eclipse model ------------------- //
+    public void OpenEclipseInfo()
+    {
+        GameObject go = EventSystem.current.currentSelectedGameObject;
+
+        go.transform.parent.GetChild(1).gameObject.SetActive(true);
+    }
+
+    public void CloseEclipse()
+    {
+        GameObject go = EventSystem.current.currentSelectedGameObject;
+
+        go.transform.parent.gameObject.SetActive(false);
+    }
+
+    // ---------------- end eclipse model ------------------- //
 
     public void SliderAnimation(int index)
     {
@@ -270,7 +296,7 @@ public class EclipseARManager : MonoBehaviour
             sliderBut.SetActive(false);
         }
     }
-
+    // -------------------------- coroutines -------------------------- //
     IEnumerator Delay()
     {
         slider.GetComponent<Animation>().Play("HideSlide Anim");
@@ -279,7 +305,9 @@ public class EclipseARManager : MonoBehaviour
 
         sliderBut.SetActive(true);
     }
+    // ---------------------------- end of coroutines ----------------------- //
 
+    // ----------------------- generic button functions --------------------- //
     public void BackToMenu()
     {
         BackSFX();
@@ -287,6 +315,15 @@ public class EclipseARManager : MonoBehaviour
         SceneManager.LoadScene("Menu");
     }
 
+    public void ToQuiz()
+    {
+        PressSFX();
+
+        SceneManager.LoadScene("Y6 - Eclipse Quiz");
+    }
+    // ------------------- end of generic button functions ------------------- //
+
+    // ----------------------------- SFX -------------------------- //
     public void PressSFX() // button press yes
     {
         aSource.clip = clip[0];
@@ -322,4 +359,5 @@ public class EclipseARManager : MonoBehaviour
         aSource.clip = clip[5];
         aSource.Play();
     }
+    // ------------------------ end of SFX ---------------------------------------- //
 }

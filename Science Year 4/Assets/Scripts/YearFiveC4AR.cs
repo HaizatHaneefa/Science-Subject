@@ -225,6 +225,27 @@ public class YearFiveC4AR : MonoBehaviour
                 animals[2].GetComponent<Animation>().Play("turtle-hiding-shell");
             }
         }
+        else if (index == 3)
+        {
+            for (int i = 0; i < animals.Length; i++)
+            {
+                animals[i].SetActive(false);
+                animals[3].SetActive(true);
+                animals[4].SetActive(true);
+
+                animals[4].GetComponent<Animation>().Play("harimau anim");
+                animals[3].GetComponent<Animation>().Play("lebah-sengat anim");
+            }
+        }
+        else if (index == 4)
+        {
+            for (int i = 0; i < animals.Length; i++)
+            {
+                animals[i].SetActive(false);
+                animals[5].SetActive(true);
+                animals[5].GetComponent<Animation>().Play("tupai-anim");
+            }
+        }
         else if (index != 0 || index != 1 || index != 2)
         {
             dummyObject.SetActive(true);
