@@ -28,7 +28,6 @@ public class ItemSlotPlantY5 : MonoBehaviour, IDropHandler
         dialogue[1] = "Some plants have sharp thorns to help them absorb more water.";
         dialogue[2] = "In hot regions, plants need to survive and protect themselves from drying surroundings.";
         dialogue[3] = "Pumpkin plants do not have any characteristics to protect themselves from enemies.";
-
     }
 
     public void OnDrop(PointerEventData eventData)

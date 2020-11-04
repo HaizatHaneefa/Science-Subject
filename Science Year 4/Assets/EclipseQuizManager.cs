@@ -17,12 +17,23 @@ public class EclipseQuizManager : MonoBehaviour
     [SerializeField] private AudioSource aSource;
     [SerializeField] private AudioClip[] clip;
 
+    [SerializeField] public GameObject endpop, secondSection;
+    public bool[] secondBool;
+
+    [SerializeField] public Sprite[] rightWrongSprite;
+
     int cur;
 
     List<GameObject> l = new List<GameObject>();
 
     void Start()
     {
+        endpop.SetActive(false);
+        secondSection.SetActive(false);
+
+        secondBool = new bool[2];
+        secondBool[0] = true;
+
         aSource = GetComponent<AudioSource>();
 
         for (int i = 0; i < questionGroup.Length; i++)
@@ -53,6 +64,12 @@ public class EclipseQuizManager : MonoBehaviour
         SceneManager.LoadScene("Menu");
     }
 
+    public void Restart()
+    {
+        BackSFX();
+        SceneManager.LoadScene("Y6 - Eclipse Quiz");
+    }
+
     IEnumerator GetReaction()
     {
         Image img = EventSystem.current.currentSelectedGameObject.GetComponent<Image>();
@@ -79,19 +96,29 @@ public class EclipseQuizManager : MonoBehaviour
 
         img.color = Color.white;
 
-        if (img.gameObject.tag == "True")
+        if (cur == 10)
         {
-            for (int i = 0; i < questionGroup.Length; i++)
-            {
-                questionGroup[i].SetActive(false);
-                questionGroup[cur].SetActive(true);
-                questionGroup[cur].GetComponent<Animation>().Play("SuccessPop");
-            }
-        }
+            questionGroup[9].SetActive(false);
 
-        foreach (GameObject go in l)
+            secondSection.SetActive(true);
+            // display true false section
+        }
+        else if (cur != 10)
         {
-            go.GetComponent<Button>().interactable = true;
+            if (img.gameObject.tag == "True")
+            {
+                for (int i = 0; i < questionGroup.Length; i++)
+                {
+                    questionGroup[i].SetActive(false);
+                    questionGroup[cur].SetActive(true);
+                    questionGroup[cur].GetComponent<Animation>().Play("SuccessPop");
+                }
+            }
+
+            foreach (GameObject go in l)
+            {
+                go.GetComponent<Button>().interactable = true;
+            }
         }
     }
 
