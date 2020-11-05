@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EclipseFunFactManager : MonoBehaviour
 {
@@ -13,6 +14,8 @@ public class EclipseFunFactManager : MonoBehaviour
 
     int cur;
 
+    bool isShowing;
+
     void Start()
     {
         aSource = GetComponent<AudioSource>();
@@ -22,39 +25,52 @@ public class EclipseFunFactManager : MonoBehaviour
             order[i].SetActive(false);
             order[0].SetActive(true);
         }
+
+        //for (int i = 0; i < but.Length; i++)
+        //{
+        //    but[i].SetActive(false);
+        //}
     }
 
     private void Update()
     {
-        for (int i = 0; i < order.Length; i++)
+        if (!isShowing)
         {
-            order[i].SetActive(false);
-            order[cur].SetActive(true);
-        }
+            for (int i = 0; i < order.Length; i++)
+            {
+                order[i].SetActive(false);
+                order[cur].SetActive(true);
+            }
 
-        if (cur == 0)
+            if (cur == 0)
+            {
+                prevBut.SetActive(false);
+                nextBut.SetActive(true);
+            }
+            else if (cur == 9)
+            {
+                prevBut.SetActive(true);
+                nextBut.SetActive(false);
+            }
+            else if (cur != 0 && cur != 10)
+            {
+                prevBut.SetActive(true);
+                nextBut.SetActive(true);
+            }
+        }
+        else if (isShowing)
         {
             prevBut.SetActive(false);
-            nextBut.SetActive(true);
-        }
-        else if (cur == 10)
-        {
-            prevBut.SetActive(true);
             nextBut.SetActive(false);
-        }
-        else if (cur != 0 && cur != 10)
-        {
-            prevBut.SetActive(true);
-            nextBut.SetActive(true);
         }
 
         if (cur <= 0)
         {
             cur = 0;
         }
-        else if (cur >= 10)
+        else if (cur >= 9)
         {
-            cur = 10;
+            cur = 9;
         }
     }
 
@@ -72,13 +88,28 @@ public class EclipseFunFactManager : MonoBehaviour
 
 
     public void _ShowImage()
-    { 
-    // show iamge of the eclpise
+    {
+        isShowing = true;
+        for (int i = 0; i < order.Length; i++)
+        {
+            order[i].SetActive(false);
+            order[10].SetActive(true);
+        }
     }
 
     public void _ReturnFromImage()
-    { 
-    // go back from elcipse
+    {
+        isShowing = false;
+        for (int i = 0; i < order.Length; i++)
+        {
+            order[i].SetActive(false);
+            order[5].SetActive(true);
+        }
+    }
+
+    public void Menu()
+    {
+        SceneManager.LoadScene("Menu");
     }
 
     public void PressSFX() // button press yes

@@ -44,8 +44,8 @@ public class YearFiveC4AR : MonoBehaviour
         }
 
         buttons[3].gameObject.SetActive(false);
-        buttons[4].gameObject.SetActive(false);
-        buttons[5].gameObject.SetActive(false);
+        //buttons[4].gameObject.SetActive(false);
+        //buttons[5].gameObject.SetActive(false);
     }
 
     public void Next()
@@ -244,6 +244,33 @@ public class YearFiveC4AR : MonoBehaviour
                 animals[i].SetActive(false);
                 animals[5].SetActive(true);
                 animals[5].GetComponent<Animation>().Play("tupai-anim");
+            }
+        }
+        else if (index == 5)
+        {
+            for (int i = 0; i < animals.Length; i++)
+            {
+                animals[i].SetActive(false);
+                animals[6].SetActive(true);
+
+                Animation anim = animals[6].GetComponent<Animation>();
+                anim["harimau-lari anim"].speed = 2.0f;
+                //anim.Play();
+                animals[6].GetComponent<Animation>().Play("harimau-lari anim");
+                //animals[6].GetComponent<Animation>().
+            }
+        }
+        else if (index == 6)
+        {
+            for (int i = 0; i < animals.Length; i++)
+            {
+                animals[i].SetActive(false);
+                animals[7].SetActive(true);
+
+                foreach (Transform o in animals[7].transform)
+                {
+                    o.GetComponent<Animation>().Play("penguin-taktahubuatapa anim");
+                }
             }
         }
         else if (index != 0 || index != 1 || index != 2)
