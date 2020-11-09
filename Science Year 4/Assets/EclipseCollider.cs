@@ -14,11 +14,25 @@ public class EclipseCollider : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
+        if (other.CompareTag("Player"))
+        {
+            manager.confirmButton.gameObject.SetActive(true);
+        }
         // pop a button
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        manager.confirmButton.gameObject.SetActive(false);
     }
 
     void Update()
     {
         
+    }
+
+    public void Confirm()
+    {
+        gameObject.transform.GetChild(0).gameObject.SetActive(false);
     }
 }

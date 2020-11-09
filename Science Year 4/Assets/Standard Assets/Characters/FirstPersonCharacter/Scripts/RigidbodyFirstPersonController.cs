@@ -187,13 +187,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_Jump = false;
         }
 
-
         private float SlopeMultiplier()
         {
             float angle = Vector3.Angle(m_GroundContactNormal, Vector3.up);
             return movementSettings.SlopeCurveModifier.Evaluate(angle);
         }
-
 
         private void StickToGroundHelper()
         {
@@ -209,7 +207,6 @@ namespace UnityStandardAssets.Characters.FirstPerson
             }
         }
 
-
         private Vector2 GetInput()
         {
             Vector2 input = new Vector2
@@ -220,7 +217,6 @@ namespace UnityStandardAssets.Characters.FirstPerson
 			movementSettings.UpdateDesiredTargetSpeed(input);
             return input;
         }
-
 
         private void RotateView()
         {
