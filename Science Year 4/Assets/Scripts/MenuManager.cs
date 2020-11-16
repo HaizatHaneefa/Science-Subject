@@ -220,6 +220,10 @@ public class MenuManager : MonoBehaviour
         {
             descriptionText.text = description[6].ToString();
         }
+        else if (l == 8) // y6 eclipse
+        {
+            descriptionText.text = description[7].ToString();
+        }
 
         arOrFunFactBackground.SetActive(true);
         arOrFunFactBackground.GetComponent<Animation>().Play("Menu_ConfirmPop");
@@ -378,6 +382,15 @@ public class MenuManager : MonoBehaviour
             PlayerPrefs.SetInt("C5", 0);
             PlayerPrefs.SetInt("C6", 1);
         }
+        else if (l == 8)
+        {
+            // y6 speed
+            SceneManager.LoadScene("Y6 - Eclipse Fun Fact"); // speed fun fact
+
+            PlayerPrefs.SetInt("C4", 0);
+            PlayerPrefs.SetInt("C5", 0);
+            PlayerPrefs.SetInt("C6", 1);
+        }
     }
 
     public void YesGame()
@@ -443,6 +456,16 @@ public class MenuManager : MonoBehaviour
             // y6 speed
             //SceneManager.LoadScene("Y6 - Speed Race"); // speed fun fact
             SceneManager.LoadScene("Loading Scene");
+
+            PlayerPrefs.SetInt("C4", 0);
+            PlayerPrefs.SetInt("C5", 0);
+            PlayerPrefs.SetInt("C6", 1);
+        }
+        else if (l == 8)
+        {
+            // y6 speed
+            //SceneManager.LoadScene("Y6 - Speed Race"); // speed fun fact
+            SceneManager.LoadScene("Y6 - Eclipse Game");
 
             PlayerPrefs.SetInt("C4", 0);
             PlayerPrefs.SetInt("C5", 0);

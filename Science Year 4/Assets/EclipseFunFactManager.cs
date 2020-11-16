@@ -11,7 +11,7 @@ public class EclipseFunFactManager : MonoBehaviour
 
     [SerializeField] private AudioSource aSource;
     [SerializeField] private AudioClip[] clip;
-
+   
     int cur;
 
     bool isShowing;
