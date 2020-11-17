@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01befd1071df4914d9403442111e87b7, type: 3}
+  m_Name: Breathing 4
+  m_EditorClassIdentifier: 
+  avatar: {fileID: 21300000, guid: a330f83e5766ede4bb496c1f5a0acbf1, type: 3}
+  localizations:
+  - language: English
+    text: While inhaling, the amount of Oxygen (O<sub>2</sub>) gas is much greater
+      than Carbon Dioxide (CO<sub>2</sub>) gas in the inhaled air
+    voiceover: {fileID: 8300000, guid: be80bacd0a9e5f8409fd2d4c4501716b, type: 3}
+  - language: Malaysian
+    text: Semasa menarik nafas, kandungan gas oksigen (O<sub>2</sub>)lebih banyak
+      daripada gas karbon dioksida (CO<sub>2</sub>) yang disedut masuk ke dalam badan
+    voiceover: {fileID: 8300000, guid: cbfd75f48d7c1934e86b43c4824c0c51, type: 3}
+  fallbackText: While inhaling, the amount of Oxygen gas is much greater than Carbon
+    Dioxide gas in the inhaled air
+  fallbackVoiceover: {fileID: 8300000, guid: be80bacd0a9e5f8409fd2d4c4501716b, type: 3}
+  next: {fileID: 11400000, guid: bbdf650d26bdcc843a3c89643bf4e743, type: 2}

@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01befd1071df4914d9403442111e87b7, type: 3}
+  m_Name: Breathing 16
+  m_EditorClassIdentifier: 
+  avatar: {fileID: 21300000, guid: a330f83e5766ede4bb496c1f5a0acbf1, type: 3}
+  localizations:
+  - language: English
+    text: Press the inhale and exhale button slowly, or quickly, and see changes
+      in breathing rate
+    voiceover: {fileID: 8300000, guid: 308a6426409cd9341b41ddcbc471bab6, type: 3}
+  - language: Malaysian
+    text: Tekan butang tarik nafas dan hembus nafas secara perlahan lahan atau secara
+      pantas dan lihat perubahan kadar pernafasan
+    voiceover: {fileID: 8300000, guid: 7c0f17fe1cfc0a841b11416f6d1b2496, type: 3}
+  fallbackText: Press the inhale and exhale button slowly, or quickly, and see changes
+    in breathing rate
+  fallbackVoiceover: {fileID: 8300000, guid: 308a6426409cd9341b41ddcbc471bab6, type: 3}
+  next: {fileID: 0}
