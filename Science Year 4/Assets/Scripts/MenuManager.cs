@@ -19,7 +19,7 @@ public class MenuManager : MonoBehaviour
 
     [SerializeField] private GameObject[] chapter;
     [SerializeField] private GameObject[] itemsInBackground;
-    [SerializeField] private GameObject blocker;
+    [SerializeField] private GameObject blocker, normalPop, anatomyPop;
     [SerializeField] private GameObject bar;
 
     public TMP_Dropdown dropdown;
@@ -34,6 +34,8 @@ public class MenuManager : MonoBehaviour
         Time.timeScale = 1;
 
         blocker.SetActive(false);
+        normalPop.SetActive(false);
+        anatomyPop.SetActive(false);
 
         if (PlayerPrefs.GetInt("CheckMenu") == 1)
         {
@@ -192,6 +194,17 @@ public class MenuManager : MonoBehaviour
 
         l = level;
 
+        if (l == 1)
+        {
+            normalPop.SetActive(false);
+            anatomyPop.SetActive(true);
+        }
+        else if (l != 1)
+        {
+            normalPop.SetActive(true);
+            anatomyPop.SetActive(false);
+        }
+
         if (l == 1) // anatomy
         {
             descriptionText.text = description[0].ToString();
@@ -244,7 +257,7 @@ public class MenuManager : MonoBehaviour
         if (l == 1)
         {
             // anatomy
-            //SceneManager.LoadScene("Y5 - C4 AR");
+            SceneManager.LoadScene("Homepage");
 
             PlayerPrefs.SetInt("C4", 1);
             PlayerPrefs.SetInt("C5", 0);

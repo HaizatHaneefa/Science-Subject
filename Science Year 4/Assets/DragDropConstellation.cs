@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using TMPro;
+using UnityEngine.UI;
 
 public class DragDropConstellation : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndDragHandler, IDragHandler
 {
@@ -15,6 +16,8 @@ public class DragDropConstellation : MonoBehaviour, IPointerDownHandler, IBeginD
     public Transform startPos;
 
     ConstellationQuiz manager;
+
+    [SerializeField] public Sprite[] sprite;
 
     private void Awake()
     {
@@ -34,6 +37,8 @@ public class DragDropConstellation : MonoBehaviour, IPointerDownHandler, IBeginD
         transform.GetChild(0).GetComponent<TextMeshProUGUI>().enabled = false;
 
         rectTransform.position = eventData.pointerPressRaycast.worldPosition; // this is it!
+
+        GetComponent<Image>().sprite = sprite[1];
     }
 
     public void OnPointerDown(PointerEventData eventData)
@@ -45,10 +50,12 @@ public class DragDropConstellation : MonoBehaviour, IPointerDownHandler, IBeginD
         canvasGroup.alpha = 1f;
         canvasGroup.blocksRaycasts = true;
 
-        rectTransform.sizeDelta = new Vector2(750, 120);
+        rectTransform.sizeDelta = new Vector2(850, 150);
         transform.position = startPos.position;
 
         transform.GetChild(0).GetComponent<TextMeshProUGUI>().enabled = true;
+
+        GetComponent<Image>().sprite = sprite[0];
     }
 
     public void OnDrag(PointerEventData eventData)

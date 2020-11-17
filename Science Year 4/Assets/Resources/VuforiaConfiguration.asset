@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: VuforiaConfiguration
   m_EditorClassIdentifier: 
   vuforia:
-    vuforiaLicenseKey: 
-    ufoLicenseKey: QVk0RndtMy8vLy8vQUFBQUtEOXFwMHdRSGtNc3VVaWpYUjJ0eDFNenZUS2oyc1BHRUo0bWRVSk95cGJLY2p6a25GTHB3QTE1bmtmRmdHRXpjVWlJbi9PcXJLY1JIYk1XSTdPbithSVlZN1VYUVEzaXVibWlvVkRQUUJXU0d1UzgreWIrUEFuenk1OVd3ejlIQVV3QXdIa29RUHNxbUo3RGMzOElkZlR3TUw0aGZhcVA5NVc1dDllRi9Pb2tqTjloYStJRHNoQStJRERiNkxYLzJHUFZBaDEwZktoTTJ1MmVzQldLOUFEWFNvWnhkUzFCaEtqQmJRWTcvWlNRY25mVUw4MmFGMStFMjR5OHNHU3FPcllJeWI4NGZvN0hIalZwTHBSNGQra05oTmo1UE9EL05CSUNrb3dITkVoNGRhWEF4ckRSeWw0OFNadjgwcTJ4LzFFWlduRythbVVlOTFMVU9Cdy95NGVDQ1ZpNkJqMmVXTElmcm12RkFFays=
+    vuforiaLicenseKey: AV2Wg6r/////AAABmc7/5p96yEsclpsdNnBUymtLkgdJMj8hlVGQDd58xzgE4bbdLbtyHTof4YlwUWFjV5lAVzfbwp/kUQDg9ZtpN3JyhL2MTnrTCNlZeHoKIZruXeYasPawDM8WBkIae2EO/xQFIJjMlMAd938ClHTwrpRSMtQkDY3P5hDiulyr30MYqMXBlMrt5yABB0t79UQOjlIWT5uSZ3pLRkvpm8S+3qNEbup6zKz2mKh3NxDpQiSk31eiXBFOGdZHStN0BU4jgFHhS4yaBl1S2jXdC2xa+H88O/L394jxkHL4D6im+RWjvgDtxkzDiH1925bDZ0N23EIoD37b0lSYwKlyVtaiQM3BT3GMj54jeUqn/MlFXILl
+    ufoLicenseKey: QWVSR2t1ei8vLy8vQUFBQUtKbFlURnlVZUVVQ2pRc0NsTzFXaCtCNFJIeXZwNVJ5M0cxRnBaQ244VlZvMnZ1U0E2d3NleFVabDVuTzh3RlhSaEhuZnZaRjhGd1hWMnZZdHVId29Vc0FZc3l5K1VCdUFPZkZVZkdndlI1bG02QnRPUlBUWVpZVFcyVGFsU2VXU1lFRDlDZW1YdnJqTWJEanNHU3JER1ZYYXUwRUFuRDAwWFVpM1Rpelh4dFlyd2Q4aTNXaXh5Nk5HdTl4S1RrenZnSFRaMnY4OWE4UzQzajFIZlJWV3NoNWZtRFFIR21QcmtVOEJEdGh4OWVxc2RsOHNRTVJYc2M4b2NZREJCVEEvNXdoYkdKSXZDVEYxRmpmL2hodmNsZEJxM2htRGhld0Jhb2tDNityWEJCcDc0ekpTZWI5b0lleFZnSzBzZEhHbmhMdmZpZFFyZDFCUEk4dGVMQkhEZHFDV0lidlEzb3VCa3NaNXNlVUZVOHE=
     delayedInitialization: 0
     cameraDeviceModeSetting: -1
     maxSimultaneousImageTargets: 1
@@ -22,8 +22,8 @@ MonoBehaviour:
     virtualSceneScaleFactor: 1
     useDelayedLoadingObjectTargets: 0
     modelTargetRecoWhileExtendedTracked: 1
-    version: 9.4.6
-    eulaAcceptedVersions: '{"Values":["8.5","8.3","9.4","8.1","8.6","9.0","9.2","9.1","9.3","9.5"]}'
+    version: 9.5.4
+    eulaAcceptedVersions: '{"Values":["8.1","8.3","8.6","9.0","9.2","9.1","9.3","9.5","8.5","9.4"]}'
   database:
     disableModelExtraction: 0
   videoBackground:

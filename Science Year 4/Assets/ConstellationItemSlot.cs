@@ -19,13 +19,13 @@ public class ConstellationItemSlot : MonoBehaviour, IDropHandler
 
         dialogue = new string[7];
 
-        dialogue[0] = "Constellation help people find directions and recognise seasons";
-        dialogue[1] = "There are 89 constellations in space";
-        dialogue[2] = "People in the Northern Hemisphere see the same constellations as the people in the Southern Hemisphere";
-        dialogue[3] = "Constellations may be only visible during certain seasons due to the Earth's orbit around the Sun";
-        dialogue[4] = "Ursa Major is 'Great Bear' in Latin and is one of the brightest constellations";
-        dialogue[5] = "Southern Cross is formed of four stars which makes it a kite-shaped constellation";
-        dialogue[6] = "Southern Cross is formed of four stars which makes it a kite-shaped constellation";
+        //dialogue[0] = "Constellation help people find directions and recognise seasons";
+        dialogue[0] = "There are 89 constellations in space";
+        dialogue[1] = "People in the Northern Hemisphere see the same constellations as the people in the Southern Hemisphere";
+        dialogue[2] = "Constellations may be only visible during certain seasons due to the Earth's orbit around the Sun";
+        dialogue[3] = "Ursa Major is 'Great Bear' in Latin and is one of the brightest constellations";
+        dialogue[4] = "Southern Cross is formed of four stars which makes it a kite-shaped constellation";
+        //dialogue[5] = "Southern Cross is formed of four stars which makes it a kite-shaped constellation";
     }
 
     public void OnDrop(PointerEventData eventData)
@@ -82,31 +82,27 @@ public class ConstellationItemSlot : MonoBehaviour, IDropHandler
             }
             else if (manager.secondBool[3])
             {
-                manager.secondBool[4] = true;
                 manager.secondBool[3] = false;
+                manager.secondBool[4] = true;
                 button.tag = "False";
 
                 button.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = dialogue[3].ToString();
             }
             else if (manager.secondBool[4])
             {
-                manager.secondBool[4] = true;
-                manager.secondBool[3] = false;
+                manager.secondBool[4] = false;
+                manager.secondBool[5] = true;
                 button.tag = "True";
 
-                button.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = dialogue[3].ToString();
+                button.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = dialogue[4].ToString();
             }
             else if (manager.secondBool[5])
             {
-                manager.secondBool[4] = true;
-                manager.secondBool[3] = false;
+                manager.secondBool[5] = false;
+                manager.secondBool[6] = true;
                 button.tag = "True";
 
-                button.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = dialogue[3].ToString();
-            }
-            else if (manager.secondBool[6])
-            {
-                // end of the line
+                //button.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = dialogue[5].ToString();
             }
 
             button.SetActive(false);
@@ -118,6 +114,8 @@ public class ConstellationItemSlot : MonoBehaviour, IDropHandler
             if (manager.secondBool[6])
             {
                 button.SetActive(false);
+                manager.endpop.SetActive(true);
+                manager.endpop.transform.GetChild(0).GetComponent<Animation>().Play("SuccessPop");
             }
             else if (!manager.secondBool[6])
             {
@@ -128,19 +126,20 @@ public class ConstellationItemSlot : MonoBehaviour, IDropHandler
 
             button.GetComponent<CanvasGroup>().alpha = 1f;
             button.GetComponent<CanvasGroup>().blocksRaycasts = true;
+            button.GetComponent<Image>().sprite = button.GetComponent<DragDropConstellation>().sprite[0];
 
             gameObject.GetComponent<Image>().raycastTarget = true;
 
-            button.GetComponent<RectTransform>().sizeDelta = new Vector2(700, 160);
+            button.GetComponent<RectTransform>().sizeDelta = new Vector2(850, 150);
             button.transform.GetChild(0).GetComponent<TextMeshProUGUI>().enabled = true;
         }
-        else if (manager.secondBool[0] && gameObject.CompareTag("True") && button.CompareTag("False") ||
-           manager.secondBool[1] && gameObject.CompareTag("False") && button.CompareTag("True") ||
-           manager.secondBool[2] && gameObject.CompareTag("False") && button.CompareTag("True") ||
-           manager.secondBool[3] && gameObject.CompareTag("True") && button.CompareTag("False") ||
-           manager.secondBool[4] && gameObject.CompareTag("False") && button.CompareTag("True") ||
-           manager.secondBool[5] && gameObject.CompareTag("True") && button.CompareTag("False") ||
-           manager.secondBool[6] && gameObject.CompareTag("True") && button.CompareTag("False"))
+        else if (manager.secondBool[0] && gameObject.CompareTag("False") && button.CompareTag("True") ||
+           manager.secondBool[1] && gameObject.CompareTag("True") && button.CompareTag("False") ||
+           manager.secondBool[2] && gameObject.CompareTag("True") && button.CompareTag("False") ||
+           manager.secondBool[3] && gameObject.CompareTag("False") && button.CompareTag("True") ||
+           manager.secondBool[4] && gameObject.CompareTag("True") && button.CompareTag("False") ||
+           manager.secondBool[5] && gameObject.CompareTag("False") && button.CompareTag("True") ||
+           manager.secondBool[6] && gameObject.CompareTag("False") && button.CompareTag("True"))
         {
             manager.WrongPressSFX();
 

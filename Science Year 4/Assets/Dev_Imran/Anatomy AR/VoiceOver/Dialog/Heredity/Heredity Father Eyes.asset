@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01befd1071df4914d9403442111e87b7, type: 3}
+  m_Name: Heredity Father Eyes
+  m_EditorClassIdentifier: 
+  avatar: {fileID: 21300000, guid: a330f83e5766ede4bb496c1f5a0acbf1, type: 3}
+  localizations:
+  - language: English
+    text: The child inherits the color of the eyes from the father
+    voiceover: {fileID: 8300000, guid: 9d2475a6e0df0564680caf72cbd63568, type: 3}
+  - language: Malaysian
+    text: Anak mewarisi warna mata daripada ayah
+    voiceover: {fileID: 8300000, guid: cd8450294176eed44859e4235f2e7686, type: 3}
+  fallbackText: The child inherits the color of the eyes from the father
+  fallbackVoiceover: {fileID: 8300000, guid: 9d2475a6e0df0564680caf72cbd63568, type: 3}
+  next: {fileID: 0}

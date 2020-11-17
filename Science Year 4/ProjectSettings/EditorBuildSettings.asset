@@ -6,14 +6,14 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Y6 - Eclipse/Y6 - Eclipse Game.unity
-    guid: 479abfedb7fdc884d8e0f2c8f59ad2ee
-  - enabled: 1
     path: Assets/Scenes/Intro.unity
     guid: eefef97a0c13c449cad42cf953f1f950
   - enabled: 1
     path: Assets/Scenes/Menu.unity
     guid: 33464c5ea38e54ab5b456e2b9dac0a8f
+  - enabled: 1
+    path: Assets/Scenes/Y6 - Eclipse/Y6 - Eclipse Game.unity
+    guid: 479abfedb7fdc884d8e0f2c8f59ad2ee
   - enabled: 1
     path: Assets/Scenes/Y4 - Animals/AR-Aspect.unity
     guid: 690fb7e01646d4f1c9bcf90c0e69c4a9
@@ -134,4 +134,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Y6 - Constellation/Y6 - Constellation Quiz.unity
     guid: 2ce4a097f662f574e8fff4c6e77fc4ef
+  - enabled: 1
+    path: Assets/Dev_Ridzwan/Homepage.unity
+    guid: 8b21296a3a1c24ae8ac817817c7f2c38
+  - enabled: 1
+    path: Assets/Dev_Imran/Breathing AR/Scenes/Breathing.unity
+    guid: ccf67554635b18a44815d068aad9be1e
+  - enabled: 1
+    path: Assets/Dev_Imran/Excretion AR/Scene/Excretion.unity
+    guid: 028095fb6ba4bb64aa7ed8da0868c725
+  - enabled: 1
+    path: Assets/Dev_Imran/Anatomy AR/Scenes/Heredity.unity
+    guid: 59010522ba47a1f498b62d91bf1f7c1d
   m_configObjects: {}

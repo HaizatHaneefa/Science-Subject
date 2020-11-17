@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01befd1071df4914d9403442111e87b7, type: 3}
+  m_Name: Breathing 13
+  m_EditorClassIdentifier: 
+  avatar: {fileID: 21300000, guid: a330f83e5766ede4bb496c1f5a0acbf1, type: 3}
+  localizations:
+  - language: English
+    text: Press the button to inhale and exhale and see changes in the oxygen and
+      carbon dioxide gas contained in the body
+    voiceover: {fileID: 8300000, guid: b6ec78414d0aabd43865ee0d6d3aaebe, type: 3}
+  - language: Malaysian
+    text: Tekan butang untuk menarik nafas dan menghembus nafas, dan lihat perubahan
+      gas oksigen dan gas karbon dioksida dalam badan
+    voiceover: {fileID: 8300000, guid: 40713ee488125704bba84dbf4d4558d2, type: 3}
+  fallbackText: Press the button to inhale and exhale and see changes in the Oxygen
+    and Carbon Dioxide gas contained in the body
+  fallbackVoiceover: {fileID: 8300000, guid: b6ec78414d0aabd43865ee0d6d3aaebe, type: 3}
+  next: {fileID: 0}
