@@ -32,7 +32,7 @@ public class DragDropWorld : MonoBehaviour, IPointerDownHandler, IBeginDragHandl
 
         rectTransform.sizeDelta = new Vector2(40, 40);
 
-        //    transform.GetChild(0).GetComponent<TextMeshProUGUI>().enabled = false;
+        rectTransform.position = eventData.pointerPressRaycast.worldPosition; // this is it!
     }
 
     public void OnPointerDown(PointerEventData eventData)
@@ -55,8 +55,6 @@ public class DragDropWorld : MonoBehaviour, IPointerDownHandler, IBeginDragHandl
         }
 
         rectTransform.sizeDelta = new Vector2(60, 60);
-
-        //transform.GetChild(0).GetComponent<TextMeshProUGUI>().enabled = true;
     }
 
     public void OnDrag(PointerEventData eventData)

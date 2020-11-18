@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using TMPro;
+using UnityEngine.UI;
 
 public class EclipseDragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndDragHandler, IDragHandler
 {
@@ -13,6 +14,8 @@ public class EclipseDragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHan
     private CanvasGroup canvasGroup;
 
     public Transform startPos;
+
+    [SerializeField] private Sprite[] sprite;
 
     private void Awake()
     {
@@ -29,9 +32,10 @@ public class EclipseDragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHan
 
         transform.GetChild(0).GetComponent<TextMeshProUGUI>().enabled = false;
 
-        rectTransform.position = eventData.pointerCurrentRaycast.screenPosition;
-    }
+        rectTransform.position = eventData.pointerPressRaycast.worldPosition; // this is it!
 
+        GetComponent<Image>().sprite = sprite[1];
+    }
 
     public void OnPointerDown(PointerEventData eventData)
     {
@@ -46,6 +50,8 @@ public class EclipseDragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHan
         transform.position = startPos.position;
 
         transform.GetChild(0).GetComponent<TextMeshProUGUI>().enabled = true;
+
+        GetComponent<Image>().sprite = sprite[0];
     }
 
     public void OnDrag(PointerEventData eventData)

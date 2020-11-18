@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class ConstellationQuiz : MonoBehaviour
 {
@@ -12,7 +13,9 @@ public class ConstellationQuiz : MonoBehaviour
     [SerializeField] private AudioClip[] clip;
 
     [SerializeField] public Sprite[] rightWrongSprite;
-    [SerializeField] public GameObject endpop, secB;
+
+    [SerializeField] public GameObject endpop, secB, hint, otherHint;
+
     [SerializeField] private GameObject[] secA;
 
     int cur;
@@ -27,6 +30,9 @@ public class ConstellationQuiz : MonoBehaviour
 
         endpop.SetActive(false);
         secB.SetActive(false);
+
+        hint.SetActive(true);
+        otherHint.SetActive(false);
 
         for (int i = 0; i < secA.Length; i++)
         {
@@ -49,6 +55,18 @@ public class ConstellationQuiz : MonoBehaviour
     {
         StartCoroutine(WrongColor());
         StartCoroutine(DisableButtons());
+    }
+
+    public void Retry()
+    {
+        PressSFX();
+        SceneManager.LoadScene("Y6 - Constellation Quiz");
+    }
+
+    public void BackToAR()
+    {
+        BackSFX();
+        SceneManager.LoadScene("Y6 - Constellation AR");
     }
 
     // ---------------- Coroutines ---------------- //
@@ -80,6 +98,17 @@ public class ConstellationQuiz : MonoBehaviour
             }
 
             secB.SetActive(true);
+        }
+
+        if (cur == 4)
+        {
+            otherHint.SetActive(true);
+            hint.SetActive(false);
+        }
+        else if (cur != 4)
+        {
+            otherHint.SetActive(false);
+            hint.SetActive(true);
         }
     }
 
