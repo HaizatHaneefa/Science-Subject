@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd882950d3248479a9b02ca25674db0b, type: 3}
+  m_Name: Ophiuchus
+  m_EditorClassIdentifier: 
+  name: Ophiuchus
+  description: Ophiuchus is the 11th largest constellation in the sky, occupying
+    an area of 948 square degrees. The neighbouring constellations are Aquila, Hercules,
+    Libra, Sagittarius, Scorpius and Serpens.
+  artwork: {fileID: 21300000, guid: 49051fd65ba92449ea655c44358f3b0d, type: 3}
