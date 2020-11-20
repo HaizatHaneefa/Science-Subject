@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class FitCard : MonoBehaviour
 {
-    public List<GameObject> items; // List that holds all my ten cards
+        public List<GameObject> items; // List that holds all my ten cards
     public Transform start;  //Location where to start adding my cards
     public Transform HandDeck; //The hand panel reference
     public float howManyAdded; // How many cards I added so far
@@ -33,4 +33,6 @@ public class FitCard : MonoBehaviour
         items.RemoveAt(0);
         howManyAdded++;
     }
+
+
 }
