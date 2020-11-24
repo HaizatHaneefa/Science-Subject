@@ -15,4 +15,9 @@ MonoBehaviour:
   name: Libra
   description: "Libra lies in the Southern sky. It is one of the zodiac constellations,
     representing an object. The name means \u201Cthe weighing scales\u201D in Latin."
-  artwork: {fileID: 21300000, guid: 8f7a24d9fec2da44f94dd564a3ff5e98, type: 3}
+  artwork: {fileID: -4690656104529194450, guid: 72b7b19ea5060452bb6d20f7db8b574e,
+    type: 3}
+  frontCard: {fileID: -4690656104529194450, guid: 72b7b19ea5060452bb6d20f7db8b574e,
+    type: 3}
+  backCard: {fileID: 4347931695585553415, guid: 72b7b19ea5060452bb6d20f7db8b574e,
+    type: 3}

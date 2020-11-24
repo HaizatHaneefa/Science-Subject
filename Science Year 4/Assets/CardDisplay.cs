@@ -8,7 +8,7 @@ public class CardDisplay : MonoBehaviour
 {
     [SerializeField] private card card;
 
-    [SerializeField] private Image artworkImage;
+    [SerializeField] private Image frontCardImage, artWorkImage, cardBack;
     [SerializeField] private TextMeshProUGUI cardName, description;
 
     void Start()
@@ -16,7 +16,9 @@ public class CardDisplay : MonoBehaviour
         cardName.text = card.name;
         description.text = card.description;
 
-        artworkImage.sprite = card.artwork;
+        artWorkImage.sprite = card.artwork;
+        frontCardImage.sprite = card.frontCard;
+        cardBack.sprite = card.backCard;
     }
 
     void Update()

@@ -9,4 +9,6 @@ public class card : ScriptableObject
     public string description;
 
     public Sprite artwork;
+    public Sprite frontCard;
+    public Sprite backCard;
 }
