@@ -15,18 +15,19 @@ public class ConstellationGameManager : MonoBehaviour
 
     float gapbetween;
 
-    bool isStarting, playerTurn;
+    bool isStarting, playerTurn, hasEndBool;
    public bool[] round;
 
     [SerializeField] public bool[] isTurn;
     [SerializeField] private Vector3[] a, b, c;
 
     [SerializeField] private Image[] roundMarkerImage;
-    [SerializeField] private GameObject transitionImage;
+    [SerializeField] private GameObject transitionImage, endgamePop;
 
     void Start()
     {
         transitionImage.SetActive(false);
+        endgamePop.SetActive(false);
 
         round = new bool[3];
         isTurn = new bool[3];
@@ -54,10 +55,27 @@ public class ConstellationGameManager : MonoBehaviour
 
     private void Update()
     {
+       
+
+        //if (p1.Count == 0 || p2.Count == 0 || p3.Count == 0)
         if (isStarting)
         {
             _ShowCardBack();
             _HideCardBack();
+
+            if (p1.Count == 0)
+            {
+                Debug.Log("game is over");
+                hasEndBool = true;
+            }
+            else if (p2.Count == 0)
+            {
+                hasEndBool = true;
+            }
+            else if (p3.Count == 0)
+            {
+                hasEndBool = true;
+            }
         }
 
         if (playerTurn)
@@ -77,9 +95,9 @@ public class ConstellationGameManager : MonoBehaviour
         if (cards.Count == 0)
         {
             CancelInvoke("DelegateCards");
-            InvokeRepeating("ArrangeCards", 0, 1f);
-            InvokeRepeating("AIOneArrangeCards", 0, 1f);
-            InvokeRepeating("AITwoArrangeCards", 0, 1f);
+            InvokeRepeating("ArrangeCards", 0, .2f);
+            InvokeRepeating("AIOneArrangeCards", 0, .2f);
+            InvokeRepeating("AITwoArrangeCards", 0, .2f);
         }
         else if (cards.Count != 0)
         {
@@ -142,6 +160,12 @@ public class ConstellationGameManager : MonoBehaviour
         }
         else if (isTurn[0])
         {
+            //if (hasEndBool)
+            //{
+            //    EndGame();
+            //    return;
+            //}
+
             int t = 0;
 
             foreach (GameObject k in p1)
@@ -183,6 +207,11 @@ public class ConstellationGameManager : MonoBehaviour
         }
         else if (isTurn[1])
         {
+            //if (hasEndBool)
+            //{
+            //    EndGame();
+            //    return;
+            //}
             Debug.Log("AI One");
 
             int t = 0;
@@ -223,6 +252,12 @@ public class ConstellationGameManager : MonoBehaviour
         }
         else if (isTurn[2])
         {
+            //if (hasEndBool)
+            //{
+            //    EndGame();
+            //    return;
+            //}
+
             Debug.Log("AI tweo");
 
             int t = 0;
@@ -318,11 +353,10 @@ public class ConstellationGameManager : MonoBehaviour
 
         if (aq.Count == 2)
         {
-           
-
             aq[0].transform.SetParent(storedeck);
             aq[0].SetActive(false);
             aq[1].transform.SetParent(storedeck);
+            //aq[1].GetComponent<Animation>().Play("CardSelected2");
 
             storedeckList.Add(aq[0]);
             p1.Remove(aq[0]);
@@ -334,17 +368,13 @@ public class ConstellationGameManager : MonoBehaviour
 
             aq[1].transform.position = storedeck.position;
             aq[1].transform.rotation = storedeck.rotation;
-
-            //aq[0].GetComponent<Animation>().Play("CardSelected2");
-            //aq[1].GetComponent<Animation>().Play("CardSelected2");
         }
          if (bd.Count == 2)
         {
-           
-
             bd[0].transform.SetParent(storedeck);
             bd[0].SetActive(false);
             bd[1].transform.SetParent(storedeck);
+            //bd[1].GetComponent<Animation>().Play("CardSelected2");
 
             storedeckList.Add(bd[0]);
             p1.Remove(bd[0]);
@@ -356,9 +386,6 @@ public class ConstellationGameManager : MonoBehaviour
 
             bd[1].transform.position = storedeck.position;
             bd[1].transform.rotation = storedeck.rotation;
-
-            //bd[0].GetComponent<Animation>().Play("CardSelected2");
-            //bd[1].GetComponent<Animation>().Play("CardSelected2");
         }
          if (gm.Count == 2)
         {
@@ -366,6 +393,7 @@ public class ConstellationGameManager : MonoBehaviour
             gm[0].transform.SetParent(storedeck);
             gm[0].SetActive(false);
             gm[1].transform.SetParent(storedeck);
+            //gm[1].GetComponent<Animation>().Play("CardSelected2");
 
             storedeckList.Add(gm[0]);
             p1.Remove(gm[0]);
@@ -377,10 +405,6 @@ public class ConstellationGameManager : MonoBehaviour
 
             gm[1].transform.position = storedeck.position;
             gm[1].transform.rotation = storedeck.rotation;
-
-            //gm[0].GetComponent<Animation>().Play("CardSelected2");
-            //gm[1].GetComponent<Animation>().Play("CardSelected2");
-
         }
         if (hercu.Count == 2)
         {
@@ -389,6 +413,7 @@ public class ConstellationGameManager : MonoBehaviour
             hercu[0].transform.SetParent(storedeck);
             hercu[0].SetActive(false);
             hercu[1].transform.SetParent(storedeck);
+            //hercu[1].GetComponent<Animation>().Play("CardSelected2");
 
             storedeckList.Add(hercu[0]);
             p1.Remove(hercu[0]);
@@ -400,17 +425,13 @@ public class ConstellationGameManager : MonoBehaviour
 
             hercu[1].transform.position = storedeck.position;
             hercu[1].transform.rotation = storedeck.rotation;
-
-            //hercu[0].GetComponent<Animation>().Play("CardSelected2");
-            //hercu[1].GetComponent<Animation>().Play("CardSelected2");
         }
          if (hyd.Count == 2)
         {
-           
-
             hyd[0].transform.SetParent(storedeck);
             hyd[0].SetActive(false);
             hyd[1].transform.SetParent(storedeck);
+            //hyd[1].GetComponent<Animation>().Play("CardSelected2");
 
             storedeckList.Add(hyd[0]);
             p1.Remove(hyd[0]);
@@ -422,17 +443,13 @@ public class ConstellationGameManager : MonoBehaviour
 
             hyd[1].transform.position = storedeck.position;
             hyd[1].transform.rotation = storedeck.rotation;
-
-            //hyd[0].GetComponent<Animation>().Play("CardSelected2");
-            //hyd[1].GetComponent<Animation>().Play("CardSelected2");
         }
          if (lib.Count == 2)
         {
-           
-
             lib[0].transform.SetParent(storedeck);
             lib[0].SetActive(false);
             lib[1].transform.SetParent(storedeck);
+            //lib[1].GetComponent<Animation>().Play("CardSelected2");
 
             storedeckList.Add(lib[0]);
             p1.Remove(lib[0]);
@@ -444,15 +461,13 @@ public class ConstellationGameManager : MonoBehaviour
 
             lib[1].transform.position = storedeck.position;
             lib[1].transform.rotation = storedeck.rotation;
-
-            //lib[0].GetComponent<Animation>().Play("CardSelected2");
-            //lib[1].GetComponent<Animation>().Play("CardSelected2");
         }
          if (ld.Count == 2)
         {
             ld[0].transform.SetParent(storedeck);
             ld[0].SetActive(false);
             ld[1].transform.SetParent(storedeck);
+            //ld[1].GetComponent<Animation>().Play("CardSelected2");
 
             storedeckList.Add(ld[0]);
             p1.Remove(ld[0]);
@@ -464,9 +479,6 @@ public class ConstellationGameManager : MonoBehaviour
 
             ld[1].transform.position = storedeck.position;
             ld[1].transform.rotation = storedeck.rotation;
-
-            //ld[0].GetComponent<Animation>().Play("CardSelected2");
-            //ld[1].GetComponent<Animation>().Play("CardSelected2");
         }
          if (ophiu.Count == 2)
         {
@@ -475,6 +487,7 @@ public class ConstellationGameManager : MonoBehaviour
             ophiu[0].transform.SetParent(storedeck);
             ophiu[0].SetActive(false);
             ophiu[1].transform.SetParent(storedeck);
+            //ophiu[1].GetComponent<Animation>().Play("CardSelected2");
 
             storedeckList.Add(ophiu[0]);
             p1.Remove(ophiu[0]);
@@ -486,17 +499,13 @@ public class ConstellationGameManager : MonoBehaviour
 
             ophiu[1].transform.position = storedeck.position;
             ophiu[1].transform.rotation = storedeck.rotation;
-
-            //ophiu[0].GetComponent<Animation>().Play("CardSelected2");
-            //ophiu[1].GetComponent<Animation>().Play("CardSelected2");
         }
          if (orion.Count == 2)
         {
-           
-
             orion[0].transform.SetParent(storedeck);
             orion[0].SetActive(false);
             orion[1].transform.SetParent(storedeck);
+            //orion[1].GetComponent<Animation>().Play("CardSelected2");
 
             storedeckList.Add(orion[0]);
             p1.Remove(orion[0]);
@@ -508,17 +517,13 @@ public class ConstellationGameManager : MonoBehaviour
 
             orion[1].transform.position = storedeck.position;
             orion[1].transform.rotation = storedeck.rotation;
-
-            //orion[0].GetComponent<Animation>().Play("CardSelected2");
-            //orion[1].GetComponent<Animation>().Play("CardSelected2");
         }
          if (scor.Count == 2)
         {
-            
-
             scor[0].transform.SetParent(storedeck);
             scor[0].SetActive(false);
             scor[1].transform.SetParent(storedeck);
+            //scor[1].GetComponent<Animation>().Play("CardSelected2");
 
             storedeckList.Add(scor[0]);
             p1.Remove(scor[0]);
@@ -530,17 +535,13 @@ public class ConstellationGameManager : MonoBehaviour
 
             scor[1].transform.position = storedeck.position;
             scor[1].transform.rotation = storedeck.rotation;
-
-            //scor[0].GetComponent<Animation>().Play("CardSelected2");
-            //scor[1].GetComponent<Animation>().Play("CardSelected2");
         }
          if (sc.Count == 2)
         {
-            
-
             sc[0].transform.SetParent(storedeck);
             sc[0].SetActive(false);
             sc[1].transform.SetParent(storedeck);
+            //sc[1].GetComponent<Animation>().Play("CardSelected2");
 
             storedeckList.Add(sc[0]);
             p1.Remove(sc[0]);
@@ -552,17 +553,13 @@ public class ConstellationGameManager : MonoBehaviour
 
             sc[1].transform.position = storedeck.position;
             sc[1].transform.rotation = storedeck.rotation;
-
-            //sc[0].GetComponent<Animation>().Play("CardSelected2");
-            //sc[1].GetComponent<Animation>().Play("CardSelected2");
         }
          if (taurus.Count == 2)
         {
-           
-
             taurus[0].transform.SetParent(storedeck);
             taurus[0].SetActive(false);
             taurus[1].transform.SetParent(storedeck);
+            //taurus[1].GetComponent<Animation>().Play("CardSelected2");
 
             storedeckList.Add(taurus[0]);
             p1.Remove(taurus[0]);
@@ -574,9 +571,6 @@ public class ConstellationGameManager : MonoBehaviour
 
             taurus[1].transform.position = storedeck.position;
             taurus[1].transform.rotation = storedeck.rotation;
-
-            //taurus[0].GetComponent<Animation>().Play("CardSelected2");
-            //taurus[1].GetComponent<Animation>().Play("CardSelected2");
         }
 
         if (!isTurn[0])
@@ -674,6 +668,7 @@ public class ConstellationGameManager : MonoBehaviour
         if (aq.Count == 2)
         {
             aq[0].transform.SetParent(storedeck);
+            aq[0].SetActive(false);
             aq[1].transform.SetParent(storedeck);
 
             storedeckList.Add(aq[0]);
@@ -690,6 +685,7 @@ public class ConstellationGameManager : MonoBehaviour
          if (bd.Count == 2)
         {
             bd[0].transform.SetParent(storedeck);
+            bd[0].SetActive(false);
             bd[1].transform.SetParent(storedeck);
 
             storedeckList.Add(bd[0]);
@@ -706,6 +702,7 @@ public class ConstellationGameManager : MonoBehaviour
          if (gm.Count == 2)
         {
             gm[0].transform.SetParent(storedeck);
+            gm[0].SetActive(false);
             gm[1].transform.SetParent(storedeck);
 
             storedeckList.Add(gm[0]);
@@ -722,6 +719,7 @@ public class ConstellationGameManager : MonoBehaviour
          if (hercu.Count == 2)
         {
             hercu[0].transform.SetParent(storedeck);
+            hercu[0].SetActive(false);
             hercu[1].transform.SetParent(storedeck);
 
             storedeckList.Add(hercu[0]);
@@ -738,6 +736,7 @@ public class ConstellationGameManager : MonoBehaviour
          if (hyd.Count == 2)
         {
             hyd[0].transform.SetParent(storedeck);
+            hyd[0].SetActive(false);
             hyd[1].transform.SetParent(storedeck);
 
             storedeckList.Add(hyd[0]);
@@ -754,6 +753,7 @@ public class ConstellationGameManager : MonoBehaviour
          if (lib.Count == 2)
         {
             lib[0].transform.SetParent(storedeck);
+            lib[0].SetActive(false);
             lib[1].transform.SetParent(storedeck);
 
             storedeckList.Add(lib[0]);
@@ -770,6 +770,7 @@ public class ConstellationGameManager : MonoBehaviour
          if (ld.Count == 2)
         {
             ld[0].transform.SetParent(storedeck);
+            ld[0].SetActive(false);
             ld[1].transform.SetParent(storedeck);
 
             storedeckList.Add(ld[0]);
@@ -786,6 +787,7 @@ public class ConstellationGameManager : MonoBehaviour
          if (ophiu.Count == 2)
         {
             ophiu[0].transform.SetParent(storedeck);
+            ophiu[0].SetActive(false);
             ophiu[1].transform.SetParent(storedeck);
 
             storedeckList.Add(ophiu[0]);
@@ -802,6 +804,7 @@ public class ConstellationGameManager : MonoBehaviour
          if (orion.Count == 2)
         {
             orion[0].transform.SetParent(storedeck);
+            orion[0].SetActive(false);
             orion[1].transform.SetParent(storedeck);
 
             storedeckList.Add(orion[0]);
@@ -818,6 +821,7 @@ public class ConstellationGameManager : MonoBehaviour
          if (scor.Count == 2)
         {
             scor[0].transform.SetParent(storedeck);
+            scor[0].SetActive(false);
             scor[1].transform.SetParent(storedeck);
 
             storedeckList.Add(scor[0]);
@@ -834,6 +838,7 @@ public class ConstellationGameManager : MonoBehaviour
          if (sc.Count == 2)
         {
             sc[0].transform.SetParent(storedeck);
+            sc[0].SetActive(false);
             sc[1].transform.SetParent(storedeck);
 
             storedeckList.Add(sc[0]);
@@ -850,6 +855,7 @@ public class ConstellationGameManager : MonoBehaviour
          if (taurus.Count == 2)
         {
             taurus[0].transform.SetParent(storedeck);
+            taurus[0].SetActive(false);
             taurus[1].transform.SetParent(storedeck);
 
             storedeckList.Add(taurus[0]);
@@ -950,6 +956,7 @@ public class ConstellationGameManager : MonoBehaviour
         if (aq.Count == 2)
         {
             aq[0].transform.SetParent(storedeck);
+            aq[0].SetActive(false);
             aq[1].transform.SetParent(storedeck);
 
             storedeckList.Add(aq[0]);
@@ -966,6 +973,7 @@ public class ConstellationGameManager : MonoBehaviour
          if (bd.Count == 2)
         {
             bd[0].transform.SetParent(storedeck);
+            bd[0].SetActive(false);
             bd[1].transform.SetParent(storedeck);
 
             storedeckList.Add(bd[0]);
@@ -982,6 +990,7 @@ public class ConstellationGameManager : MonoBehaviour
          if (gm.Count == 2)
         {
             gm[0].transform.SetParent(storedeck);
+            gm[0].SetActive(false);
             gm[1].transform.SetParent(storedeck);
 
             storedeckList.Add(gm[0]);
@@ -998,6 +1007,7 @@ public class ConstellationGameManager : MonoBehaviour
          if (hercu.Count == 2)
         {
             hercu[0].transform.SetParent(storedeck);
+            hercu[0].SetActive(false);
             hercu[1].transform.SetParent(storedeck);
 
             storedeckList.Add(hercu[0]);
@@ -1014,6 +1024,7 @@ public class ConstellationGameManager : MonoBehaviour
          if (hyd.Count == 2)
         {
             hyd[0].transform.SetParent(storedeck);
+            hyd[0].SetActive(false);
             hyd[1].transform.SetParent(storedeck);
 
             storedeckList.Add(hyd[0]);
@@ -1030,6 +1041,7 @@ public class ConstellationGameManager : MonoBehaviour
          if (lib.Count == 2)
         {
             lib[0].transform.SetParent(storedeck);
+            lib[0].SetActive(false);
             lib[1].transform.SetParent(storedeck);
 
             storedeckList.Add(lib[0]);
@@ -1046,6 +1058,7 @@ public class ConstellationGameManager : MonoBehaviour
          if (ld.Count == 2)
         {
             ld[0].transform.SetParent(storedeck);
+            ld[0].SetActive(false);
             ld[1].transform.SetParent(storedeck);
 
             storedeckList.Add(ld[0]);
@@ -1062,6 +1075,7 @@ public class ConstellationGameManager : MonoBehaviour
          if (ophiu.Count == 2)
         {
             ophiu[0].transform.SetParent(storedeck);
+            ophiu[0].SetActive(false);
             ophiu[1].transform.SetParent(storedeck);
 
             storedeckList.Add(ophiu[0]);
@@ -1078,6 +1092,7 @@ public class ConstellationGameManager : MonoBehaviour
          if (orion.Count == 2)
         {
             orion[0].transform.SetParent(storedeck);
+            orion[0].SetActive(false);
             orion[1].transform.SetParent(storedeck);
 
             storedeckList.Add(orion[0]);
@@ -1094,6 +1109,7 @@ public class ConstellationGameManager : MonoBehaviour
          if (scor.Count == 2)
         {
             scor[0].transform.SetParent(storedeck);
+            scor[0].SetActive(false);
             scor[1].transform.SetParent(storedeck);
 
             storedeckList.Add(scor[0]);
@@ -1110,6 +1126,7 @@ public class ConstellationGameManager : MonoBehaviour
          if (sc.Count == 2)
         {
             sc[0].transform.SetParent(storedeck);
+            sc[0].SetActive(false);
             sc[1].transform.SetParent(storedeck);
 
             storedeckList.Add(sc[0]);
@@ -1126,6 +1143,7 @@ public class ConstellationGameManager : MonoBehaviour
          if (taurus.Count == 2)
         {
             taurus[0].transform.SetParent(storedeck);
+            taurus[0].SetActive(false);
             taurus[1].transform.SetParent(storedeck);
 
             storedeckList.Add(taurus[0]);
@@ -1159,34 +1177,25 @@ public class ConstellationGameManager : MonoBehaviour
 
         int t = Random.Range(0, p3.Count);
 
-        for (int i = 0; i < p3[t].transform.childCount; i++)
-        {
-            p3[t].transform.GetChild(i).gameObject.SetActive(false);
-            p3[t].transform.GetChild(4).gameObject.SetActive(true);
-        }
+        //for (int i = 0; i < p3[t].transform.childCount; i++)
+        //{
+        //    p3[t].transform.GetChild(i).gameObject.SetActive(false);
+        //    p3[t].transform.GetChild(4).gameObject.SetActive(true);
+        //}
 
         p3[t].GetComponent<Animation>().Play("CardSelected");
 
         yield return new WaitForSeconds(1.5f);
 
-        for (int i = 0; i < p3[t].transform.childCount; i++)
-        {
-            p3[t].transform.GetChild(i).gameObject.SetActive(true);
-        }
-
+        p3[t].GetComponent<Animation>().Play("CardSelected2");
         p3[t].transform.SetParent(playerPos[1]);
 
         p2.Add(p3[t]);
         p3.Remove(p3[t]);
 
-        foreach (GameObject go in p2)
-        {
-            go.GetComponent<CanvasGroup>().alpha = 1;
-        }
-
         T1();
 
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1f);
 
         Round();
     }
@@ -1204,42 +1213,38 @@ public class ConstellationGameManager : MonoBehaviour
 
         int t = Random.Range(0, p1.Count);
 
-        for (int i = 0; i < p1[t].transform.childCount; i++)
-        {
-            p1[t].transform.GetChild(i).gameObject.SetActive(false);
-            p1[t].transform.GetChild(4).gameObject.SetActive(true);
-        }
-
         p1[t].GetComponent<Animation>().Play("CardSelected");
 
         yield return new WaitForSeconds(1.5f);
 
-        for (int i = 0; i < p1[t].transform.childCount; i++)
-        {
-            p1[t].transform.GetChild(i).gameObject.SetActive(true);
-        }
-
+        p1[t].GetComponent<Animation>().Play("CardSelected2");
         p1[t].transform.SetParent(playerPos[2]);
 
         p3.Add(p1[t]);
         p1.Remove(p1[t]);
 
-        foreach (GameObject go in p3)
-        {
-            go.GetComponent<CanvasGroup>().alpha = 1;
-        }
-
         T2();
 
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1f);
 
         Round();
     }
 
     public void Round()
     {
+        if (hasEndBool)
+        {
+            EndGame();
+            return;
+        }
+
         if (round[0])
         {
+            //if (hasEndBool)
+            //{
+            //    EndGame();
+
+            //}
             round[0] = false;
             round[1] = true;
             round[2] = false;
@@ -1319,11 +1324,6 @@ public class ConstellationGameManager : MonoBehaviour
         {
             go.GetComponent<PickCard>().enabled = false;
         }
-
-        //foreach (GameObject go in p2)
-        //{
-        //    go.GetComponent<PickCard>().enabled = true;
-        //}
     }
 
     void _ShowCardBack()
@@ -1346,12 +1346,18 @@ public class ConstellationGameManager : MonoBehaviour
             k.transform.GetChild(4).gameObject.SetActive(false);
         }
 
-
         foreach (GameObject k in storedeckList)
         {
             k.transform.GetChild(4).gameObject.SetActive(false);
         }
     }
 
+    void EndGame()
+    {
+        endgamePop.SetActive(true);
+        endgamePop.GetComponent<Animation>().Play("EndGamePop-NEW");
 
+        // disable everything
+        //end the gmae pop
+    }
 }

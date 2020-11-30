@@ -53,15 +53,16 @@ public class PickCard : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
             k.GetComponent<PickCard>().enabled = false;
         }
 
-        for (int i = 0; i < transform.childCount; i++)
-        {
-            transform.GetChild(i).gameObject.SetActive(false);
-            transform.GetChild(4).gameObject.SetActive(true);
-        }
+        //for (int i = 0; i < transform.childCount; i++)
+        //{
+        //    transform.GetChild(i).gameObject.SetActive(false);
+        //    transform.GetChild(4).gameObject.SetActive(true);
+        //}
 
         GetComponent<Animation>().Play("CardSelected");
 
         yield return new WaitForSeconds(1.5f);
+
 
         manager.p2.Remove(gameObject);
         manager.p1.Add(gameObject);
@@ -73,16 +74,18 @@ public class PickCard : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
 
         manager.DisableButtons();
 
-        yield return new WaitForSeconds(.5f);
+        yield return new WaitForSeconds(1f);
 
-        for (int i = 0; i < transform.childCount; i++)
-        {
-            transform.GetChild(i).gameObject.SetActive(true);
-        }
+        //for (int i = 0; i < transform.childCount; i++)
+        //{
+        //    transform.GetChild(i).gameObject.SetActive(true);
+        //}
 
         //GetComponent<CanvasGroup>().alpha = 1;
-        GetComponent<Animation>().Play("CardSelected2"); // this is conflicting there is a pair in hand
+         GetComponent<Animation>().Play("CardSelected2"); // this is conflicting if there is a pair in hand
 
+
+        Debug.Log("ww");
         foreach (GameObject k in manager.p2)
         {
             k.GetComponent<PickCard>().enabled = false;
