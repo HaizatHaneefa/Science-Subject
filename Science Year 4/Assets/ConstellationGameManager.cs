@@ -10,14 +10,14 @@ public class ConstellationGameManager : MonoBehaviour
     [SerializeField] private Transform storedeck;
 
     [SerializeField] public List<GameObject> p1, p2, p3, storedeckList, cards;
-    [SerializeField] private GameObject transitionImage, endgamePop, introPop, pausePop, pauseButton;
+    [SerializeField] private GameObject transitionImage, endgamePop, introPop, pausePop, pauseButton, tutorialImage;
 
     int cur, turn, otherturn, a1turn, a2turn;
 
     float gapbetween;
 
     [SerializeField] public bool[] isTurn;
-    bool isStarting, playerTurn, hasEndBool;
+    bool isStarting, playerTurn, hasEndBool, firstTimeBool;
     public bool[] round;
 
     [SerializeField] private Vector3[] a, b, c;
@@ -32,6 +32,9 @@ public class ConstellationGameManager : MonoBehaviour
         endgamePop.SetActive(false);
         pausePop.SetActive(false);
         pauseButton.SetActive(false);
+        tutorialImage.SetActive(false);
+
+        firstTimeBool = true;
 
         round = new bool[3];
         isTurn = new bool[3];
@@ -55,6 +58,16 @@ public class ConstellationGameManager : MonoBehaviour
 
     public void StartTheGame()
     {
+        StartCoroutine(StartGame());
+      
+    }
+
+    IEnumerator StartGame()
+    {
+        introPop.GetComponent<Animation>().Play("FadeOut");
+
+        yield return new WaitForSeconds(.8f);
+
         introPop.SetActive(false);
 
         for (int i = 0; i < roundMarkerImage.Length; i++)
@@ -162,10 +175,19 @@ public class ConstellationGameManager : MonoBehaviour
 
     public void Pause()
     {
-        Time.timeScale = 0;
-        pauseButton.SetActive(false);
+        StartCoroutine(PauseGame());
+    }
+
+    IEnumerator PauseGame()
+    {
         pausePop.SetActive(true);
-        pausePop.GetComponent<Animator>().Play("EndGamePop-NEW");
+        pausePop.GetComponent<Animation>().Play("EndGamePop-NEW");
+
+        pauseButton.SetActive(false);
+
+        yield return new WaitForSeconds(1.5f);
+
+        Time.timeScale = 0;
     }
 
     public void Unpause()
@@ -192,7 +214,7 @@ public class ConstellationGameManager : MonoBehaviour
             else if (otherturn < s)
             {
                 p1[otherturn].transform.SetParent(playerPos[0].transform);
-                p1[otherturn].transform.position = new Vector3((playerPos[0].position.x - 100f) + gapbetween, 0, 0);
+                p1[otherturn].transform.position = new Vector3((playerPos[0].position.x - 140f) + gapbetween, 0, 0);
 
                 gapbetween += 40f;
 
@@ -234,7 +256,7 @@ public class ConstellationGameManager : MonoBehaviour
             {
                 p2[a1turn].transform.SetParent(playerPos[1].transform);
 
-                p2[a1turn].transform.localPosition = new Vector3(0 + gapbetween, 0, 0);
+                p2[a1turn].transform.localPosition = new Vector3((playerPos[1].position.x - 140f) + gapbetween, 0, 0);
                 p2[a1turn].transform.localRotation = new Quaternion(0, 0, 0, 0);
 
                 b[a1turn] = p2[a1turn].transform.position;
@@ -271,7 +293,7 @@ public class ConstellationGameManager : MonoBehaviour
             {
                 p3[a2turn].transform.SetParent(playerPos[2].transform);
 
-                p3[a2turn].transform.localPosition = new Vector3(0 - gapbetween, 0, 0);
+                p3[a2turn].transform.localPosition = new Vector3((0 - 140f) + gapbetween, 0, 0);
                 p3[a2turn].transform.localRotation = new Quaternion(0, 0, 0, 0);
 
                 c[a2turn] = p3[a2turn].transform.position;
@@ -575,6 +597,13 @@ public class ConstellationGameManager : MonoBehaviour
 
             taurus[1].transform.position = storedeck.position;
             taurus[1].transform.rotation = storedeck.rotation;
+        }
+
+
+        if (firstTimeBool)
+        {
+            StartCoroutine(PopTutorial());
+            return;
         }
 
         if (!isTurn[0])
@@ -1254,6 +1283,7 @@ public class ConstellationGameManager : MonoBehaviour
             return;
         }
 
+
         if (round[0])
         {
             round[0] = false;
@@ -1283,6 +1313,19 @@ public class ConstellationGameManager : MonoBehaviour
 
             playerTurn = true;
         }
+    }
+
+    IEnumerator PopTutorial()
+    {
+        tutorialImage.SetActive(true);
+        tutorialImage.GetComponent<Animation>().Play("StartTutorial");
+
+        yield return new WaitForSeconds(2f);
+
+        firstTimeBool = false;
+        tutorialImage.SetActive(false);
+        //StartCoroutine(CheckForAnyPairs());
+        CheckForAnyPairs();
     }
 
     IEnumerator EndingRounds()

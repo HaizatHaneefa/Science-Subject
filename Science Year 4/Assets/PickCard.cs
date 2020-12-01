@@ -75,4 +75,9 @@ public class PickCard : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
 
         manager.Round();
     }
+
+    void CheckCard()
+    {
+
+    }
 }
