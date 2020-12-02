@@ -10,7 +10,7 @@ public class ConstellationGameManager : MonoBehaviour
     [SerializeField] private Transform storedeck;
 
     [SerializeField] public List<GameObject> p1, p2, p3, storedeckList, cards;
-    [SerializeField] private GameObject transitionImage, endgamePop, introPop, pausePop, pauseButton, tutorialImage;
+    [SerializeField] private GameObject transitionImage, endgamePop, introPop, pausePop, pauseButton, tutorialImage, discardPile, startPile;
 
     int cur, turn, otherturn, a1turn, a2turn;
 
@@ -22,10 +22,14 @@ public class ConstellationGameManager : MonoBehaviour
 
     [SerializeField] private Vector3[] a, b, c;
 
-    [SerializeField] private Image[] roundMarkerImage;
+    //[SerializeField] private Image[] roundMarkerImage;
+    [SerializeField] public AudioSource aSource;
+    [SerializeField] public AudioClip[] clip;
 
     void Start()
     {
+        aSource = GetComponent<AudioSource>();
+
         introPop.GetComponent<Animation>().Play("EndGamePop-NEW");
 
         transitionImage.SetActive(false);
@@ -33,6 +37,8 @@ public class ConstellationGameManager : MonoBehaviour
         pausePop.SetActive(false);
         pauseButton.SetActive(false);
         tutorialImage.SetActive(false);
+        discardPile.SetActive(false);
+        startPile.SetActive(false);
 
         firstTimeBool = true;
 
@@ -50,30 +56,31 @@ public class ConstellationGameManager : MonoBehaviour
             cards[i].SetActive(false);
         }
 
-        for (int i = 0; i < roundMarkerImage.Length; i++)
-        {
-            roundMarkerImage[i].gameObject.SetActive(false);
-        }
+        //for (int i = 0; i < roundMarkerImage.Length; i++)
+        //{
+        //    roundMarkerImage[i].gameObject.SetActive(false);
+        //}
     }
 
     public void StartTheGame()
     {
         StartCoroutine(StartGame());
-      
     }
 
     IEnumerator StartGame()
     {
+        discardPile.SetActive(true);
+        startPile.SetActive(true);
         introPop.GetComponent<Animation>().Play("FadeOut");
 
         yield return new WaitForSeconds(.8f);
 
         introPop.SetActive(false);
 
-        for (int i = 0; i < roundMarkerImage.Length; i++)
-        {
-            roundMarkerImage[i].gameObject.SetActive(true);
-        }
+        //for (int i = 0; i < roundMarkerImage.Length; i++)
+        //{
+        //    roundMarkerImage[i].gameObject.SetActive(true);
+        //}
 
         for (int i = 0; i < cards.Count; i++)
         {
@@ -90,7 +97,7 @@ public class ConstellationGameManager : MonoBehaviour
         transitionImage.SetActive(true);
         transitionImage.GetComponent<Animation>().Play("TransitionCards");
 
-        roundMarkerImage[0].color = Color.red;
+        //roundMarkerImage[0].color = Color.red;
 
         yield return new WaitForSeconds(2.5f);
 
@@ -216,7 +223,7 @@ public class ConstellationGameManager : MonoBehaviour
                 p1[otherturn].transform.SetParent(playerPos[0].transform);
                 p1[otherturn].transform.position = new Vector3((playerPos[0].position.x - 140f) + gapbetween, 0, 0);
 
-                gapbetween += 40f;
+                gapbetween += 30f; // not sure yet
 
                 a[otherturn] = p1[otherturn].transform.position;
 
@@ -1343,29 +1350,29 @@ public class ConstellationGameManager : MonoBehaviour
 
         if (round[0])
         {
-            for (int i = 0; i < roundMarkerImage.Length; i++)
-            {
-                roundMarkerImage[i].color = Color.white;
-                roundMarkerImage[0].color = Color.red;
-            }
+            //for (int i = 0; i < roundMarkerImage.Length; i++)
+            //{
+            //    roundMarkerImage[i].color = Color.white;
+            //    roundMarkerImage[0].color = Color.red;
+            //}
         }
         else if (round[1])
         {
-            for (int i = 0; i < roundMarkerImage.Length; i++)
-            {
-                roundMarkerImage[i].color = Color.white;
-                roundMarkerImage[1].color = Color.red;
-            }
+            //for (int i = 0; i < roundMarkerImage.Length; i++)
+            //{
+            //    roundMarkerImage[i].color = Color.white;
+            //    roundMarkerImage[1].color = Color.red;
+            //}
 
             P3toP2();
         }
         else if (round[2])
         {
-            for (int i = 0; i < roundMarkerImage.Length; i++)
-            {
-                roundMarkerImage[i].color = Color.white;
-                roundMarkerImage[2].color = Color.red;
-            }
+            //for (int i = 0; i < roundMarkerImage.Length; i++)
+            //{
+            //    roundMarkerImage[i].color = Color.white;
+            //    roundMarkerImage[2].color = Color.red;
+            //}
 
             P1toP3();
         }
@@ -1416,5 +1423,37 @@ public class ConstellationGameManager : MonoBehaviour
     {
         endgamePop.SetActive(true);
         endgamePop.GetComponent<Animation>().Play("EndGamePop-NEW");
+    }
+
+    // ------------ sfx -------------- //
+
+    public void PressSFX() // button press yes
+    {
+        aSource.clip = clip[0];
+        aSource.Play();
+    }
+
+    public void WrongPressSFX() // button press no
+    {
+        aSource.clip = clip[4];
+        aSource.Play();
+    }
+
+    public void BackSFX() // back button press
+    {
+        aSource.clip = clip[1];
+        aSource.Play();
+    }
+
+    public void RightSFX() // right answer
+    {
+        aSource.clip = clip[2];
+        aSource.Play();
+    }
+
+    public void WrongSFX() // wrong answer
+    {
+        aSource.clip = clip[3];
+        aSource.Play();
     }
 }
