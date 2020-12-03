@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class ConstellationGameManager : MonoBehaviour
 {
@@ -1425,8 +1426,22 @@ public class ConstellationGameManager : MonoBehaviour
         endgamePop.GetComponent<Animation>().Play("EndGamePop-NEW");
     }
 
-    // ------------ sfx -------------- //
+    // ------------ Functions -------------- //
 
+    // ------------ Coroutines -------------- //
+
+    // ------------ Scene Loaders -------------- //
+    public void _BacktoAR()
+    {
+        SceneManager.LoadScene("Menu");
+    }
+
+    public void _PlayAgain()
+    {
+        SceneManager.LoadScene("Y6 - Constellation Game");
+    }
+
+    // ------------ SFX -------------- //
     public void PressSFX() // button press yes
     {
         aSource.clip = clip[0];
