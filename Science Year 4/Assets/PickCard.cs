@@ -53,6 +53,8 @@ public class PickCard : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
             k.GetComponent<PickCard>().enabled = false;
         }
 
+        manager.ChooseCardSFX();
+
         GetComponent<Animation>().Play("CardSelected");
 
         yield return new WaitForSeconds(.8f);

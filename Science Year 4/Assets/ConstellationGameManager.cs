@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
 
@@ -11,14 +10,14 @@ public class ConstellationGameManager : MonoBehaviour
     [SerializeField] private Transform storedeck;
 
     [SerializeField] public List<GameObject> p1, p2, p3, storedeckList, cards;
-    [SerializeField] private GameObject transitionImage, endgamePop, introPop, pausePop, pauseButton, tutorialImage, discardPile, startPile;
+    [SerializeField] private GameObject transitionImage, endgamePop, introPop, pausePop, pauseButton, tutorialImage, discardPile, startPile, turnCounter;
 
     int cur, turn, otherturn, a1turn, a2turn;
 
     float gapbetween;
 
     [SerializeField] public bool[] isTurn;
-    bool isStarting, playerTurn, hasEndBool, firstTimeBool;
+    bool isStarting, playerTurn, hasEndBool, firstTimeBool, winconBool;
     public bool[] round;
 
     [SerializeField] private Vector3[] a, b, c;
@@ -40,6 +39,7 @@ public class ConstellationGameManager : MonoBehaviour
         tutorialImage.SetActive(false);
         discardPile.SetActive(false);
         startPile.SetActive(false);
+        turnCounter.SetActive(false);
 
         firstTimeBool = true;
 
@@ -63,48 +63,6 @@ public class ConstellationGameManager : MonoBehaviour
         //}
     }
 
-    public void StartTheGame()
-    {
-        StartCoroutine(StartGame());
-    }
-
-    IEnumerator StartGame()
-    {
-        discardPile.SetActive(true);
-        startPile.SetActive(true);
-        introPop.GetComponent<Animation>().Play("FadeOut");
-
-        yield return new WaitForSeconds(.8f);
-
-        introPop.SetActive(false);
-
-        //for (int i = 0; i < roundMarkerImage.Length; i++)
-        //{
-        //    roundMarkerImage[i].gameObject.SetActive(true);
-        //}
-
-        for (int i = 0; i < cards.Count; i++)
-        {
-            cards[i].SetActive(true);
-        }
-
-        pauseButton.SetActive(true);
-
-        InvokeRepeating("DelegateCards", 0, 0.1f);
-    }
-
-    IEnumerator StartTransition() // after cards dealth, use this
-    {
-        transitionImage.SetActive(true);
-        transitionImage.GetComponent<Animation>().Play("TransitionCards");
-
-        //roundMarkerImage[0].color = Color.red;
-
-        yield return new WaitForSeconds(2.5f);
-
-        transitionImage.SetActive(false);
-    }
-
     private void Update()
     {
         if (isStarting)
@@ -114,6 +72,7 @@ public class ConstellationGameManager : MonoBehaviour
 
             if (p1.Count == 0)
             {
+                winconBool = true;
                 hasEndBool = true;
             }
             else if (p2.Count == 0)
@@ -137,6 +96,8 @@ public class ConstellationGameManager : MonoBehaviour
         }
     }
 
+    #region functions
+    // ------------ Functions -------------- //
     void DelegateCards()
     {
         if (cards.Count == 0)
@@ -181,32 +142,6 @@ public class ConstellationGameManager : MonoBehaviour
         }
     }
 
-    public void Pause()
-    {
-        StartCoroutine(PauseGame());
-    }
-
-    IEnumerator PauseGame()
-    {
-        pausePop.SetActive(true);
-        pausePop.GetComponent<Animation>().Play("EndGamePop-NEW");
-
-        pauseButton.SetActive(false);
-
-        yield return new WaitForSeconds(1.5f);
-
-        Time.timeScale = 0;
-    }
-
-    public void Unpause()
-    {
-        pauseButton.SetActive(true);
-
-        Time.timeScale = 1;
-
-        pausePop.SetActive(false);
-    }
-
     public void ArrangeCards()
     {
         if (!isTurn[0])
@@ -229,7 +164,11 @@ public class ConstellationGameManager : MonoBehaviour
                 a[otherturn] = p1[otherturn].transform.position;
 
                 otherturn += 1;
+
+                DelegateSFX();
             }
+
+          
         }
         else if (isTurn[0])
         {
@@ -269,6 +208,8 @@ public class ConstellationGameManager : MonoBehaviour
 
                 b[a1turn] = p2[a1turn].transform.position;
                 a1turn += 1;
+
+                DelegateSFX();
             }
         }
         else if (isTurn[1])
@@ -291,7 +232,7 @@ public class ConstellationGameManager : MonoBehaviour
         {
             int a1count = p3.Count;
 
-            if (a2turn ==  a1count)
+            if (a2turn == a1count)
             {
                 CancelInvoke("AITwoArrangeCards");
                 T2();
@@ -307,6 +248,8 @@ public class ConstellationGameManager : MonoBehaviour
                 c[a2turn] = p3[a2turn].transform.position;
 
                 a2turn += 1;
+
+                DelegateSFX();
             }
         }
         else if (isTurn[2])
@@ -419,7 +362,7 @@ public class ConstellationGameManager : MonoBehaviour
             aq[1].transform.position = storedeck.position;
             aq[1].transform.rotation = storedeck.rotation;
         }
-         if (bd.Count == 2)
+        if (bd.Count == 2)
         {
             bd[0].transform.SetParent(storedeck);
             bd[0].SetActive(false);
@@ -436,7 +379,7 @@ public class ConstellationGameManager : MonoBehaviour
             bd[1].transform.position = storedeck.position;
             bd[1].transform.rotation = storedeck.rotation;
         }
-         if (gm.Count == 2)
+        if (gm.Count == 2)
         {
             gm[0].transform.SetParent(storedeck);
             gm[0].SetActive(false);
@@ -470,7 +413,7 @@ public class ConstellationGameManager : MonoBehaviour
             hercu[1].transform.position = storedeck.position;
             hercu[1].transform.rotation = storedeck.rotation;
         }
-         if (hyd.Count == 2)
+        if (hyd.Count == 2)
         {
             hyd[0].transform.SetParent(storedeck);
             hyd[0].SetActive(false);
@@ -487,7 +430,7 @@ public class ConstellationGameManager : MonoBehaviour
             hyd[1].transform.position = storedeck.position;
             hyd[1].transform.rotation = storedeck.rotation;
         }
-         if (lib.Count == 2)
+        if (lib.Count == 2)
         {
             lib[0].transform.SetParent(storedeck);
             lib[0].SetActive(false);
@@ -504,7 +447,7 @@ public class ConstellationGameManager : MonoBehaviour
             lib[1].transform.position = storedeck.position;
             lib[1].transform.rotation = storedeck.rotation;
         }
-         if (ld.Count == 2)
+        if (ld.Count == 2)
         {
             ld[0].transform.SetParent(storedeck);
             ld[0].SetActive(false);
@@ -521,7 +464,7 @@ public class ConstellationGameManager : MonoBehaviour
             ld[1].transform.position = storedeck.position;
             ld[1].transform.rotation = storedeck.rotation;
         }
-         if (ophiu.Count == 2)
+        if (ophiu.Count == 2)
         {
             ophiu[0].transform.SetParent(storedeck);
             ophiu[0].SetActive(false);
@@ -538,7 +481,7 @@ public class ConstellationGameManager : MonoBehaviour
             ophiu[1].transform.position = storedeck.position;
             ophiu[1].transform.rotation = storedeck.rotation;
         }
-         if (orion.Count == 2)
+        if (orion.Count == 2)
         {
             orion[0].transform.SetParent(storedeck);
             orion[0].SetActive(false);
@@ -548,14 +491,14 @@ public class ConstellationGameManager : MonoBehaviour
             p1.Remove(orion[0]);
             storedeckList.Add(orion[1]);
             p1.Remove(orion[1]);
-          
+
             orion[0].transform.position = storedeck.position;
             orion[0].transform.rotation = storedeck.rotation;
 
             orion[1].transform.position = storedeck.position;
             orion[1].transform.rotation = storedeck.rotation;
         }
-         if (scor.Count == 2)
+        if (scor.Count == 2)
         {
             scor[0].transform.SetParent(storedeck);
             scor[0].SetActive(false);
@@ -572,7 +515,7 @@ public class ConstellationGameManager : MonoBehaviour
             scor[1].transform.position = storedeck.position;
             scor[1].transform.rotation = storedeck.rotation;
         }
-         if (sc.Count == 2)
+        if (sc.Count == 2)
         {
             sc[0].transform.SetParent(storedeck);
             sc[0].SetActive(false);
@@ -589,7 +532,7 @@ public class ConstellationGameManager : MonoBehaviour
             sc[1].transform.position = storedeck.position;
             sc[1].transform.rotation = storedeck.rotation;
         }
-         if (taurus.Count == 2)
+        if (taurus.Count == 2)
         {
             taurus[0].transform.SetParent(storedeck);
             taurus[0].SetActive(false);
@@ -618,6 +561,9 @@ public class ConstellationGameManager : MonoBehaviour
         {
             round[0] = true;
             StartCoroutine(StartTransition());
+            turnCounter.SetActive(true);
+            turnCounter.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "Your turn";
+            TransitionSFX();
         }
 
         isTurn[0] = true;
@@ -629,7 +575,7 @@ public class ConstellationGameManager : MonoBehaviour
     }
 
     void T2()
-    { 
+    {
         List<GameObject> aq = new List<GameObject>();
         List<GameObject> bd = new List<GameObject>();
         List<GameObject> gm = new List<GameObject>();
@@ -640,7 +586,7 @@ public class ConstellationGameManager : MonoBehaviour
         List<GameObject> ophiu = new List<GameObject>();
         List<GameObject> orion = new List<GameObject>();
         List<GameObject> scor = new List<GameObject>();
-        List<GameObject> sc= new List<GameObject>();
+        List<GameObject> sc = new List<GameObject>();
         List<GameObject> taurus = new List<GameObject>();
 
         for (int i = 0; i < p3.Count; i++)
@@ -723,7 +669,7 @@ public class ConstellationGameManager : MonoBehaviour
             aq[1].transform.position = storedeck.position;
             aq[1].transform.rotation = storedeck.rotation;
         }
-         if (bd.Count == 2)
+        if (bd.Count == 2)
         {
             bd[0].transform.SetParent(storedeck);
             bd[0].SetActive(false);
@@ -740,7 +686,7 @@ public class ConstellationGameManager : MonoBehaviour
             bd[1].transform.position = storedeck.position;
             bd[1].transform.rotation = storedeck.rotation;
         }
-         if (gm.Count == 2)
+        if (gm.Count == 2)
         {
             gm[0].transform.SetParent(storedeck);
             gm[0].SetActive(false);
@@ -757,7 +703,7 @@ public class ConstellationGameManager : MonoBehaviour
             gm[1].transform.position = storedeck.position;
             gm[1].transform.rotation = storedeck.rotation;
         }
-         if (hercu.Count == 2)
+        if (hercu.Count == 2)
         {
             hercu[0].transform.SetParent(storedeck);
             hercu[0].SetActive(false);
@@ -774,7 +720,7 @@ public class ConstellationGameManager : MonoBehaviour
             hercu[1].transform.position = storedeck.position;
             hercu[1].transform.rotation = storedeck.rotation;
         }
-         if (hyd.Count == 2)
+        if (hyd.Count == 2)
         {
             hyd[0].transform.SetParent(storedeck);
             hyd[0].SetActive(false);
@@ -791,7 +737,7 @@ public class ConstellationGameManager : MonoBehaviour
             hyd[1].transform.position = storedeck.position;
             hyd[1].transform.rotation = storedeck.rotation;
         }
-         if (lib.Count == 2)
+        if (lib.Count == 2)
         {
             lib[0].transform.SetParent(storedeck);
             lib[0].SetActive(false);
@@ -808,7 +754,7 @@ public class ConstellationGameManager : MonoBehaviour
             lib[1].transform.position = storedeck.position;
             lib[1].transform.rotation = storedeck.rotation;
         }
-         if (ld.Count == 2)
+        if (ld.Count == 2)
         {
             ld[0].transform.SetParent(storedeck);
             ld[0].SetActive(false);
@@ -825,7 +771,7 @@ public class ConstellationGameManager : MonoBehaviour
             ld[1].transform.position = storedeck.position;
             ld[1].transform.rotation = storedeck.rotation;
         }
-         if (ophiu.Count == 2)
+        if (ophiu.Count == 2)
         {
             ophiu[0].transform.SetParent(storedeck);
             ophiu[0].SetActive(false);
@@ -842,7 +788,7 @@ public class ConstellationGameManager : MonoBehaviour
             ophiu[1].transform.position = storedeck.position;
             ophiu[1].transform.rotation = storedeck.rotation;
         }
-         if (orion.Count == 2)
+        if (orion.Count == 2)
         {
             orion[0].transform.SetParent(storedeck);
             orion[0].SetActive(false);
@@ -859,7 +805,7 @@ public class ConstellationGameManager : MonoBehaviour
             orion[1].transform.position = storedeck.position;
             orion[1].transform.rotation = storedeck.rotation;
         }
-         if (scor.Count == 2)
+        if (scor.Count == 2)
         {
             scor[0].transform.SetParent(storedeck);
             scor[0].SetActive(false);
@@ -876,7 +822,7 @@ public class ConstellationGameManager : MonoBehaviour
             scor[1].transform.position = storedeck.position;
             scor[1].transform.rotation = storedeck.rotation;
         }
-         if (sc.Count == 2)
+        if (sc.Count == 2)
         {
             sc[0].transform.SetParent(storedeck);
             sc[0].SetActive(false);
@@ -893,7 +839,7 @@ public class ConstellationGameManager : MonoBehaviour
             sc[1].transform.position = storedeck.position;
             sc[1].transform.rotation = storedeck.rotation;
         }
-         if (taurus.Count == 2)
+        if (taurus.Count == 2)
         {
             taurus[0].transform.SetParent(storedeck);
             taurus[0].SetActive(false);
@@ -1011,7 +957,7 @@ public class ConstellationGameManager : MonoBehaviour
             aq[1].transform.position = storedeck.position;
             aq[1].transform.rotation = storedeck.rotation;
         }
-         if (bd.Count == 2)
+        if (bd.Count == 2)
         {
             bd[0].transform.SetParent(storedeck);
             bd[0].SetActive(false);
@@ -1028,7 +974,7 @@ public class ConstellationGameManager : MonoBehaviour
             bd[1].transform.position = storedeck.position;
             bd[1].transform.rotation = storedeck.rotation;
         }
-         if (gm.Count == 2)
+        if (gm.Count == 2)
         {
             gm[0].transform.SetParent(storedeck);
             gm[0].SetActive(false);
@@ -1045,7 +991,7 @@ public class ConstellationGameManager : MonoBehaviour
             gm[1].transform.position = storedeck.position;
             gm[1].transform.rotation = storedeck.rotation;
         }
-         if (hercu.Count == 2)
+        if (hercu.Count == 2)
         {
             hercu[0].transform.SetParent(storedeck);
             hercu[0].SetActive(false);
@@ -1062,7 +1008,7 @@ public class ConstellationGameManager : MonoBehaviour
             hercu[1].transform.position = storedeck.position;
             hercu[1].transform.rotation = storedeck.rotation;
         }
-         if (hyd.Count == 2)
+        if (hyd.Count == 2)
         {
             hyd[0].transform.SetParent(storedeck);
             hyd[0].SetActive(false);
@@ -1079,7 +1025,7 @@ public class ConstellationGameManager : MonoBehaviour
             hyd[1].transform.position = storedeck.position;
             hyd[1].transform.rotation = storedeck.rotation;
         }
-         if (lib.Count == 2)
+        if (lib.Count == 2)
         {
             lib[0].transform.SetParent(storedeck);
             lib[0].SetActive(false);
@@ -1096,7 +1042,7 @@ public class ConstellationGameManager : MonoBehaviour
             lib[1].transform.position = storedeck.position;
             lib[1].transform.rotation = storedeck.rotation;
         }
-         if (ld.Count == 2)
+        if (ld.Count == 2)
         {
             ld[0].transform.SetParent(storedeck);
             ld[0].SetActive(false);
@@ -1113,7 +1059,7 @@ public class ConstellationGameManager : MonoBehaviour
             ld[1].transform.position = storedeck.position;
             ld[1].transform.rotation = storedeck.rotation;
         }
-         if (ophiu.Count == 2)
+        if (ophiu.Count == 2)
         {
             ophiu[0].transform.SetParent(storedeck);
             ophiu[0].SetActive(false);
@@ -1130,7 +1076,7 @@ public class ConstellationGameManager : MonoBehaviour
             ophiu[1].transform.position = storedeck.position;
             ophiu[1].transform.rotation = storedeck.rotation;
         }
-         if (orion.Count == 2)
+        if (orion.Count == 2)
         {
             orion[0].transform.SetParent(storedeck);
             orion[0].SetActive(false);
@@ -1147,7 +1093,7 @@ public class ConstellationGameManager : MonoBehaviour
             orion[1].transform.position = storedeck.position;
             orion[1].transform.rotation = storedeck.rotation;
         }
-         if (scor.Count == 2)
+        if (scor.Count == 2)
         {
             scor[0].transform.SetParent(storedeck);
             scor[0].SetActive(false);
@@ -1164,7 +1110,7 @@ public class ConstellationGameManager : MonoBehaviour
             scor[1].transform.position = storedeck.position;
             scor[1].transform.rotation = storedeck.rotation;
         }
-         if (sc.Count == 2)
+        if (sc.Count == 2)
         {
             sc[0].transform.SetParent(storedeck);
             sc[0].SetActive(false);
@@ -1181,7 +1127,7 @@ public class ConstellationGameManager : MonoBehaviour
             sc[1].transform.position = storedeck.position;
             sc[1].transform.rotation = storedeck.rotation;
         }
-         if (taurus.Count == 2)
+        if (taurus.Count == 2)
         {
             taurus[0].transform.SetParent(storedeck);
             taurus[0].SetActive(false);
@@ -1210,6 +1156,161 @@ public class ConstellationGameManager : MonoBehaviour
         StartCoroutine(P2Delay());
     }
 
+    public void P1toP3()
+    {
+        StartCoroutine(P3Delay());
+    }
+
+    public void Round()
+    {
+        TransitionSFX();
+
+        if (hasEndBool)
+        {
+            EndGame();
+            return;
+        }
+
+        if (round[0])
+        {
+            round[0] = false;
+            round[1] = true;
+            round[2] = false;
+
+            transitionImage.transform.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().text = "Player 2 turn";
+            turnCounter.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "Player 2 turn";
+            StartCoroutine(EndingRounds());
+        }
+        else if (round[1])
+        {
+            round[0] = false;
+            round[1] = false;
+            round[2] = true;
+
+            transitionImage.transform.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().text = "Player 3 turn";
+            turnCounter.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "Player 3 turn";
+            StartCoroutine(EndingRounds());
+        }
+        else if (round[2])
+        {
+            round[0] = true;
+            round[1] = false;
+            round[2] = false;
+
+            transitionImage.transform.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().text = "Your turn";
+            turnCounter.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "Your turn";
+            StartCoroutine(EndingRounds());
+
+            playerTurn = true;
+        }
+    }
+
+    public void DisableButtons()
+    {
+        foreach (GameObject go in p1)
+        {
+            go.GetComponent<PickCard>().enabled = false;
+        }
+
+        foreach (GameObject go in p3)
+        {
+            go.GetComponent<PickCard>().enabled = false;
+        }
+    }
+
+    void _ShowCardBack()
+    {
+        foreach (GameObject k in p2)
+        {
+            k.transform.GetChild(4).gameObject.SetActive(true);
+        }
+
+        foreach (GameObject k in p3)
+        {
+            k.transform.GetChild(4).gameObject.SetActive(true);
+        }
+    }
+
+    void _HideCardBack()
+    {
+        foreach (GameObject k in p1)
+        {
+            k.transform.GetChild(4).gameObject.SetActive(false);
+        }
+
+        foreach (GameObject k in storedeckList)
+        {
+            k.transform.GetChild(4).gameObject.SetActive(false);
+        }
+    }
+
+    void EndGame()
+    {
+        if (winconBool)
+        {
+            WinSFX();
+        }
+        else if (!winconBool)
+        {
+            LoseSFX();
+        }
+        endgamePop.SetActive(true);
+        endgamePop.GetComponent<Animation>().Play("EndGamePop-NEW");
+    }
+
+    #endregion
+
+    #region coroutines
+    // ------------ Coroutines -------------- //
+    IEnumerator StartGame()
+    {
+        discardPile.SetActive(true);
+        startPile.SetActive(true);
+        introPop.GetComponent<Animation>().Play("FadeOut");
+
+        yield return new WaitForSeconds(.8f);
+
+        introPop.SetActive(false);
+
+        //for (int i = 0; i < roundMarkerImage.Length; i++)
+        //{
+        //    roundMarkerImage[i].gameObject.SetActive(true);
+        //}
+
+        for (int i = 0; i < cards.Count; i++)
+        {
+            cards[i].SetActive(true);
+        }
+
+        pauseButton.SetActive(true);
+
+        InvokeRepeating("DelegateCards", 0, 0.1f);
+    }
+
+    IEnumerator StartTransition() // after cards dealth, use this
+    {
+        transitionImage.SetActive(true);
+        transitionImage.GetComponent<Animation>().Play("TransitionCards");
+
+        //roundMarkerImage[0].color = Color.red;
+
+        yield return new WaitForSeconds(2.5f);
+
+        transitionImage.SetActive(false);
+    }
+
+    IEnumerator PauseGame()
+    {
+        pausePop.SetActive(true);
+        pausePop.GetComponent<Animation>().Play("EndGamePop-NEW");
+
+        pauseButton.SetActive(false);
+
+        yield return new WaitForSeconds(1.5f);
+
+        Time.timeScale = 0;
+    }
+
     IEnumerator P2Delay()
     {
         DisableButtons();
@@ -1219,6 +1320,7 @@ public class ConstellationGameManager : MonoBehaviour
         int t = Random.Range(0, p3.Count);
 
         p3[t].GetComponent<Animation>().Play("CardSelected");
+        ChooseCardSFX();
 
         yield return new WaitForSeconds(1f);
 
@@ -1245,11 +1347,6 @@ public class ConstellationGameManager : MonoBehaviour
         Round();
     }
 
-    public void P1toP3()
-    {
-        StartCoroutine(P3Delay());
-    }
-
     IEnumerator P3Delay()
     {
         DisableButtons();
@@ -1259,6 +1356,7 @@ public class ConstellationGameManager : MonoBehaviour
         int t = Random.Range(0, p1.Count);
 
         p1[t].GetComponent<Animation>().Play("CardSelected3");
+        ChooseCardSFX();
 
         yield return new WaitForSeconds(1f); // 1.5
 
@@ -1283,46 +1381,6 @@ public class ConstellationGameManager : MonoBehaviour
         Round();
     }
 
-    public void Round()
-    {
-        if (hasEndBool)
-        {
-            EndGame();
-            return;
-        }
-
-
-        if (round[0])
-        {
-            round[0] = false;
-            round[1] = true;
-            round[2] = false;
-
-            transitionImage.transform.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().text = "Player 2 turn";
-            StartCoroutine(EndingRounds());
-        }
-        else if (round[1])
-        {
-            round[0] = false;
-            round[1] = false;
-            round[2] = true;
-
-            transitionImage.transform.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().text = "Player 3 turn";
-            StartCoroutine(EndingRounds());
-        }
-        else if (round[2])
-        {
-            round[0] = true;
-            round[1] = false;
-            round[2] = false;
-
-            transitionImage.transform.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().text = "Your turn";
-            StartCoroutine(EndingRounds());
-
-            playerTurn = true;
-        }
-    }
-
     IEnumerator PopTutorial()
     {
         tutorialImage.SetActive(true);
@@ -1332,7 +1390,6 @@ public class ConstellationGameManager : MonoBehaviour
 
         firstTimeBool = false;
         tutorialImage.SetActive(false);
-        //StartCoroutine(CheckForAnyPairs());
         CheckForAnyPairs();
     }
 
@@ -1380,95 +1437,84 @@ public class ConstellationGameManager : MonoBehaviour
 
         transitionImage.SetActive(false);
     }
+    #endregion
 
-    public void DisableButtons()
-    {
-        foreach (GameObject go in p1)
-        {
-            go.GetComponent<PickCard>().enabled = false;
-        }
-
-        foreach (GameObject go in p3)
-        {
-            go.GetComponent<PickCard>().enabled = false;
-        }
-    }
-
-    void _ShowCardBack()
-    {
-        foreach (GameObject k in p2)
-        {
-            k.transform.GetChild(4).gameObject.SetActive(true);
-        }
-
-        foreach (GameObject k in p3)
-        {
-            k.transform.GetChild(4).gameObject.SetActive(true);
-        }
-    }
-
-    void _HideCardBack()
-    {
-        foreach (GameObject k in p1)
-        {
-            k.transform.GetChild(4).gameObject.SetActive(false);
-        }
-
-        foreach (GameObject k in storedeckList)
-        {
-            k.transform.GetChild(4).gameObject.SetActive(false);
-        }
-    }
-
-    void EndGame()
-    {
-        endgamePop.SetActive(true);
-        endgamePop.GetComponent<Animation>().Play("EndGamePop-NEW");
-    }
-
-    // ------------ Functions -------------- //
-
-    // ------------ Coroutines -------------- //
-
+    #region scene loaders
     // ------------ Scene Loaders -------------- //
     public void _BacktoAR()
     {
+        SelectSFX();
         SceneManager.LoadScene("Menu");
     }
 
     public void _PlayAgain()
     {
+        SelectSFX();
         SceneManager.LoadScene("Y6 - Constellation Game");
     }
+    #endregion
 
+    #region Buttons
+    // ------------ Buttons -------------- //
+    public void StartTheGame()
+    {
+        SelectSFX();
+        StartCoroutine(StartGame());
+    }
+
+    public void Pause()
+    {
+        StartCoroutine(PauseGame());
+        SelectSFX();
+    }
+
+    public void Unpause()
+    {
+        SelectSFX();
+        pauseButton.SetActive(true);
+
+        Time.timeScale = 1;
+
+        pausePop.SetActive(false);
+    }
+    #endregion
+
+    #region SFX
     // ------------ SFX -------------- //
-    public void PressSFX() // button press yes
+    public void DelegateSFX() // button press yes
     {
         aSource.clip = clip[0];
         aSource.Play();
     }
 
-    public void WrongPressSFX() // button press no
-    {
-        aSource.clip = clip[4];
-        aSource.Play();
-    }
-
-    public void BackSFX() // back button press
-    {
-        aSource.clip = clip[1];
-        aSource.Play();
-    }
-
-    public void RightSFX() // right answer
+    public void TransitionSFX() // button press no
     {
         aSource.clip = clip[2];
         aSource.Play();
     }
 
-    public void WrongSFX() // wrong answer
+    public void ChooseCardSFX() // back button press
     {
         aSource.clip = clip[3];
         aSource.Play();
     }
+
+    public void WinSFX() // right answer
+    {
+        aSource.clip = clip[1];
+        aSource.Play();
+    }
+
+    public void LoseSFX() // wrong answer
+    {
+        aSource.clip = clip[4];
+        aSource.Play();
+    }
+
+    public void SelectSFX() // wrong answer
+    {
+        aSource.clip = clip[5];
+        aSource.Play();
+    }
+    #endregion
 }
