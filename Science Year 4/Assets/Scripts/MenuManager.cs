@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
 using UnityEditor;
+using UnityEngine.EventSystems;
 
 public class MenuManager : MonoBehaviour
 {
@@ -188,6 +189,9 @@ public class MenuManager : MonoBehaviour
 
     public void ChapterSelection(int level)
     {
+        GameObject go = EventSystem.current.currentSelectedGameObject.gameObject;
+        go.GetComponent<Animation>().Play("Selected");
+
         SoundSelection();
 
         blocker.SetActive(true);
@@ -236,6 +240,10 @@ public class MenuManager : MonoBehaviour
         else if (l == 8) // y6 eclipse
         {
             descriptionText.text = description[7].ToString();
+        }
+        else if (l == 9)
+        {
+            descriptionText.text = "this should be constellation"; // y6 constellation
         }
 
         arOrFunFactBackground.SetActive(true);
@@ -319,8 +327,17 @@ public class MenuManager : MonoBehaviour
         }
         else if (l == 8)
         {
-            // speed year 6
+            // eclipse year 6
             SceneManager.LoadScene("Y6 - Eclipse AR");
+
+            PlayerPrefs.SetInt("C4", 0);
+            PlayerPrefs.SetInt("C5", 0);
+            PlayerPrefs.SetInt("C6", 1);
+        }
+        else if (l == 9)
+        {
+            // constellation year 6
+            SceneManager.LoadScene("Y6 - Constellation AR");
 
             PlayerPrefs.SetInt("C4", 0);
             PlayerPrefs.SetInt("C5", 0);
@@ -397,8 +414,17 @@ public class MenuManager : MonoBehaviour
         }
         else if (l == 8)
         {
-            // y6 speed
-            SceneManager.LoadScene("Y6 - Eclipse Fun Fact"); // speed fun fact
+            // y6 eclipse
+            SceneManager.LoadScene("Y6 - Eclipse Fun Fact"); // eclipse fun fact
+
+            PlayerPrefs.SetInt("C4", 0);
+            PlayerPrefs.SetInt("C5", 0);
+            PlayerPrefs.SetInt("C6", 1);
+        }
+        else if (l == 9)
+        {
+            // y6 constellation
+            SceneManager.LoadScene("Y6 - Constellation Fun Fact"); // constellation fun fact
 
             PlayerPrefs.SetInt("C4", 0);
             PlayerPrefs.SetInt("C5", 0);
@@ -476,9 +502,19 @@ public class MenuManager : MonoBehaviour
         }
         else if (l == 8)
         {
-            // y6 speed
-            //SceneManager.LoadScene("Y6 - Speed Race"); // speed fun fact
+            // y6 eclipse
+            //SceneManager.LoadScene("Y6 - Speed Race"); // eclipse fun fact
             SceneManager.LoadScene("Y6 - Eclipse Game");
+
+            PlayerPrefs.SetInt("C4", 0);
+            PlayerPrefs.SetInt("C5", 0);
+            PlayerPrefs.SetInt("C6", 1);
+        }
+        else if (l == 9)
+        {
+            // y6 constellation
+            //SceneManager.LoadScene("Y6 - Speed Race"); // constellation fun fact
+            SceneManager.LoadScene("Y6 - Constellation Game");
 
             PlayerPrefs.SetInt("C4", 0);
             PlayerPrefs.SetInt("C5", 0);
