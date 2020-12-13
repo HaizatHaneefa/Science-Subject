@@ -10,10 +10,13 @@ public class EclipseGameManager : MonoBehaviour
     [SerializeField] public bool[] isDone;
     [SerializeField] public Button confirmButton;
 
-    [SerializeField] private GameObject[] col;
-    [SerializeField] private TextMeshProUGUI progresstext;
+    [SerializeField] private GameObject[] col, infoPops;
+    [SerializeField] private TextMeshProUGUI progresstext, text1, text2;
     [SerializeField] public GameObject popInfo, wrongPop, endpop, pausePop, introPop;
-    int cur;
+    [SerializeField] private string[] questions;
+    [SerializeField]private int cur, stageInt;
+
+    bool testBool;
 
     void Start()
     {
@@ -24,8 +27,14 @@ public class EclipseGameManager : MonoBehaviour
         introPop.SetActive(true);
 
         isDone = new bool[3];
+        cur = 1;
         confirmButton.gameObject.SetActive(false);
         Time.timeScale = 1;
+
+        for (int i = 0; i < infoPops.Length; i++)
+        {
+            infoPops[i].SetActive(false);
+        }
     }
 
     void Update()
@@ -35,18 +44,17 @@ public class EclipseGameManager : MonoBehaviour
         if (!isDone[0])
         {
             wrongPop.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "Please visit stage 1";
-            popInfo.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "stage 1";
+            //popInfo.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "stage 1";
         }
         else if (isDone[0])
         {
             wrongPop.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "Please visit stage 2";
-            popInfo.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "stage 2";
+            //popInfo.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "stage 2";
         }
 
         if (isDone[1])
         {
             popInfo.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "stage 3";
-            Debug.Log("ww");
         }
 
         if (isDone[2])
@@ -55,38 +63,202 @@ public class EclipseGameManager : MonoBehaviour
         }
     }
 
-    public void Confirm()
+    public void Confirm() // pops the info
     {
-        popInfo.SetActive(true);
+        if (stageInt == 0)
+        {
+            for (int i = 0; i < infoPops.Length; i++)
+            {
+                infoPops[i].SetActive(false);
+                infoPops[0].SetActive(true);
+            }
+        }
+        else if (stageInt == 1)
+        {
+            for (int i = 0; i < infoPops.Length; i++)
+            {
+                infoPops[i].SetActive(false);
+                infoPops[4].SetActive(true);
+            }
+        }
+        else if (stageInt == 2)
+        {
+            for (int i = 0; i < infoPops.Length; i++)
+            {
+                infoPops[i].SetActive(false);
+                infoPops[8].SetActive(true);
+            }
+        }
+        //popInfo.SetActive(true);
         confirmButton.gameObject.SetActive(false);
     }
 
-    public void Continue()
+    public void Continue() // info pop button
     {
-        popInfo.SetActive(false);
+        //if (testBool)
+        //{
+        //    for (int i = 0; i < infoPops.Length; i++)
+        //    {
+        //        infoPops[i].SetActive(false);
+        //    }
 
-        cur += 1;
 
-        if (!isDone[0])
+
+            //if (stageInt == 0)
+            //{
+            //    stageInt = 1;
+            //}
+            //else if (stageInt == 1)
+            //{
+            //    stageInt = 2;
+            //}
+        //}
+
+        if (stageInt == 0 && !testBool)
+        {
+            for (int i = 0; i < infoPops.Length; i++)
+            {
+                infoPops[i].SetActive(false);
+                infoPops[2].SetActive(true);
+            }
+
+            testBool = true;
+            //isDone[0] = true;
+        }
+        else if (stageInt == 0 && testBool)
         {
             isDone[0] = true;
 
             col[0].transform.GetChild(0).gameObject.SetActive(false);
             col[0].GetComponent<BoxCollider>().enabled = false;
+
+            testBool = false;
+
+            for (int i = 0; i < infoPops.Length; i++)
+            {
+                infoPops[i].SetActive(false);
+            }
+
+            cur += 1;
+            stageInt = 1;
+            //return;
         }
-        else if (isDone[0] && !isDone[1])
+        else if (stageInt == 1 && !testBool)
+        {
+            for (int i = 0; i < infoPops.Length; i++)
+            {
+                infoPops[i].SetActive(false);
+                infoPops[6].SetActive(true);
+            }
+
+            testBool = true;
+
+        }
+        else if (stageInt == 1 && testBool)
         {
             isDone[1] = true;
 
             col[1].transform.GetChild(0).gameObject.SetActive(false);
             col[1].GetComponent<BoxCollider>().enabled = false;
+
+            testBool = false;
+
+            for (int i = 0; i < infoPops.Length; i++)
+            {
+                infoPops[i].SetActive(false);
+            }
+            cur += 1;
+
+            //isDone[1] = true;
+            stageInt = 2;
+            //return;
         }
-        else if (isDone[1] && !isDone[2])
+        else if (stageInt == 2 && !testBool)
+        {
+            for (int i = 0; i < infoPops.Length; i++)
+            {
+                infoPops[i].SetActive(false);
+                infoPops[10].SetActive(true);
+            }
+
+            testBool = true;
+        }
+        else if (stageInt == 2 && testBool)
         {
             isDone[2] = true;
 
             col[2].transform.GetChild(0).gameObject.SetActive(false);
             col[2].GetComponent<BoxCollider>().enabled = false;
+
+            testBool = false;
+
+            for (int i = 0; i < infoPops.Length; i++)
+            {
+                infoPops[i].SetActive(false);
+            }
+            cur += 1;
+            endpop.SetActive(true);
+            // end the game
+        }
+
+   
+    }
+
+    public void test() // this is for the fucking question
+    {
+
+        if (stageInt == 0 && !testBool)
+        {
+            for (int i = 0; i < infoPops.Length; i++)
+            {
+                infoPops[i].SetActive(false);
+                infoPops[1].SetActive(true);
+            }
+        }
+        else if (stageInt == 0 && testBool)
+        {
+            for (int i = 0; i < infoPops.Length; i++)
+            {
+                infoPops[i].SetActive(false);
+                infoPops[3].SetActive(true);
+            }
+
+            //testBool = false;
+        }
+        else if (stageInt == 1 && !testBool)
+        {
+            for (int i = 0; i < infoPops.Length; i++)
+            {
+                infoPops[i].SetActive(false);
+                infoPops[5].SetActive(true);
+            }
+
+            Debug.Log("ee");
+        }
+        else if (stageInt == 1 && testBool)
+        {
+            for (int i = 0; i < infoPops.Length; i++)
+            {
+                infoPops[i].SetActive(false);
+                infoPops[7].SetActive(true);
+            }
+        }
+
+        else if (stageInt == 2 && !testBool)
+        {
+            for (int i = 0; i < infoPops.Length; i++)
+            {
+                infoPops[i].SetActive(false);
+                infoPops[9].SetActive(true);
+            }
+        }
+        else if (stageInt == 2 && testBool)
+        {
+            for (int i = 0; i < infoPops.Length; i++)
+            {
+                infoPops[i].SetActive(false);
+                infoPops[11].SetActive(true);
+            }
         }
     }
 

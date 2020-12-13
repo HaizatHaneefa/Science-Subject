@@ -11,6 +11,7 @@ public class ConstellationGameManager : MonoBehaviour
 
     [SerializeField] public List<GameObject> p1, p2, p3, storedeckList, cards;
     [SerializeField] private GameObject transitionImage, endgamePop, introPop, pausePop, pauseButton, tutorialImage, discardPile, startPile, turnCounter;
+    [SerializeField] private GameObject[] introGO;
 
     int cur, turn, otherturn, a1turn, a2turn;
 
@@ -28,6 +29,8 @@ public class ConstellationGameManager : MonoBehaviour
 
     void Start()
     {
+        introGO[1].SetActive(false);
+
         aSource = GetComponent<AudioSource>();
 
         introPop.GetComponent<Animation>().Play("EndGamePop-NEW");
@@ -168,7 +171,7 @@ public class ConstellationGameManager : MonoBehaviour
                 DelegateSFX();
             }
 
-          
+
         }
         else if (isTurn[0])
         {
@@ -1456,6 +1459,13 @@ public class ConstellationGameManager : MonoBehaviour
 
     #region Buttons
     // ------------ Buttons -------------- //
+    public void GoObjective()
+    {
+        introGO[1].SetActive(true);
+        introGO[0].SetActive(false);
+        SelectSFX();
+    }
+
     public void StartTheGame()
     {
         SelectSFX();
