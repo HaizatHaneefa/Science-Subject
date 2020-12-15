@@ -1,6 +1,6 @@
-﻿using UnityEngine;
-using UnityEngine.UI;
+﻿using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine;
 
 public class ConstellationFunFactManager : MonoBehaviour
 {
