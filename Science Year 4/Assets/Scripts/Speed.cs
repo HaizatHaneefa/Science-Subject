@@ -15,7 +15,7 @@ public class Speed : MonoBehaviour
     {
         if (manager.isReady)
         {
-            transform.position -= transform.right * 40f * Time.deltaTime;
+            transform.position -= transform.right * 15f * Time.deltaTime;
         }
     }
 

@@ -45,17 +45,17 @@ public class MenuManager : MonoBehaviour
                 itemsInBackground[i].SetActive(false);
             }
 
-            for (int i = 0; i < canvas.Length; i++)
-            {
-                canvas[i].enabled = false;
-                canvas[1].enabled = true;
-            }
-
             bar.SetActive(true);
             arOrFunFactBackground.SetActive(false);
 
             if (PlayerPrefs.GetInt("C4") == 1)
             {
+                for (int i = 0; i < canvas.Length; i++)
+                {
+                    canvas[i].enabled = false;
+                    canvas[1].enabled = true;
+                }
+
                 for (int i = 0; i < chapter.Length; i++)
                 {
                     chapter[i].SetActive(false);
@@ -65,8 +65,14 @@ public class MenuManager : MonoBehaviour
                 dropdown.value = 1;
             }
             else if (PlayerPrefs.GetInt("C5") == 1)
+            {
+                for (int i = 0; i < canvas.Length; i++)
                 {
-                    for (int i = 0; i < chapter.Length; i++)
+                    canvas[i].enabled = false;
+                    canvas[1].enabled = true;
+                }
+
+                for (int i = 0; i < chapter.Length; i++)
                 {
                     chapter[i].SetActive(false);
                     chapter[1].SetActive(true);
@@ -76,6 +82,12 @@ public class MenuManager : MonoBehaviour
             }
             else if (PlayerPrefs.GetInt("C6") == 1)
             {
+                for (int i = 0; i < canvas.Length; i++)
+                {
+                    canvas[i].enabled = false;
+                    canvas[1].enabled = true;
+                }
+
                 for (int i = 0; i < chapter.Length; i++)
                 {
                     chapter[i].SetActive(false);
@@ -83,6 +95,22 @@ public class MenuManager : MonoBehaviour
                 }
 
                 dropdown.value = 3;
+            }
+            else if (PlayerPrefs.GetInt("MC4") == 1)
+            {
+                for (int i = 0; i < canvas.Length; i++)
+                {
+                    canvas[i].enabled = false;
+                    canvas[2].enabled = true;
+                }
+
+                for (int i = 0; i < chapter.Length; i++)
+                {
+                    chapter[i].SetActive(false);
+                    chapter[3].SetActive(true);
+                }
+
+                //dropdown.value = 3;
             }
         }
         else if (PlayerPrefs.GetInt("CheckMenu") == 0)
@@ -138,20 +166,48 @@ public class MenuManager : MonoBehaviour
         }
     }
 
-    public void ToTopic()
+    public void ToTopic(int index)
     {
         SoundSelection();
 
-        for (int i = 0; i < canvas.Length; i++)
+        if (index == 0)
         {
-            canvas[i].enabled = false;
-            canvas[1].enabled = true;
-        }
+            for (int i = 0; i < canvas.Length; i++)
+            {
+                canvas[i].enabled = false;
+                canvas[1].enabled = true;
+            }
 
-        canvas[1].GetComponent<Animation>().Play("Year4 Anim");
+            for (int i = 0; i < chapter.Length; i++)
+            {
+                chapter[i].SetActive(false);
+                chapter[0].SetActive(true);
+            }
+
+            canvas[1].GetComponent<Animation>().Play("Year4 Anim");
+            dropdown.gameObject.SetActive(true);
+        }
+        else if (index == 1)
+        {
+            for (int i = 0; i < canvas.Length; i++)
+            {
+                canvas[i].enabled = false;
+                canvas[2].enabled = true;
+
+            }
+
+            for (int i = 0; i < chapter.Length; i++)
+            {
+                chapter[i].SetActive(false);
+                chapter[3].SetActive(true);
+            }
+
+            canvas[2].GetComponent<Animation>().Play("Year4 Anim");
+            dropdown.gameObject.SetActive(false);
+        }
     }
 
-    public void HandleInputData()
+    public void HandleInputData() // dropdown
     {
         SoundSelection();
 
@@ -245,6 +301,10 @@ public class MenuManager : MonoBehaviour
         {
             descriptionText.text = "this should be constellation"; // y6 constellation
         }
+        else if (l == 20)
+        {
+            descriptionText.text = "this should be Math fractions";
+        }
 
         arOrFunFactBackground.SetActive(true);
         arOrFunFactBackground.GetComponent<Animation>().Play("Menu_ConfirmPop");
@@ -270,6 +330,8 @@ public class MenuManager : MonoBehaviour
             PlayerPrefs.SetInt("C4", 1);
             PlayerPrefs.SetInt("C5", 0);
             PlayerPrefs.SetInt("C6", 0);
+
+            PlayerPrefs.SetInt("MC4", 0);
         }
         else if (l == 2)
         {
@@ -279,6 +341,8 @@ public class MenuManager : MonoBehaviour
             PlayerPrefs.SetInt("C4", 1);
             PlayerPrefs.SetInt("C5", 0);
             PlayerPrefs.SetInt("C6", 0);
+
+            PlayerPrefs.SetInt("MC4", 0);
         }
         else if (l == 3)
         {
@@ -288,6 +352,8 @@ public class MenuManager : MonoBehaviour
             PlayerPrefs.SetInt("C4", 1);
             PlayerPrefs.SetInt("C5", 0);
             PlayerPrefs.SetInt("C6", 0);
+
+            PlayerPrefs.SetInt("MC4", 0);
         }
         else if (l == 4)
         {
@@ -297,6 +363,8 @@ public class MenuManager : MonoBehaviour
             PlayerPrefs.SetInt("C4", 0);
             PlayerPrefs.SetInt("C5", 1);
             PlayerPrefs.SetInt("C6", 0);
+
+            PlayerPrefs.SetInt("MC4", 0);
         }
         else if (l == 5)
         {
@@ -306,6 +374,8 @@ public class MenuManager : MonoBehaviour
             PlayerPrefs.SetInt("C4", 0);
             PlayerPrefs.SetInt("C5", 1);
             PlayerPrefs.SetInt("C6", 0);
+
+            PlayerPrefs.SetInt("MC4", 0);
         }
         else if (l == 6)
         {
@@ -315,6 +385,8 @@ public class MenuManager : MonoBehaviour
             PlayerPrefs.SetInt("C4", 0);
             PlayerPrefs.SetInt("C5", 1);
             PlayerPrefs.SetInt("C6", 0);
+
+            PlayerPrefs.SetInt("MC4", 0);
         }
         else if (l == 7)
         {
@@ -324,6 +396,8 @@ public class MenuManager : MonoBehaviour
             PlayerPrefs.SetInt("C4", 0);
             PlayerPrefs.SetInt("C5", 0);
             PlayerPrefs.SetInt("C6", 1);
+
+            PlayerPrefs.SetInt("MC4", 0);
         }
         else if (l == 8)
         {
@@ -333,6 +407,8 @@ public class MenuManager : MonoBehaviour
             PlayerPrefs.SetInt("C4", 0);
             PlayerPrefs.SetInt("C5", 0);
             PlayerPrefs.SetInt("C6", 1);
+
+            PlayerPrefs.SetInt("MC4", 0);
         }
         else if (l == 9)
         {
@@ -342,6 +418,18 @@ public class MenuManager : MonoBehaviour
             PlayerPrefs.SetInt("C4", 0);
             PlayerPrefs.SetInt("C5", 0);
             PlayerPrefs.SetInt("C6", 1);
+
+            PlayerPrefs.SetInt("MC4", 0);
+        }
+        else if (l == 20)
+        {
+            SceneManager.LoadScene("Y4 - Fractions AR");
+
+            PlayerPrefs.SetInt("C4", 0);
+            PlayerPrefs.SetInt("C5", 0);
+            PlayerPrefs.SetInt("C6", 0);
+
+            PlayerPrefs.SetInt("MC4", 1);
         }
     }
 
@@ -357,6 +445,8 @@ public class MenuManager : MonoBehaviour
             PlayerPrefs.SetInt("C4", 1);
             PlayerPrefs.SetInt("C5", 0);
             PlayerPrefs.SetInt("C6", 0);
+
+            PlayerPrefs.SetInt("MC", 0);
         }
         else if (l == 2)
         {
@@ -366,6 +456,8 @@ public class MenuManager : MonoBehaviour
             PlayerPrefs.SetInt("C4", 1);
             PlayerPrefs.SetInt("C5", 0);
             PlayerPrefs.SetInt("C6", 0);
+
+            PlayerPrefs.SetInt("MC", 0);
         }
         else if (l == 3)
         {
@@ -375,6 +467,8 @@ public class MenuManager : MonoBehaviour
             PlayerPrefs.SetInt("C4", 1);
             PlayerPrefs.SetInt("C5", 0);
             PlayerPrefs.SetInt("C6", 0);
+
+            PlayerPrefs.SetInt("MC", 0);
         }
         else if (l == 4)
         {
@@ -384,6 +478,8 @@ public class MenuManager : MonoBehaviour
             PlayerPrefs.SetInt("C4", 0);
             PlayerPrefs.SetInt("C5", 1);
             PlayerPrefs.SetInt("C6", 0);
+
+            PlayerPrefs.SetInt("MC", 0);
         }
         else if (l == 5)
         {
@@ -393,6 +489,8 @@ public class MenuManager : MonoBehaviour
             PlayerPrefs.SetInt("C4", 0);
             PlayerPrefs.SetInt("C5", 1);
             PlayerPrefs.SetInt("C6", 0);
+
+            PlayerPrefs.SetInt("MC", 0);
         }
         else if (l == 6)
         {
@@ -402,6 +500,8 @@ public class MenuManager : MonoBehaviour
             PlayerPrefs.SetInt("C4", 0);
             PlayerPrefs.SetInt("C5", 1);
             PlayerPrefs.SetInt("C6", 0);
+
+            PlayerPrefs.SetInt("MC", 0);
         }
         else if (l == 7)
         {
@@ -411,6 +511,8 @@ public class MenuManager : MonoBehaviour
             PlayerPrefs.SetInt("C4", 0);
             PlayerPrefs.SetInt("C5", 0);
             PlayerPrefs.SetInt("C6", 1);
+
+            PlayerPrefs.SetInt("MC", 0);
         }
         else if (l == 8)
         {
@@ -420,6 +522,8 @@ public class MenuManager : MonoBehaviour
             PlayerPrefs.SetInt("C4", 0);
             PlayerPrefs.SetInt("C5", 0);
             PlayerPrefs.SetInt("C6", 1);
+
+            PlayerPrefs.SetInt("MC", 0);
         }
         else if (l == 9)
         {
@@ -429,6 +533,18 @@ public class MenuManager : MonoBehaviour
             PlayerPrefs.SetInt("C4", 0);
             PlayerPrefs.SetInt("C5", 0);
             PlayerPrefs.SetInt("C6", 1);
+
+            PlayerPrefs.SetInt("MC", 0);
+        }
+        else if (l == 20)
+        {
+            SceneManager.LoadScene("Y4 - Fractions Fun Fact"); // constellation fun fact
+
+            PlayerPrefs.SetInt("C4", 0);
+            PlayerPrefs.SetInt("C5", 0);
+            PlayerPrefs.SetInt("C6", 0);
+
+            PlayerPrefs.SetInt("MC", 1);
         }
     }
 
@@ -444,6 +560,8 @@ public class MenuManager : MonoBehaviour
             PlayerPrefs.SetInt("C4", 1);
             PlayerPrefs.SetInt("C5", 0);
             PlayerPrefs.SetInt("C6", 0);
+
+            PlayerPrefs.SetInt("MC", 0);
         }
         else if (l == 2)
         {
@@ -453,6 +571,8 @@ public class MenuManager : MonoBehaviour
             PlayerPrefs.SetInt("C4", 1);
             PlayerPrefs.SetInt("C5", 0);
             PlayerPrefs.SetInt("C6", 0);
+
+            PlayerPrefs.SetInt("MC", 0);
         }
         else if (l == 3)
         {
@@ -462,6 +582,8 @@ public class MenuManager : MonoBehaviour
             PlayerPrefs.SetInt("C4", 1);
             PlayerPrefs.SetInt("C5", 0);
             PlayerPrefs.SetInt("C6", 0);
+
+            PlayerPrefs.SetInt("MC", 0);
         }
         else if (l == 4)
         {
@@ -471,6 +593,8 @@ public class MenuManager : MonoBehaviour
             PlayerPrefs.SetInt("C4", 0);
             PlayerPrefs.SetInt("C5", 1);
             PlayerPrefs.SetInt("C6", 0);
+
+            PlayerPrefs.SetInt("MC", 0);
         }
         else if (l == 5)
         {
@@ -480,6 +604,8 @@ public class MenuManager : MonoBehaviour
             PlayerPrefs.SetInt("C4", 0);
             PlayerPrefs.SetInt("C5", 1);
             PlayerPrefs.SetInt("C6", 0);
+
+            PlayerPrefs.SetInt("MC", 0);
         }
         else if (l == 6)
         {
@@ -489,6 +615,8 @@ public class MenuManager : MonoBehaviour
             PlayerPrefs.SetInt("C4", 0);
             PlayerPrefs.SetInt("C5", 1);
             PlayerPrefs.SetInt("C6", 0);
+
+            PlayerPrefs.SetInt("MC", 0);
         }
         else if (l == 7)
         {
@@ -499,6 +627,8 @@ public class MenuManager : MonoBehaviour
             PlayerPrefs.SetInt("C4", 0);
             PlayerPrefs.SetInt("C5", 0);
             PlayerPrefs.SetInt("C6", 1);
+
+            PlayerPrefs.SetInt("MC", 0);
         }
         else if (l == 8)
         {
@@ -509,6 +639,8 @@ public class MenuManager : MonoBehaviour
             PlayerPrefs.SetInt("C4", 0);
             PlayerPrefs.SetInt("C5", 0);
             PlayerPrefs.SetInt("C6", 1);
+
+            PlayerPrefs.SetInt("MC", 0);
         }
         else if (l == 9)
         {
@@ -519,6 +651,20 @@ public class MenuManager : MonoBehaviour
             PlayerPrefs.SetInt("C4", 0);
             PlayerPrefs.SetInt("C5", 0);
             PlayerPrefs.SetInt("C6", 1);
+
+            PlayerPrefs.SetInt("MC", 0);
+        }
+        else if (l == 20)
+        {
+            // y6 constellation
+            //SceneManager.LoadScene("Y6 - Speed Race"); // constellation fun fact
+            SceneManager.LoadScene("Y4 - Fractions Game");
+
+            PlayerPrefs.SetInt("C4", 0);
+            PlayerPrefs.SetInt("C5", 0);
+            PlayerPrefs.SetInt("C6", 0);
+
+            PlayerPrefs.SetInt("MC", 1);
         }
     }
 

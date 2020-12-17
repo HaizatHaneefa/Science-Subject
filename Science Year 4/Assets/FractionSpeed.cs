@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpeedAnimalRace : MonoBehaviour
+public class FractionSpeed : MonoBehaviour
 {
-    FiveAnimalGameManager manager;
+    Y4FractionsGame manager;
 
     private void Start()
     {
-        manager = GameObject.FindGameObjectWithTag("GameController").GetComponent<FiveAnimalGameManager>();
+        manager = GameObject.FindGameObjectWithTag("GameController").GetComponent<Y4FractionsGame>();
     }
 
     void Update()
