@@ -420,12 +420,17 @@ public class FractionARManager : MonoBehaviour
         descriptionCur -= 1;
     }
 
+    public void _Quiz()
+    {
+        PressSFX();
+        SceneManager.LoadScene("Y4 - Fractions Quiz");
+    }
+
     public void _BackToMenu()
     {
         BackSFX();
         SceneManager.LoadScene("Menu");
     }
-
 
     // ---------------------------- SFX ------------------------------ //
     public void PressSFX() // button press yes
