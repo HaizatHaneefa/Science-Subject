@@ -13,11 +13,6 @@ public class ItemSlotPlantY5 : MonoBehaviour, IDropHandler
 
     [SerializeField] string[] dialogue;
 
-    private void Start()
-    {
-        //transform.GetChild(2).GetComponent<ParticleSystem>().Stop();
-    }
-
     void Awake()
     {
         manager = GameObject.FindGameObjectWithTag("GameController").GetComponent<Y5PlantQuiz>();

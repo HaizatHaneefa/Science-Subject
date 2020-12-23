@@ -10,28 +10,18 @@ public class Y5PlantQuiz : MonoBehaviour
 {
     int cur;
 
-    [SerializeField] private GameObject[] mcq;
-    [SerializeField] private GameObject exampleImage;
-    [SerializeField] public GameObject secondQuestion;
-    [SerializeField] public GameObject thirdQuestion;
     [SerializeField] public GameObject[] thirdAnswers;
-    [SerializeField] public GameObject continueButton;
-    //[SerializeField] public GameObject blocker;
-    [SerializeField] private GameObject introPop;
-    [SerializeField] private GameObject conButton;
-    [SerializeField] private GameObject instructTextGO;
-    //public GameObject yayPop;
-    [SerializeField] public GameObject signBoard;
+    [SerializeField] private GameObject[] mcq;
+    [SerializeField] private GameObject exampleImage, conButton, instructTextGO, introPop;
+    [SerializeField] public GameObject continueButton, secondQuestion, thirdQuestion, signBoard;
 
-    [SerializeField] public TextMeshProUGUI hint1;
-    [SerializeField] public TextMeshProUGUI hint2;
+    [SerializeField] public TextMeshProUGUI hint1, hint2;
     [SerializeField] public TextMeshProUGUI[] instructionText;
 
     [SerializeField] private Image ground;
 
     public bool[] secondBool;
     public bool[] thirdBool;
-
 
     [SerializeField] public Sprite[] rightWrongSprite;
 
@@ -56,9 +46,6 @@ public class Y5PlantQuiz : MonoBehaviour
         thirdBool = new bool[5];
         thirdBool[0] = true;
 
-        //yayPop.SetActive(false);
-        //blocker.SetActive(true);
-
         for (int i = 0; i < thirdAnswers.Length; i++)
         {
             thirdAnswers[i].SetActive(false);
@@ -74,6 +61,51 @@ public class Y5PlantQuiz : MonoBehaviour
         secondQuestion.SetActive(false);
         thirdQuestion.SetActive(false);
         continueButton.SetActive(false);
+    }
+
+    // ---------------------------- Functions ------------------------------ //
+    public void Continue()
+    {
+        PressSFX();
+        exampleImage.SetActive(false);
+        conButton.SetActive(false);
+
+        for (int o = 0; o < mcq.Length; o++)
+        {
+            mcq[o].SetActive(false);
+            mcq[1].SetActive(true);
+        }
+
+        mcq[1].GetComponent<Animation>().Play("MCQ Year 5 Chapter 4");
+
+        instructionText[0].enabled = true;
+    }
+
+    public void ContinueSomeMore()
+    {
+        PressSFX();
+        continueButton.SetActive(false);
+        thirdQuestion.SetActive(true);
+        instructTextGO.SetActive(false);
+
+        instructionText[0].enabled = false;
+        instructionText[1].text = "Place the correct plant that suits the characteristics and behaviours in the holder";
+
+        thirdAnswers[0].GetComponent<Animation>().Play("Question-Year 5 Chap 4");
+    }
+
+    public void _MCQ()
+    {
+        RightSFX();
+
+        StartCoroutine(ButtonChangeColor());
+    }
+
+    public void _NOMCQ()
+    {
+        WrongPressSFX();
+
+        StartCoroutine(ChangeRedColor());
     }
 
     public void StartQuiz()
@@ -96,28 +128,32 @@ public class Y5PlantQuiz : MonoBehaviour
             mcq[0].SetActive(true);
             mcq[0].GetComponent<Animation>().Play("MCQ Year 5 Chapter 4");
         }
-
-        //blocker.SetActive(false);
     }
 
-    public void _MCQ()
+    // ---------------------------- Coroutines ------------------------------ //
+    IEnumerator ChangeRedColor()
     {
-        RightSFX();
+        List<GameObject> disable = new List<GameObject>();
 
-        StartCoroutine(ButtonChangeColor());
-    }
+        disable.AddRange(GameObject.FindGameObjectsWithTag("False"));
 
-    public void _NOMCQ()
-    {
-        WrongPressSFX();
+        foreach (GameObject but in disable)
+        {
+            but.GetComponent<Button>().enabled = false;
+        }
 
-        StartCoroutine(ChangeRedColor());
-    }
+        Image img = EventSystem.current.currentSelectedGameObject.GetComponent<Image>();
 
-    public void BackToAR()
-    {
-        BackSFX();
-        SceneManager.LoadScene("Y5 - C5 AR");
+        img.color = Color.red;
+
+        yield return new WaitForSeconds(1f);
+
+        img.color = Color.white;
+
+        foreach (GameObject but in disable)
+        {
+            but.GetComponent<Button>().enabled = true;
+        }
     }
 
     IEnumerator ButtonChangeColor()
@@ -142,8 +178,6 @@ public class Y5PlantQuiz : MonoBehaviour
         {
             exampleImage.SetActive(true);
             conButton.SetActive(true);
-
-            Debug.Log("qq");
 
             instructionText[0].enabled = false;
 
@@ -200,36 +234,7 @@ public class Y5PlantQuiz : MonoBehaviour
         cur += 1;
     }
 
-    public void Continue()
-    {
-        PressSFX();
-        exampleImage.SetActive(false);
-        conButton.SetActive(false);
-
-        for (int o = 0; o < mcq.Length; o++)
-        {
-            mcq[o].SetActive(false);
-            mcq[1].SetActive(true);
-        }
-
-        mcq[1].GetComponent<Animation>().Play("MCQ Year 5 Chapter 4");
-
-        instructionText[0].enabled = true;
-    }
-
-    public void ContinueSomeMore()
-    {
-        PressSFX();
-        continueButton.SetActive(false);
-        thirdQuestion.SetActive(true);
-        instructTextGO.SetActive(false);
-
-        instructionText[0].enabled = false;
-        instructionText[1].text = "Place the correct plant that suits the characteristics and behaviours in the holder";
-
-        thirdAnswers[0].GetComponent<Animation>().Play("Question-Year 5 Chap 4");
-    }
-
+    // ---------------------------- Scene Loaders ------------------------------ //
     public void Restart()
     {
         PressSFX();
@@ -242,31 +247,13 @@ public class Y5PlantQuiz : MonoBehaviour
         SceneManager.LoadScene("Y5 - C5 Game");
     }
 
-    IEnumerator ChangeRedColor()
+    public void BackToAR()
     {
-        List<GameObject> disable = new List<GameObject>();
-
-        disable.AddRange(GameObject.FindGameObjectsWithTag("False"));
-
-        foreach (GameObject but in disable)
-        {
-            but.GetComponent<Button>().enabled = false;
-        }
-
-        Image img = EventSystem.current.currentSelectedGameObject.GetComponent<Image>();
-
-        img.color = Color.red;
-
-        yield return new WaitForSeconds(1f);
-
-        img.color = Color.white;
-
-        foreach (GameObject but in disable)
-        {
-            but.GetComponent<Button>().enabled = true;
-        }
+        BackSFX();
+        SceneManager.LoadScene("Y5 - C5 AR");
     }
 
+    // ---------------------------- SFX ------------------------------ //
     public void PressSFX() // button press yes
     {
         aSource.clip = clip[0];

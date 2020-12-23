@@ -18,7 +18,7 @@ public class EclipseARManager : MonoBehaviour
     [SerializeField] private Button moreExplanationButton, nextButton;
 
     [SerializeField] private GameObject[] moreInfo;
-    [SerializeField] private GameObject popup, slider, sliderBut, blueborder, eclipseModel, quizObject, sliderImage;
+    [SerializeField] private GameObject popup, slider, sliderBut, blueborder, eclipseModel, quizObject, sliderImage, backButton;
 
     [SerializeField] private AudioSource aSource;
     [SerializeField] private AudioClip[] clip;
@@ -49,6 +49,8 @@ public class EclipseARManager : MonoBehaviour
         quizObject.SetActive(false);
 
         cur = new int[2];
+
+        backButton.SetActive(false);
     }
 
     void Update()
@@ -76,6 +78,8 @@ public class EclipseARManager : MonoBehaviour
     public void _lunar()
     {
         PressSFX();
+
+        backButton.SetActive(true);
 
         if (cur[1] == 0)
         {
@@ -110,6 +114,8 @@ public class EclipseARManager : MonoBehaviour
     {
         PressSFX();
 
+        backButton.SetActive(true);
+
         if (cur[1] == 0) // default
         {
             clickables[0].GetComponent<Image>().sprite = butSprite[0];
@@ -142,6 +148,8 @@ public class EclipseARManager : MonoBehaviour
     public void back()
     {
         BackSFX();
+
+        backButton.SetActive(false);
 
         for (int i = 0; i < clickables.Length; i++)
         {

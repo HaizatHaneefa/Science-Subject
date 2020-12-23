@@ -23,11 +23,7 @@ public class FractionQuizManager : MonoBehaviour
         endpop.SetActive(false);
     }
 
-    void Update()
-    {
-        
-    }
-
+    // ---------------------------- functions ------------------------------ //
     public void Yes(int index)
     {
         RightSFX();
@@ -149,6 +145,7 @@ public class FractionQuizManager : MonoBehaviour
         WrongPressSFX();
     }
 
+    // ---------------------------- Scene Loaders ------------------------------ //
     public void BackToMenu()
     {
         SceneManager.LoadScene("Menu");
@@ -159,7 +156,7 @@ public class FractionQuizManager : MonoBehaviour
         SceneManager.LoadScene("Y4 - Fractions Quiz");
     }
 
-
+    // ---------------------------- SFX ------------------------------ //
     public void PressSFX() // button press yes
     {
         aSource.clip = clip[0];

@@ -31,9 +31,9 @@ public class SpeedQuizManager : MonoBehaviour
         }
     }
 
-
+    // ---------------------------- Functions ------------------------------ //
     public void Button()
-    { 
+    {
         b = EventSystem.current.currentSelectedGameObject;
 
         if (b.tag == "True")
@@ -45,6 +45,38 @@ public class SpeedQuizManager : MonoBehaviour
         {
             WrongPressSFX();
             StartCoroutine(WrongAnswer());
+        }
+    }
+
+    // ---------------------------- Coroutines ------------------------------ //
+    IEnumerator EndPop()
+    {
+        RightSFX();
+        endPop.SetActive(true);
+        endPop.GetComponent<Animation>().Play("SuccessPop");
+
+        yield return new WaitForSeconds(0.5f);
+
+        ps.SetActive(true);
+        ps.GetComponent<ParticleSystem>().Play();
+    }
+
+    IEnumerator WrongAnswer()
+    {
+        b.GetComponent<Image>().color = Color.red;
+
+        for (int i = 0; i < buts.Length; i++)
+        {
+            buts[i].GetComponent<Button>().interactable = false;3w
+        }
+
+        yield return new WaitForSeconds(1f);
+
+        b.GetComponent<Image>().color = Color.white;
+
+        for (int i = 0; i < buts.Length; i++)
+        {
+            buts[i].GetComponent<Button>().interactable = true;
         }
     }
 
@@ -135,41 +167,13 @@ public class SpeedQuizManager : MonoBehaviour
         }
     }
 
-    IEnumerator EndPop()
-    {
-        endPop.SetActive(true);
-        endPop.GetComponent<Animation>().Play("SuccessPop");
-
-        yield return new WaitForSeconds(0.5f);
-
-        ps.SetActive(true);
-        ps.GetComponent<ParticleSystem>().Play();
-    }
-
-    IEnumerator WrongAnswer()
-    {
-        b.GetComponent<Image>().color = Color.red;
-
-        for (int i = 0; i < buts.Length; i++)
-        {
-            buts[i].GetComponent<Button>().interactable = false;
-        }
-
-        yield return new WaitForSeconds(1f);
-
-        b.GetComponent<Image>().color = Color.white;
-
-        for (int i = 0; i < buts.Length; i++)
-        {
-            buts[i].GetComponent<Button>().interactable = true;
-        }
-    }
-
+    // ---------------------------- Scene Loaders ------------------------------ //
     public void ReturnAR()
     {
         BackSFX();
         SceneManager.LoadScene("Y6 - Speed AR");
     }
+
 
     public void Retry()
     {
@@ -177,6 +181,7 @@ public class SpeedQuizManager : MonoBehaviour
         SceneManager.LoadScene("Y6 - Speed Quiz");
     }
 
+    // ---------------------------- SFX ------------------------------ //
     public void PressSFX() // button press yes
     {
         aSource.clip = clip[0];

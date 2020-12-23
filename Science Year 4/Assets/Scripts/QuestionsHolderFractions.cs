@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class QuestionsHolderFractions : MonoBehaviour
 {
-    // ⅑ ³⁄₇  ⅐
     // 1
     public class First
     {
@@ -93,9 +92,9 @@ public class QuestionsHolderFractions : MonoBehaviour
         public int num = 3;
     }
 
-    // 7
     public Sixth q6 = new Sixth();
 
+    // 7
     public class Seventh
     {
         public string question = "0.07 + 0.77";

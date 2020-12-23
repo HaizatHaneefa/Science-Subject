@@ -1341,7 +1341,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   questions: []
-  questiontext: {fileID: 0}
   questionGroup:
   - {fileID: 971725305}
   - {fileID: 2100580473}
@@ -1353,6 +1352,8 @@ MonoBehaviour:
   - {fileID: 1301648466}
   - {fileID: 1933538501}
   - {fileID: 1747786698}
+  endpop: {fileID: 2063899454}
+  secondSection: {fileID: 1978895229}
   aSource: {fileID: 0}
   clip:
   - {fileID: 8300000, guid: ffb159a21c8a04135a5616979c828fab, type: 3}
@@ -1360,8 +1361,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 52320e590bf774734a288886eba557ba, type: 3}
   - {fileID: 8300000, guid: cc82217a72fec485ca8a00c0e86dce24, type: 3}
   - {fileID: 8300000, guid: e3fa38bc886f9da4995046e8b5f6e1c2, type: 3}
-  endpop: {fileID: 2063899454}
-  secondSection: {fileID: 1978895229}
   secondBool: 
   rightWrongSprite:
   - {fileID: 21300000, guid: 4c986ee843c21449ea524e9bcbe8ad14, type: 3}
@@ -10740,7 +10739,7 @@ MonoBehaviour:
   startPos: {fileID: 2001145310}
   sprite:
   - {fileID: 21300000, guid: b0e1002f43e2c449bac86e921319a088, type: 3}
-  - {fileID: 21300000, guid: 10e8a5082655d4c9185eaab584ede766, type: 3}
+  - {fileID: 21300000, guid: b0e1002f43e2c449bac86e921319a088, type: 3}
 --- !u!114 &1820192351
 MonoBehaviour:
   m_ObjectHideFlags: 0

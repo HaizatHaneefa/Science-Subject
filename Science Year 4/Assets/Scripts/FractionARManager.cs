@@ -9,14 +9,19 @@ public class FractionARManager : MonoBehaviour
     [SerializeField] private Sprite[] butSprite;
     [SerializeField] private GameObject[] buts1, buts2, scene1, scene2, scene3, scene4;
     [SerializeField] private GameObject nextArrow, backArrow, nextScene, backScene;
+    [SerializeField] public GameObject descriptiveSection;
+    [SerializeField] public string[] sentence;
+
 
     [SerializeField] private TextMeshProUGUI descriptionText;
+
+
     [SerializeField] private string[] description;
 
     [SerializeField] private AudioSource aSource;
     [SerializeField] private AudioClip[] clip;
-
-    void Start()
+    
+     void Start()
     {
         aSource = GetComponent<AudioSource>();
 
@@ -44,6 +49,8 @@ public class FractionARManager : MonoBehaviour
         {
             buts2[i].SetActive(false);
         }
+
+        descriptiveSection.SetActive(false);
     }
 
     void Update()
@@ -419,6 +426,12 @@ public class FractionARManager : MonoBehaviour
 
         descriptionCur -= 1;
     }
+
+    public void _Close()
+    {
+        descriptiveSection.SetActive(false);
+    }
+
 
     public void _Quiz()
     {

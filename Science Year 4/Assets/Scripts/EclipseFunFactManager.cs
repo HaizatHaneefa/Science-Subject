@@ -25,11 +25,6 @@ public class EclipseFunFactManager : MonoBehaviour
             order[i].SetActive(false);
             order[0].SetActive(true);
         }
-
-        //for (int i = 0; i < but.Length; i++)
-        //{
-        //    but[i].SetActive(false);
-        //}
     }
 
     private void Update()
@@ -78,10 +73,12 @@ public class EclipseFunFactManager : MonoBehaviour
     {
         if (index == 0)
         {
+            PressSFX();
             cur -= 1;
         }
         else if (index == 1)
         {
+            BackSFX();
             cur += 1;
         }
     }
@@ -89,6 +86,7 @@ public class EclipseFunFactManager : MonoBehaviour
 
     public void _ShowImage()
     {
+        PressSFX();
         isShowing = true;
         for (int i = 0; i < order.Length; i++)
         {
@@ -99,6 +97,7 @@ public class EclipseFunFactManager : MonoBehaviour
 
     public void _ReturnFromImage()
     {
+        BackSFX();
         isShowing = false;
         for (int i = 0; i < order.Length; i++)
         {

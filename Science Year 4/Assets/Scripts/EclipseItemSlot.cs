@@ -30,7 +30,6 @@ public class EclipseItemSlot : MonoBehaviour, IDropHandler
         if (eventData.pointerDrag != null)
         {
             StartCoroutine(PopNextQuestion(eventData));
-
         }
     }
 
@@ -45,8 +44,6 @@ public class EclipseItemSlot : MonoBehaviour, IDropHandler
             transform.GetChild(0).GetComponent<Image>().sprite = manager.rightWrongSprite[1];
             transform.GetChild(0).GetComponent<Animation>().Play("GameOverPop");
 
-            //transform.GetChild(2).GetComponent<ParticleSystem>().Play();
-
             if (manager.secondBool[0])
             {
                 button.tag = "False";
@@ -54,10 +51,6 @@ public class EclipseItemSlot : MonoBehaviour, IDropHandler
                 button.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = dialogue[0].ToString();
                 button.GetComponent<Animation>().Play("GameOverPop");
             }
-            //else if (manager.secondBool[1])
-            //{
-            //    // game over
-            //}
 
             button.SetActive(false);
 
@@ -105,12 +98,4 @@ public class EclipseItemSlot : MonoBehaviour, IDropHandler
             transform.GetChild(0).GetComponent<Image>().enabled = false;
         }
     }
-
-    //IEnumerator Delay()
-    //{
-    //    yield return new WaitForSeconds(1f);
-
-    //    manager.continueButton.SetActive(true);
-    //    manager.secondQuestion.SetActive(false);
-    //}
 }

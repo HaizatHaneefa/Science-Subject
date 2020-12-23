@@ -10,21 +10,18 @@ public class EclipseQuizManager : MonoBehaviour
 {
     [SerializeField] private string[] questions;
 
-    [SerializeField] private TextMeshProUGUI questiontext;
-
     [SerializeField] private GameObject[] questionGroup;
+    List<GameObject> l = new List<GameObject>();
+    [SerializeField] public GameObject endpop, secondSection;
 
     [SerializeField] private AudioSource aSource;
     [SerializeField] private AudioClip[] clip;
 
-    [SerializeField] public GameObject endpop, secondSection;
     public bool[] secondBool;
 
     [SerializeField] public Sprite[] rightWrongSprite;
 
     int cur;
-
-    List<GameObject> l = new List<GameObject>();
 
     void Start()
     {
@@ -58,21 +55,22 @@ public class EclipseQuizManager : MonoBehaviour
         StartCoroutine(GetReaction());
     }
 
-    public void BackToMenu()
-    {
-        BackSFX();
-        SceneManager.LoadScene("Menu");
-    }
-
-    public void Restart()
-    {
-        BackSFX();
-        SceneManager.LoadScene("Y6 - Eclipse Quiz");
-    }
-
     IEnumerator GetReaction()
     {
         Image img = EventSystem.current.currentSelectedGameObject.GetComponent<Image>();
+
+        GameObject[] gos = GameObject.FindGameObjectsWithTag("False");
+        GameObject[] rightgos = GameObject.FindGameObjectsWithTag("True");
+
+        for (int i = 0; i < gos.Length; i++)
+        {
+            gos[i].GetComponent<Button>().interactable = false;
+        }
+
+        for (int i = 0; i < rightgos.Length; i++)
+        {
+            rightgos[i].GetComponent<Button>().interactable = false;
+        }
 
         if (img.gameObject.tag == "True")
         {
@@ -94,6 +92,16 @@ public class EclipseQuizManager : MonoBehaviour
 
         yield return new WaitForSeconds(1f);
 
+        for (int i = 0; i < gos.Length; i++)
+        {
+            gos[i].GetComponent<Button>().interactable = true;
+        }
+
+        for (int i = 0; i < rightgos.Length; i++)
+        {
+            rightgos[i].GetComponent<Button>().interactable = true;
+        }
+
         img.color = Color.white;
 
         if (cur == 10)
@@ -101,7 +109,6 @@ public class EclipseQuizManager : MonoBehaviour
             questionGroup[9].SetActive(false);
 
             secondSection.SetActive(true);
-            // display true false section
         }
         else if (cur != 10)
         {
@@ -122,6 +129,20 @@ public class EclipseQuizManager : MonoBehaviour
         }
     }
 
+    // ---------------------- Scenes ------------------------------ //
+    public void BackToMenu()
+    {
+        BackSFX();
+        SceneManager.LoadScene("Menu");
+    }
+
+    public void Restart()
+    {
+        BackSFX();
+        SceneManager.LoadScene("Y6 - Eclipse Quiz");
+    }
+
+    // ------------------------------- SFX ----------------------------- //
     public void PressSFX() // button press yes
     {
         aSource.clip = clip[0];
