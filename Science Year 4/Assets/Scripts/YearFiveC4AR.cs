@@ -44,10 +44,9 @@ public class YearFiveC4AR : MonoBehaviour
         }
 
         buttons[3].gameObject.SetActive(false);
-        //buttons[4].gameObject.SetActive(false);
-        //buttons[5].gameObject.SetActive(false);
     }
 
+    // ---------------------------- Functions ------------------------------ //
     public void Next()
     {
         for (int i = 0; i < animals.Length; i++)
@@ -118,8 +117,6 @@ public class YearFiveC4AR : MonoBehaviour
 
         buttons[2].gameObject.SetActive(true);
         buttons[3].gameObject.SetActive(false);
-        //buttons[4].gameObject.SetActive(false);
-        //buttons[5].gameObject.SetActive(false);
     }
 
     public void Characteristics()
@@ -255,9 +252,7 @@ public class YearFiveC4AR : MonoBehaviour
 
                 Animation anim = animals[6].GetComponent<Animation>();
                 anim["harimau-lari anim"].speed = 2.0f;
-                //anim.Play();
                 animals[6].GetComponent<Animation>().Play("harimau-lari anim");
-                //animals[6].GetComponent<Animation>().
             }
         }
         else if (index == 6)
@@ -279,6 +274,7 @@ public class YearFiveC4AR : MonoBehaviour
         }
     }
 
+    // ---------------------------- Scene Loaders ------------------------------ //
     public void Game()
     {
         PressSFX();
@@ -297,6 +293,7 @@ public class YearFiveC4AR : MonoBehaviour
         SceneManager.LoadScene("Menu");
     }
 
+    // ---------------------------- SFX ------------------------------ //
     public void PressSFX() // button press yes
     {
         aSource.clip = clip[0];

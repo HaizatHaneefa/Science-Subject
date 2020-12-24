@@ -42,11 +42,6 @@ public class Y5PlantGame : MonoBehaviour
     [SerializeField] public AudioSource aSource;
     [SerializeField] public AudioClip[] clip;
 
-    //int[] intArray = new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19 };
-
-    //public List<int> intList;
-    //int index;
-
     void Start()
     {
         aSource = GetComponent<AudioSource>();
@@ -62,7 +57,6 @@ public class Y5PlantGame : MonoBehaviour
 
         pop.SetActive(false);
 
-        //LookForQuestion();
 
         tstbool = new bool[6];
         tstbool[0] = true;
@@ -78,9 +72,6 @@ public class Y5PlantGame : MonoBehaviour
         {
             thingsToRemoveFirst[i].SetActive(false);
         }
-
-        //intList.AddRange(intArray);
-
     }
 
     void Update()
@@ -478,22 +469,7 @@ public class Y5PlantGame : MonoBehaviour
         img.color = Color.white;
     }
 
-    IEnumerator DisableButton()
-    {
-        List<GameObject> disable = new List<GameObject>();
-        disable.AddRange(GameObject.FindGameObjectsWithTag("False"));
-        foreach (GameObject but in disable)
-        {
-            but.GetComponent<Button>().enabled = false;
-        }
 
-        yield return new WaitForSeconds(1f);
-
-        foreach (GameObject but in disable)
-        {
-            but.GetComponent<Button>().enabled = true;
-        }
-    }
 
     public void PlayAgain()
     {
@@ -521,6 +497,24 @@ public class Y5PlantGame : MonoBehaviour
     {
         BackSFX();
         SceneManager.LoadScene("Y5 - C5 AR");
+    }
+
+    // ---------------------------- Coroutines ------------------------------ //
+    IEnumerator DisableButton()
+    {
+        List<GameObject> disable = new List<GameObject>();
+        disable.AddRange(GameObject.FindGameObjectsWithTag("False"));
+        foreach (GameObject but in disable)
+        {
+            but.GetComponent<Button>().enabled = false;
+        }
+
+        yield return new WaitForSeconds(1f);
+
+        foreach (GameObject but in disable)
+        {
+            but.GetComponent<Button>().enabled = true;
+        }
     }
 
     IEnumerator Change()
@@ -595,7 +589,10 @@ public class Y5PlantGame : MonoBehaviour
             playerSpeed = speed * multiplier[4];
         }
     }
+    // ---------------------------- Scene Loaders ------------------------------ //
 
+
+    // ---------------------------- SFX ------------------------------ //
     public void PressSFX() // button press yes
     {
         aSource.clip = clip[0];

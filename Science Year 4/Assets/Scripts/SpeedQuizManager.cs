@@ -67,7 +67,7 @@ public class SpeedQuizManager : MonoBehaviour
 
         for (int i = 0; i < buts.Length; i++)
         {
-            buts[i].GetComponent<Button>().interactable = false;3w
+            buts[i].GetComponent<Button>().interactable = false;
         }
 
         yield return new WaitForSeconds(1f);
