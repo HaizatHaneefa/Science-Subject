@@ -1,14 +1,11 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using TMPro;
 using UnityEngine.UI;
 
 public class ItemSlotMoneyQuiz : MonoBehaviour, IDropHandler
 {
     MoneyQuizManager manager;
-    MoneyQuizDragDrop otherManager;
 
     GameObject button;
 
@@ -29,39 +26,47 @@ public class ItemSlotMoneyQuiz : MonoBehaviour, IDropHandler
 
     IEnumerator PopNextQuestion(PointerEventData eventData) // 01101
     {
-        if (button.CompareTag("True"))
+        foreach (GameObject go in manager.ly)
+        {
+            go.GetComponent<MoneyQuizDragDrop>().enabled = false;
+        }
+
+        if (button.CompareTag("Right"))
         {
             manager.RightSFX();
-            manager.cur++;
 
             button.SetActive(false);
-            // incrase int
-            // skip one array
-            // animation
-            // all that shit
-            // sfx
+
+            transform.GetChild(1).GetComponent<Image>().enabled = true;
+            transform.GetChild(1).GetComponent<Image>().sprite = manager.sprite[0];
+            transform.GetChild(1).GetComponent<Animation>().Play("MoneyQuizChecker");
         }
-        else if (button.CompareTag("False"))
+        else if (button.CompareTag("Left"))
         {
             manager.WrongPressSFX();
             button.GetComponent<MoneyQuizDragDrop>().OnEndDrag(eventData);
-            // you are a dumbass
-            // it is what it is buddy
-            // reset
-            // sfx
-            // animation?
+
+            transform.GetChild(1).GetComponent<Image>().enabled = true;
+            transform.GetChild(1).GetComponent<Image>().sprite = manager.sprite[1];
+            transform.GetChild(1).GetComponent<Animation>().Play("MoneyQuizChecker");
         }
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(1.4f);
 
-        // idk what to put here. not yet anyway
+        foreach (GameObject go in manager.ly)
+        {
+            go.GetComponent<MoneyQuizDragDrop>().enabled = true;
+        }
+
+        if (button.CompareTag("Right"))
+        {
+            manager.cur++;
+
+            manager.ThisQuestion();
+        }
+        else if (button.CompareTag("Left"))
+        {
+            transform.GetChild(1).GetComponent<Image>().enabled = false;
+        }
     }
-
-    //IEnumerator Delay()
-    //{
-    //    yield return new WaitForSeconds(1f);
-
-    //    manager.continueButton.SetActive(true);
-    //    manager.secondQuestion.SetActive(false);
-    //}
 }
