@@ -194,9 +194,8 @@ public class YearFiveC4AR : MonoBehaviour
     public void ShowAnimal(int index)
     {
         PressSFX();
-        if (index == 0)
+        if (index == 0) // bat
         {
-            // show bat
             for (int i = 0; i < animals.Length; i++)
             {
                 animals[i].SetActive(false);
@@ -204,7 +203,7 @@ public class YearFiveC4AR : MonoBehaviour
                 animals[0].GetComponent<Animation>().Play("bat-hibernate");
             }
         }
-        else if (index == 1)
+        else if (index == 1) // lizard
         {
             for (int i = 0; i < animals.Length; i++)
             {
@@ -213,7 +212,7 @@ public class YearFiveC4AR : MonoBehaviour
                 animals[1].GetComponent<Animation>().Play("lizard-buang-ekor");
             }
         }
-        else if (index == 2)
+        else if (index == 2) // turtle
         {
             for (int i = 0; i < animals.Length; i++)
             {
@@ -222,7 +221,7 @@ public class YearFiveC4AR : MonoBehaviour
                 animals[2].GetComponent<Animation>().Play("turtle-hiding-shell");
             }
         }
-        else if (index == 3)
+        else if (index == 3) // lebah dan harimau
         {
             for (int i = 0; i < animals.Length; i++)
             {
@@ -234,7 +233,7 @@ public class YearFiveC4AR : MonoBehaviour
                 animals[3].GetComponent<Animation>().Play("lebah-sengat anim");
             }
         }
-        else if (index == 4)
+        else if (index == 4) // tupai
         {
             for (int i = 0; i < animals.Length; i++)
             {
@@ -243,7 +242,7 @@ public class YearFiveC4AR : MonoBehaviour
                 animals[5].GetComponent<Animation>().Play("tupai-anim");
             }
         }
-        else if (index == 5)
+        else if (index == 5) // harimau
         {
             for (int i = 0; i < animals.Length; i++)
             {
@@ -255,7 +254,7 @@ public class YearFiveC4AR : MonoBehaviour
                 animals[6].GetComponent<Animation>().Play("harimau-lari anim");
             }
         }
-        else if (index == 6)
+        else if (index == 6) // group of penguins
         {
             for (int i = 0; i < animals.Length; i++)
             {
@@ -266,6 +265,79 @@ public class YearFiveC4AR : MonoBehaviour
                 {
                     o.GetComponent<Animation>().Play("penguin-taktahubuatapa anim");
                 }
+            }
+        }
+        else if (index == 7) // polar bear
+        {
+            for (int i = 0; i < animals.Length; i++)
+            {
+                animals[i].SetActive(false);
+                animals[8].SetActive(true);
+            }
+        }
+        else if (index == 8) // buffalo
+        {
+            for (int i = 0; i < animals.Length; i++)
+            {
+                animals[i].SetActive(false);
+                animals[9].SetActive(true);
+                animals[9].transform.GetChild(0).GetComponent<Animation>().Play("buffalo-playing-in-mud");
+            }
+        }
+        else if (index == 9) // elephant
+        {
+            for (int i = 0; i < animals.Length; i++)
+            {
+                animals[i].SetActive(false);
+                animals[10].SetActive(true);
+            }
+        }
+        else if (index == 10) // cockroach
+        {
+            for (int i = 0; i < animals.Length; i++)
+            {
+                animals[i].SetActive(false);
+                animals[11].SetActive(true);
+            }
+        }
+        else if (index == 11) // squid
+        {
+            for (int i = 0; i < animals.Length; i++)
+            {
+                animals[i].SetActive(false);
+                animals[12].SetActive(true);
+            }
+        }
+        else if (index == 12) // camel
+        {
+            for (int i = 0; i < animals.Length; i++)
+            {
+                animals[i].SetActive(false);
+                animals[13].SetActive(true);
+            }
+        }
+        else if (index == 13) // deer
+        {
+            for (int i = 0; i < animals.Length; i++)
+            {
+                animals[i].SetActive(false);
+                animals[14].SetActive(true);
+            }
+        }
+        else if (index == 14) // eagle
+        {
+            for (int i = 0; i < animals.Length; i++)
+            {
+                animals[i].SetActive(false);
+                animals[15].SetActive(true);
+            }
+        }
+        else if (index == 15) // puffer fish
+        {
+            for (int i = 0; i < animals.Length; i++)
+            {
+                animals[i].SetActive(false);
+                animals[16].SetActive(true);
             }
         }
         else if (index != 0 || index != 1 || index != 2)
