@@ -273,6 +273,7 @@ public class YearFiveC4AR : MonoBehaviour
             {
                 animals[i].SetActive(false);
                 animals[8].SetActive(true);
+                animals[8].transform.GetChild(0).GetComponent<Animation>().Play("polar bear walking");
             }
         }
         else if (index == 8) // buffalo
@@ -322,6 +323,8 @@ public class YearFiveC4AR : MonoBehaviour
             {
                 animals[i].SetActive(false);
                 animals[14].SetActive(true);
+                animals[14].transform.GetChild(0).GetComponent<Animation>().Play("deer headbutt");
+                animals[14].transform.GetChild(1).GetComponent<Animation>().Play("tiger scared af");
             }
         }
         else if (index == 14) // eagle
