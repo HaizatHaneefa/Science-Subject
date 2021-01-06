@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class FractionQuizManager : MonoBehaviour
 {
+    // ---------------------------- Variables ------------------------------ //
     [SerializeField] private GameObject[] questions;
     [SerializeField] private GameObject endpop;
     [SerializeField] private AudioSource aSource;
