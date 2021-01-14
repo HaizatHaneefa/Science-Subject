@@ -307,6 +307,8 @@ public class YearFiveC4AR : MonoBehaviour
             {
                 animals[i].SetActive(false);
                 animals[12].SetActive(true);
+                animals[12].transform.GetChild(0).GetComponent<Animation>().Play("squid-release-ink");
+
             }
         }
         else if (index == 12) // camel
