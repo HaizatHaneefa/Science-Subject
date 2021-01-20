@@ -28,8 +28,6 @@ public class ItemSlotTime : MonoBehaviour, IDropHandler
 
     IEnumerator PopNextQuestion(PointerEventData eventData)
     {
-        Debug.Log("ww");
-
         if (manager.secondBool[0] && button.CompareTag("Animal 2") ||
             manager.secondBool[1] && button.CompareTag("Animal 1") ||
             manager.secondBool[2] && button.CompareTag("Animal 3") ||
@@ -46,7 +44,7 @@ public class ItemSlotTime : MonoBehaviour, IDropHandler
 
             if (manager.secondBool[0])
             {
-                manager.secondBool[1] = true; 
+                manager.secondBool[1] = true;
                 manager.secondBool[0] = false;
             }
             else if (manager.secondBool[1])
@@ -64,58 +62,28 @@ public class ItemSlotTime : MonoBehaviour, IDropHandler
                 manager.secondBool[3] = false;
                 manager.secondBool[4] = true;
             }
-            else if (manager.secondBool[4])
-            {
-                // end
-            }
 
             button.SetActive(false);
 
             yield return new WaitForSeconds(1f);
 
-            manager.NextQuestion();
+            transform.GetChild(1).GetComponent<Image>().enabled = false;
+        }
+        else if (manager.secondBool[0] && button.tag != "Animal 2" ||
+        manager.secondBool[1] && button.tag != "Animal 1" ||
+        manager.secondBool[2] && button.tag != "Animal 3" ||
+        manager.secondBool[3] && button.tag != "Animal 1" ||
+        manager.secondBool[4] && button.tag != "Animal 2")
+        {
+            manager.WrongPressSFX();
+
+            transform.GetChild(1).GetComponent<Image>().enabled = true;
+            transform.GetChild(1).GetComponent<Image>().sprite = manager.rightWrongSprite[0];
+            transform.GetChild(1).GetComponent<Animation>().Play("GameOverPop");
+
+            yield return new WaitForSeconds(1f);
 
             transform.GetChild(1).GetComponent<Image>().enabled = false;
-
-            //if (manager.secondBool[6])
-            //{
-            //    button.SetActive(false);
-            //    //manager.endpop.SetActive(true);
-            //    //manager.endpop.transform.GetChild(0).GetComponent<Animation>().Play("SuccessPop");
-            //}
-            //else if (!manager.secondBool[6])
-            //{
-            //    button.SetActive(true);
-            //}
-
-            //button.transform.position = button.GetComponent<MathTimeDragDrop>().startPos.position;
-
-            //button.GetComponent<CanvasGroup>().alpha = 1f;
-            //button.GetComponent<CanvasGroup>().blocksRaycasts = true;
-            //button.GetComponent<Image>().sprite = button.GetComponent<DragDropConstellation>().sprite[0];
-
-            //gameObject.GetComponent<Image>().raycastTarget = true;
-
-            //button.GetComponent<RectTransform>().sizeDelta = new Vector2(850, 150);
-            //button.transform.GetChild(0).GetComponent<TextMeshProUGUI>().enabled = true;
         }
-        //else if (manager.secondBool[0] && gameObject.CompareTag("False") && button.CompareTag("True") ||
-        //   manager.secondBool[1] && gameObject.CompareTag("True") && button.CompareTag("False") ||
-        //   manager.secondBool[2] && gameObject.CompareTag("True") && button.CompareTag("False") ||
-        //   manager.secondBool[3] && gameObject.CompareTag("False") && button.CompareTag("True") ||
-        //   manager.secondBool[4] && gameObject.CompareTag("True") && button.CompareTag("False") ||
-        //   manager.secondBool[5] && gameObject.CompareTag("False") && button.CompareTag("True") ||
-        //   manager.secondBool[6] && gameObject.CompareTag("False") && button.CompareTag("True"))
-        //{
-        //    manager.WrongPressSFX();
-
-        //    transform.GetChild(0).GetComponent<Image>().enabled = true;
-        //    transform.GetChild(0).GetComponent<Image>().sprite = manager.rightWrongSprite[0];
-        //    transform.GetChild(0).GetComponent<Animation>().Play("GameOverPop");
-
-        //    yield return new WaitForSeconds(1.5f);
-
-        //    transform.GetChild(0).GetComponent<Image>().enabled = false;
-        //}
     }
 }

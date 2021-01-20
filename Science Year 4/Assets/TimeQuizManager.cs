@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 public class TimeQuizManager : MonoBehaviour
 {
@@ -14,6 +16,7 @@ public class TimeQuizManager : MonoBehaviour
     public AudioClip[] clip;
 
     [SerializeField] private GameObject[] questions;
+    [SerializeField] private GameObject[] buttons;
     [SerializeField] private GameObject[] questionSection;
 
     [SerializeField] private string[] questionDialogue;
@@ -46,25 +49,78 @@ public class TimeQuizManager : MonoBehaviour
         for (int i = 0; i < questionSection.Length; i++)
         {
             questionSection[i].SetActive(false);
-            //questionSection[cur].SetActive(true);
         }
+
+        buttons = GameObject.FindGameObjectsWithTag("Enemy");
     }
 
+    // ---------------------------- Functions ---------------------------- // 
     public void NextQuestion()
     {
         cur += 1;
 
-        if (cur < 7)
+        RightSFX();
+
+        StartCoroutine(ChangeGreen());
+    }
+
+    public void WrongAnswer()
+    {
+        StartCoroutine(ChangeRed());
+    }
+
+    // ---------------------------- Scene Loaders ---------------------------- // 
+    public void BackToAR() // time AR
+    {
+        BackSFX();
+        SceneManager.LoadScene(""); // fill this when you actually made the damn scene
+    }
+
+    public void _BackToAR() // length AR
+    {
+        BackSFX();
+        SceneManager.LoadScene(""); // fill this when you actually made the damn scene
+    }
+
+    public void _BackToARMass() // mass AR
+    {
+        BackSFX();
+        SceneManager.LoadScene(""); // fill this when you actually made the damn scene
+    }
+
+    public void Restart() // quiz time
+    {
+        PressSFX();
+        SceneManager.LoadScene("Y4 - Time Quiz"); // fill this when you actually made the damn scene
+    }
+
+    public void _Restart() // quiz length
+    {
+        PressSFX();
+        SceneManager.LoadScene("Y5 - Length Quiz"); // fill this when you actually made the damn scene
+    }
+
+    public void _RestartMass() // quiz mass
+    {
+        PressSFX();
+        SceneManager.LoadScene("Y5 - Mass Quiz"); // fill this when you actually made the damn scene
+    }
+
+    // ---------------------------- Coroutines ---------------------------- // 
+    IEnumerator ChangeGreen()
+    {
+        Image img = EventSystem.current.currentSelectedGameObject.GetComponent<Image>();
+
+        img.color = Color.green;
+
+        for (int i = 0; i < buttons.Length; i++)
         {
-            RightSFX();
+            buttons[i].GetComponent<Button>().interactable = false;
         }
 
-        for (int i = 0; i < questions.Length; i++)
-        {
-            questions[i].SetActive(false);
-            questions[cur].SetActive(true);
-            questions[cur].GetComponent<Animation>().Play("GameOverPop");
-        }
+        yield return new WaitForSeconds(1f);
+
+        img.color = Color.white;
 
         if (cur == 5)
         {
@@ -74,6 +130,8 @@ public class TimeQuizManager : MonoBehaviour
                 questionSection[0].SetActive(true);
                 questionSection[0].GetComponent<Animation>().Play("GameOverPop");
             }
+
+            instructionText.text = questionDialogue[1].ToString();
         }
 
         if (cur == 8)
@@ -84,26 +142,49 @@ public class TimeQuizManager : MonoBehaviour
                 questionSection[1].SetActive(true);
                 questionSection[1].GetComponent<Animation>().Play("GameOverPop");
             }
+
+            instructionText.text = questionDialogue[2].ToString();
+        }
+
+
+        for (int i = 0; i < questions.Length; i++)
+        {
+            questions[i].SetActive(false);
+            questions[cur].SetActive(true);
+            questions[cur].GetComponent<Animation>().Play("GameOverPop");
+        }
+
+        for (int i = 0; i < buttons.Length; i++)
+        {
+            buttons[i].GetComponent<Button>().interactable = true;
         }
     }
 
-
-    void ChangeColor()
+    IEnumerator ChangeRed()
     {
-        //Image img = EventSystem.current.currentgameObject. 
+        Image img = EventSystem.current.currentSelectedGameObject.GetComponent<Image>();
+
+        img.color = Color.red;
+
+        for (int i = 0; i < buttons.Length; i++)
+        {
+            buttons[i].GetComponent<Button>().interactable = false;
+
+        }
+
+        WrongPressSFX();
+
+        yield return new WaitForSeconds(1f);
+
+        img.color = Color.white;
+
+        for (int i = 0; i < buttons.Length; i++)
+        {
+            buttons[i].GetComponent<Button>().interactable = true;
+        }
     }
 
-    public void WrongAnswer()
-    {
-        Debug.Log("you done goof");
-    }
-
-    void Update()
-    {
-        
-    }
-
-
+    // ---------------------------- SFX ---------------------------- // 
     public void PressSFX() // button press yes
     {
         aSource.clip = clip[0];
