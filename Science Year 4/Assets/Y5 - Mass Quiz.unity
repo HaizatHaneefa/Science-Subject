@@ -2574,7 +2574,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &265439180
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2606,7 +2606,7 @@ Animation:
   serializedVersion: 3
   m_Animation: {fileID: 0}
   m_Animations:
-  - {fileID: 7400000, guid: a53e79c0bb48b4747966a240dd233c9c, type: 2}
+  - {fileID: 7400000, guid: 880c7d8c4773d47c09a7feb85853bee2, type: 2}
   m_WrapMode: 0
   m_PlayAutomatically: 0
   m_AnimatePhysics: 0
@@ -11058,12 +11058,6 @@ MonoBehaviour:
   rightWrongSprite:
   - {fileID: 21300000, guid: 4c986ee843c21449ea524e9bcbe8ad14, type: 3}
   - {fileID: 21300000, guid: 446496bbf8d244f4c8674c387edd37cb, type: 3}
-  clip:
-  - {fileID: 8300000, guid: ffb159a21c8a04135a5616979c828fab, type: 3}
-  - {fileID: 8300000, guid: d46323e22e74e46baa241cbf48c85671, type: 3}
-  - {fileID: 8300000, guid: 52320e590bf774734a288886eba557ba, type: 3}
-  - {fileID: 8300000, guid: cc82217a72fec485ca8a00c0e86dce24, type: 3}
-  - {fileID: 8300000, guid: e3fa38bc886f9da4995046e8b5f6e1c2, type: 3}
   questions:
   - {fileID: 1959796564}
   - {fileID: 852839539}
@@ -11084,6 +11078,12 @@ MonoBehaviour:
   - {fileID: 54436858}
   questionDialogue: []
   instructionText: {fileID: 1058326464}
+  clip:
+  - {fileID: 8300000, guid: ffb159a21c8a04135a5616979c828fab, type: 3}
+  - {fileID: 8300000, guid: d46323e22e74e46baa241cbf48c85671, type: 3}
+  - {fileID: 8300000, guid: 52320e590bf774734a288886eba557ba, type: 3}
+  - {fileID: 8300000, guid: cc82217a72fec485ca8a00c0e86dce24, type: 3}
+  - {fileID: 8300000, guid: e3fa38bc886f9da4995046e8b5f6e1c2, type: 3}
 --- !u!4 &1399393619
 Transform:
   m_ObjectHideFlags: 0

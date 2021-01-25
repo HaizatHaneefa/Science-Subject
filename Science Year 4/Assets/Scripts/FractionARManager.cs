@@ -6,17 +6,17 @@ using TMPro;
 public class FractionARManager : MonoBehaviour
 {
     public int cur, descriptionCur;
+
     [SerializeField] private Sprite[] butSprite;
+
     [SerializeField] private GameObject[] buts1, buts2, scene1, scene2, scene3, scene4;
     [SerializeField] private GameObject nextArrow, backArrow, nextScene, backScene;
     [SerializeField] public GameObject descriptiveSection;
-    [SerializeField] public string[] sentence;
 
+    [SerializeField] public string[] sentence;
+    [SerializeField] private string[] description;
 
     [SerializeField] private TextMeshProUGUI descriptionText;
-
-
-    [SerializeField] private string[] description;
 
     [SerializeField] private AudioSource aSource;
     [SerializeField] private AudioClip[] clip;
@@ -96,6 +96,7 @@ public class FractionARManager : MonoBehaviour
     public void _Proper()
     {
         PressSFX();
+
         for (int i = 0; i < scene1.Length; i++)
         {
             scene1[i].SetActive(false);
@@ -115,6 +116,7 @@ public class FractionARManager : MonoBehaviour
     public void _Mixed()
     {
         PressSFX();
+
         for (int i = 0; i < scene1.Length; i++)
         {
             scene1[i].SetActive(false);
@@ -134,6 +136,7 @@ public class FractionARManager : MonoBehaviour
     public void _Improper()
     {
         PressSFX();
+
         for (int i = 0; i < scene1.Length; i++)
         {
             scene1[i].SetActive(false);
@@ -154,6 +157,7 @@ public class FractionARManager : MonoBehaviour
     public void _ImpropertoMixed()
     {
         PressSFX();
+
         for (int i = 0; i < scene2.Length; i++)
         {
             scene2[i].SetActive(false);
@@ -173,6 +177,7 @@ public class FractionARManager : MonoBehaviour
     public void _MixednumbertoImproper()
     {
         PressSFX();
+
         for (int i = 0; i < scene2.Length; i++)
         {
             scene2[i].SetActive(false);
@@ -191,6 +196,7 @@ public class FractionARManager : MonoBehaviour
     public void _WholenumbertoFraction()
     {
         PressSFX();
+
         for (int i = 0; i < scene2.Length; i++)
         {
             scene2[i].SetActive(false);
@@ -209,6 +215,7 @@ public class FractionARManager : MonoBehaviour
     public void _AdditionTwoFractions()
     {
         PressSFX();
+
         scene3[3].SetActive(true);
 
         scene3[2].SetActive(true);
@@ -222,6 +229,7 @@ public class FractionARManager : MonoBehaviour
     public void _SubtractionTwoFractions()
     {
         PressSFX();
+
         scene4[3].SetActive(true);
 
         scene4[2].SetActive(true);
@@ -234,11 +242,11 @@ public class FractionARManager : MonoBehaviour
         scene4[1].GetComponent<Image>().sprite = butSprite[1];
     }
 
-    public void _Next()
+    public void _Next() 
     {
         PressSFX();
-        // go second scene
-        if (cur == 0)
+
+        if (cur == 0) // go second scene
         {
             for (int i = 0; i < scene1.Length; i++)
             {
@@ -260,7 +268,6 @@ public class FractionARManager : MonoBehaviour
         }
         else if (cur == 1) // go third scene
         {
-            // do something here
             for (int i = 0; i < scene3.Length; i++)
             {
                 scene3[i].SetActive(true);
@@ -281,7 +288,7 @@ public class FractionARManager : MonoBehaviour
                 scene2[i].SetActive(false);
             }
         }
-        else if (cur == 2) // go forthe scene
+        else if (cur == 2) // go for the scene
         {
             for (int i = 0; i < scene4.Length; i++)
             {
@@ -305,8 +312,8 @@ public class FractionARManager : MonoBehaviour
     public void _Back()
     {
         BackSFX();
-        // go second scene
-        if (cur == 3)
+
+        if (cur == 3) // go second scene
         {
             for (int i = 0; i < scene3.Length; i++)
             {
@@ -376,6 +383,7 @@ public class FractionARManager : MonoBehaviour
     public void _NextRead()
     {
         PressSFX();
+
         if (descriptionCur == 0)
         {
             descriptionText.text = description[1].ToString();
@@ -403,6 +411,7 @@ public class FractionARManager : MonoBehaviour
     public void _BackRead()
     {
         PressSFX();
+
         if (descriptionCur == 4)
         {
             descriptionText.text = description[4].ToString();

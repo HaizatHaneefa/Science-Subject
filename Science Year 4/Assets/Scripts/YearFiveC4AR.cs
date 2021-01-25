@@ -299,6 +299,7 @@ public class YearFiveC4AR : MonoBehaviour
             {
                 animals[i].SetActive(false);
                 animals[11].SetActive(true);
+                animals[11].transform.GetChild(0).GetComponent<Animation>().Play("lipas-jalan");
             }
         }
         else if (index == 11) // squid

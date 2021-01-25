@@ -12,9 +12,6 @@ public class TimeQuizManager : MonoBehaviour
 
     public Sprite[] rightWrongSprite;
 
-    AudioSource aSource;
-    public AudioClip[] clip;
-
     [SerializeField] private GameObject[] questions;
     [SerializeField] private GameObject[] buttons;
     [SerializeField] private GameObject[] questionSection;
@@ -24,6 +21,9 @@ public class TimeQuizManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI instructionText;
 
     int cur;
+
+    AudioSource aSource;
+    public AudioClip[] clip;
 
     void Start()
     {
@@ -64,6 +64,13 @@ public class TimeQuizManager : MonoBehaviour
         StartCoroutine(ChangeGreen());
     }
 
+    public void _DragNextQuestion()
+    {
+        cur += 1;
+
+        StartCoroutine(ChangeGreen());
+    }
+
     public void WrongAnswer()
     {
         StartCoroutine(ChangeRed());
@@ -88,6 +95,12 @@ public class TimeQuizManager : MonoBehaviour
         SceneManager.LoadScene(""); // fill this when you actually made the damn scene
     }
 
+    public void _BackToARVolume() // mass AR
+    {
+        BackSFX();
+        SceneManager.LoadScene(""); // fill this when you actually made the damn scene
+    }
+
     public void Restart() // quiz time
     {
         PressSFX();
@@ -104,6 +117,12 @@ public class TimeQuizManager : MonoBehaviour
     {
         PressSFX();
         SceneManager.LoadScene("Y5 - Mass Quiz"); // fill this when you actually made the damn scene
+    }
+
+    public void _RestartVolume() // quiz length
+    {
+        PressSFX();
+        SceneManager.LoadScene("Y5 - Volume of Liquid Quiz"); // fill this when you actually made the damn scene
     }
 
     // ---------------------------- Coroutines ---------------------------- // 
@@ -146,7 +165,6 @@ public class TimeQuizManager : MonoBehaviour
             instructionText.text = questionDialogue[2].ToString();
         }
 
-
         for (int i = 0; i < questions.Length; i++)
         {
             questions[i].SetActive(false);
@@ -169,7 +187,6 @@ public class TimeQuizManager : MonoBehaviour
         for (int i = 0; i < buttons.Length; i++)
         {
             buttons[i].GetComponent<Button>().interactable = false;
-
         }
 
         WrongPressSFX();

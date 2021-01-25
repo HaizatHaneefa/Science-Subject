@@ -67,6 +67,8 @@ public class ItemSlotTime : MonoBehaviour, IDropHandler
 
             yield return new WaitForSeconds(1f);
 
+            manager._DragNextQuestion();
+
             transform.GetChild(1).GetComponent<Image>().enabled = false;
         }
         else if (manager.secondBool[0] && button.tag != "Animal 2" ||
