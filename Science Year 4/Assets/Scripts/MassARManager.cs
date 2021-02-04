@@ -203,6 +203,12 @@ public class MassARManager : MonoBehaviour
         SceneManager.LoadScene("Menu");
     }
 
+    public void _ToQuiz()
+    {
+        PressSFX();
+        SceneManager.LoadScene("Y5 - Mass Quiz");
+    }
+
     // ------------------- //
     public void PressSFX() // button press yes
     {

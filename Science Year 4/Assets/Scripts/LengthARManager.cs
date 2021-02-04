@@ -169,6 +169,12 @@ public class LengthARManager : MonoBehaviour
         SceneManager.LoadScene("Menu");
     }
 
+    public void _ToQuiz()
+    {
+        PressSFX();
+        SceneManager.LoadScene("Y5 - Length Quiz");
+    }
+
     // ------------------------ //
     public void PressSFX() // button press yes
     {
