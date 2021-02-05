@@ -42,7 +42,7 @@ public class MathTimeDragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHa
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        rectTransform.sizeDelta = new Vector2(120, 120);
+        rectTransform.sizeDelta = new Vector2(130, 130);
 
         canvasGroup.alpha = 1f;
         canvasGroup.blocksRaycasts = true;
@@ -61,7 +61,6 @@ public class MathTimeDragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHa
         {
             transform.position = startPos[2].position;
         }
-
     }
 
     public void OnDrag(PointerEventData eventData)

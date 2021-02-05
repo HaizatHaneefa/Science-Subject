@@ -28,7 +28,7 @@ public class ItemSlotTime : MonoBehaviour, IDropHandler
 
     IEnumerator PopNextQuestion(PointerEventData eventData)
     {
-        if (manager.secondBool[0] && button.CompareTag("Animal 2") ||
+        if (manager.secondBool[0] && button.CompareTag("Animal 3") ||
             manager.secondBool[1] && button.CompareTag("Animal 1") ||
             manager.secondBool[2] && button.CompareTag("Animal 3") ||
             manager.secondBool[3] && button.CompareTag("Animal 1") ||
@@ -71,7 +71,7 @@ public class ItemSlotTime : MonoBehaviour, IDropHandler
 
             transform.GetChild(1).GetComponent<Image>().enabled = false;
         }
-        else if (manager.secondBool[0] && button.tag != "Animal 2" ||
+        else if (manager.secondBool[0] && button.tag != "Animal 3" ||
         manager.secondBool[1] && button.tag != "Animal 1" ||
         manager.secondBool[2] && button.tag != "Animal 3" ||
         manager.secondBool[3] && button.tag != "Animal 1" ||
