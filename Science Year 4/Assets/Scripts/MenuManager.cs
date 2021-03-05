@@ -23,20 +23,28 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private GameObject blocker, normalPop, anatomyPop;
     [SerializeField] private GameObject bar;
 
-    public TMP_Dropdown dropdown;
+    [SerializeField] public TMP_Dropdown dropdown;
 
     [SerializeField] private AudioClip[] clip;
     [SerializeField] private AudioSource aSource;
 
+    int isSubject;
+
     void Awake()
     {
+        //PlayerPrefs.DeleteAll();
         aSource = GetComponent<AudioSource>();
 
         Time.timeScale = 1;
 
+        dropdown.gameObject.SetActive(false);
+
         blocker.SetActive(false);
         normalPop.SetActive(false);
         anatomyPop.SetActive(false);
+
+        arOrFunFactBackground.SetActive(false);
+
 
         if (PlayerPrefs.GetInt("CheckMenu") == 1)
         {
@@ -45,73 +53,19 @@ public class MenuManager : MonoBehaviour
                 itemsInBackground[i].SetActive(false);
             }
 
+            for (int i = 0; i < canvas.Length; i++)
+            {
+                canvas[i].enabled = false;
+                canvas[0].enabled = true;
+                canvas[0].gameObject.GetComponent<Animation>().Play("Menu Anim");
+            }
+
+            for (int i = 0; i < chapter.Length; i++)
+            {
+                chapter[i].SetActive(false);
+            }
+
             bar.SetActive(true);
-            arOrFunFactBackground.SetActive(false);
-
-            if (PlayerPrefs.GetInt("C4") == 1)
-            {
-                for (int i = 0; i < canvas.Length; i++)
-                {
-                    canvas[i].enabled = false;
-                    canvas[1].enabled = true;
-                }
-
-                for (int i = 0; i < chapter.Length; i++)
-                {
-                    chapter[i].SetActive(false);
-                    chapter[0].SetActive(true);
-                }
-
-                dropdown.value = 1;
-            }
-            else if (PlayerPrefs.GetInt("C5") == 1)
-            {
-                for (int i = 0; i < canvas.Length; i++)
-                {
-                    canvas[i].enabled = false;
-                    canvas[1].enabled = true;
-                }
-
-                for (int i = 0; i < chapter.Length; i++)
-                {
-                    chapter[i].SetActive(false);
-                    chapter[1].SetActive(true);
-                }
-
-                dropdown.value = 2;
-            }
-            else if (PlayerPrefs.GetInt("C6") == 1)
-            {
-                for (int i = 0; i < canvas.Length; i++)
-                {
-                    canvas[i].enabled = false;
-                    canvas[1].enabled = true;
-                }
-
-                for (int i = 0; i < chapter.Length; i++)
-                {
-                    chapter[i].SetActive(false);
-                    chapter[2].SetActive(true);
-                }
-
-                dropdown.value = 3;
-            }
-            else if (PlayerPrefs.GetInt("MC4") == 1)
-            {
-                for (int i = 0; i < canvas.Length; i++)
-                {
-                    canvas[i].enabled = false;
-                    canvas[2].enabled = true;
-                }
-
-                for (int i = 0; i < chapter.Length; i++)
-                {
-                    chapter[i].SetActive(false);
-                    chapter[3].SetActive(true);
-                }
-
-                //dropdown.value = 3;
-            }
         }
         else if (PlayerPrefs.GetInt("CheckMenu") == 0)
         {
@@ -127,9 +81,6 @@ public class MenuManager : MonoBehaviour
                 chapter[i].SetActive(false);
                 chapter[0].SetActive(true);
             }
-
-            arOrFunFactBackground.SetActive(false);
-            blocker.SetActive(false);
         }
     }
 
@@ -140,6 +91,7 @@ public class MenuManager : MonoBehaviour
         PlayerPrefs.SetInt("CheckMenu", 1);
 
         bar.SetActive(true);
+
 
         for (int i = 0; i < itemsInBackground.Length; i++)
         {
@@ -159,6 +111,9 @@ public class MenuManager : MonoBehaviour
     {
         SoundSelection();
 
+        dropdown.gameObject.SetActive(false);
+        dropdown.value = 0;
+
         for (int i = 0; i < canvas.Length; i++)
         {
             canvas[i].enabled = false;
@@ -166,11 +121,13 @@ public class MenuManager : MonoBehaviour
         }
     }
 
-    public void ToTopic(int index)
+    public void ToTopic(int index) // main menu function
     {
         SoundSelection();
 
-        if (index == 0)
+        dropdown.gameObject.SetActive(true);
+
+        if (index == 0) // science
         {
             for (int i = 0; i < canvas.Length; i++)
             {
@@ -184,16 +141,16 @@ public class MenuManager : MonoBehaviour
                 chapter[0].SetActive(true);
             }
 
+            isSubject = 0;
             canvas[1].GetComponent<Animation>().Play("Year4 Anim");
-            dropdown.gameObject.SetActive(true);
         }
-        else if (index == 1)
+        else if (index == 1) // math
         {
+            isSubject = 1;
             for (int i = 0; i < canvas.Length; i++)
             {
                 canvas[i].enabled = false;
                 canvas[2].enabled = true;
-
             }
 
             for (int i = 0; i < chapter.Length; i++)
@@ -203,7 +160,6 @@ public class MenuManager : MonoBehaviour
             }
 
             canvas[2].GetComponent<Animation>().Play("Year4 Anim");
-            dropdown.gameObject.SetActive(false);
         }
     }
 
@@ -211,35 +167,72 @@ public class MenuManager : MonoBehaviour
     {
         SoundSelection();
 
-        if (dropdown.value == 1)
+        if (isSubject == 0)
         {
-            for (int i = 0; i < chapter.Length; i++)
+            if (dropdown.value == 1)
             {
-                chapter[i].SetActive(false);
-                chapter[0].SetActive(true);
-            }
+                for (int i = 0; i < chapter.Length; i++)
+                {
+                    chapter[i].SetActive(false);
+                    chapter[0].SetActive(true);
+                }
 
-            canvas[1].GetComponent<Animation>().Play("Year4 Anim");
+                canvas[1].GetComponent<Animation>().Play("Year4 Anim");
+            }
+            else if (dropdown.value == 2)
+            {
+                for (int i = 0; i < chapter.Length; i++)
+                {
+                    chapter[i].SetActive(false);
+                    chapter[1].SetActive(true);
+                }
+
+                canvas[1].GetComponent<Animation>().Play("Year5 Anim");
+            }
+            else if (dropdown.value == 3)
+            {
+                for (int i = 0; i < chapter.Length; i++)
+                {
+                    chapter[i].SetActive(false);
+                    chapter[2].SetActive(true);
+                }
+
+                canvas[1].GetComponent<Animation>().Play("Year6 Anim");
+            }
         }
-        else if (dropdown.value == 2)
+        else if (isSubject == 1)
         {
-            for (int i = 0; i < chapter.Length; i++)
+            // math dropdown
+            if (dropdown.value == 1)
             {
-                chapter[i].SetActive(false);
-                chapter[1].SetActive(true);
-            }
+                for (int i = 0; i < chapter.Length; i++)
+                {
+                    chapter[i].SetActive(false);
+                    chapter[3].SetActive(true);
+                }
 
-            canvas[1].GetComponent<Animation>().Play("Year5 Anim");
-        }
-        else if (dropdown.value == 3)
-        {
-            for (int i = 0; i < chapter.Length; i++)
+                canvas[2].GetComponent<Animation>().Play("Year4 Anim");
+            }
+            else if (dropdown.value == 2)
             {
-                chapter[i].SetActive(false);
-                chapter[2].SetActive(true);
-            }
+                for (int i = 0; i < chapter.Length; i++)
+                {
+                    chapter[i].SetActive(false);
+                    chapter[4].SetActive(true);
+                }
 
-            canvas[1].GetComponent<Animation>().Play("Year6 Anim");
+                canvas[2].GetComponent<Animation>().Play("Year5 Anim");
+            }
+            else if (dropdown.value == 3)
+            {
+                for (int i = 0; i < chapter.Length; i++)
+                {
+                    chapter[i].SetActive(false);
+                    chapter[5].SetActive(true);
+                }
+
+                canvas[2].GetComponent<Animation>().Play("Year6 Anim");
+            }
         }
     }
 
@@ -301,9 +294,42 @@ public class MenuManager : MonoBehaviour
         {
             descriptionText.text = "this should be constellation"; // y6 constellation
         }
-        else if (l == 20)
+        // ---------- //
+        else if (l == 20) // math section
         {
-            descriptionText.text = "this should be Math fractions";
+            descriptionText.text = "y4 fraction";
+        }
+        else if (l == 21)
+        {
+            descriptionText.text = "y4 money";
+        }
+        else if (l == 22)
+        {
+            descriptionText.text = "y4 time";
+        }
+        else if (l == 23)
+        {
+            descriptionText.text = "y5 length";
+        }
+        else if (l == 24)
+        {
+            descriptionText.text = "y5 mass";
+        }
+        else if (l == 25)
+        {
+            descriptionText.text = "y5 volume of liquid";
+        }
+        else if (l == 26)
+        {
+            descriptionText.text = "y6 data handling";
+        }
+        else if (l == 27)
+        {
+            descriptionText.text = "y6 length";
+        }
+        else if (l == 28)
+        {
+            descriptionText.text = "y6 space";
         }
 
         arOrFunFactBackground.SetActive(true);
@@ -326,110 +352,87 @@ public class MenuManager : MonoBehaviour
         {
             // anatomy
             SceneManager.LoadScene("Homepage");
-
-            PlayerPrefs.SetInt("C4", 1);
-            PlayerPrefs.SetInt("C5", 0);
-            PlayerPrefs.SetInt("C6", 0);
-
-            PlayerPrefs.SetInt("MC4", 0);
         }
         else if (l == 2)
         {
             // animal year 4
             SceneManager.LoadScene("AR-Aspect");
-
-            PlayerPrefs.SetInt("C4", 1);
-            PlayerPrefs.SetInt("C5", 0);
-            PlayerPrefs.SetInt("C6", 0);
-
-            PlayerPrefs.SetInt("MC4", 0);
         }
         else if (l == 3)
         {
             // plants year 4
             SceneManager.LoadScene("Plants-AR");
-
-            PlayerPrefs.SetInt("C4", 1);
-            PlayerPrefs.SetInt("C5", 0);
-            PlayerPrefs.SetInt("C6", 0);
-
-            PlayerPrefs.SetInt("MC4", 0);
         }
         else if (l == 4)
         {
             // animals year 5
             SceneManager.LoadScene("Y5 - C4 AR");
-
-            PlayerPrefs.SetInt("C4", 0);
-            PlayerPrefs.SetInt("C5", 1);
-            PlayerPrefs.SetInt("C6", 0);
-
-            PlayerPrefs.SetInt("MC4", 0);
         }
         else if (l == 5)
         {
             // plants year 5
             SceneManager.LoadScene("Y5 - C5 AR");
-
-            PlayerPrefs.SetInt("C4", 0);
-            PlayerPrefs.SetInt("C5", 1);
-            PlayerPrefs.SetInt("C6", 0);
-
-            PlayerPrefs.SetInt("MC4", 0);
         }
         else if (l == 6)
         {
             // earth year 5
             SceneManager.LoadScene("Y5 - Earth - AR");
-
-            PlayerPrefs.SetInt("C4", 0);
-            PlayerPrefs.SetInt("C5", 1);
-            PlayerPrefs.SetInt("C6", 0);
-
-            PlayerPrefs.SetInt("MC4", 0);
         }
         else if (l == 7)
         {
             // speed year 6
             SceneManager.LoadScene("Y6 - Speed AR");
-
-            PlayerPrefs.SetInt("C4", 0);
-            PlayerPrefs.SetInt("C5", 0);
-            PlayerPrefs.SetInt("C6", 1);
-
-            PlayerPrefs.SetInt("MC4", 0);
         }
         else if (l == 8)
         {
             // eclipse year 6
             SceneManager.LoadScene("Y6 - Eclipse AR");
-
-            PlayerPrefs.SetInt("C4", 0);
-            PlayerPrefs.SetInt("C5", 0);
-            PlayerPrefs.SetInt("C6", 1);
-
-            PlayerPrefs.SetInt("MC4", 0);
         }
         else if (l == 9)
         {
             // constellation year 6
             SceneManager.LoadScene("Y6 - Constellation AR");
-
-            PlayerPrefs.SetInt("C4", 0);
-            PlayerPrefs.SetInt("C5", 0);
-            PlayerPrefs.SetInt("C6", 1);
-
-            PlayerPrefs.SetInt("MC4", 0);
         }
-        else if (l == 20)
+        // --------- //
+        else if (l == 20) // start of math section
         {
             SceneManager.LoadScene("Y4 - Fractions AR");
-
-            PlayerPrefs.SetInt("C4", 0);
-            PlayerPrefs.SetInt("C5", 0);
-            PlayerPrefs.SetInt("C6", 0);
-
-            PlayerPrefs.SetInt("MC4", 1);
+        }
+        else if (l == 21) 
+        {
+            //SceneManager.LoadScene("Y4 - Fractions AR");
+        }
+        else if (l == 22)
+        {
+            //SceneManager.LoadScene("Y4 - Fractions AR");
+        }
+        else if (l == 23) 
+        {
+            //SceneManager.LoadScene("Y4 - Fractions AR");
+        }
+        else if (l == 24) 
+        {
+            //SceneManager.LoadScene("Y4 - Fractions AR");
+        }
+        else if (l == 25) 
+        {
+            //SceneManager.LoadScene("Y4 - Fractions AR");
+        }
+        else if (l == 26) 
+        {
+            //SceneManager.LoadScene("Y4 - Fractions AR");
+        }
+        else if (l == 27) 
+        {
+            //SceneManager.LoadScene("Y4 - Fractions AR");
+        }
+        else if (l == 28) 
+        {
+            //SceneManager.LoadScene("Y4 - Fractions AR");
+        }
+        else if (l == 29) 
+        {
+            //SceneManager.LoadScene("Y4 - Fractions AR");
         }
     }
 
@@ -441,110 +444,50 @@ public class MenuManager : MonoBehaviour
         {
             // anatomy
             SceneManager.LoadScene(""); // anatomy
-
-            PlayerPrefs.SetInt("C4", 1);
-            PlayerPrefs.SetInt("C5", 0);
-            PlayerPrefs.SetInt("C6", 0);
-
-            PlayerPrefs.SetInt("MC", 0);
         }
         else if (l == 2)
         {
             // y4 animal
             SceneManager.LoadScene("Fun-Facts"); // animals
-
-            PlayerPrefs.SetInt("C4", 1);
-            PlayerPrefs.SetInt("C5", 0);
-            PlayerPrefs.SetInt("C6", 0);
-
-            PlayerPrefs.SetInt("MC", 0);
         }
         else if (l == 3)
         {
             // y4 plants
             SceneManager.LoadScene("Plants-Fun-Facts"); // animals
-
-            PlayerPrefs.SetInt("C4", 1);
-            PlayerPrefs.SetInt("C5", 0);
-            PlayerPrefs.SetInt("C6", 0);
-
-            PlayerPrefs.SetInt("MC", 0);
         }
         else if (l == 4)
         {
             // y5 animals
             SceneManager.LoadScene("Y5 - C4 Fun Facts"); // animals
-
-            PlayerPrefs.SetInt("C4", 0);
-            PlayerPrefs.SetInt("C5", 1);
-            PlayerPrefs.SetInt("C6", 0);
-
-            PlayerPrefs.SetInt("MC", 0);
         }
         else if (l == 5)
         {
             // y5 plants
             SceneManager.LoadScene("Y5 - C5 Fun Facts"); // plants
-
-            PlayerPrefs.SetInt("C4", 0);
-            PlayerPrefs.SetInt("C5", 1);
-            PlayerPrefs.SetInt("C6", 0);
-
-            PlayerPrefs.SetInt("MC", 0);
         }
         else if (l == 6)
         {
             // y5 earth
             SceneManager.LoadScene("Y5 - Earth Fun Fact"); // plants
-
-            PlayerPrefs.SetInt("C4", 0);
-            PlayerPrefs.SetInt("C5", 1);
-            PlayerPrefs.SetInt("C6", 0);
-
-            PlayerPrefs.SetInt("MC", 0);
         }
         else if (l == 7)
         {
             // y6 speed
             SceneManager.LoadScene("Y6 - Speed Fun Fact"); // speed fun fact
-
-            PlayerPrefs.SetInt("C4", 0);
-            PlayerPrefs.SetInt("C5", 0);
-            PlayerPrefs.SetInt("C6", 1);
-
-            PlayerPrefs.SetInt("MC", 0);
         }
         else if (l == 8)
         {
             // y6 eclipse
             SceneManager.LoadScene("Y6 - Eclipse Fun Fact"); // eclipse fun fact
-
-            PlayerPrefs.SetInt("C4", 0);
-            PlayerPrefs.SetInt("C5", 0);
-            PlayerPrefs.SetInt("C6", 1);
-
-            PlayerPrefs.SetInt("MC", 0);
         }
         else if (l == 9)
         {
             // y6 constellation
             SceneManager.LoadScene("Y6 - Constellation Fun Fact"); // constellation fun fact
-
-            PlayerPrefs.SetInt("C4", 0);
-            PlayerPrefs.SetInt("C5", 0);
-            PlayerPrefs.SetInt("C6", 1);
-
-            PlayerPrefs.SetInt("MC", 0);
         }
         else if (l == 20)
         {
             SceneManager.LoadScene("Y4 - Fractions Fun Fact"); // constellation fun fact
-
-            PlayerPrefs.SetInt("C4", 0);
-            PlayerPrefs.SetInt("C5", 0);
-            PlayerPrefs.SetInt("C6", 0);
-
-            PlayerPrefs.SetInt("MC", 1);
         }
     }
 
@@ -556,115 +499,52 @@ public class MenuManager : MonoBehaviour
         {
             // anatomy
             SceneManager.LoadScene(""); // anatomy
-
-            PlayerPrefs.SetInt("C4", 1);
-            PlayerPrefs.SetInt("C5", 0);
-            PlayerPrefs.SetInt("C6", 0);
-
-            PlayerPrefs.SetInt("MC", 0);
         }
         else if (l == 2)
         {
             // y4 animal
             SceneManager.LoadScene("Game-Chapter-4"); // animals
-
-            PlayerPrefs.SetInt("C4", 1);
-            PlayerPrefs.SetInt("C5", 0);
-            PlayerPrefs.SetInt("C6", 0);
-
-            PlayerPrefs.SetInt("MC", 0);
         }
         else if (l == 3)
         {
             // y4 plants
             SceneManager.LoadScene("Plant-Game"); // animals
-
-            PlayerPrefs.SetInt("C4", 1);
-            PlayerPrefs.SetInt("C5", 0);
-            PlayerPrefs.SetInt("C6", 0);
-
-            PlayerPrefs.SetInt("MC", 0);
         }
         else if (l == 4)
         {
             // y5 animals
             SceneManager.LoadScene("Y5 - C4 Game"); // animals
-
-            PlayerPrefs.SetInt("C4", 0);
-            PlayerPrefs.SetInt("C5", 1);
-            PlayerPrefs.SetInt("C6", 0);
-
-            PlayerPrefs.SetInt("MC", 0);
         }
         else if (l == 5)
         {
             // y5 plants
             SceneManager.LoadScene("Y5 - C5 Game"); // plants
-
-            PlayerPrefs.SetInt("C4", 0);
-            PlayerPrefs.SetInt("C5", 1);
-            PlayerPrefs.SetInt("C6", 0);
-
-            PlayerPrefs.SetInt("MC", 0);
         }
         else if (l == 6)
         {
             // y5 earth
             SceneManager.LoadScene("Y5 - Earth Menu"); // plants
-
-            PlayerPrefs.SetInt("C4", 0);
-            PlayerPrefs.SetInt("C5", 1);
-            PlayerPrefs.SetInt("C6", 0);
-
-            PlayerPrefs.SetInt("MC", 0);
         }
         else if (l == 7)
         {
             // y6 speed
-            //SceneManager.LoadScene("Y6 - Speed Race"); // speed fun fact
-            SceneManager.LoadScene("Loading Scene");
-
-            PlayerPrefs.SetInt("C4", 0);
-            PlayerPrefs.SetInt("C5", 0);
-            PlayerPrefs.SetInt("C6", 1);
-
-            PlayerPrefs.SetInt("MC", 0);
+            SceneManager.LoadScene("Loading Scene"); // to the car game thingy
         }
         else if (l == 8)
         {
             // y6 eclipse
             //SceneManager.LoadScene("Y6 - Speed Race"); // eclipse fun fact
             SceneManager.LoadScene("Y6 - Eclipse Game");
-
-            PlayerPrefs.SetInt("C4", 0);
-            PlayerPrefs.SetInt("C5", 0);
-            PlayerPrefs.SetInt("C6", 1);
-
-            PlayerPrefs.SetInt("MC", 0);
         }
         else if (l == 9)
         {
             // y6 constellation
-            //SceneManager.LoadScene("Y6 - Speed Race"); // constellation fun fact
             SceneManager.LoadScene("Y6 - Constellation Game");
-
-            PlayerPrefs.SetInt("C4", 0);
-            PlayerPrefs.SetInt("C5", 0);
-            PlayerPrefs.SetInt("C6", 1);
-
-            PlayerPrefs.SetInt("MC", 0);
         }
         else if (l == 20)
         {
             // y6 constellation
-            //SceneManager.LoadScene("Y6 - Speed Race"); // constellation fun fact
             SceneManager.LoadScene("Y4 - Fractions Game");
-
-            PlayerPrefs.SetInt("C4", 0);
-            PlayerPrefs.SetInt("C5", 0);
-            PlayerPrefs.SetInt("C6", 0);
-
-            PlayerPrefs.SetInt("MC", 1);
         }
     }
 
