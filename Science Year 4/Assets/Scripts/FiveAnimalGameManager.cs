@@ -31,7 +31,7 @@ public class FiveAnimalGameManager : MonoBehaviour
     public GameObject pop;
     [SerializeField] GameObject player, bot;
 
-    Vector2[] oriPos;
+    public Transform[] oriPos;
 
     public bool[] tstbool;
     public bool isPlaying;
@@ -55,10 +55,10 @@ public class FiveAnimalGameManager : MonoBehaviour
 
         aSource = GetComponent<AudioSource>();
 
-        oriPos = new Vector2[2];
+        //oriPos = new Vector2[2];
 
-        oriPos[0] = player.transform.position;
-        oriPos[1] = bot.transform.position;
+        //oriPos[0] = player.transform.position;
+        //oriPos[1] = bot.transform.position;
 
         pop.SetActive(false);
 
@@ -466,8 +466,8 @@ public class FiveAnimalGameManager : MonoBehaviour
 
         pop.SetActive(false);
 
-        player.transform.position = oriPos[0];
-        bot.transform.position = oriPos[1];
+        player.transform.position = oriPos[0].position;
+        bot.transform.position = oriPos[1].position;
 
         playerSpeed = speed;
         thingsToRemoveFirst[0].SetActive(false);

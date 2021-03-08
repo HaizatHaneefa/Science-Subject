@@ -5396,7 +5396,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 2
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -5407,7 +5407,7 @@ MonoBehaviour:
     m_FadeDuration: 0.1
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 21300000, guid: e7d05dec8dc97457f85b0afa8fd5659b, type: 3}
     m_SelectedSprite: {fileID: 0}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
@@ -5451,7 +5451,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 554efcb61a46e4781b45212eb9a6f2af, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 56de3e09c3cc648f49c7344d5f8cb4f9, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -13612,6 +13612,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa805ed53848f4332875b4724c13a165, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  thirdAnswers:
+  - {fileID: 1574073029}
+  - {fileID: 630840006}
+  - {fileID: 1760388171}
   mcq:
   - {fileID: 1945187693}
   - {fileID: 1018720983}
@@ -13619,16 +13623,12 @@ MonoBehaviour:
   - {fileID: 1127599887}
   - {fileID: 625401525}
   exampleImage: {fileID: 872326787}
-  secondQuestion: {fileID: 2128517552}
-  thirdQuestion: {fileID: 1763209874}
-  thirdAnswers:
-  - {fileID: 1574073029}
-  - {fileID: 630840006}
-  - {fileID: 1760388171}
-  continueButton: {fileID: 665426738}
-  introPop: {fileID: 1736127494}
   conButton: {fileID: 920288803}
   instructTextGO: {fileID: 576356410}
+  introPop: {fileID: 1736127494}
+  continueButton: {fileID: 665426738}
+  secondQuestion: {fileID: 2128517552}
+  thirdQuestion: {fileID: 1763209874}
   signBoard: {fileID: 1715457273}
   hint1: {fileID: 212493757}
   hint2: {fileID: 1182984308}

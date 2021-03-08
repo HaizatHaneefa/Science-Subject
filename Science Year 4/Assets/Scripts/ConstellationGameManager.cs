@@ -29,6 +29,8 @@ public class ConstellationGameManager : MonoBehaviour
 
     void Start()
     {
+        Time.timeScale = 1;
+
         introGO[1].SetActive(false);
 
         aSource = GetComponent<AudioSource>();
@@ -1304,14 +1306,13 @@ public class ConstellationGameManager : MonoBehaviour
 
     IEnumerator PauseGame()
     {
+        Time.timeScale = 0;
         pausePop.SetActive(true);
-        pausePop.GetComponent<Animation>().Play("EndGamePop-NEW");
-
         pauseButton.SetActive(false);
 
-        yield return new WaitForSeconds(1.5f);
-
-        Time.timeScale = 0;
+        yield return new WaitForSeconds(0.1f);
+        
+        pausePop.GetComponent<Animator>().Play("EndGamePop-NEW");
     }
 
     IEnumerator P2Delay()

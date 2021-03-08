@@ -159,28 +159,33 @@ public class SpiracleManager : MonoBehaviour
     IEnumerator ShowP()
     {
         answerButtons[0].GetComponent<Transform>().GetChild(0).GetComponent<TextMeshProUGUI>().text = "Lungs";
-
+        answerButtons[0].GetComponent<Image>().color = Color.red;
         yield return new WaitForSeconds(2);
 
         answerButtons[0].GetComponent<Transform>().GetChild(0).GetComponent<TextMeshProUGUI>().text = "P";
+        answerButtons[0].GetComponent<Image>().color = Color.white;
     }
 
     IEnumerator ShowQ()
     {
         answerButtons[1].GetComponent<Transform>().GetChild(0).GetComponent<TextMeshProUGUI>().text = "Bronchi";
+        answerButtons[1].GetComponent<Image>().color = Color.red;
 
         yield return new WaitForSeconds(2);
 
         answerButtons[1].GetComponent<Transform>().GetChild(0).GetComponent<TextMeshProUGUI>().text = "Q";
+        answerButtons[1].GetComponent<Image>().color = Color.white;
     }
 
     IEnumerator ShowR()
     {
         answerButtons[2].GetComponent<Transform>().GetChild(0).GetComponent<TextMeshProUGUI>().text = "Larynx";
+        answerButtons[2].GetComponent<Image>().color = Color.red;
 
         yield return new WaitForSeconds(2);
 
         answerButtons[2].GetComponent<Transform>().GetChild(0).GetComponent<TextMeshProUGUI>().text = "R";
+        answerButtons[2].GetComponent<Image>().color = Color.white;
     }
 
     IEnumerator ShowS()
