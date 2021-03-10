@@ -12,7 +12,7 @@ public class EclipseGameManager : MonoBehaviour
 
     [SerializeField] private GameObject[] col, infoPops;
     [SerializeField] private TextMeshProUGUI progresstext, text1, text2;
-    [SerializeField] public GameObject popInfo, wrongPop, endpop, pausePop, introPop;
+    [SerializeField] public GameObject popInfo, wrongPop, endpop, pausePop, introPop, pauseButton;
     [SerializeField] private string[] questions;
     [SerializeField]private int cur, stageInt;
 
@@ -267,11 +267,13 @@ public class EclipseGameManager : MonoBehaviour
         if (index == 0)
         {
             pausePop.SetActive(true);
+            pauseButton.SetActive(false);
             Time.timeScale = 0;
         }
         else if (index == 1)
         {
             pausePop.SetActive(false);
+            pauseButton.SetActive(true);
             Time.timeScale = 1;
         }
     }

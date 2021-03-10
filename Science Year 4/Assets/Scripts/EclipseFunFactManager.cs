@@ -73,12 +73,12 @@ public class EclipseFunFactManager : MonoBehaviour
     {
         if (index == 0)
         {
-            PressSFX();
+            BackSFX();
             cur -= 1;
         }
         else if (index == 1)
         {
-            BackSFX();
+            PressSFX();
             cur += 1;
         }
     }

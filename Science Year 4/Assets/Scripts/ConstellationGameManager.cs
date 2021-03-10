@@ -1306,13 +1306,12 @@ public class ConstellationGameManager : MonoBehaviour
 
     IEnumerator PauseGame()
     {
-        Time.timeScale = 0;
         pausePop.SetActive(true);
         pauseButton.SetActive(false);
 
         yield return new WaitForSeconds(0.1f);
-        
-        pausePop.GetComponent<Animator>().Play("EndGamePop-NEW");
+        Time.timeScale = 0;
+        //pausePop.GetComponent<Animator>().Play("EndGamePop-NEW");
     }
 
     IEnumerator P2Delay()

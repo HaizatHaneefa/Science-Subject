@@ -12,41 +12,57 @@ public class EclipseARManager : MonoBehaviour
 
     [SerializeField] private Sprite[] butSprite;
 
-    [SerializeField] private string[] dialogue, lunarExplain, popInfoExplain;
+    [SerializeField] private string[] dialogue, lunarExplain;
 
-    [SerializeField] private Button[] clickables;
+    [SerializeField] private string[] menudialogue, lunardialogue, solardialogue;
+
     [SerializeField] private Button moreExplanationButton, nextButton;
 
-    [SerializeField] private GameObject[] moreInfo;
-    [SerializeField] private GameObject popup, slider, sliderBut, blueborder, eclipseModel, quizObject, sliderImage, backButton;
+    [SerializeField] private GameObject popup, slider, sliderBut, blueborder, quizObject, sliderImage, backButton;
+
+    [SerializeField] private GameObject[] canvas, lunarsolarButton, lunarbuttons;
+    [SerializeField] private GameObject[] Objs, solarChoices, models;
 
     [SerializeField] private AudioSource aSource;
     [SerializeField] private AudioClip[] clip;
 
     int[] cur;
 
+    int baruInfo, solarint;
+
     void Start()
     {
         aSource = GetComponent<AudioSource>();
 
-        for (int i = 0; i < clickables.Length; i++)
+        for (int i = 0; i < Objs.Length; i++)
         {
-            clickables[i].gameObject.SetActive(true);
-            clickables[2].gameObject.SetActive(false);
+            Objs[i].gameObject.SetActive(false);
+        }
+
+        for (int i = 0; i < models.Length; i++)
+        {
+            models[i].SetActive(false);
+        }
+
+        for (int i = 0; i < solarChoices.Length; i++)
+        {
+            solarChoices[i].SetActive(false);
+        }
+
+        for (int i = 0; i < canvas.Length; i++)
+        {
+            canvas[i].gameObject.SetActive(false);
+            canvas[0].gameObject.SetActive(true);
         }
 
         explanationText.text = dialogue[0];
 
-        moreExplanationButton.gameObject.SetActive(false);
         nextButton.gameObject.SetActive(false);
-
-        moreInfo[0].gameObject.SetActive(false);
-        moreInfo[1].gameObject.SetActive(false);
         popup.gameObject.SetActive(false);
         sliderBut.SetActive(false);
         blueborder.SetActive(false);
-        eclipseModel.SetActive(false);
         quizObject.SetActive(false);
+        moreExplanationButton.gameObject.SetActive(false);
 
         cur = new int[2];
 
@@ -59,88 +75,200 @@ public class EclipseARManager : MonoBehaviour
     }
 
     // -------------------------- solar and lunar eclipse explanation buttons --------------------------- //
-    public void _penumbral()
+    public void _LunarChoices(int index)
     {
         PressSFX();
 
-        clickables[0].GetComponent<Image>().sprite = butSprite[0];
-        clickables[1].GetComponent<Image>().sprite = butSprite[0];
-        clickables[2].GetComponent<Image>().sprite = butSprite[1];
+        if (index == 0)
+        {
+            explanationText.text = lunardialogue[2];
 
-        explanationText.text = lunarExplain[0];
+            for (int i = 0; i < Objs.Length; i++)
+            {
+                Objs[i].gameObject.SetActive(false);
+                Objs[0].gameObject.SetActive(true);
+            }
 
-        moreInfo[0].gameObject.SetActive(false);
-        moreInfo[1].gameObject.SetActive(false);
+            for (int i = 0; i < lunarbuttons.Length; i++)
+            {
+                lunarbuttons[i].GetComponent<Image>().sprite = butSprite[0];
+                lunarbuttons[0].GetComponent<Image>().sprite = butSprite[1];
+            }
 
+            
+        }
+        else if (index == 1)
+        {
+            explanationText.text = lunardialogue[3];
+
+            for (int i = 0; i < Objs.Length; i++)
+            {
+                Objs[i].gameObject.SetActive(false);
+                Objs[1].gameObject.SetActive(true);
+            }
+
+            for (int i = 0; i < lunarbuttons.Length; i++)
+            {
+                lunarbuttons[i].GetComponent<Image>().sprite = butSprite[0];
+                lunarbuttons[1].GetComponent<Image>().sprite = butSprite[1];
+            }
+        }
+        else if (index == 2)
+        {
+            explanationText.text = lunardialogue[4];
+
+            for (int i = 0; i < Objs.Length; i++)
+            {
+                Objs[i].gameObject.SetActive(false);
+                Objs[2].gameObject.SetActive(true);
+            }
+
+            for (int i = 0; i < lunarbuttons.Length; i++)
+            {
+                lunarbuttons[i].GetComponent<Image>().sprite = butSprite[0];
+                lunarbuttons[2].GetComponent<Image>().sprite = butSprite[1];
+            }
+        }
+    }
+
+    public void _SolarChoices(int index)
+    {
+        PressSFX();
+
+        if (index == 0)
+        {
+            for (int i = 0; i < solarChoices.Length; i++)
+            {
+                solarChoices[i].gameObject.SetActive(false);
+                solarChoices[0].gameObject.SetActive(true);
+            }
+
+            solarChoices[0].GetComponent<Animation>().Play("SuccessPop");
+        }
+        else if (index == 1)
+        {
+            for (int i = 0; i < solarChoices.Length; i++)
+            {
+                solarChoices[i].gameObject.SetActive(false);
+                solarChoices[1].gameObject.SetActive(true);
+            }
+
+            solarChoices[1].GetComponent<Animation>().Play("SuccessPop");
+        }
+        else if (index == 2)
+        {
+            for (int i = 0; i < solarChoices.Length; i++)
+            {
+                solarChoices[i].gameObject.SetActive(false);
+                solarChoices[2].gameObject.SetActive(true);
+            }
+
+            solarChoices[2].GetComponent<Animation>().Play("SuccessPop");
+        }
+        else if (index == 3)
+        {
+            for (int i = 0; i < solarChoices.Length; i++)
+            {
+                solarChoices[i].gameObject.SetActive(false);
+                solarChoices[3].gameObject.SetActive(true);
+            }
+
+            solarChoices[3].GetComponent<Animation>().Play("SuccessPop");
+        }
+        else if (index == 4)
+        {
+            for (int i = 0; i < solarChoices.Length; i++)
+            {
+                solarChoices[i].gameObject.SetActive(false);
+                solarChoices[4].gameObject.SetActive(true);
+            }
+
+            solarChoices[4].GetComponent<Animation>().Play("SuccessPop");
+        }
+    }
+
+    public void _LunarOrSolar(int index)
+    {
+        PressSFX();
+
+        nextButton.gameObject.SetActive(true);
+
+        moreExplanationButton.gameObject.SetActive(true);
+
+        if (index == 0)
+        {
+            explanationText.text = lunardialogue[0];
+
+            moreExplanationButton.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "Stages Lunar";
+
+            baruInfo = 1;
+
+            lunarsolarButton[0].GetComponent<Image>().sprite = butSprite[1];
+            lunarsolarButton[1].GetComponent<Image>().sprite = butSprite[0];
+
+            for (int i = 0; i < models.Length; i++) // first object
+            {
+                models[i].SetActive(false);
+                models[0].SetActive(true);
+            }
+        }
+        else if (index == 1)
+        {
+            explanationText.text = solardialogue[0];
+
+            moreExplanationButton.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "Stages Solar";
+
+            baruInfo = 2;
+            solarint = 0;
+
+            lunarsolarButton[0].GetComponent<Image>().sprite = butSprite[0];
+            lunarsolarButton[1].GetComponent<Image>().sprite = butSprite[1];
+
+            for (int i = 0; i < models.Length; i++) // second object
+            {
+                models[i].SetActive(false);
+                models[1].SetActive(true);
+            }
+        }
+    }
+
+    public void _ContinueInfo()
+    {
         blueborder.SetActive(false);
-    }
 
-    public void _lunar()
-    {
-        PressSFX();
+        explanationText.text = "";
+
+        moreExplanationButton.gameObject.SetActive(false);
+        nextButton.gameObject.SetActive(false);
 
         backButton.SetActive(true);
 
-        if (cur[1] == 0)
+        for (int i = 0; i < models.Length; i++) // second object
         {
-            clickables[0].GetComponent<Image>().sprite = butSprite[1];
-            clickables[1].GetComponent<Image>().sprite = butSprite[0];
-            clickables[2].GetComponent<Image>().sprite = butSprite[0];
+            models[i].SetActive(false);
+        }
 
-            explanationText.text = dialogue[1];
-            cur[0] = 0;
-
-            nextButton.gameObject.SetActive(true);
-
+        if (baruInfo == 1)
+        {
             titleText.text = "Stages of Lunar Eclipse";
+
+            for (int i = 0; i < canvas.Length; i++)
+            {
+                canvas[i].gameObject.SetActive(false);
+                canvas[1].gameObject.SetActive(true);
+            }
         }
-        else if (cur[1] == 1)
+        else if (baruInfo == 2)
         {
-            explanationText.text = lunarExplain[1];
-
-
-            clickables[0].GetComponent<Image>().sprite = butSprite[1];
-            clickables[1].GetComponent<Image>().sprite = butSprite[0];
-            clickables[2].GetComponent<Image>().sprite = butSprite[0];
-
-            moreInfo[0].gameObject.SetActive(false);
-            moreInfo[1].gameObject.SetActive(false);
-
-            blueborder.SetActive(false);
-        }
-    }
-
-    public void _solar()
-    {
-        PressSFX();
-
-        backButton.SetActive(true);
-
-        if (cur[1] == 0) // default
-        {
-            clickables[0].GetComponent<Image>().sprite = butSprite[0];
-            clickables[1].GetComponent<Image>().sprite = butSprite[1];
-            clickables[2].GetComponent<Image>().sprite = butSprite[0];
-
-            cur[0] = 1;
-
-            nextButton.gameObject.SetActive(true);
-
             titleText.text = "Stages of Solar Eclipse";
-            explanationText.text = dialogue[3];
-        }
-        else if (cur[1] == 1)
-        {
-            explanationText.text = lunarExplain[2];
 
-            clickables[0].GetComponent<Image>().sprite = butSprite[0];
-            clickables[1].GetComponent<Image>().sprite = butSprite[1];
-            clickables[2].GetComponent<Image>().sprite = butSprite[0];
+            for (int i = 0; i < canvas.Length; i++)
+            {
+                canvas[i].gameObject.SetActive(false);
+                canvas[2].gameObject.SetActive(true);
+            }
 
-            moreInfo[0].gameObject.SetActive(true);
-            moreInfo[1].gameObject.SetActive(true);
-
-            blueborder.SetActive(false);
+            sliderImage.SetActive(false);
         }
     }
     // -------------------------- end of solar and lunar eclipse explanation buttons --------------------------- //
@@ -151,64 +279,63 @@ public class EclipseARManager : MonoBehaviour
 
         backButton.SetActive(false);
 
-        for (int i = 0; i < clickables.Length; i++)
-        {
-            clickables[i].gameObject.SetActive(true);
-            clickables[i].GetComponent<Image>().sprite = butSprite[0];
-
-            clickables[0].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "Lunar";
-            clickables[1].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "Solar";
-
-            clickables[2].gameObject.SetActive(false);
-        }
-
         explanationText.text = dialogue[0];
-        cur[1] = 0;
-        cur[0] = 0;
-
-        moreInfo[0].gameObject.SetActive(false);
-        moreInfo[1].gameObject.SetActive(false);
 
         moreExplanationButton.gameObject.SetActive(false);
 
         titleText.text = "Type of Eclipse";
         quizObject.SetActive(false);
         sliderImage.SetActive(true);
-        eclipseModel.SetActive(false);
+
+        for (int i = 0; i < models.Length; i++) // second object
+        {
+            models[i].SetActive(false);
+        }
+
+        for (int i = 0; i < canvas.Length; i++)
+        {
+            canvas[i].gameObject.SetActive(false);
+            canvas[0].gameObject.SetActive(true);
+        }
+
+        for (int i = 0; i < Objs.Length; i++)
+        {
+            Objs[i].gameObject.SetActive(false);
+        }
+
+        for (int i = 0; i < lunarbuttons.Length; i++)
+        {
+            lunarbuttons[i].GetComponent<Image>().sprite = butSprite[0];
+        }
+
+        lunarsolarButton[0].GetComponent<Image>().sprite = butSprite[0];
+        lunarsolarButton[1].GetComponent<Image>().sprite = butSprite[0];
     }
 
     public void NextButton()
     {
         PressSFX();
 
-        for (int i = 0; i < clickables.Length; i++)
+        if (baruInfo == 1)
         {
-            clickables[i].gameObject.SetActive(false);
+            explanationText.text = lunardialogue[1];
         }
-
-        nextButton.gameObject.SetActive(false);
-
-        blueborder.SetActive(true);
-
-        if (cur[0] == 0)
+        else if (baruInfo == 2)
         {
-            moreExplanationButton.gameObject.SetActive(true);
-            moreExplanationButton.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "Stages Lunar";
+            if (solarint == 0)
+            {
+                explanationText.text = solardialogue[1];
+            }
+            else if (solarint == 1)
+            {
+                explanationText.text = solardialogue[2];
+            }
+            else if (solarint == 2)
+            {
+                return;
+            }
 
-            blueborder.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text =
-                "Why do lunar eclipses only occur at Full Moon?";
-
-            explanationText.text = dialogue[2];
-            cur[1] = 1;
-        }
-        else if (cur[0] == 1)
-        {
-            moreExplanationButton.gameObject.SetActive(true);
-            moreExplanationButton.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "Stages Solar";
-
-            blueborder.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text =
-               "Why do solar eclipses only occur during New Moon?";
-            explanationText.text = dialogue[4];
+            solarint += 1;
         }
     }
 
@@ -216,35 +343,15 @@ public class EclipseARManager : MonoBehaviour
     {
         PressSFX();
 
-        moreExplanationButton.gameObject.SetActive(false);
-
         if (cur[0] == 0)
         {
-            for (int i = 0; i < clickables.Length; i++)
-            {
-                clickables[i].gameObject.SetActive(true);
-            }
+            moreExplanationButton.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "Solar Eclipse";
 
-            for (int i = 0; i < clickables.Length; i++)
-            {
-                clickables[i].gameObject.SetActive(true);
-                clickables[i].GetComponent<Image>().sprite = butSprite[0];
-                clickables[0].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "Partial";
-                clickables[1].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "Total";
-            }
+            titleText.text = "Stages of Lunar Eclipse";
         }
         else if (cur[0] == 1)
         {
             blueborder.SetActive(false);
-
-            for (int i = 0; i < clickables.Length; i++)
-            {
-                clickables[i].gameObject.SetActive(false);
-                // show the eclipse model
-                eclipseModel.SetActive(true);
-                quizObject.SetActive(true);
-                sliderImage.SetActive(false);
-            }
         }
     }
 
@@ -255,10 +362,11 @@ public class EclipseARManager : MonoBehaviour
         if (index == 0)
         {
             popup.SetActive(true);
+            popup.GetComponent<Animation>().Play("SuccessPop");
+
             popup.transform.GetChild(0).gameObject.SetActive(true);
             popup.transform.GetChild(1).gameObject.SetActive(false);
 
-            popup.GetComponent<Animation>().Play("SuccessPop");
         }
         else if (index == 1)
         {
