@@ -8,7 +8,7 @@ public class SpeedARManager : MonoBehaviour
 {
     [SerializeField] string[] dialogue;
     [SerializeField] Sprite[] buttonSprite;
-    [SerializeField] GameObject[] buttons;
+    [SerializeField] GameObject[] buttons, prevNextButton, models;
     [SerializeField] GameObject go, startButton, imageSlider, hideSliderButton;
     [SerializeField] TextMeshProUGUI descriptionText, definitionText;
 
@@ -18,6 +18,8 @@ public class SpeedARManager : MonoBehaviour
 
     void Start()
     {
+        prevNextButton[0].SetActive(false);
+        prevNextButton[1].SetActive(true);
 
         aSource = GetComponent<AudioSource>();
         go.SetActive(false);
@@ -29,6 +31,11 @@ public class SpeedARManager : MonoBehaviour
         for (int i = 0; i < buttons.Length; i++)
         {
             buttons[i].SetActive(false);
+        }
+
+        for (int i = 0; i < models.Length; i++)
+        {
+            models[i].SetActive(false);
         }
     }
 
@@ -66,6 +73,12 @@ public class SpeedARManager : MonoBehaviour
     public void NextButton()
     {
         PressSFX();
+
+        for (int i = 0; i < models.Length; i++)
+        {
+            models[i].SetActive(false);
+        }
+
         if (cur == 0)
         {
             buttons[0].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "Relationship between speed, distance and time";
@@ -76,6 +89,8 @@ public class SpeedARManager : MonoBehaviour
              
             definitionText.text = "Unit of Speed";
             cur += 1;
+
+            prevNextButton[0].SetActive(true);
         }
         else if (cur == 1)
         {
@@ -89,12 +104,19 @@ public class SpeedARManager : MonoBehaviour
             descriptionText.text = "";
             cur += 1;
 
+            prevNextButton[1].SetActive(false);
         }
     }
 
     public void PrevButton()
     {
         BackSFX();
+
+        for (int i = 0; i < models.Length; i++)
+        {
+            models[i].SetActive(false);
+        }
+
         if (cur == 2)
         {
             buttons[0].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "Relationship between speed, distance and time";
@@ -112,6 +134,10 @@ public class SpeedARManager : MonoBehaviour
             cur -= 1;
 
             definitionText.text = "Unit of Speed";
+
+            prevNextButton[1].SetActive(true);
+
+          
         }
         else if (cur == 1)
         {
@@ -132,23 +158,37 @@ public class SpeedARManager : MonoBehaviour
 
             imageSlider.SetActive(true);
 
+            prevNextButton[0].SetActive(false);
+
             cur -= 1;
         }
     }
 
     public void _centi()
     {
-
+        for (int i = 0; i < models.Length; i++)
+        {
+            models[i].SetActive(false);
+            models[0].SetActive(true);
+        }
     }
 
     public void _metre()
     {
-
+        for (int i = 0; i < models.Length; i++)
+        {
+            models[i].SetActive(false);
+            models[1].SetActive(true);
+        }
     }
 
     public void _kilo()
     {
-
+        for (int i = 0; i < models.Length; i++)
+        {
+            models[i].SetActive(false);
+            models[2].SetActive(true);
+        }
     }
 
     public void TimeIsSet()

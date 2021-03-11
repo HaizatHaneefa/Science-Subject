@@ -2554,7 +2554,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 2
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -2565,7 +2565,7 @@ MonoBehaviour:
     m_FadeDuration: 0.1
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 21300000, guid: e7d05dec8dc97457f85b0afa8fd5659b, type: 3}
     m_SelectedSprite: {fileID: 0}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
@@ -2609,7 +2609,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 554efcb61a46e4781b45212eb9a6f2af, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 56de3e09c3cc648f49c7344d5f8cb4f9, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4076,7 +4076,6 @@ MonoBehaviour:
     7
   - lorem ipsum is simply dummy text of the printing and typesetting industry of
     8
-  descriptionText: {fileID: 566907634}
   description:
   - Two fractions with the same denominator.
   - When equating denominators, make sure the numerator and denominator are multiplied
@@ -4085,6 +4084,7 @@ MonoBehaviour:
   - Only whole number can be added or subtracted with another whole number, and only
     numerator can be added or subtracted with another numerator.
   - Make sure the final answer is in the simplest form of fraction.
+  descriptionText: {fileID: 566907634}
   aSource: {fileID: 0}
   clip:
   - {fileID: 8300000, guid: ffb159a21c8a04135a5616979c828fab, type: 3}
