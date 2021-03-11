@@ -11,6 +11,8 @@ public class TimeARManager : MonoBehaviour
     [SerializeField] private GameObject[] scene3, objects, objects2, objects3, BackNextBut, explanationImage;
     [SerializeField] private GameObject scene1, scene2, answerButton, quizButton;
 
+    [SerializeField] private GameObject[] scenes, infoImage;
+
     [SerializeField] private string[] stringQuestions;
 
     int cur;
@@ -26,10 +28,23 @@ public class TimeARManager : MonoBehaviour
         scene1.SetActive(true);
         scene2.SetActive(false);
 
-        for (int i = 0; i < scene3.Length; i++)
+        //for (int i = 0; i < scene3.Length; i++)
+        //{
+        //    scene3[i].SetActive(false);
+        //}
+
+        for (int i = 0; i < scenes.Length; i++)
         {
-            scene3[i].SetActive(false);
+            scenes[i].SetActive(false);
+            scenes[0].SetActive(true);
         }
+
+        for (int i = 0; i < scenes.Length; i++)
+        {
+            infoImage[i].SetActive(false);
+            infoImage[0].SetActive(true);
+        }
+
 
         for (int i = 0; i < explanationImage.Length; i++)
         {
@@ -49,12 +64,7 @@ public class TimeARManager : MonoBehaviour
         }
 
         BackNextBut[1].SetActive(false);
-
-        stringQuestions = new string[4];
-        stringQuestions[0] = "Example 1: 7 centuries = ___ decades";
-        stringQuestions[1] = "Example 2: 72 hours = ___ days";
-        stringQuestions[2] = "Example 3: 34 years = ___ decades and ___ years";
-        stringQuestions[3] = "Example 4: 62 days = ___ weeks and ___ days";
+        answerButton.SetActive(false);
     }
 
     public void _NextButton()
@@ -63,33 +73,55 @@ public class TimeARManager : MonoBehaviour
 
         if (cur == 0)
         {
-            scene1.SetActive(false);
-            scene2.SetActive(true);
-
-            for (int i = 0; i < objects.Length; i++)
+            for (int i = 0; i < scenes.Length; i++)
             {
-                objects[i].SetActive(false);
-                objects[1].SetActive(true);
+                infoImage[i].SetActive(false);
+                infoImage[1].SetActive(true);
+            }
+
+            for (int i = 0; i < scenes.Length; i++)
+            {
+                scenes[i].SetActive(false);
+                scenes[1].SetActive(true);
             }
 
             BackNextBut[1].SetActive(true);
+
+            //scene1.SetActive(false);
+            //scene2.SetActive(true);
+
+            //for (int i = 0; i < objects.Length; i++)
+            //{
+            //    objects[i].SetActive(false);
+            //    objects[1].SetActive(true);
+            //}
+
+            //BackNextBut[1].SetActive(true);
         }
         else if (cur == 1)
         {
-            HideButton();
+            answerButton.SetActive(true);
 
-            scene2.SetActive(false);
-
-            for (int i = 0; i < scene3.Length; i++)
+            for (int i = 0; i < scenes.Length; i++)
             {
-                scene3[i].SetActive(true);
-                scene3[1].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = stringQuestions[0].ToString();
+                scenes[i].SetActive(false);
+                scenes[2].SetActive(true);
             }
 
-            for (int i = 0; i < objects.Length; i++)
-            {
-                objects[i].SetActive(false);
-            }
+            //HideButton();
+
+            //scene2.SetActive(false);
+
+            //for (int i = 0; i < scene3.Length; i++)
+            //{
+            //    scene3[i].SetActive(true);
+            //    scene3[1].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = stringQuestions[0].ToString();
+            //}
+
+            //for (int i = 0; i < objects.Length; i++)
+            //{
+            //    objects[i].SetActive(false);
+            //}
         }
         else if (cur == 2)
         {

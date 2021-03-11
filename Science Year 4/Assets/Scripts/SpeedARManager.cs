@@ -54,6 +54,7 @@ public class SpeedARManager : MonoBehaviour
 
         descriptionText.text = dialogue[0].ToString();
         definitionText.text = "Definition of Speed";
+        definitionText.fontSize = 24f;
 
         imageSlider.SetActive(true);
     }
@@ -88,6 +89,7 @@ public class SpeedARManager : MonoBehaviour
             imageSlider.SetActive(false);
              
             definitionText.text = "Unit of Speed";
+            definitionText.fontSize = 24f;
             cur += 1;
 
             prevNextButton[0].SetActive(true);
@@ -99,6 +101,7 @@ public class SpeedARManager : MonoBehaviour
             buttons[3].SetActive(false);
 
             definitionText.text = "Relationship between speed, distance and time";
+            definitionText.fontSize = 16f;
 
             imageSlider.SetActive(true);
             descriptionText.text = "";
@@ -134,6 +137,7 @@ public class SpeedARManager : MonoBehaviour
             cur -= 1;
 
             definitionText.text = "Unit of Speed";
+            definitionText.fontSize = 24f;
 
             prevNextButton[1].SetActive(true);
 
@@ -155,6 +159,7 @@ public class SpeedARManager : MonoBehaviour
 
             descriptionText.text = dialogue[0].ToString();
             definitionText.text = "Definition of Speed";
+            definitionText.fontSize = 24f;
 
             imageSlider.SetActive(true);
 

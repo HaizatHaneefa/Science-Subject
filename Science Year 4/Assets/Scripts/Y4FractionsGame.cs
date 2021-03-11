@@ -49,6 +49,7 @@ public class Y4FractionsGame : MonoBehaviour
 
     void Start()
     {
+        Time.timeScale = 1f;
         aSource = GetComponent<AudioSource>();
 
         spawntrack = GameObject.FindGameObjectWithTag("GameController").GetComponent<SpawnTrackFractionsGame>();
