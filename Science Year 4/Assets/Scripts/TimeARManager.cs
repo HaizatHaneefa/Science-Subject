@@ -8,10 +8,10 @@ using UnityEngine.UI;
 
 public class TimeARManager : MonoBehaviour
 {
-    [SerializeField] private GameObject[] scene3, objects, objects2, objects3, BackNextBut, explanationImage;
+    [SerializeField] private GameObject[] scene3, BackNextBut, explanationImage;
     [SerializeField] private GameObject scene1, scene2, answerButton, quizButton;
 
-    [SerializeField] private GameObject[] scenes, infoImage;
+    [SerializeField] private GameObject[] scenes, infoImage, answerImages;
 
     [SerializeField] private string[] stringQuestions;
 
@@ -28,21 +28,21 @@ public class TimeARManager : MonoBehaviour
         scene1.SetActive(true);
         scene2.SetActive(false);
 
-        //for (int i = 0; i < scene3.Length; i++)
-        //{
-        //    scene3[i].SetActive(false);
-        //}
-
         for (int i = 0; i < scenes.Length; i++)
         {
             scenes[i].SetActive(false);
             scenes[0].SetActive(true);
         }
 
-        for (int i = 0; i < scenes.Length; i++)
+        for (int i = 0; i < infoImage.Length; i++)
         {
             infoImage[i].SetActive(false);
             infoImage[0].SetActive(true);
+        }
+
+        for (int i = 0; i < answerImages.Length; i++)
+        {
+            answerImages[i].SetActive(false);
         }
 
 
@@ -52,28 +52,23 @@ public class TimeARManager : MonoBehaviour
             explanationImage[cur].SetActive(true);
         }
 
-        for (int i = 0; i < objects.Length; i++)
-        {
-            objects[i].SetActive(false);
-            objects[0].SetActive(true);
-        }
-
-        for (int i = 0; i < objects3.Length; i++)
-        {
-            objects3[i].SetActive(false);
-        }
-
         BackNextBut[1].SetActive(false);
         answerButton.SetActive(false);
     }
 
     public void _NextButton()
     {
+        for (int i = 0; i < answerImages.Length; i++)
+        {
+            answerImages[i].SetActive(false);
+        }
+
+        answerButton.GetComponent<Button>().interactable = true;
         PressSFX();
 
         if (cur == 0)
         {
-            for (int i = 0; i < scenes.Length; i++)
+            for (int i = 0; i < infoImage.Length; i++)
             {
                 infoImage[i].SetActive(false);
                 infoImage[1].SetActive(true);
@@ -86,17 +81,6 @@ public class TimeARManager : MonoBehaviour
             }
 
             BackNextBut[1].SetActive(true);
-
-            //scene1.SetActive(false);
-            //scene2.SetActive(true);
-
-            //for (int i = 0; i < objects.Length; i++)
-            //{
-            //    objects[i].SetActive(false);
-            //    objects[1].SetActive(true);
-            //}
-
-            //BackNextBut[1].SetActive(true);
         }
         else if (cur == 1)
         {
@@ -108,53 +92,43 @@ public class TimeARManager : MonoBehaviour
                 scenes[2].SetActive(true);
             }
 
-            //HideButton();
-
-            //scene2.SetActive(false);
-
-            //for (int i = 0; i < scene3.Length; i++)
-            //{
-            //    scene3[i].SetActive(true);
-            //    scene3[1].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = stringQuestions[0].ToString();
-            //}
-
-            //for (int i = 0; i < objects.Length; i++)
-            //{
-            //    objects[i].SetActive(false);
-            //}
+            for (int i = 0; i < infoImage.Length; i++)
+            {
+                infoImage[i].SetActive(false);
+            }
         }
         else if (cur == 2)
         {
-            HideButton();
+            answerButton.SetActive(true);
 
-            for (int i = 0; i < objects3.Length; i++)
+            for (int i = 0; i < scenes.Length; i++)
             {
-                objects3[i].SetActive(false);
+                scenes[i].SetActive(false);
+                scenes[3].SetActive(true);
             }
 
-            scene3[1].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = stringQuestions[1].ToString();
         }
         else if (cur == 3)
         {
-            HideButton();
+            answerButton.SetActive(true);
 
-            for (int i = 0; i < objects3.Length; i++)
+            for (int i = 0; i < scenes.Length; i++)
             {
-                objects3[i].SetActive(false);
+                scenes[i].SetActive(false);
+                scenes[4].SetActive(true);
             }
-
-            scene3[1].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = stringQuestions[2].ToString();
         }
         else if (cur == 4)
         {
-            HideButton();
+            answerButton.SetActive(true);
 
-            for (int i = 0; i < objects3.Length; i++)
+            for (int i = 0; i < scenes.Length; i++)
             {
-                objects3[i].SetActive(false);
+                scenes[i].SetActive(false);
+                scenes[5].SetActive(true);
             }
 
-            scene3[1].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = stringQuestions[3].ToString();
+            BackNextBut[0].SetActive(false);
         }
 
         cur += 1;
@@ -162,82 +136,68 @@ public class TimeARManager : MonoBehaviour
 
     public void _BackButton()
     {
+        for (int i = 0; i < answerImages.Length; i++)
+        {
+            answerImages[i].SetActive(false);
+        }
+
+        answerButton.GetComponent<Button>().interactable = true;
         BackSFX();
 
         if (cur == 5)
         {
-            quizButton.SetActive(false);
-
-            HideButton();
-
-            for (int i = 0; i < objects3.Length; i++)
+            for (int i = 0; i < scenes.Length; i++)
             {
-                objects3[i].SetActive(false);
+                scenes[i].SetActive(false);
+                scenes[4].SetActive(true);
             }
 
-            scene3[1].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = stringQuestions[2].ToString();
+            BackNextBut[0].SetActive(true);
         }
         else if (cur == 4)
         {
-            HideButton();
-
-            for (int i = 0; i < objects3.Length; i++)
+            for (int i = 0; i < scenes.Length; i++)
             {
-                objects3[i].SetActive(false);
+                scenes[i].SetActive(false);
+                scenes[3].SetActive(true);
             }
-
-            scene3[1].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = stringQuestions[1].ToString();
         }
         else if (cur == 3)
         {
-            HideButton();
-
-            for (int i = 0; i < objects3.Length; i++)
+            for (int i = 0; i < scenes.Length; i++)
             {
-                objects3[i].SetActive(false);
+                scenes[i].SetActive(false);
+                scenes[2].SetActive(true);
             }
-
-            scene3[1].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = stringQuestions[0].ToString();
         }
         else if (cur == 2)
         {
-            scene2.SetActive(true); // ui
-
-            for (int i = 0; i < scene3.Length; i++)
+            for (int i = 0; i < scenes.Length; i++)
             {
-                scene3[i].SetActive(false);
+                scenes[i].SetActive(false);
+                scenes[1].SetActive(true);
             }
 
-            for (int i = 0; i < objects3.Length; i++)
+            for (int i = 0; i < infoImage.Length; i++)
             {
-                objects3[i].SetActive(false);
+                infoImage[i].SetActive(false);
+                infoImage[1].SetActive(true);
             }
 
-            for (int i = 0; i < objects.Length; i++) // model
-            {
-                objects[i].SetActive(false);
-                objects[1].SetActive(true);
-            }
+            answerButton.SetActive(false);
         }
         else if (cur == 1)
         {
-            scene1.SetActive(true);
-            scene2.SetActive(false);
-
-            for (int i = 0; i < objects2.Length; i++)
+            for (int i = 0; i < scenes.Length; i++)
             {
-                objects2[i].SetActive(false);
+                scenes[i].SetActive(false);
+                scenes[0].SetActive(true);
             }
 
-            for (int i = 0; i < objects3.Length; i++)
+            for (int i = 0; i < infoImage.Length; i++)
             {
-                objects3[i].SetActive(false);
-            }
-
-            for (int i = 0; i < objects.Length; i++)
-            {
-                objects[i].SetActive(false);
-                objects[0].SetActive(true);
+                infoImage[i].SetActive(false);
+                infoImage[0].SetActive(true);
             }
 
             BackNextBut[1].SetActive(false);
@@ -248,74 +208,46 @@ public class TimeARManager : MonoBehaviour
 
     public void _Answer()
     {
-        StartCoroutine(ShowAnswer());
-    }
+        RightSFX();
 
-    IEnumerator ShowAnswer()
-    {
         Button button = EventSystem.current.currentSelectedGameObject.GetComponent<Button>();
         button.interactable = false;
 
-        RightSFX();
-
-        // show model
         if (cur == 2)
         {
-            // first model from objects 3
-            for (int i = 0; i < objects3.Length; i++)
+            for (int i = 0; i < answerImages.Length; i++)
             {
-                objects3[i].SetActive(false);
-                objects3[0].SetActive(true);
+                answerImages[i].SetActive(false);
+                answerImages[0].SetActive(true);
+                answerImages[0].GetComponent<Animation>().Play("SuccessPop");
             }
         }
         else if (cur == 3)
         {
-            for (int i = 0; i < objects3.Length; i++)
+            for (int i = 0; i < answerImages.Length; i++)
             {
-                objects3[i].SetActive(false);
-                objects3[1].SetActive(true);
+                answerImages[i].SetActive(false);
+                answerImages[1].SetActive(true);
+                answerImages[1].GetComponent<Animation>().Play("SuccessPop");
             }
         }
-        if (cur == 4)
+        else if (cur == 4)
         {
-            for (int i = 0; i < scene3.Length; i++)
+            for (int i = 0; i < answerImages.Length; i++)
             {
-                objects3[i].SetActive(false);
-                objects3[2].SetActive(true);
+                answerImages[i].SetActive(false);
+                answerImages[2].SetActive(true);
+                answerImages[2].GetComponent<Animation>().Play("SuccessPop");
             }
         }
-        if (cur == 5)
+        else if (cur == 5)
         {
-            for (int i = 0; i < scene3.Length; i++)
+            for (int i = 0; i < answerImages.Length; i++)
             {
-                objects3[i].SetActive(false);
-                objects3[3].SetActive(true);
+                answerImages[i].SetActive(false);
+                answerImages[3].SetActive(true);
+                answerImages[3].GetComponent<Animation>().Play("SuccessPop");
             }
-        }
-
-        yield return new WaitForSeconds(1);
-
-        button.interactable = true;
-
-        if (cur == 5)
-        {
-            BackNextBut[1].SetActive(true);
-            quizButton.SetActive(true);
-        }
-        else if (cur != 5)
-        {
-            for (int i = 0; i < BackNextBut.Length; i++)
-            {
-                BackNextBut[i].SetActive(true);
-            }
-        }
-    }
-
-    void HideButton()
-    {
-        for (int i = 0; i < BackNextBut.Length; i++)
-        {
-            BackNextBut[i].SetActive(false);
         }
     }
 

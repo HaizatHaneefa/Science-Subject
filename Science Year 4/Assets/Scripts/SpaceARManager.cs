@@ -4,21 +4,19 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
 public class SpaceARManager : MonoBehaviour
 {
-    [SerializeField] private string[] dialogue, subtopicString;
-    [SerializeField] private TextMeshProUGUI subtopicText, dialogueText;
+    [SerializeField] private TextMeshProUGUI descriptionText, subtopicText;
 
-    [SerializeField] private GameObject[] triangleObjects;
-    [SerializeField] private GameObject squareObject, rectangleObject;
+    [SerializeField] private Sprite[] butSprite;
 
-    [SerializeField] private Sprite[] buttonSprite;
+    [SerializeField] private GameObject[] buttons, objects, triButtons, prevNextBtn;
+    [SerializeField] private GameObject exampleImage, moreInfo;
 
-    [SerializeField] private Image showImage;
-
-    [SerializeField] private Button[] _lineButton, triangleButtons;
-    [SerializeField] private Button nextBtn, prevBtn;
+    [SerializeField] private string[] moreInfoDialogue;
+    [SerializeField] private string[] dialogue;
 
     [SerializeField] private AudioSource aSource;
     [SerializeField] private AudioClip[] clip;
@@ -29,28 +27,57 @@ public class SpaceARManager : MonoBehaviour
     {
         aSource = GetComponent<AudioSource>();
 
-        showImage.gameObject.SetActive(false);
+        descriptionText.text = "";
+
+        for (int i = 0; i < objects.Length; i++)
+        {
+            objects[i].SetActive(false);
+        }
+
+        for (int i = 0; i < triButtons.Length; i++)
+        {
+            triButtons[i].SetActive(false);
+        }
+
         subtopicText.transform.parent.gameObject.SetActive(false);
-        squareObject.SetActive(false);
-        rectangleObject.SetActive(false);
+        exampleImage.SetActive(false);
+        moreInfo.SetActive(false);
+        prevNextBtn[1].SetActive(false);
 
-        for (int i = 0; i < triangleButtons.Length; i++)
+        moreInfoDialogue = new string[14];
+
+        moreInfoDialogue[0] = "One of the angles is upright angle = 90 degrees";
+        moreInfoDialogue[1] = "Two of the angles are perpendicular";
+        moreInfoDialogue[2] = "The length of all three sides is the same";
+        moreInfoDialogue[3] = "Each angle is 60 degrees";
+        moreInfoDialogue[4] = "Two of the sides are of the same length";
+        moreInfoDialogue[5] = "Two of the angles are of the same value";
+        moreInfoDialogue[6] = "The two opposite sides are parallel";
+        moreInfoDialogue[7] = "Has 4 right angles";
+        moreInfoDialogue[8] = "The length of all 4 sides is the same";
+        moreInfoDialogue[9] = "The two adjacent sides are perpendicular";
+        moreInfoDialogue[10] = "Has 4 right angles";
+        moreInfoDialogue[11] = "Opposite sides are of the same length";
+        moreInfoDialogue[12] = "Two adjacent sides are perpendicular";
+        moreInfoDialogue[13] = "Two opposite sides are parallel";
+    }
+
+    public void _PerpenOrParrallel(int index)
+    {
+        if (index == 0)
         {
-            triangleButtons[i].gameObject.SetActive(false);
-        }
+            descriptionText.text = dialogue[0];
 
-        for (int i = 0; i < triangleObjects.Length; i++)
+            buttons[0].GetComponent<Image>().sprite = butSprite[1];
+            buttons[1].GetComponent<Image>().sprite = butSprite[0];
+        }
+        else if (index == 1)
         {
-            triangleObjects[i].SetActive(false);
+            descriptionText.text = dialogue[1];
+
+            buttons[0].GetComponent<Image>().sprite = butSprite[0];
+            buttons[1].GetComponent<Image>().sprite = butSprite[1];
         }
-
-        dialogueText.enabled = false;
-
-        dialogue = new string[4];
-        dialogue[0] = "These lines are called parallel lines because they will not intersect of meet even if extended."; // parallel
-        dialogue[1] = "These lines intersect and form an upright angle. Hence, they are called perpendicular lines."; // tahu dah kan?
-        dialogue[2] = "Protractor is used to measure angles and the unit for angles is degree(°)";
-        dialogue[3] = "Example: 50° is read as 50 degrees, 180° is read as 180 degrees";
     }
 
     public void _Next()
@@ -59,64 +86,70 @@ public class SpaceARManager : MonoBehaviour
 
         if (cur == 0)
         {
-            prevBtn.gameObject.SetActive(true);
-            showImage.gameObject.SetActive(true);
+            for (int i = 0; i < buttons.Length; i++)
+            {
+                buttons[i].SetActive(false);
+                buttons[i].GetComponent<Image>().sprite = butSprite[0];
+            }
 
-            _lineButton[0].gameObject.SetActive(false);
-            _lineButton[0].GetComponent<Image>().sprite = buttonSprite[0];
+            descriptionText.text = dialogue[2];
 
-            _lineButton[1].gameObject.SetActive(false);
-            _lineButton[1].GetComponent<Image>().sprite = buttonSprite[0];
-
-
-            dialogueText.enabled = true;
-            dialogueText.text = dialogue[2].ToString();
+            prevNextBtn[1].SetActive(true);
+            exampleImage.SetActive(true);
         }
         else if (cur == 1)
         {
-            dialogueText.text = dialogue[3].ToString();
+            descriptionText.text = dialogue[3];
         }
         else if (cur == 2)
         {
-            showImage.gameObject.SetActive(false);
-
             subtopicText.transform.parent.gameObject.SetActive(true);
             subtopicText.text = "Triangle";
 
-            for (int i = 0; i < triangleButtons.Length; i++)
+
+            for (int i = 0; i < objects.Length; i++)
             {
-                triangleButtons[i].gameObject.SetActive(true);
-                triangleButtons[i].GetComponent<Image>().sprite = buttonSprite[0];
+                objects[i].SetActive(false);
             }
 
-            dialogueText.transform.parent.GetComponent<Image>().enabled = false;
-            dialogueText.enabled = false;
+            for (int i = 0; i < triButtons.Length; i++)
+            {
+                triButtons[i].SetActive(true);
+                triButtons[i].GetComponent<Image>().sprite = butSprite[0];
+            }
+
+            descriptionText.transform.parent.gameObject.SetActive(false);
+            exampleImage.SetActive(false);
         }
         else if (cur == 3)
         {
+            subtopicText.transform.parent.gameObject.SetActive(true);
             subtopicText.text = "Square";
 
-            for (int i = 0; i < triangleObjects.Length; i++)
+            for (int i = 0; i < triButtons.Length; i++)
             {
-                triangleObjects[i].SetActive(false);
+                triButtons[i].SetActive(false);
+                triButtons[i].GetComponent<Image>().sprite = butSprite[0];
             }
 
-            for (int i = 0; i < triangleButtons.Length; i++)
+            for (int i = 0; i < objects.Length; i++)
             {
-                triangleButtons[i].gameObject.SetActive(false);
-                triangleButtons[i].GetComponent<Image>().sprite = buttonSprite[0];
+                objects[i].SetActive(false);
+                objects[3].SetActive(true);
             }
-
-            squareObject.SetActive(true);
         }
         else if (cur == 4)
         {
+            subtopicText.transform.parent.gameObject.SetActive(true);
             subtopicText.text = "Rectangle";
 
-            squareObject.SetActive(false);
-            rectangleObject.SetActive(true);
+            for (int i = 0; i < objects.Length; i++)
+            {
+                objects[i].SetActive(false);
+                objects[4].SetActive(true);
+            }
 
-            nextBtn.gameObject.SetActive(false);
+            prevNextBtn[0].SetActive(false);
         }
 
         cur += 1;
@@ -128,56 +161,65 @@ public class SpaceARManager : MonoBehaviour
 
         if (cur == 5)
         {
+            subtopicText.transform.parent.gameObject.SetActive(true);
             subtopicText.text = "Square";
 
-            rectangleObject.SetActive(false);
-            squareObject.SetActive(true);
+            for (int i = 0; i < objects.Length; i++)
+            {
+                objects[i].SetActive(false);
+                objects[3].SetActive(true);
+            }
 
-            nextBtn.gameObject.SetActive(true);
+            prevNextBtn[0].SetActive(true);
         }
         else if (cur == 4)
         {
+            subtopicText.transform.parent.gameObject.SetActive(true);
             subtopicText.text = "Triangle";
 
-            for (int i = 0; i < triangleObjects.Length; i++)
+            for (int i = 0; i < triButtons.Length; i++)
             {
-                triangleObjects[i].SetActive(false);
+                triButtons[i].SetActive(true);
             }
 
-            for (int i = 0; i < triangleButtons.Length; i++)
+            for (int i = 0; i < objects.Length; i++)
             {
-                triangleButtons[i].gameObject.SetActive(true);
+                objects[i].SetActive(false);
             }
         }
         else if (cur == 3)
         {
-            showImage.gameObject.SetActive(true);
-
             subtopicText.transform.parent.gameObject.SetActive(false);
 
-            for (int i = 0; i < triangleButtons.Length; i++)
+            for (int i = 0; i < objects.Length; i++)
             {
-                triangleButtons[i].gameObject.SetActive(false);
+                objects[i].SetActive(false);
             }
 
-            dialogueText.transform.parent.GetComponent<Image>().enabled = true;
-            dialogueText.enabled = true;
+            for (int i = 0; i < triButtons.Length; i++)
+            {
+                triButtons[i].SetActive(false);
+            }
 
-            dialogueText.text = dialogue[3].ToString();
+            exampleImage.SetActive(true);
+            descriptionText.transform.parent.gameObject.SetActive(true);
+            descriptionText.text = dialogue[3];
         }
         else if (cur == 2)
         {
-            dialogueText.text = dialogue[2].ToString();
+            descriptionText.text = dialogue[2];
         }
         else if (cur == 1)
         {
-            prevBtn.gameObject.SetActive(false);
-            showImage.gameObject.SetActive(false);
+            for (int i = 0; i < buttons.Length; i++)
+            {
+                buttons[i].SetActive(true);
+            }
 
-            _lineButton[0].gameObject.SetActive(true);
-            _lineButton[1].gameObject.SetActive(true);
+            descriptionText.text = "";
 
-            dialogueText.enabled = false;
+            prevNextBtn[1].SetActive(false);
+            exampleImage.SetActive(false);
         }
 
         cur -= 1;
@@ -186,65 +228,110 @@ public class SpaceARManager : MonoBehaviour
     public void _Lines(int index)
     {
         PressSFX();
-
-        if (index == 0)
-        {
-            dialogueText.enabled = true;
-            dialogueText.text = dialogue[0].ToString();
-
-            _lineButton[0].GetComponent<Image>().sprite = buttonSprite[1];
-            _lineButton[1].GetComponent<Image>().sprite = buttonSprite[0];
-        }
-        else if (index == 1)
-        {
-            dialogueText.enabled = true;
-            dialogueText.text = dialogue[1].ToString();
-
-            _lineButton[0].GetComponent<Image>().sprite = buttonSprite[0];
-            _lineButton[1].GetComponent<Image>().sprite = buttonSprite[1];
-        }
     }
 
     public void _TriangleButtons(int index)
     {
         PressSFX();
 
+        for (int i = 0; i < triButtons.Length; i++)
+        {
+            triButtons[i].GetComponent<Image>().sprite = butSprite[0];
+            triButtons[index].GetComponent<Image>().sprite = butSprite[1];
+        }
+
         if (index == 0)
         {
-            for (int i = 0; i < triangleObjects.Length; i++)
+            for (int i = 0; i < objects.Length; i++)
             {
-                triangleObjects[i].SetActive(false);
-                triangleObjects[0].SetActive(true);
+                objects[i].SetActive(false);
+                objects[0].SetActive(true);
             }
-
-            triangleButtons[0].GetComponent<Image>().sprite = buttonSprite[1];
-            triangleButtons[1].GetComponent<Image>().sprite = buttonSprite[0];
-            triangleButtons[2].GetComponent<Image>().sprite = buttonSprite[0];
         }
         else if (index == 1)
         {
-            for (int i = 0; i < triangleObjects.Length; i++)
+            for (int i = 0; i < objects.Length; i++)
             {
-                triangleObjects[i].SetActive(false);
-                triangleObjects[1].SetActive(true);
+                objects[i].SetActive(false);
+                objects[1].SetActive(true);
             }
-
-            triangleButtons[0].GetComponent<Image>().sprite = buttonSprite[0];
-            triangleButtons[1].GetComponent<Image>().sprite = buttonSprite[1];
-            triangleButtons[2].GetComponent<Image>().sprite = buttonSprite[0];
         }
         else if (index == 2)
         {
-            for (int i = 0; i < triangleObjects.Length; i++)
+            for (int i = 0; i < objects.Length; i++)
             {
-                triangleObjects[i].SetActive(false);
-                triangleObjects[2].SetActive(true);
+                objects[i].SetActive(false);
+                objects[2].SetActive(true);
             }
-
-            triangleButtons[0].GetComponent<Image>().sprite = buttonSprite[0];
-            triangleButtons[1].GetComponent<Image>().sprite = buttonSprite[0];
-            triangleButtons[2].GetComponent<Image>().sprite = buttonSprite[1];
         }
+    }
+
+    public void _PopInfo(int index)
+    {
+        moreInfo.SetActive(true);
+        moreInfo.GetComponent<Animation>().Play("SuccessPop");
+
+        if (index == 0)
+        {
+            moreInfo.transform.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().text = moreInfoDialogue[0];
+        }
+        else if (index == 1)
+        {
+            moreInfo.transform.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().text = moreInfoDialogue[1];
+        }
+        else if (index == 2)
+        {
+            moreInfo.transform.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().text = moreInfoDialogue[2];
+        }
+        else if (index == 3)
+        {
+            moreInfo.transform.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().text = moreInfoDialogue[3];
+        }
+        else if (index == 4)
+        {
+            moreInfo.transform.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().text = moreInfoDialogue[4];
+        }
+        else if (index == 5)
+        {
+            moreInfo.transform.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().text = moreInfoDialogue[5];
+        }
+        else if (index == 6)
+        {
+            moreInfo.transform.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().text = moreInfoDialogue[6];
+        }
+        else if (index == 7)
+        {
+            moreInfo.transform.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().text = moreInfoDialogue[7];
+        }
+        else if (index == 8)
+        {
+            moreInfo.transform.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().text = moreInfoDialogue[8];
+        }
+        else if (index == 9)
+        {
+            moreInfo.transform.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().text = moreInfoDialogue[9];
+        }
+        else if (index == 10)
+        {
+            moreInfo.transform.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().text = moreInfoDialogue[10];
+        }
+        else if (index == 11)
+        {
+            moreInfo.transform.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().text = moreInfoDialogue[11];
+        }
+        else if (index == 12)
+        {
+            moreInfo.transform.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().text = moreInfoDialogue[12];
+        }
+        else if (index == 13)
+        {
+            moreInfo.transform.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().text = moreInfoDialogue[13];
+        }
+    }
+
+    public void _Close()
+    {
+        moreInfo.SetActive(false);
     }
 
     public void _Menu()
@@ -282,9 +369,4 @@ public class SpaceARManager : MonoBehaviour
         aSource.clip = clip[3];
         aSource.Play();
     }
-
-    //void Update()
-    //{
-    //    // 3d model manipulation stuff goes here i suppose
-    //}
 }
