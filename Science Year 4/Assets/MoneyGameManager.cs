@@ -3,20 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class MoneyGameManager : MonoBehaviour
 {
     [SerializeField] private MoneyList[] moneylist;
 
-    [SerializeField] private float changeValue, totalChangeValue, timer;
+    [SerializeField] private float totalChangeValue, timer, floatValue;
     [SerializeField] private Sprite[] moneySprite;
-    [SerializeField] private TextMeshProUGUI dialogueText, changeText, timerText;
+    [SerializeField] private TextMeshProUGUI dialogueText, changeText, timerText, counterText;
     [SerializeField] private string[] dialogue;
 
     [SerializeField] private Image itemImage;
-    [SerializeField] private GameObject yayPop;
+    [SerializeField] private GameObject yayPop, introPop, endPop;
 
-    int cur;
+    int cur, howMany;
+
+    bool hasStarted;
 
     void Start()
     {
@@ -27,57 +30,63 @@ public class MoneyGameManager : MonoBehaviour
 
         cur = Random.Range(0, moneylist.Length);
         yayPop.SetActive(false);
+        endPop.SetActive(false);
 
-        timer = 60f;
+        timer = 3f;
 
         itemImage.enabled = false;
-    }
-
-    public void StartGame()
-    {
-        itemImage.enabled = true;
-
-        // stuff starts here
+        dialogueText.enabled = false;
     }
 
     public void _Value(int index)
     {
         if (index == 0)
         {
-            totalChangeValue += .50f;
+            totalChangeValue = totalChangeValue + .50f;
         }
         else if (index == 1)
         {
-            totalChangeValue += .20f;
+            totalChangeValue = totalChangeValue + .20f;
         }
         else if (index == 2)
         {
-            totalChangeValue += .10f;
+            totalChangeValue = totalChangeValue + .10f;
         }
         else if (index == 3)
         {
-            totalChangeValue += .05f;
+            totalChangeValue = totalChangeValue + .05f;
         }
         else if (index == 4)
         {
-            totalChangeValue += .01f;
+            totalChangeValue = totalChangeValue + .01f;
         }
-
-        changeText.text = totalChangeValue.ToString();
     }
 
     public void _Calculate()
     {
-        if (totalChangeValue == moneylist[cur].change)
+        floatValue = float.Parse(changeText.text);
+
+        if (floatValue == moneylist[cur].change)
         {
             ChangeQuestion();
             Debug.Log("qwqwewew");
+            howMany += 1;
         }
-        else if (totalChangeValue != moneylist[cur].change)
+        else if (floatValue != moneylist[cur].change)
         {
-            // redo it
             totalChangeValue = 0f;
+            Debug.Log("qsdg");
         }
+    }
+
+    public void _Start()
+    {
+        hasStarted = true;
+
+        dialogueText.enabled = true;
+        itemImage.enabled = true;
+
+        introPop.SetActive(false);
     }
 
     void ChangeQuestion()
@@ -89,34 +98,59 @@ public class MoneyGameManager : MonoBehaviour
     {
         yayPop.SetActive(true);
         yayPop.GetComponent<Animation>().Play("SuccessPop");
-        // do some animation shit
-
-        // display yay
-        // sound
-        totalChangeValue = 0f;
 
         yield return new WaitForSeconds(1f);
 
+        totalChangeValue = 0f;
+
         cur = Random.Range(0, moneylist.Length);
 
-        changeText.text = totalChangeValue.ToString();
-
         yayPop.SetActive(false);
-        // close yay
-        // change question
+    }
+
+    public void _Back()
+    {
+        SceneManager.LoadScene("Menu");
+    }
+
+    public void _Retry()
+    {
+        SceneManager.LoadScene("Y4 - Money Game");
+    }
+
+    void EndPop()
+    {
+        hasStarted = false;
+
+        endPop.SetActive(true);
     }
 
     void Update()
     {
-        itemImage.sprite = moneylist[cur].artwork;
 
-        dialogueText.text = dialogue[0] + moneylist[cur].name + dialogue[1] + moneylist[cur].value + "sen. " + dialogue[2] + moneylist[cur].change + "sen";
+        if (hasStarted)
+        {
+            counterText.text = "Congratulations! Correct changes:" + "\n" + howMany.ToString();
+
+            changeText.text = totalChangeValue.ToString("F2");
+
+            timer -= Time.deltaTime;
+
+            itemImage.sprite = moneylist[cur].artwork;
+
+            dialogueText.text = dialogue[0] + moneylist[cur].name + dialogue[1] + moneylist[cur].value + "sen. " + dialogue[2] + moneylist[cur].change + "sen";
+        }
+
+        if (timer <= 0)
+        {
+            // end the game
+            EndPop();
+        }
 
         int minutes = Mathf.FloorToInt(timer / 60F);
         int seconds = Mathf.FloorToInt(timer - minutes * 60);
         string niceTime = string.Format("{0:0}:{1:00}", minutes, seconds);
 
-        timer -= Time.deltaTime;
         timerText.text = niceTime;
     }
 }
