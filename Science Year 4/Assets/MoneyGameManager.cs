@@ -11,7 +11,7 @@ public class MoneyGameManager : MonoBehaviour
 
     [SerializeField] private float totalChangeValue, timer, floatValue;
     [SerializeField] private Sprite[] moneySprite;
-    [SerializeField] private TextMeshProUGUI dialogueText, changeText, timerText, counterText;
+    [SerializeField] private TextMeshProUGUI dialogueText, changeText, timerText, counterText, salesText;
     [SerializeField] private string[] dialogue;
 
     [SerializeField] private Image itemImage;
@@ -28,11 +28,13 @@ public class MoneyGameManager : MonoBehaviour
         dialogue[1] = ". It costs ";
         dialogue[2] = "I'll give you RM 1. You owe me ";
 
+        introPop.GetComponent<Animation>().Play("SuccessPop");
+
         cur = Random.Range(0, moneylist.Length);
         yayPop.SetActive(false);
         endPop.SetActive(false);
 
-        timer = 3f;
+        timer = 60f;
 
         itemImage.enabled = false;
         dialogueText.enabled = false;
@@ -97,9 +99,9 @@ public class MoneyGameManager : MonoBehaviour
     IEnumerator Change()
     {
         yayPop.SetActive(true);
-        yayPop.GetComponent<Animation>().Play("SuccessPop");
+        yayPop.GetComponent<Animation>().Play("MoneyYayPop");
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(.8f);
 
         totalChangeValue = 0f;
 
@@ -120,6 +122,8 @@ public class MoneyGameManager : MonoBehaviour
 
     void EndPop()
     {
+        timer = 0f;
+
         hasStarted = false;
 
         endPop.SetActive(true);
@@ -127,12 +131,12 @@ public class MoneyGameManager : MonoBehaviour
 
     void Update()
     {
-
         if (hasStarted)
         {
-            counterText.text = "Congratulations! Correct changes:" + "\n" + howMany.ToString();
-
+            salesText.text = howMany.ToString();
             changeText.text = totalChangeValue.ToString("F2");
+
+            counterText.text = "Congratulations! Correct changes:" + "\n" + howMany.ToString();
 
             timer -= Time.deltaTime;
 
