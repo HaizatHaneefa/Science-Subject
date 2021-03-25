@@ -96,6 +96,11 @@ public class MoneyGameManager : MonoBehaviour
         StartCoroutine(Change());
     }
 
+    public void _Reset()
+    {
+        totalChangeValue = 0f;
+    }
+
     IEnumerator Change()
     {
         yayPop.SetActive(true);

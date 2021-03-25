@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class Year5PlantsAR : MonoBehaviour
 {
     [SerializeField] private GameObject[] canvas;
-    [SerializeField] private GameObject dummyObject;
+    [SerializeField] private GameObject[] plants;
     [SerializeField] private Sprite[] buttonSprite;
 
     [SerializeField] private Image[] imageButtons;
@@ -30,13 +30,20 @@ public class Year5PlantsAR : MonoBehaviour
             weatherButtons[i].SetActive(false);
         }
 
-        dummyObject.SetActive(false);
+        for (int i = 0; i < plants.Length; i++)
+        {
+            plants[i].SetActive(false);
+        }
     }
 
     public void _ProtectionEnemies()
     {
         PressSFX();
-        dummyObject.SetActive(false);
+
+        for (int i = 0; i < plants.Length; i++)
+        {
+            plants[i].SetActive(false);
+        }
 
         imageButtons[0].sprite = buttonSprite[0];
         imageButtons[1].sprite = buttonSprite[1];
@@ -60,7 +67,11 @@ public class Year5PlantsAR : MonoBehaviour
     public void _ProtectionWeather()
     {
         PressSFX();
-        dummyObject.SetActive(false);
+
+        for (int i = 0; i < plants.Length; i++)
+        {
+            plants[i].SetActive(false);
+        }
 
         imageButtons[1].sprite = buttonSprite[0];
         imageButtons[0].sprite = buttonSprite[1];
@@ -116,10 +127,51 @@ public class Year5PlantsAR : MonoBehaviour
         SceneManager.LoadScene("Menu");
     }
 
-    public void ShowDummyObject()
+    public void _ShowPlants(int index)
     {
         PressSFX();
-        dummyObject.SetActive(true);
+
+        if (index == 0) // jagung
+        {
+            for (int i = 0; i < plants.Length; i++)
+            {
+                plants[i].SetActive(false);
+                plants[0].SetActive(true);
+            }
+        }
+        else if (index == 1) // akar cactus
+        {
+            for (int i = 0; i < plants.Length; i++)
+            {
+                plants[i].SetActive(false);
+                plants[1].SetActive(true);
+            }
+        }
+        else if (index == 2) // cactus
+        {
+            for (int i = 0; i < plants.Length; i++)
+            {
+                plants[i].SetActive(false);
+                plants[2].SetActive(true);
+            }
+        }
+        else if (index == 3) // bamboo
+        {
+            for (int i = 0; i < plants.Length; i++)
+            {
+                plants[i].SetActive(false);
+                plants[3].SetActive(true);
+            }
+        }
+        else if (index == 4) // pokok getah
+        {
+            for (int i = 0; i < plants.Length; i++)
+            {
+                plants[i].SetActive(false);
+                plants[4].SetActive(true);
+                plants[4].GetComponent<Animation>().Play("pokok-gugur");
+            }
+        }
     }
 
     public void PressSFX() // button press yes

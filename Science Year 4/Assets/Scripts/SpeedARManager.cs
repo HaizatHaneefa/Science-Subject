@@ -212,6 +212,14 @@ public class SpeedARManager : MonoBehaviour
         descriptionText.text = dialogue[2].ToString();
         descriptionText.fontSize = 15;
 
+        for (int i = 0; i < models.Length; i++)
+        {
+            models[i].SetActive(false);
+            models[3].SetActive(true);
+            models[3].GetComponent<Animation>().Play("atlet-lari");
+            models[4].SetActive(true);
+            models[4].GetComponent<Animation>().Play("orangbiasa-lari");
+        }
 
         buttons[1].GetComponent<Image>().sprite = buttonSprite[0];
         buttons[2].GetComponent<Image>().sprite = buttonSprite[1];

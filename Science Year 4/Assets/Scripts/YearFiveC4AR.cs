@@ -346,6 +346,26 @@ public class YearFiveC4AR : MonoBehaviour
                 animals[16].SetActive(true);
             }
         }
+        else if (index == 16) // landak
+        {
+            for (int i = 0; i < animals.Length; i++)
+            {
+                animals[i].SetActive(false);
+                animals[17].SetActive(true);
+                animals[17].GetComponent<Animation>().Play("landak-anim");
+            }
+        }
+        else if (index == 17) // harimau cakar
+        {
+            for (int i = 0; i < animals.Length; i++)
+            {
+                animals[i].SetActive(false);
+                animals[18].SetActive(true);
+                animals[18].GetComponent<Animation>().Play("harimau-cakar");
+            }
+        }
+
+
         else if (index != 0 || index != 1 || index != 2)
         {
             dummyObject.SetActive(true);

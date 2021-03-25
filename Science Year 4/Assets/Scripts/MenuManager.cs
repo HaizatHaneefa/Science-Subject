@@ -332,8 +332,20 @@ public class MenuManager : MonoBehaviour
             descriptionText.text = "y6 space";
         }
 
-        arOrFunFactBackground.SetActive(true);
-        arOrFunFactBackground.GetComponent<Animation>().Play("Menu_ConfirmPop");
+        if (l <= 9)
+        {
+            arOrFunFactBackground.SetActive(true);
+            arOrFunFactBackground.GetComponent<Animation>().Play("Menu_ConfirmPop");
+            arOrFunFactBackground.transform.GetChild(3).gameObject.SetActive(true);
+            arOrFunFactBackground.transform.GetChild(4).gameObject.SetActive(false);
+        }
+        else if (l >= 9)
+        {
+            arOrFunFactBackground.SetActive(true);
+            arOrFunFactBackground.GetComponent<Animation>().Play("Menu_ConfirmPop");
+            arOrFunFactBackground.transform.GetChild(3).gameObject.SetActive(false);
+            arOrFunFactBackground.transform.GetChild(4).gameObject.SetActive(true);
+        }
     }
 
     public void BackToTopic()
@@ -398,25 +410,25 @@ public class MenuManager : MonoBehaviour
         {
             SceneManager.LoadScene("Y4 - Fractions AR");
         }
-        else if (l == 21) 
+        else if (l == 21) // money
         {
-            //SceneManager.LoadScene("Y4 - Fractions AR");
+            //SceneManager.LoadScene("Y4 - Fractions AR"); /
         }
-        else if (l == 22)
+        else if (l == 22) // time
         {
-            //SceneManager.LoadScene("Y4 - Fractions AR");
+            SceneManager.LoadScene("Y4 - Time AR");
         }
         else if (l == 23) 
         {
-            //SceneManager.LoadScene("Y4 - Fractions AR");
+            SceneManager.LoadScene("Y5 - Length AR");
         }
         else if (l == 24) 
         {
-            //SceneManager.LoadScene("Y4 - Fractions AR");
+            SceneManager.LoadScene("Y5 - Mass AR");
         }
         else if (l == 25) 
         {
-            //SceneManager.LoadScene("Y4 - Fractions AR");
+            SceneManager.LoadScene("Y5 - Volume Liquid AR");
         }
         else if (l == 26) 
         {
@@ -541,10 +553,21 @@ public class MenuManager : MonoBehaviour
             // y6 constellation
             SceneManager.LoadScene("Y6 - Constellation Game");
         }
-        else if (l == 20)
+        else if (l == 20) // start of math
         {
-            // y6 constellation
             SceneManager.LoadScene("Y4 - Fractions Game");
+        }
+        else if (l == 21) // money
+        {
+            SceneManager.LoadScene("Y4 - Money Game");
+        }
+        else if (l == 22) // time
+        {
+            //SceneManager.LoadScene("Y4 - Money Game"); // time
+        }
+        else if (l == 23) // time
+        {
+            //SceneManager.LoadScene("Y4 - Money Game"); // length
         }
     }
 
