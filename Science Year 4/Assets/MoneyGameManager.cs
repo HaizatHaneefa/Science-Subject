@@ -17,12 +17,17 @@ public class MoneyGameManager : MonoBehaviour
     [SerializeField] private Image itemImage;
     [SerializeField] private GameObject yayPop, introPop, endPop;
 
+    [SerializeField] private AudioSource aSource;
+    [SerializeField] private AudioClip[] clip;
+
     int cur, howMany;
 
     bool hasStarted;
 
     void Start()
     {
+        aSource = GetComponent<AudioSource>();
+
         dialogue = new string[3];
         dialogue[0] = "I would like to buy ";
         dialogue[1] = ". It costs ";
@@ -76,13 +81,14 @@ public class MoneyGameManager : MonoBehaviour
         }
         else if (floatValue != moneylist[cur].change)
         {
+            WrongPressSFX();
             totalChangeValue = 0f;
-            Debug.Log("qsdg");
         }
     }
 
     public void _Start()
     {
+        PressSFX();
         hasStarted = true;
 
         dialogueText.enabled = true;
@@ -103,6 +109,7 @@ public class MoneyGameManager : MonoBehaviour
 
     IEnumerator Change()
     {
+        RightSFX();
         yayPop.SetActive(true);
         yayPop.GetComponent<Animation>().Play("MoneyYayPop");
 
@@ -117,16 +124,20 @@ public class MoneyGameManager : MonoBehaviour
 
     public void _Back()
     {
+        BackSFX();
         SceneManager.LoadScene("Menu");
     }
 
     public void _Retry()
     {
+        PressSFX();
         SceneManager.LoadScene("Y4 - Money Game");
     }
 
     void EndPop()
     {
+        EndSFX();
+
         timer = 0f;
 
         hasStarted = false;
@@ -161,5 +172,41 @@ public class MoneyGameManager : MonoBehaviour
         string niceTime = string.Format("{0:0}:{1:00}", minutes, seconds);
 
         timerText.text = niceTime;
+    }
+
+    public void PressSFX() // button press yes
+    {
+        aSource.clip = clip[0];
+        aSource.Play();
+    }
+
+    public void WrongPressSFX() // button press no
+    {
+        aSource.clip = clip[4];
+        aSource.Play();
+    }
+
+    public void BackSFX() // back button press
+    {
+        aSource.clip = clip[1];
+        aSource.Play();
+    }
+
+    public void RightSFX() // right answer
+    {
+        aSource.clip = clip[2];
+        aSource.Play();
+    }
+
+    public void WrongSFX() // wrong answer
+    {
+        aSource.clip = clip[3];
+        aSource.Play();
+    }
+
+    public void EndSFX() // wrong answer
+    {
+        aSource.clip = clip[5];
+        aSource.Play();
     }
 }

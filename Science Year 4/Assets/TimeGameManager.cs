@@ -12,8 +12,11 @@ public class TimeGameManager : MonoBehaviour
     [SerializeField] private float timer;
     [SerializeField] private int score, answerInt;
 
-    [SerializeField] private TextMeshProUGUI scoreText, timerText, questionsText;
-    [SerializeField] private GameObject introPop, yayPop, endPop;
+    [SerializeField] private TextMeshProUGUI scoreText, timerText, questionsText, endText;
+    [SerializeField] private GameObject introPop, yayPop, endPop, roundSprite;
+
+    [SerializeField] private AudioSource aSource;
+    [SerializeField] private AudioClip[] clip;
 
     bool hasStarted;
 
@@ -21,12 +24,15 @@ public class TimeGameManager : MonoBehaviour
 
     void Start()
     {
-        timer = 3f;
+        aSource = GetComponent<AudioSource>();
+
+        timer = 60f;
         timerText.text = "0";
 
         introPop.SetActive(true);
         yayPop.SetActive(false);
         endPop.SetActive(false);
+        roundSprite.SetActive(false);
     }
 
     public void _Button()
@@ -36,11 +42,15 @@ public class TimeGameManager : MonoBehaviour
 
         if (answerInt == questions[cur].answer)
         {
+            roundSprite.SetActive(true);
+            roundSprite.GetComponent<Animation>().Play("circle-pop");
+            roundSprite.transform.position = go.transform.position;
+
             StartCoroutine(NextQuestion());
         }
         else if (answerInt != questions[cur].answer)
         {
-            Debug.Log("qqwee");
+            WrongPressSFX();
         }
     }
 
@@ -55,16 +65,24 @@ public class TimeGameManager : MonoBehaviour
 
     void EndPop()
     {
+        EndSFX();
+
         hasStarted = false;
         endPop.SetActive(true);
+
+        endText.text = " Congratulations!" + "\n" + "Correct answers:" + "\n" + score;
     }
 
     IEnumerator NextQuestion()
     {
+        RightSFX();
+
         yayPop.SetActive(true);
         yayPop.GetComponent<Animation>().Play("MoneyYayPop");
 
         yield return new WaitForSeconds(0.8f);
+
+        roundSprite.SetActive(false);
 
         score += 1;
         yayPop.SetActive(false);
@@ -73,11 +91,13 @@ public class TimeGameManager : MonoBehaviour
 
     public void _Back()
     {
+        BackSFX();
         SceneManager.LoadScene("Menu");
     }
 
     public void _Restart()
     {
+        PressSFX();
         SceneManager.LoadScene("Y4 - Time Game");
     }
 
@@ -102,5 +122,41 @@ public class TimeGameManager : MonoBehaviour
         string niceTime = string.Format("{0:0}:{1:00}", minutes, seconds);
 
         timerText.text = niceTime;
+    }
+
+    public void PressSFX() // button press yes
+    {
+        aSource.clip = clip[0];
+        aSource.Play();
+    }
+
+    public void WrongPressSFX() // button press no
+    {
+        aSource.clip = clip[4];
+        aSource.Play();
+    }
+
+    public void BackSFX() // back button press
+    {
+        aSource.clip = clip[1];
+        aSource.Play();
+    }
+
+    public void RightSFX() // right answer
+    {
+        aSource.clip = clip[2];
+        aSource.Play();
+    }
+
+    public void WrongSFX() // wrong answer
+    {
+        aSource.clip = clip[3];
+        aSource.Play();
+    }
+
+    public void EndSFX() // wrong answer
+    {
+        aSource.clip = clip[5];
+        aSource.Play();
     }
 }
