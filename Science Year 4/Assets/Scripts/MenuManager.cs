@@ -563,9 +563,9 @@ public class MenuManager : MonoBehaviour
         }
         else if (l == 22) // time
         {
-            //SceneManager.LoadScene("Y4 - Money Game"); // time
+            SceneManager.LoadScene("Y4 - Time Game"); // time
         }
-        else if (l == 23) // time
+        else if (l == 23) // something else here
         {
             //SceneManager.LoadScene("Y4 - Money Game"); // length
         }
