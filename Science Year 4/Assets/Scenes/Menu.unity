@@ -5647,7 +5647,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -25.5, y: 19.7}
+  m_AnchoredPosition: {x: -25.5, y: 19.699951}
   m_SizeDelta: {x: 70, y: 110}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &666208479
@@ -10970,6 +10970,11 @@ MonoBehaviour:
   - You have covered the knowledge on Eclipse, let's explore about constellations!
     In this topic, you will get to know the major constellations and the importance
     of them.
+  - Are you excited to learn about fractions?  Hopefully you will come out with a
+    better understanding of fractions. And hopefully, you won't feel so afraid of
+    them.
+  - Have you ever bought something using money? Do you know which Ringgit Malaysia
+    note values how much? Let me know about money in this chapter.
   descriptionText: {fileID: 1583229308}
   chapter:
   - {fileID: 1071027865}

@@ -292,18 +292,18 @@ public class MenuManager : MonoBehaviour
         }
         else if (l == 9)
         {
-            descriptionText.text = "this should be constellation"; // y6 constellation
+            descriptionText.text = description[8].ToString(); // y6 constellation
         }
         // ---------- //
-        else if (l == 20) // math section
+        else if (l == 20) // math section | fractions
         {
-            descriptionText.text = "y4 fraction";
+            descriptionText.text = description[9].ToString();
         }
-        else if (l == 21)
+        else if (l == 21) // money
         {
-            descriptionText.text = "y4 money";
+            descriptionText.text = description[10].ToString();
         }
-        else if (l == 22)
+        else if (l == 22) // time
         {
             descriptionText.text = "y4 time";
         }

@@ -13557,6 +13557,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: cc82217a72fec485ca8a00c0e86dce24, type: 3}
   - {fileID: 8300000, guid: e3fa38bc886f9da4995046e8b5f6e1c2, type: 3}
   - {fileID: 8300000, guid: bd940458ab48f4d4ab15383e3adb1894, type: 3}
+  selectedSprite:
+  - {fileID: -4493678506026641681, guid: db747550e5205490096128156de7c217, type: 3}
+  - {fileID: 1947899967547403067, guid: db747550e5205490096128156de7c217, type: 3}
 --- !u!4 &1935425775
 Transform:
   m_ObjectHideFlags: 0

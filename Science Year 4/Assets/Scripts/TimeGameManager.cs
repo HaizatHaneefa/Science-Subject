@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class TimeGameManager : MonoBehaviour
 {
@@ -17,6 +18,8 @@ public class TimeGameManager : MonoBehaviour
 
     [SerializeField] private AudioSource aSource;
     [SerializeField] private AudioClip[] clip;
+
+    [SerializeField] private Sprite[] selectedSprite;
 
     bool hasStarted;
 
@@ -50,8 +53,45 @@ public class TimeGameManager : MonoBehaviour
         }
         else if (answerInt != questions[cur].answer)
         {
-            WrongPressSFX();
+            StartCoroutine(Wrong());
         }
+    }
+
+    IEnumerator Wrong()
+    {
+        GameObject go = EventSystem.current.currentSelectedGameObject;
+        Sprite ww = go.GetComponent<Image>().sprite;
+
+        go.GetComponent<Image>().sprite = selectedSprite[1];
+
+        WrongPressSFX();
+
+        yield return new WaitForSeconds(0.5f);
+
+        go.GetComponent<Image>().sprite = ww;
+    }
+
+    IEnumerator NextQuestion()
+    {
+        GameObject go = EventSystem.current.currentSelectedGameObject;
+        Sprite ww = go.GetComponent<Image>().sprite;
+
+        RightSFX();
+
+        yayPop.SetActive(true);
+        yayPop.GetComponent<Animation>().Play("MoneyYayPop");
+
+        go.GetComponent<Image>().sprite = selectedSprite[0];
+
+        yield return new WaitForSeconds(0.8f);
+
+        go.GetComponent<Image>().sprite = ww;
+
+        roundSprite.SetActive(false);
+
+        score += 1;
+        yayPop.SetActive(false);
+        cur = Random.Range(0, questions.Length);
     }
 
     public void _Start()
@@ -71,22 +111,6 @@ public class TimeGameManager : MonoBehaviour
         endPop.SetActive(true);
 
         endText.text = " Congratulations!" + "\n" + "Correct answers:" + "\n" + score;
-    }
-
-    IEnumerator NextQuestion()
-    {
-        RightSFX();
-
-        yayPop.SetActive(true);
-        yayPop.GetComponent<Animation>().Play("MoneyYayPop");
-
-        yield return new WaitForSeconds(0.8f);
-
-        roundSprite.SetActive(false);
-
-        score += 1;
-        yayPop.SetActive(false);
-        cur = Random.Range(0, questions.Length);
     }
 
     public void _Back()
