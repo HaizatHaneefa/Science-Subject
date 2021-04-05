@@ -1,28 +1,19 @@
 fileFormatVersion: 2
-guid: e15977c65a8bb4b2fb8f8e25a4571d07
+guid: f3ac1a83471e6434491117bb8bbc2ee2
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8864284399840047667
-    second: mass-game-sprites_0
+      213: -2845591891305187195
+    second: blocks-4_0
   - first:
-      213: 7832265037258377236
-    second: mass-game-sprites_1
+      213: -1731962418005395589
+    second: blocks-4_1
   - first:
-      213: 331389317471802153
-    second: mass-game-sprites_2
+      213: -434195506613703651
+    second: blocks-4_2
   - first:
-      213: 7116673085948732689
-    second: mass-game-sprites_3
-  - first:
-      213: 6688263371226617777
-    second: mass-game-sprites_4
-  - first:
-      213: -7946492838107503102
-    second: mass-game-sprites_5
-  - first:
-      213: 4493716458851404024
-    second: mass-game-sprites_6
+      213: -7024332532450736225
+    second: blocks-4_3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -144,148 +135,85 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: mass-game-sprites_0
+      name: blocks-4_0
       rect:
         serializedVersion: 2
-        x: 1204
+        x: 33
         y: 1981
-        width: 687
-        height: 204
+        width: 1094
+        height: 944
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dcd4f77ad4cbbf480800000000000000
-      internalID: -8864284399840047667
+      spriteID: 588b50f504d6288d0800000000000000
+      internalID: -2845591891305187195
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mass-game-sprites_1
+      name: blocks-4_1
       rect:
         serializedVersion: 2
-        x: 1191
-        y: 1696
-        width: 687
-        height: 204
+        x: 1353
+        y: 1544
+        width: 994
+        height: 1569
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4184f74ed8bc1bc60800000000000000
-      internalID: 7832265037258377236
+      spriteID: b77367e6b55d6f7e0800000000000000
+      internalID: -1731962418005395589
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mass-game-sprites_2
+      name: blocks-4_2
       rect:
         serializedVersion: 2
-        x: 1189
-        y: 1416
-        width: 658
-        height: 192
+        x: 0
+        y: 1
+        width: 1366
+        height: 1099
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 923144614d4599400800000000000000
-      internalID: 331389317471802153
+      spriteID: d1c2839bc7d69f9f0800000000000000
+      internalID: -434195506613703651
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mass-game-sprites_3
+      name: blocks-4_3
       rect:
         serializedVersion: 2
-        x: 1166
-        y: 1048
-        width: 847
-        height: 245
+        x: 1525
+        y: 41
+        width: 822
+        height: 1099
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 115ae86477083c260800000000000000
-      internalID: 7116673085948732689
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: mass-game-sprites_4
-      rect:
-        serializedVersion: 2
-        x: 9
-        y: 22
-        width: 1075
-        height: 770
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1b71836a91c71dc50800000000000000
-      internalID: 6688263371226617777
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: mass-game-sprites_5
-      rect:
-        serializedVersion: 2
-        x: 1349
-        y: 608
-        width: 702
-        height: 192
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 206aa66bdd268b190800000000000000
-      internalID: -7946492838107503102
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: mass-game-sprites_6
-      rect:
-        serializedVersion: 2
-        x: 1554
-        y: 235
-        width: 703
-        height: 192
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8f80a238f43ec5e30800000000000000
-      internalID: 4493716458851404024
+      spriteID: f97cd0b37ce848e90800000000000000
+      internalID: -7024332532450736225
       vertices: []
       indices: 
       edges: []
@@ -293,7 +221,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: f78d30264744041508bf304eaca8cd7e
+    spriteID: d9e1ae109ebd34bc58d73b9be34480d0
     internalID: 0
     vertices: []
     indices: 
