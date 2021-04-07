@@ -1,0 +1,812 @@
+fileFormatVersion: 2
+guid: 04cd3d4be466e449385fcd3651890f3d
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -845061027328519699
+    second: data-handling-shapes01_0
+  - first:
+      213: 414081462835660263
+    second: data-handling-shapes01_1
+  - first:
+      213: 9060791671401685442
+    second: data-handling-shapes01_2
+  - first:
+      213: -3628629010032190671
+    second: data-handling-shapes01_3
+  - first:
+      213: -9207892460863521517
+    second: data-handling-shapes01_4
+  - first:
+      213: 4188668526272134282
+    second: data-handling-shapes01_5
+  - first:
+      213: 4638457595126247809
+    second: data-handling-shapes01_6
+  - first:
+      213: -8632283406943888978
+    second: data-handling-shapes01_7
+  - first:
+      213: -7648072443645991120
+    second: data-handling-shapes01_8
+  - first:
+      213: 3795053792532844718
+    second: data-handling-shapes01_9
+  - first:
+      213: 6019439752156607505
+    second: data-handling-shapes01_10
+  - first:
+      213: -2538243965369190287
+    second: data-handling-shapes01_11
+  - first:
+      213: -694213094178810124
+    second: data-handling-shapes01_12
+  - first:
+      213: 2943645386506216791
+    second: data-handling-shapes01_13
+  - first:
+      213: 3250891276315299945
+    second: data-handling-shapes01_14
+  - first:
+      213: -7336185187784849876
+    second: data-handling-shapes01_15
+  - first:
+      213: -9214720670530205136
+    second: data-handling-shapes01_16
+  - first:
+      213: -3231958035378075912
+    second: data-handling-shapes01_17
+  - first:
+      213: 9016916202859446521
+    second: data-handling-shapes01_18
+  - first:
+      213: -6647547145960596646
+    second: data-handling-shapes01_19
+  - first:
+      213: 2707790004961880320
+    second: data-handling-shapes01_20
+  - first:
+      213: -7660490617519474811
+    second: data-handling-shapes01_21
+  - first:
+      213: -4775115588898207503
+    second: data-handling-shapes01_22
+  - first:
+      213: -1981742140997381150
+    second: data-handling-shapes01_23
+  - first:
+      213: -8759318074472395870
+    second: data-handling-shapes01_24
+  - first:
+      213: -1205124164299094176
+    second: data-handling-shapes01_25
+  - first:
+      213: 2615175762300194396
+    second: data-handling-shapes01_26
+  - first:
+      213: -303506702743019082
+    second: data-handling-shapes01_27
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: 2
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: -1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: data-handling-shapes01_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2654
+        width: 389
+        height: 389
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de19e84197db544f0800000000000000
+      internalID: -845061027328519699
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: data-handling-shapes01_1
+      rect:
+        serializedVersion: 2
+        x: 446
+        y: 2573
+        width: 550
+        height: 550
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e5c46485ec1fb500800000000000000
+      internalID: 414081462835660263
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: data-handling-shapes01_2
+      rect:
+        serializedVersion: 2
+        x: 1052
+        y: 2669
+        width: 389
+        height: 376
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c127bdd4066ebd70800000000000000
+      internalID: 9060791671401685442
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: data-handling-shapes01_3
+      rect:
+        serializedVersion: 2
+        x: 1477
+        y: 2665
+        width: 447
+        height: 448
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 13b9a53042584adc0800000000000000
+      internalID: -3628629010032190671
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: data-handling-shapes01_4
+      rect:
+        serializedVersion: 2
+        x: 1975
+        y: 2665
+        width: 448
+        height: 448
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 31d7b34a79ef63080800000000000000
+      internalID: -9207892460863521517
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: data-handling-shapes01_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1994
+        width: 389
+        height: 389
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a8c3f4605d3212a30800000000000000
+      internalID: 4188668526272134282
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: data-handling-shapes01_6
+      rect:
+        serializedVersion: 2
+        x: 446
+        y: 1914
+        width: 550
+        height: 550
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 181763f6b9c1f5040800000000000000
+      internalID: 4638457595126247809
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: data-handling-shapes01_7
+      rect:
+        serializedVersion: 2
+        x: 1052
+        y: 2194
+        width: 389
+        height: 367
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ea95c982af7f33880800000000000000
+      internalID: -8632283406943888978
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: data-handling-shapes01_8
+      rect:
+        serializedVersion: 2
+        x: 1477
+        y: 2183
+        width: 447
+        height: 447
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 037e60c32a69cd590800000000000000
+      internalID: -7648072443645991120
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: data-handling-shapes01_9
+      rect:
+        serializedVersion: 2
+        x: 1975
+        y: 2183
+        width: 448
+        height: 447
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ea05b67315dbaa430800000000000000
+      internalID: 3795053792532844718
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: data-handling-shapes01_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1316
+        width: 389
+        height: 389
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 114f82eef88598350800000000000000
+      internalID: 6019439752156607505
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: data-handling-shapes01_11
+      rect:
+        serializedVersion: 2
+        x: 446
+        y: 1236
+        width: 550
+        height: 550
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 178f3eacf8856ccd0800000000000000
+      internalID: -2538243965369190287
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: data-handling-shapes01_12
+      rect:
+        serializedVersion: 2
+        x: 1034
+        y: 1658
+        width: 389
+        height: 328
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4f61c037ed8ad56f0800000000000000
+      internalID: -694213094178810124
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: data-handling-shapes01_13
+      rect:
+        serializedVersion: 2
+        x: 1458
+        y: 1627
+        width: 448
+        height: 448
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 755ab6702ede9d820800000000000000
+      internalID: 2943645386506216791
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: data-handling-shapes01_14
+      rect:
+        serializedVersion: 2
+        x: 1957
+        y: 1627
+        width: 447
+        height: 448
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9609030546c7d1d20800000000000000
+      internalID: 3250891276315299945
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: data-handling-shapes01_15
+      rect:
+        serializedVersion: 2
+        x: 454
+        y: 558
+        width: 550
+        height: 550
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c260a93c072a03a90800000000000000
+      internalID: -7336185187784849876
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: data-handling-shapes01_16
+      rect:
+        serializedVersion: 2
+        x: 1231
+        y: 1057
+        width: 245
+        height: 389
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 03a09903f5cbe1080800000000000000
+      internalID: -9214720670530205136
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: data-handling-shapes01_17
+      rect:
+        serializedVersion: 2
+        x: 1508
+        y: 1057
+        width: 245
+        height: 389
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f6025c5a47c523d0800000000000000
+      internalID: -3231958035378075912
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: data-handling-shapes01_18
+      rect:
+        serializedVersion: 2
+        x: 1790
+        y: 1057
+        width: 245
+        height: 389
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f0c6e84385822d70800000000000000
+      internalID: 9016916202859446521
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: data-handling-shapes01_19
+      rect:
+        serializedVersion: 2
+        x: 2072
+        y: 1057
+        width: 244
+        height: 389
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a5b5b59471b2fb3a0800000000000000
+      internalID: -6647547145960596646
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: data-handling-shapes01_20
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 638
+        width: 389
+        height: 389
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0092b1cb9a0049520800000000000000
+      internalID: 2707790004961880320
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: data-handling-shapes01_21
+      rect:
+        serializedVersion: 2
+        x: 1061
+        y: 617
+        width: 389
+        height: 389
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 587f981de5870b590800000000000000
+      internalID: -7660490617519474811
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: data-handling-shapes01_22
+      rect:
+        serializedVersion: 2
+        x: 1464
+        y: 617
+        width: 389
+        height: 389
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f8ca4aeba16bbdb0800000000000000
+      internalID: -4775115588898207503
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: data-handling-shapes01_23
+      rect:
+        serializedVersion: 2
+        x: 1867
+        y: 617
+        width: 389
+        height: 389
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e3dd61c5007f74e0800000000000000
+      internalID: -1981742140997381150
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: data-handling-shapes01_24
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 37
+        width: 389
+        height: 314
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ab0a60ce96a07680800000000000000
+      internalID: -8759318074472395870
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: data-handling-shapes01_25
+      rect:
+        serializedVersion: 2
+        x: 492
+        y: 0
+        width: 448
+        height: 448
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 06786b425f9864fe0800000000000000
+      internalID: -1205124164299094176
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: data-handling-shapes01_26
+      rect:
+        serializedVersion: 2
+        x: 990
+        y: 0
+        width: 448
+        height: 448
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c5e4d110088fa4420800000000000000
+      internalID: 2615175762300194396
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: data-handling-shapes01_27
+      rect:
+        serializedVersion: 2
+        x: 1881
+        y: 192
+        width: 390
+        height: 389
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b16d0c034ab9cbf0800000000000000
+      internalID: -303506702743019082
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: c7c076427e3b64a54b8c46bf3a5f288b
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

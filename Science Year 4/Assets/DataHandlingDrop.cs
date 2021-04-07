@@ -19,7 +19,7 @@ public class DataHandlingDrop : MonoBehaviour, IDropHandler
         {
             if (eventData.pointerDrag.tag == gameObject.tag)
             {
-                Debug.Log("qett");
+                manager.RightSFX();
                 eventData.pointerDrag.transform.SetParent(gameObject.transform);
                 eventData.pointerDrag.GetComponent<Image>().raycastTarget = false;
 
@@ -28,13 +28,10 @@ public class DataHandlingDrop : MonoBehaviour, IDropHandler
             }
             else if (eventData.pointerDrag.tag != gameObject.tag)
             {
-                Debug.Log("okoko");
-                //transform.position = manager.spawn.position;
+                manager.WrongPressSFX();
             }
 
             eventData.pointerDrag.transform.position = manager.spawn.position;
-            //eventData.pointerDrag.GetComponent<RectTransform>().anchoredPosition =
-            //    GetComponent<RectTransform>().anchoredPosition;
         }
     }
 }

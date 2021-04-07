@@ -21,6 +21,8 @@ public class DataHandlingDragDrop : MonoBehaviour, IPointerDownHandler, IBeginDr
     public void OnBeginDrag(PointerEventData eventData)
     {
         canvasGroup.blocksRaycasts = false;
+
+        thisTransform.position = eventData.pointerPressRaycast.worldPosition; // this is it!
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -36,5 +38,6 @@ public class DataHandlingDragDrop : MonoBehaviour, IPointerDownHandler, IBeginDr
 
     public void OnPointerDown(PointerEventData eventData)
     {
+        manager.PressSFX();
     }
 }
