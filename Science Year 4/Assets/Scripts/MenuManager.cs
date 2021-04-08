@@ -10,25 +10,24 @@ using UnityEngine.EventSystems;
 public class MenuManager : MonoBehaviour
 {
     [SerializeField] private Canvas[] canvas;
-    [SerializeField] GameObject arOrFunFactBackground;
-
-    int l;
+    //[SerializeField] GameObject ;
 
     [SerializeField] private string[] description;
 
     [SerializeField] private TextMeshProUGUI descriptionText;
 
-    [SerializeField] private GameObject[] chapter;
-    [SerializeField] private GameObject[] itemsInBackground;
-    [SerializeField] private GameObject blocker, normalPop, anatomyPop;
-    [SerializeField] private GameObject bar;
+    [SerializeField] private GameObject[] chapter, itemsInBackground;
+    //[SerializeField] private GameObject[] ;
+    [SerializeField] private GameObject blocker, normalPop, anatomyPop, bar, arOrFunFactBackground;
+    //[SerializeField] private GameObject ;
 
     [SerializeField] public TMP_Dropdown dropdown;
 
     [SerializeField] private AudioClip[] clip;
     [SerializeField] private AudioSource aSource;
 
-    int isSubject;
+    int isSubject, l;
+    //int l;
 
     void Awake()
     {
@@ -412,7 +411,7 @@ public class MenuManager : MonoBehaviour
         }
         else if (l == 21) // money
         {
-            //SceneManager.LoadScene("Y4 - Fractions AR"); /
+            //SceneManager.LoadScene("Y4 - Fractions AR"); // not yet
         }
         else if (l == 22) // time
         {
@@ -430,22 +429,22 @@ public class MenuManager : MonoBehaviour
         {
             SceneManager.LoadScene("Y5 - Volume Liquid AR");
         }
-        else if (l == 26) 
+        else if (l == 26) // data handling
         {
             //SceneManager.LoadScene("Y4 - Fractions AR");
         }
         else if (l == 27) 
         {
-            //SceneManager.LoadScene("Y4 - Fractions AR");
+            SceneManager.LoadScene("Y6 - Length AR");
         }
-        else if (l == 28) 
+        else if (l == 28) // space
         {
-            //SceneManager.LoadScene("Y4 - Fractions AR");
+            SceneManager.LoadScene("Y6 - Space AR");
         }
-        else if (l == 29) 
-        {
-            //SceneManager.LoadScene("Y4 - Fractions AR");
-        }
+        //else if (l == 29) 
+        //{
+        //    //SceneManager.LoadScene("Y4 - Fractions AR");
+        //}
     }
 
     public void YesFuncFact()
@@ -497,10 +496,10 @@ public class MenuManager : MonoBehaviour
             // y6 constellation
             SceneManager.LoadScene("Y6 - Constellation Fun Fact"); // constellation fun fact
         }
-        else if (l == 20)
-        {
-            SceneManager.LoadScene("Y4 - Fractions Fun Fact"); // constellation fun fact
-        }
+        //else if (l == 20)
+        //{
+        //    SceneManager.LoadScene("Y4 - Fractions Fun Fact"); // constellation fun fact
+        //}
     }
 
     public void YesGame()
@@ -565,9 +564,29 @@ public class MenuManager : MonoBehaviour
         {
             SceneManager.LoadScene("Y4 - Time Game"); // time
         }
-        else if (l == 23) // something else here
+        else if (l == 23) // y5 length
         {
             //SceneManager.LoadScene("Y4 - Money Game"); // length
+        }
+        else if (l == 24) // y5 mass
+        {
+            SceneManager.LoadScene("Y5 - Mass Game"); // mass
+        }
+        else if (l == 25) // y5 volume of liquid
+        {
+            SceneManager.LoadScene("Y5 - Volume of Liquid Game"); // volume
+        }
+        else if (l == 26) // y6 data handling
+        {
+            SceneManager.LoadScene("Y6 - Data Handling Game"); // data
+        }
+        else if (l == 27) // y6 lenght
+        {
+            //SceneManager.LoadScene("Y6 - Data Handling Game"); // data
+        }
+        else if (l == 28) // y6 space
+        {
+            SceneManager.LoadScene("Y6 - Space Game"); // space
         }
     }
 

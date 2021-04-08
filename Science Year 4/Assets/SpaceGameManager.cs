@@ -7,6 +7,9 @@ using TMPro;
 
 public class SpaceGameManager : MonoBehaviour
 {
+    [SerializeField] private AudioSource aSource;
+    [SerializeField] private AudioClip[] clip;
+
     [SerializeField] private Slider slider;
 
     [SerializeField] private Image pointer;
@@ -18,19 +21,21 @@ public class SpaceGameManager : MonoBehaviour
     float sliderValue;
 
     public List<int> intList;
-
     int qNumber, questionValue;
 
     bool hasStarted;
+
     void Start()
     {
+        aSource = GetComponent<AudioSource>();
+
         endPop.SetActive(false);
         introPop.SetActive(true);
         introPop.GetComponent<Animation>().Play("GameOverPop");
 
         slider.value = 0;
 
-        StoreList();
+        questionText.text = "";
     }
 
     void StoreList()
@@ -59,21 +64,31 @@ public class SpaceGameManager : MonoBehaviour
         pointer.transform.rotation = Quaternion.Euler(0, 0, (int)sliderValue);
     }
 
+    public void _SliderSFX()
+    {
+        PressSFX();
+    }
+
     public void _CheckValue()
     {
         if (intList.Contains((int)sliderValue))
         {
             if (qNumber == 9)
             {
+                //RightSFX();
                 endPop.GetComponent<Animation>().Play("GameOverPop");
                 hasStarted = false;
+
+                return;
                 // end the game
             }
 
             NextQuestion();
+            RightSFX();
         }
         else if (!intList.Contains((int)sliderValue))
         {
+            WrongPressSFX();
         }
     }
 
@@ -90,16 +105,20 @@ public class SpaceGameManager : MonoBehaviour
 
     public void _Back()
     {
+        BackSFX();
         SceneManager.LoadScene("Menu");
     }
 
     public void _Retry()
     {
+        PressSFX();
         SceneManager.LoadScene("Y6 - Space Game");
     }
 
     public void _Start()
     {
+        PressSFX();
+        StoreList();
         introPop.SetActive(false);
         hasStarted = true;
     }
@@ -108,9 +127,45 @@ public class SpaceGameManager : MonoBehaviour
     {
         if (hasStarted)
         {
-            questionText.text = questionValue.ToString();
+            questionText.text = "Angle: " + questionValue.ToString() + "°";
             roundText.text = "Round: " + qNumber.ToString() + "/10";
         }
+    }
+
+    public void PressSFX() // button press yes
+    {
+        aSource.clip = clip[0];
+        aSource.Play();
+    }
+
+    public void WrongPressSFX() // button press no
+    {
+        aSource.clip = clip[4];
+        aSource.Play();
+    }
+
+    public void BackSFX() // back button press
+    {
+        aSource.clip = clip[1];
+        aSource.Play();
+    }
+
+    public void RightSFX() // right answer
+    {
+        aSource.clip = clip[2];
+        aSource.Play();
+    }
+
+    public void WrongSFX() // wrong answer
+    {
+        aSource.clip = clip[3];
+        aSource.Play();
+    }
+
+    public void EndSFX() // wrong answer
+    {
+        aSource.clip = clip[5];
+        aSource.Play();
     }
 }
 
