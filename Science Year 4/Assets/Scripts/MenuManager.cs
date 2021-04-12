@@ -10,16 +10,13 @@ using UnityEngine.EventSystems;
 public class MenuManager : MonoBehaviour
 {
     [SerializeField] private Canvas[] canvas;
-    //[SerializeField] GameObject ;
 
     [SerializeField] private string[] description;
 
     [SerializeField] private TextMeshProUGUI descriptionText;
 
     [SerializeField] private GameObject[] chapter, itemsInBackground;
-    //[SerializeField] private GameObject[] ;
     [SerializeField] private GameObject blocker, normalPop, anatomyPop, bar, arOrFunFactBackground;
-    //[SerializeField] private GameObject ;
 
     [SerializeField] public TMP_Dropdown dropdown;
 
@@ -27,7 +24,6 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private AudioSource aSource;
 
     int isSubject, l;
-    //int l;
 
     void Awake()
     {
@@ -304,11 +300,11 @@ public class MenuManager : MonoBehaviour
         }
         else if (l == 22) // time
         {
-            descriptionText.text = "y4 time";
+            descriptionText.text = description[11].ToString();
         }
         else if (l == 23)
         {
-            descriptionText.text = "y5 length";
+            descriptionText.text = description[12].ToString();
         }
         else if (l == 24)
         {
