@@ -87,7 +87,6 @@ public class MenuManager : MonoBehaviour
 
         bar.SetActive(true);
 
-
         for (int i = 0; i < itemsInBackground.Length; i++)
         {
             itemsInBackground[i].SetActive(false);
@@ -302,29 +301,32 @@ public class MenuManager : MonoBehaviour
         {
             descriptionText.text = description[11].ToString();
         }
-        else if (l == 23)
+        else if (l == 23) // length
         {
             descriptionText.text = description[12].ToString();
         }
-        else if (l == 24)
+        else if (l == 24) // mass
         {
-            descriptionText.text = "y5 mass";
+            descriptionText.text = description[13].ToString();
         }
-        else if (l == 25)
+        else if (l == 25) // volume of liquid
         {
-            descriptionText.text = "y5 volume of liquid";
+            descriptionText.text = description[14].ToString();
         }
-        else if (l == 26)
+        else if (l == 26) // data handling
         {
-            descriptionText.text = "y6 data handling";
+            descriptionText.text = description[15].ToString();
         }
-        else if (l == 27)
+        else if (l == 27) // length
         {
-            descriptionText.text = "y6 length";
+            //descriptionText.text = "y6 length";
+            descriptionText.text = description[12].ToString();
+
         }
-        else if (l == 28)
+        else if (l == 28) // space
         {
-            descriptionText.text = "y6 space";
+            //descriptionText.text = "y6 space";
+            descriptionText.text = description[16].ToString();
         }
 
         if (l <= 9)
