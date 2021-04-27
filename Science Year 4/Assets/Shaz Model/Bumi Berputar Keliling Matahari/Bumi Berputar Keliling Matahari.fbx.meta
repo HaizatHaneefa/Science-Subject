@@ -1,0 +1,142 @@
+fileFormatVersion: 2
+guid: 7f2103078514142dc920e65fc9239cf6
+ModelImporter:
+  serializedVersion: 19301
+  internalIDToNameTable:
+  - first:
+      74: 8452126676473384244
+    second: Controller Earth|Atmosphere_Sphere.000Action
+  - first:
+      74: -8683374464384225
+    second: Controller Earth|Atmosphere_Sphere.004Action.001
+  - first:
+      74: -3179686197195750761
+    second: Controller Earth|Cloud_Sphere.003Action
+  - first:
+      74: -3904466737788946370
+    second: Controller Earth|Earth_Sphere.001Action
+  - first:
+      74: 16251695182244375
+    second: Controller Earth|EmptyAction.001
+  - first:
+      74: -136774117085658039
+    second: Atmosphere_Sphere.004|Atmosphere_Sphere.000Action
+  - first:
+      74: -2591197658529740688
+    second: Atmosphere_Sphere.004|Atmosphere_Sphere.004Action.001
+  - first:
+      74: 2887589593787816139
+    second: Atmosphere_Sphere.004|Cloud_Sphere.003Action
+  - first:
+      74: -2039471939817861860
+    second: Atmosphere_Sphere.004|Earth_Sphere.001Action
+  - first:
+      74: -9143244670471657259
+    second: Atmosphere_Sphere.004|EmptyAction.001
+  - first:
+      74: 678886695384711440
+    second: Atmosphere_Sphere.000|Atmosphere_Sphere.000Action
+  - first:
+      74: 7576603322576421659
+    second: Atmosphere_Sphere.000|Atmosphere_Sphere.004Action.001
+  - first:
+      74: -5462876672174007317
+    second: Atmosphere_Sphere.000|Cloud_Sphere.003Action
+  - first:
+      74: -5185207794160169887
+    second: Atmosphere_Sphere.000|Earth_Sphere.001Action
+  - first:
+      74: 3958441444843663504
+    second: Atmosphere_Sphere.000|EmptyAction.001
+  externalObjects: {}
+  materials:
+    materialImportMode: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

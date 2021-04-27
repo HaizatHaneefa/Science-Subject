@@ -295,7 +295,10 @@ public class MenuManager : MonoBehaviour
         }
         else if (l == 21) // money
         {
+            Debug.Log("ewfjeorigjioreg");
             descriptionText.text = description[10].ToString();
+            arOrFunFactBackground.transform.GetChild(4).GetChild(1).GetComponent<Button>().interactable = false;
+            //arOrFunFactBackground.transform.GetChild(4).GetChild(1).gameObject.SetActive(false);
         }
         else if (l == 22) // time
         {
@@ -342,6 +345,8 @@ public class MenuManager : MonoBehaviour
             arOrFunFactBackground.GetComponent<Animation>().Play("Menu_ConfirmPop");
             arOrFunFactBackground.transform.GetChild(3).gameObject.SetActive(false);
             arOrFunFactBackground.transform.GetChild(4).gameObject.SetActive(true);
+
+            //arOrFunFactBackground.transform.GetChild(4).GetChild(1).GetComponent<Button>().interactable = true;
         }
     }
 
@@ -351,6 +356,8 @@ public class MenuManager : MonoBehaviour
 
         arOrFunFactBackground.SetActive(false);
         blocker.SetActive(false);
+
+        arOrFunFactBackground.transform.GetChild(4).GetChild(1).GetComponent<Button>().interactable = true;
     }
 
     public void YesAR()
@@ -409,7 +416,10 @@ public class MenuManager : MonoBehaviour
         }
         else if (l == 21) // money
         {
+
+            Debug.Log("qq");
             //SceneManager.LoadScene("Y4 - Fractions AR"); // not yet
+            //arOrFunFactBackground.transform.GetChild(3).gameObject.SetActive(false);
         }
         else if (l == 22) // time
         {
