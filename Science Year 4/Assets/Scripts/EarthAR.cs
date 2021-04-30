@@ -7,20 +7,24 @@ using UnityEngine.SceneManagement;
 
 public class EarthAR : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI topicText;
+    [SerializeField] private TextMeshProUGUI topicText, descriptionText;
     [SerializeField] private Sprite[] sprite;
 
     [SerializeField] private Button[] button;
 
-    [SerializeField] private GameObject[] infoGroup, infotextGroup;
-    [SerializeField] private GameObject nextButton, prevButton, quizButton;
+    [SerializeField] private GameObject[] infoGroup;
+    [SerializeField] private GameObject nextButton, prevButton, quizButton, popInfo;
 
+    [SerializeField] private string[] dialogue;
     bool isNext;
 
     [SerializeField] public AudioSource aSource;
     [SerializeField] public AudioClip[] clip;
+
     void Start()
     {
+        popInfo.SetActive(false);
+
         aSource = GetComponent<AudioSource>();
 
         prevButton.SetActive(false);
@@ -29,11 +33,6 @@ public class EarthAR : MonoBehaviour
         for (int i = 0; i < infoGroup.Length; i++)
         {
             infoGroup[i].SetActive(false);
-        }
-
-        for (int i = 0; i < infotextGroup.Length; i++)
-        {
-            infotextGroup[i].SetActive(false);
         }
 
         topicText.text = "The Movement of the Earth";
@@ -57,22 +56,6 @@ public class EarthAR : MonoBehaviour
                 infoGroup[i].SetActive(false);
                 infoGroup[0].SetActive(true);
             }
-
-            //for (int i = 0; i < infotextGroup.Length; i++)
-            //{
-            //    infotextGroup[i].SetActive(false);
-            //    //infotextGroup[0].SetActive(true);
-            //}
-
-            foreach (Transform s in infotextGroup[1].transform)
-            {
-                s.gameObject.SetActive(false);
-            }
-
-            foreach (Transform s in infoGroup[1].transform)
-            {
-                s.transform.GetChild(0).GetComponent<Button>().interactable = true;
-            }
         }
         else if (isNext)
         {
@@ -81,28 +64,13 @@ public class EarthAR : MonoBehaviour
                 infoGroup[i].SetActive(false);
                 infoGroup[2].SetActive(true);
             }
-
-            for (int i = 0; i < infotextGroup.Length; i++)
-            {
-                infotextGroup[i].SetActive(false);
-                infotextGroup[2].SetActive(true);
-            }
-
-            foreach (Transform s in infotextGroup[3].transform)
-            {
-                s.gameObject.SetActive(false);
-            }
-
-            foreach (Transform s in infoGroup[3].transform)
-            {
-                s.transform.GetChild(0).GetComponent<Button>().interactable = true;
-            }
         }
     }
 
     public void _RevolutionGroup()
     {
         PressSFX();
+
         button[1].GetComponent<Image>().sprite = sprite[1];
         button[0].GetComponent<Image>().sprite = sprite[0];
 
@@ -113,22 +81,6 @@ public class EarthAR : MonoBehaviour
                 infoGroup[i].SetActive(false);
                 infoGroup[1].SetActive(true);
             }
-
-            for (int i = 0; i < infotextGroup.Length; i++)
-            {
-                infotextGroup[i].SetActive(false);
-                infotextGroup[1].SetActive(true);
-            }
-
-            foreach (Transform s in infotextGroup[0].transform)
-            {
-                s.gameObject.SetActive(false);
-            }
-
-            foreach (Transform s in infoGroup[0].transform)
-            {
-                s.transform.GetChild(0).GetComponent<Button>().interactable = true;
-            }
         }
         else if (isNext)
         {
@@ -136,22 +88,6 @@ public class EarthAR : MonoBehaviour
             {
                 infoGroup[i].SetActive(false);
                 infoGroup[3].SetActive(true);
-            }
-
-            for (int i = 0; i < infotextGroup.Length; i++)
-            {
-                infotextGroup[i].SetActive(false);
-                infotextGroup[3].SetActive(true);
-            }
-
-            foreach (Transform s in infotextGroup[2].transform)
-            {
-                s.gameObject.SetActive(false);
-            }
-
-            foreach (Transform s in infoGroup[2].transform)
-            {
-                s.transform.GetChild(0).GetComponent<Button>().interactable = true;
             }
         }
     }
@@ -170,16 +106,6 @@ public class EarthAR : MonoBehaviour
         for (int i = 0; i < infoGroup.Length; i++)
         {
             infoGroup[i].SetActive(false);
-        }
-
-        foreach (Transform s in infotextGroup[0].transform)
-        {
-            s.gameObject.SetActive(false);
-        }
-
-        foreach (Transform s in infotextGroup[1].transform)
-        {
-            s.gameObject.SetActive(false);
         }
 
         prevButton.SetActive(true);
@@ -205,16 +131,6 @@ public class EarthAR : MonoBehaviour
             infoGroup[i].SetActive(false);
         }
 
-        foreach (Transform s in infotextGroup[2].transform)
-        {
-            s.gameObject.SetActive(false);
-        }
-
-        foreach (Transform s in infotextGroup[3].transform)
-        {
-            s.gameObject.SetActive(false);
-        }
-
         prevButton.SetActive(false);
         nextButton.SetActive(true);
         quizButton.SetActive(false);
@@ -226,119 +142,61 @@ public class EarthAR : MonoBehaviour
     {
         PressSFX();
 
-        for (int i = 0; i < infotextGroup.Length; i++)
-        {
-            infotextGroup[i].SetActive(false);
-        }
+        popInfo.SetActive(true);
+
+        popInfo.transform.GetChild(0).GetComponent<Animation>().Play("country-info-pop");
 
         if (index == 0)
         {
-            infotextGroup[0].SetActive(true);
-            infotextGroup[0].transform.GetChild(0).GetComponent<Animation>().Play("GameOverPop");
-
-            infotextGroup[0].transform.GetChild(0).gameObject.SetActive(true);
-            infotextGroup[0].transform.GetChild(1).gameObject.SetActive(false);
-
+            descriptionText.text = dialogue[0];
         }
         else if (index == 1)
         {
-            infotextGroup[0].SetActive(true);
-            infotextGroup[0].transform.GetChild(1).GetComponent<Animation>().Play("GameOverPop");
+            descriptionText.text = dialogue[1];
 
-            infotextGroup[0].transform.GetChild(0).gameObject.SetActive(false);
-            infotextGroup[0].transform.GetChild(1).gameObject.SetActive(true);
         }
-        //--
-        if (index == 2)
+        else if (index == 2)
         {
-            infotextGroup[1].transform.GetChild(0).gameObject.SetActive(true);
-            infotextGroup[1].transform.GetChild(0).GetComponent<Animation>().Play("GameOverPop");
-
-            
-            infotextGroup[1].transform.GetChild(0).gameObject.SetActive(true);
-            infotextGroup[1].transform.GetChild(1).gameObject.SetActive(false);
+            descriptionText.text = dialogue[2];
         }
         else if (index == 3)
         {
-            infotextGroup[1].transform.GetChild(1).gameObject.SetActive(true);
-            infotextGroup[1].transform.GetChild(1).GetComponent<Animation>().Play("GameOverPop");
-
-            infotextGroup[1].transform.GetChild(0).gameObject.SetActive(false);
-            infotextGroup[1].transform.GetChild(1).gameObject.SetActive(true);
+            descriptionText.text = dialogue[3];
         }
-        //--
-        if (index == 4)
+        else if (index == 4)
         {
-            infotextGroup[2].transform.GetChild(0).gameObject.SetActive(true);
-            infotextGroup[2].transform.GetChild(0).GetComponent<Animation>().Play("GameOverPop");
-
-            infotextGroup[2].transform.GetChild(0).gameObject.SetActive(true);
-            infotextGroup[2].transform.GetChild(1).gameObject.SetActive(false);
-            infotextGroup[2].transform.GetChild(2).gameObject.SetActive(false);
-            infotextGroup[2].transform.GetChild(3).gameObject.SetActive(false);
+            descriptionText.text = dialogue[4];
         }
         else if (index == 5)
         {
-            infotextGroup[2].transform.GetChild(1).GetComponent<Animation>().Play("GameOverPop");
-
-            infotextGroup[2].transform.GetChild(0).gameObject.SetActive(false);
-            infotextGroup[2].transform.GetChild(1).gameObject.SetActive(true);
-            infotextGroup[2].transform.GetChild(2).gameObject.SetActive(false);
-            infotextGroup[2].transform.GetChild(3).gameObject.SetActive(false);
+            descriptionText.text = dialogue[5];
         }
         else if (index == 6)
         {
-            infotextGroup[2].transform.GetChild(2).GetComponent<Animation>().Play("GameOverPop");
-
-            infotextGroup[2].transform.GetChild(0).gameObject.SetActive(false);
-            infotextGroup[2].transform.GetChild(1).gameObject.SetActive(false);
-            infotextGroup[2].transform.GetChild(2).gameObject.SetActive(true);
-            infotextGroup[2].transform.GetChild(3).gameObject.SetActive(false);
+            descriptionText.text = dialogue[6];
         }
         else if (index == 7)
         {
-            infotextGroup[2].transform.GetChild(3).GetComponent<Animation>().Play("GameOverPop");
-
-            infotextGroup[2].transform.GetChild(0).gameObject.SetActive(false);
-            infotextGroup[2].transform.GetChild(1).gameObject.SetActive(false);
-            infotextGroup[2].transform.GetChild(2).gameObject.SetActive(false);
-            infotextGroup[2].transform.GetChild(3).gameObject.SetActive(true);
+            descriptionText.text = dialogue[7];
         }
-        // --
-        if (index == 8)
+        else if (index == 8)
         {
-            infotextGroup[3].transform.GetChild(0).GetComponent<Animation>().Play("GameOverPop");
-
-            infotextGroup[3].transform.GetChild(0).gameObject.SetActive(true);
-            infotextGroup[3].transform.GetChild(1).gameObject.SetActive(false);
-            infotextGroup[3].transform.GetChild(2).gameObject.SetActive(false);
+            descriptionText.text = dialogue[8];
         }
         else if (index == 9)
         {
-            infotextGroup[3].transform.GetChild(1).GetComponent<Animation>().Play("GameOverPop");
-
-            infotextGroup[3].transform.GetChild(2).gameObject.SetActive(false);
-            infotextGroup[3].transform.GetChild(1).gameObject.SetActive(true);
-            infotextGroup[3].transform.GetChild(0).gameObject.SetActive(false);
+            descriptionText.text = dialogue[9];
         }
         else if (index == 10)
         {
-            infotextGroup[3].transform.GetChild(2).GetComponent<Animation>().Play("GameOverPop");
-
-            infotextGroup[3].transform.GetChild(0).gameObject.SetActive(false);
-            infotextGroup[3].transform.GetChild(1).gameObject.SetActive(false);
-            infotextGroup[3].transform.GetChild(2).gameObject.SetActive(true);
+            descriptionText.text = dialogue[10];
         }
     }
 
     public void CloseMoreInfo(int index)
     {
         BackSFX();
-
-        for (int i = 0; i < infotextGroup.Length; i++)
-        {
-            infotextGroup[i].SetActive(false);
-        }
+        popInfo.SetActive(false);
     }
 
     public void ToQuiz()

@@ -295,9 +295,9 @@ public class MenuManager : MonoBehaviour
         }
         else if (l == 21) // money
         {
-            Debug.Log("ewfjeorigjioreg");
             descriptionText.text = description[10].ToString();
-            arOrFunFactBackground.transform.GetChild(4).GetChild(1).GetComponent<Button>().interactable = false;
+
+            arOrFunFactBackground.transform.GetChild(4).GetChild(0).GetComponent<Button>().interactable = false;
             //arOrFunFactBackground.transform.GetChild(4).GetChild(1).gameObject.SetActive(false);
         }
         else if (l == 22) // time
@@ -307,6 +307,9 @@ public class MenuManager : MonoBehaviour
         else if (l == 23) // length
         {
             descriptionText.text = description[12].ToString();
+
+            //arOrFunFactBackground.transform.GetChild(4).GetChild(0).GetComponent<Button>().interactable = false;
+            arOrFunFactBackground.transform.GetChild(4).GetChild(2).GetComponent<Button>().interactable = false;
         }
         else if (l == 24) // mass
         {
@@ -319,17 +322,23 @@ public class MenuManager : MonoBehaviour
         else if (l == 26) // data handling
         {
             descriptionText.text = description[15].ToString();
+
+            arOrFunFactBackground.transform.GetChild(4).GetChild(0).GetComponent<Button>().interactable = false;
         }
         else if (l == 27) // length
         {
             //descriptionText.text = "y6 length";
             descriptionText.text = description[12].ToString();
 
+            arOrFunFactBackground.transform.GetChild(4).GetChild(1).GetComponent<Button>().interactable = false;
+            arOrFunFactBackground.transform.GetChild(4).GetChild(2).GetComponent<Button>().interactable = false;
         }
         else if (l == 28) // space
         {
             //descriptionText.text = "y6 space";
             descriptionText.text = description[16].ToString();
+
+            arOrFunFactBackground.transform.GetChild(4).GetChild(1).GetComponent<Button>().interactable = false;
         }
 
         if (l <= 9)
@@ -345,8 +354,6 @@ public class MenuManager : MonoBehaviour
             arOrFunFactBackground.GetComponent<Animation>().Play("Menu_ConfirmPop");
             arOrFunFactBackground.transform.GetChild(3).gameObject.SetActive(false);
             arOrFunFactBackground.transform.GetChild(4).gameObject.SetActive(true);
-
-            //arOrFunFactBackground.transform.GetChild(4).GetChild(1).GetComponent<Button>().interactable = true;
         }
     }
 
@@ -357,9 +364,100 @@ public class MenuManager : MonoBehaviour
         arOrFunFactBackground.SetActive(false);
         blocker.SetActive(false);
 
+        arOrFunFactBackground.transform.GetChild(4).GetChild(0).GetComponent<Button>().interactable = true;
         arOrFunFactBackground.transform.GetChild(4).GetChild(1).GetComponent<Button>().interactable = true;
+        arOrFunFactBackground.transform.GetChild(4).GetChild(2).GetComponent<Button>().interactable = true;
     }
 
+    public void YesQuiz()
+    {
+        SoundSelection();
+
+        if (l == 1)
+        {
+            // anatomy
+            SceneManager.LoadScene(""); // anatomy
+        }
+        else if (l == 2)
+        {
+            // y4 animal
+            SceneManager.LoadScene("Game-Chapter-4"); // animals
+        }
+        else if (l == 3)
+        {
+            // y4 plants
+            SceneManager.LoadScene("Plant-Game"); // animals
+        }
+        else if (l == 4)
+        {
+            // y5 animals
+            SceneManager.LoadScene("Y5 - C4 Game"); // animals
+        }
+        else if (l == 5)
+        {
+            // y5 plants
+            SceneManager.LoadScene("Y5 - C5 Game"); // plants
+        }
+        else if (l == 6)
+        {
+            // y5 earth
+            SceneManager.LoadScene("Y5 - Earth Menu"); // plants
+        }
+        else if (l == 7)
+        {
+            // y6 speed
+            SceneManager.LoadScene("Loading Scene"); // to the car game thingy
+        }
+        else if (l == 8)
+        {
+            // y6 eclipse
+            //SceneManager.LoadScene("Y6 - Speed Race"); // eclipse fun fact
+            SceneManager.LoadScene("Y6 - Eclipse Game");
+        }
+        else if (l == 9)
+        {
+            // y6 constellation
+            SceneManager.LoadScene("Y6 - Constellation Game");
+        }
+        else if (l == 20) // start of math
+        {
+            SceneManager.LoadScene("Y4 - Fractions Quiz");
+        }
+        else if (l == 21) // money
+        {
+            SceneManager.LoadScene("Y4 - Money Quiz");
+        }
+        else if (l == 22) // time
+        {
+            SceneManager.LoadScene("Y4 - Time Quiz"); // time
+        }
+        else if (l == 23) // y5 length
+        {
+            SceneManager.LoadScene("Y4 - Length Quiz"); // length
+        }
+        else if (l == 24) // y5 mass
+        {
+            SceneManager.LoadScene("Y5 - Mass Quiz"); // mass
+        }
+        else if (l == 25) // y5 volume of liquid
+        {
+            SceneManager.LoadScene("Y5 - Volume of Liquid Quiz"); // volume
+        }
+        else if (l == 26) // y6 data handling
+        {
+            SceneManager.LoadScene("Y6 - Data Handling Quiz"); // data
+        }
+        else if (l == 27) // y6 lenght
+        {
+            // disable
+            //SceneManager.LoadScene("Y6 - Data Handling Game"); // data
+            //arOrFunFactBackground.transform.GetChild(4).GetChild(1).GetComponent<Button>().interactable = false;
+        }
+        else if (l == 28) // y6 space
+        {
+            SceneManager.LoadScene("Y6 - Space Quiz"); // space
+        }
+    }
     public void YesAR()
     {
         SoundSelection();

@@ -5,15 +5,22 @@ using UnityEngine;
 public class Rotate : MonoBehaviour
 {
     [SerializeField] private float speed, floatSpeed, floatheight;
+    [SerializeField] private bool activatePivotRotation;
 
-    // Update is called once per frame
     void Update()
     {
-        transform.Rotate(0, speed, 0, Space.Self);
+        if (activatePivotRotation)
+        {
+            //transform.Rotate(transform.parent.position, speed * Time.deltaTime);
+            transform.RotateAround(transform.parent.position, Vector3.up, speed * Time.deltaTime);
+            //return;
+        }
+        else if (!activatePivotRotation)
+        {
+            transform.Rotate(0, speed, 0, Space.Self);
 
-        float y = Mathf.PingPong(Time.time * floatSpeed, floatheight);
-        transform.position = new Vector3(transform.position.x, 0.579f + y, transform.position.z);
-
+            float y = Mathf.PingPong(Time.time * floatSpeed, floatheight);
+            transform.position = new Vector3(transform.position.x, 0.579f + y, transform.position.z);
+        }
     }
-
 }
