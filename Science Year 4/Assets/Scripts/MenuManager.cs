@@ -298,7 +298,6 @@ public class MenuManager : MonoBehaviour
             descriptionText.text = description[10].ToString();
 
             arOrFunFactBackground.transform.GetChild(4).GetChild(0).GetComponent<Button>().interactable = false;
-            //arOrFunFactBackground.transform.GetChild(4).GetChild(1).gameObject.SetActive(false);
         }
         else if (l == 22) // time
         {
@@ -308,7 +307,6 @@ public class MenuManager : MonoBehaviour
         {
             descriptionText.text = description[12].ToString();
 
-            //arOrFunFactBackground.transform.GetChild(4).GetChild(0).GetComponent<Button>().interactable = false;
             arOrFunFactBackground.transform.GetChild(4).GetChild(2).GetComponent<Button>().interactable = false;
         }
         else if (l == 24) // mass
@@ -458,6 +456,7 @@ public class MenuManager : MonoBehaviour
             SceneManager.LoadScene("Y6 - Space Quiz"); // space
         }
     }
+
     public void YesAR()
     {
         SoundSelection();

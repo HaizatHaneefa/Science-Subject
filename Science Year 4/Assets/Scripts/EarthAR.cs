@@ -16,6 +16,7 @@ public class EarthAR : MonoBehaviour
     [SerializeField] private GameObject nextButton, prevButton, quizButton, popInfo;
 
     [SerializeField] private string[] dialogue;
+
     bool isNext;
 
     [SerializeField] public AudioSource aSource;
@@ -36,11 +37,6 @@ public class EarthAR : MonoBehaviour
         }
 
         topicText.text = "The Movement of the Earth";
-    }
-
-    void Update()
-    {
-
     }
 
     public void _RotationEarth()
@@ -100,6 +96,9 @@ public class EarthAR : MonoBehaviour
         button[0].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "The Occurence of Day and Night";
         button[1].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "Position of the Sun & The Length of Shadow";
 
+        button[0].transform.GetChild(0).GetComponent<TextMeshProUGUI>().fontSize = 20;
+        button[1].transform.GetChild(0).GetComponent<TextMeshProUGUI>().fontSize = 20;
+
         button[0].GetComponent<Image>().sprite = sprite[0];
         button[1].GetComponent<Image>().sprite = sprite[0];
 
@@ -122,6 +121,9 @@ public class EarthAR : MonoBehaviour
 
         button[0].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "Rotation of the Earth";
         button[1].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "Revolution of the Earth";
+
+        button[0].transform.GetChild(0).GetComponent<TextMeshProUGUI>().fontSize = 24;
+        button[1].transform.GetChild(0).GetComponent<TextMeshProUGUI>().fontSize = 24;
 
         button[0].GetComponent<Image>().sprite = sprite[0];
         button[1].GetComponent<Image>().sprite = sprite[0];
@@ -153,7 +155,6 @@ public class EarthAR : MonoBehaviour
         else if (index == 1)
         {
             descriptionText.text = dialogue[1];
-
         }
         else if (index == 2)
         {
