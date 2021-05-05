@@ -10,8 +10,9 @@ public class EclipseARManager : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI titleText, explanationText;
 
-    [SerializeField] private Sprite[] butSprite;
+    [SerializeField] private Sprite[] butSprite, lunarSprites;
 
+    [SerializeField] private Image stagesLunarImage;
     [SerializeField] private string[] dialogue, lunarExplain;
 
     [SerializeField] private string[] menudialogue, lunardialogue, solardialogue;
@@ -27,12 +28,13 @@ public class EclipseARManager : MonoBehaviour
     [SerializeField] private AudioClip[] clip;
 
     int[] cur;
-
     int baruInfo, solarint;
 
     void Start()
     {
         aSource = GetComponent<AudioSource>();
+
+        stagesLunarImage.gameObject.SetActive(false);
 
         for (int i = 0; i < Objs.Length; i++)
         {
@@ -69,25 +71,19 @@ public class EclipseARManager : MonoBehaviour
         backButton.SetActive(false);
     }
 
-    void Update()
-    {
-        
-    }
-
     // -------------------------- solar and lunar eclipse explanation buttons --------------------------- //
     public void _LunarChoices(int index)
     {
         PressSFX();
 
+        stagesLunarImage.gameObject.SetActive(true);
+
         if (index == 0)
         {
             explanationText.text = lunardialogue[2];
 
-            for (int i = 0; i < Objs.Length; i++)
-            {
-                Objs[i].gameObject.SetActive(false);
-                Objs[0].gameObject.SetActive(true);
-            }
+            stagesLunarImage.transform.GetChild(0).gameObject.SetActive(false);
+            stagesLunarImage.transform.GetChild(1).gameObject.SetActive(false);
 
             for (int i = 0; i < lunarbuttons.Length; i++)
             {
@@ -95,39 +91,37 @@ public class EclipseARManager : MonoBehaviour
                 lunarbuttons[0].GetComponent<Image>().sprite = butSprite[1];
             }
 
-            
+            stagesLunarImage.sprite = lunarSprites[0];
         }
         else if (index == 1)
         {
-            explanationText.text = lunardialogue[3];
+            stagesLunarImage.transform.GetChild(0).gameObject.SetActive(false);
+            stagesLunarImage.transform.GetChild(1).gameObject.SetActive(false);
 
-            for (int i = 0; i < Objs.Length; i++)
-            {
-                Objs[i].gameObject.SetActive(false);
-                Objs[1].gameObject.SetActive(true);
-            }
+            explanationText.text = lunardialogue[3];
 
             for (int i = 0; i < lunarbuttons.Length; i++)
             {
                 lunarbuttons[i].GetComponent<Image>().sprite = butSprite[0];
                 lunarbuttons[1].GetComponent<Image>().sprite = butSprite[1];
             }
+
+            stagesLunarImage.sprite = lunarSprites[1];
         }
         else if (index == 2)
         {
             explanationText.text = lunardialogue[4];
 
-            for (int i = 0; i < Objs.Length; i++)
-            {
-                Objs[i].gameObject.SetActive(false);
-                Objs[2].gameObject.SetActive(true);
-            }
+            stagesLunarImage.transform.GetChild(0).gameObject.SetActive(true);
+            stagesLunarImage.transform.GetChild(1).gameObject.SetActive(true);
 
             for (int i = 0; i < lunarbuttons.Length; i++)
             {
                 lunarbuttons[i].GetComponent<Image>().sprite = butSprite[0];
                 lunarbuttons[2].GetComponent<Image>().sprite = butSprite[1];
             }
+
+            stagesLunarImage.sprite = lunarSprites[2];
         }
     }
 
@@ -211,6 +205,7 @@ public class EclipseARManager : MonoBehaviour
                 models[i].SetActive(false);
                 models[0].SetActive(true);
             }
+
         }
         else if (index == 1)
         {
@@ -229,11 +224,15 @@ public class EclipseARManager : MonoBehaviour
                 models[i].SetActive(false);
                 models[1].SetActive(true);
             }
+
+            stagesLunarImage.sprite = lunarSprites[1];
         }
     }
 
     public void _ContinueInfo()
     {
+        PressSFX();
+
         blueborder.SetActive(false);
 
         explanationText.text = "";
@@ -276,6 +275,11 @@ public class EclipseARManager : MonoBehaviour
     public void back()
     {
         BackSFX();
+
+        stagesLunarImage.gameObject.SetActive(false);
+
+        stagesLunarImage.transform.GetChild(0).gameObject.SetActive(false);
+        stagesLunarImage.transform.GetChild(1).gameObject.SetActive(false);
 
         backButton.SetActive(false);
 

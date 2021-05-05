@@ -172,6 +172,15 @@ public class Year5PlantsAR : MonoBehaviour
                 plants[4].GetComponent<Animation>().Play("pokok-gugur");
             }
         }
+        else if (index == 5) // pokok getah
+        {
+            for (int i = 0; i < plants.Length; i++)
+            {
+                plants[i].SetActive(false);
+                plants[5].SetActive(true);
+                //plants[4].GetComponent<Animation>().Play("pokok-gugur");
+            }
+        }
     }
 
     public void PressSFX() // button press yes
