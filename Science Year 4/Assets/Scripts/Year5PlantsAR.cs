@@ -181,6 +181,16 @@ public class Year5PlantsAR : MonoBehaviour
                 //plants[4].GetComponent<Animation>().Play("pokok-gugur");
             }
         }
+        else if (index == 6) // mushroom
+        {
+            for (int i = 0; i < plants.Length; i++)
+            {
+                plants[i].SetActive(false);
+                plants[6].SetActive(true);
+                plants[6].GetComponent<Animation>().Play("ss");
+                plants[6].transform.GetChild(0).GetComponent<ParticleSystem>().Play();
+            }
+        }
     }
 
     public void PressSFX() // button press yes

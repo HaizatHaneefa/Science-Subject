@@ -82,6 +82,8 @@ public class SpeedARManager : MonoBehaviour
 
         if (cur == 0)
         {
+            go.SetActive(false);
+
             buttons[0].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "Relationship between speed, distance and time";
             buttons[0].transform.GetChild(0).GetComponent<TextMeshProUGUI>().fontSize = 13;
 
@@ -175,6 +177,7 @@ public class SpeedARManager : MonoBehaviour
         {
             models[i].SetActive(false);
             models[0].SetActive(true);
+            models[0].transform.GetChild(0).GetComponent<Animation>().Play("kura-berjalan");
         }
     }
 
@@ -184,6 +187,7 @@ public class SpeedARManager : MonoBehaviour
         {
             models[i].SetActive(false);
             models[1].SetActive(true);
+            models[1].transform.GetChild(0).GetComponent<Animation>().Play("tupai");
         }
     }
 
@@ -193,6 +197,8 @@ public class SpeedARManager : MonoBehaviour
         {
             models[i].SetActive(false);
             models[2].SetActive(true);
+            models[2].transform.GetChild(0).GetComponent<Animation>().Play("old-horse");
+            models[2].transform.GetChild(1).GetComponent<Animation>().Play("young-horse");
         }
     }
 

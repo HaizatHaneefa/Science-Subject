@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
-//using UnityEngine.EventSystems;
 
 public class YearFiveC4AR : MonoBehaviour
 {
@@ -364,7 +363,15 @@ public class YearFiveC4AR : MonoBehaviour
                 animals[18].GetComponent<Animation>().Play("harimau-cakar");
             }
         }
-
+        else if (index == 18) // ulat gonggok
+        {
+            for (int i = 0; i < animals.Length; i++)
+            {
+                animals[i].SetActive(false);
+                animals[19].SetActive(true);
+                animals[19].GetComponent<Animation>().Play("gonggok-jalan");
+            }
+        }
 
         else if (index != 0 || index != 1 || index != 2)
         {
