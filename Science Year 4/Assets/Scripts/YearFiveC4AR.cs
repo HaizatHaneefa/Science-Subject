@@ -7,7 +7,7 @@ using TMPro;
 
 public class YearFiveC4AR : MonoBehaviour
 {
-    [SerializeField] private GameObject signBoard, dummyObject;
+    [SerializeField] private GameObject signBoard;
 
     [SerializeField] private string[] explanation;
 
@@ -27,7 +27,6 @@ public class YearFiveC4AR : MonoBehaviour
     void Start()
     {
         aSource = GetComponent<AudioSource>();
-        dummyObject.SetActive(false);
         signBoard.SetActive(false);
 
         explainText.text = explanation[0].ToString();
@@ -54,7 +53,6 @@ public class YearFiveC4AR : MonoBehaviour
         }
 
         PressSFX();
-        dummyObject.SetActive(false);
         signBoard.SetActive(true);
 
         for (int i = 0; i < buttons.Length; i++)
@@ -90,7 +88,6 @@ public class YearFiveC4AR : MonoBehaviour
         }
 
         BackSFX();
-        dummyObject.SetActive(false);
         signBoard.SetActive(false);
 
         for (int i = 0; i < buttons.Length; i++)
@@ -372,10 +369,13 @@ public class YearFiveC4AR : MonoBehaviour
                 animals[19].GetComponent<Animation>().Play("gonggok-jalan");
             }
         }
-
-        else if (index != 0 || index != 1 || index != 2)
+        else if (index == 19) // alligator
         {
-            dummyObject.SetActive(true);
+            for (int i = 0; i < animals.Length; i++)
+            {
+                animals[i].SetActive(false);
+                animals[20].SetActive(true);
+            }
         }
     }
 

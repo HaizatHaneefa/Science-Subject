@@ -137,6 +137,7 @@ public class Year5PlantsAR : MonoBehaviour
             {
                 plants[i].SetActive(false);
                 plants[0].SetActive(true);
+                plants[0].GetComponent<Animation>().Play("Jagung_JagungAction");
             }
         }
         else if (index == 1) // akar cactus
