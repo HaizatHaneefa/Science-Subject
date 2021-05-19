@@ -192,6 +192,15 @@ public class Year5PlantsAR : MonoBehaviour
                 plants[6].transform.GetChild(0).GetComponent<ParticleSystem>().Play();
             }
         }
+        else if (index == 7) // rafflesia smoke
+        {
+            for (int i = 0; i < plants.Length; i++)
+            {
+                plants[i].SetActive(false);
+                plants[7].SetActive(true);
+                plants[7].GetComponent<ParticleSystem>().Play();
+            }
+        }
     }
 
     public void PressSFX() // button press yes
