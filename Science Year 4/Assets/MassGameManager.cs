@@ -11,11 +11,6 @@ public class MassGameManager : MonoBehaviour
     [SerializeField] private AudioSource aSource;
     [SerializeField] private AudioClip[] clip;
 
-    [SerializeField] private int[] value;
-    int cur, modeInt;
-
-    [SerializeField] private List<int> sortValue;
-
     [SerializeField] private TextMeshProUGUI[] itemValue, valueCounter;
     [SerializeField] private TextMeshProUGUI timerText;
 
@@ -23,6 +18,10 @@ public class MassGameManager : MonoBehaviour
 
     [SerializeField] private GameObject[] disableFirst;
     [SerializeField] private GameObject introPop, yayPop, endPop;
+
+    [SerializeField] private int[] value;
+    int cur, modeInt;
+    [SerializeField] private List<int> sortValue;
 
     string[] wakakka;
 
@@ -52,6 +51,8 @@ public class MassGameManager : MonoBehaviour
         endPop.SetActive(false);
 
         checkButton.interactable = false;
+
+        timerText.text = "";
     }
 
     public void _Mode(int index)
@@ -128,11 +129,9 @@ public class MassGameManager : MonoBehaviour
             wakakka[i] = sortValue[i].ToString() + "g";
         }
 
-       if (wakakka[0] == valueCounter[0].text &&
-       wakakka[1] == valueCounter[1].text &&
-       wakakka[2] == valueCounter[2].text &&
-       wakakka[3] == valueCounter[3].text &&
-       wakakka[4] == valueCounter[4].text)
+        if (wakakka[0] == valueCounter[0].text && wakakka[1] == valueCounter[1].text &&
+        wakakka[2] == valueCounter[2].text && wakakka[3] == valueCounter[3].text &&
+        wakakka[4] == valueCounter[4].text)
         {
             RightSFX();
             StartCoroutine(YayPop());
@@ -146,8 +145,6 @@ public class MassGameManager : MonoBehaviour
             }
 
             cur = 0;
-
-            Debug.Log("j");
         }
     }
 

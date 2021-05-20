@@ -9,25 +9,51 @@ using UnityEngine.EventSystems;
 
 public class MenuManager : MonoBehaviour
 {
+    //public static MenuManager Instance;
+    public static IntroChecker introCheck;
+
     [SerializeField] private Canvas[] canvas;
 
     [SerializeField] private string[] description;
 
     [SerializeField] private TextMeshProUGUI descriptionText;
 
-    [SerializeField] private GameObject[] chapter, itemsInBackground;
-    [SerializeField] private GameObject blocker, normalPop, anatomyPop, bar, arOrFunFactBackground;
+    [SerializeField] private GameObject[] chapter;
+    [SerializeField] private GameObject blocker, normalPop, anatomyPop, bar, arOrFunFactBackground, backButton;
 
     [SerializeField] public TMP_Dropdown dropdown;
 
     [SerializeField] private AudioClip[] clip;
     [SerializeField] private AudioSource aSource;
 
-    int isSubject, l;
+    int isSubject, l, canvasInt;
 
     void Awake()
     {
-        //PlayerPrefs.DeleteAll();
+        _Start();
+    }
+
+    void _Start()
+    {
+        introCheck = GameObject.FindGameObjectWithTag("Finish").GetComponent<IntroChecker>();
+
+        if (!introCheck.checker)
+        {
+            for (int i = 0; i < canvas.Length; i++)
+            {
+                canvas[i].enabled = false;
+                canvas[0].enabled = true;
+            }
+        }
+        else if (introCheck.checker)
+        {
+            for (int i = 0; i < canvas.Length; i++)
+            {
+                canvas[i].enabled = false;
+                canvas[1].enabled = true;
+            }
+        }
+
         aSource = GetComponent<AudioSource>();
 
         Time.timeScale = 1;
@@ -39,84 +65,47 @@ public class MenuManager : MonoBehaviour
         anatomyPop.SetActive(false);
 
         arOrFunFactBackground.SetActive(false);
-
-
-        if (PlayerPrefs.GetInt("CheckMenu") == 1)
-        {
-            for (int i = 0; i < itemsInBackground.Length; i++)
-            {
-                itemsInBackground[i].SetActive(false);
-            }
-
-            for (int i = 0; i < canvas.Length; i++)
-            {
-                canvas[i].enabled = false;
-                canvas[0].enabled = true;
-                canvas[0].gameObject.GetComponent<Animation>().Play("Menu Anim");
-            }
-
-            for (int i = 0; i < chapter.Length; i++)
-            {
-                chapter[i].SetActive(false);
-            }
-
-            bar.SetActive(true);
-        }
-        else if (PlayerPrefs.GetInt("CheckMenu") == 0)
-        {
-            bar.SetActive(false);
-
-            for (int i = 0; i < canvas.Length; i++)
-            {
-                canvas[i].enabled = false;
-            }
-
-            for (int i = 0; i < chapter.Length; i++)
-            {
-                chapter[i].SetActive(false);
-                chapter[0].SetActive(true);
-            }
-        }
-    }
+        backButton.SetActive(false);
+}
 
     public void ToMenu()
     {
         SoundSelection();
 
-        PlayerPrefs.SetInt("CheckMenu", 1);
+        introCheck.checker = true;
 
         bar.SetActive(true);
-
-        for (int i = 0; i < itemsInBackground.Length; i++)
-        {
-            itemsInBackground[i].SetActive(false);
-        }
 
         for (int i = 0; i < canvas.Length; i++)
         {
             canvas[i].enabled = false;
-            canvas[0].enabled = true;
+            canvas[1].enabled = true;
+            canvas[1].gameObject.GetComponent<Animation>().Play("Menu Anim");
         }
-
-        canvas[0].GetComponent<Animation>().Play("Menu Anim");
     }
 
     public void ToSubject()
     {
-        SoundSelection();
-
-        dropdown.gameObject.SetActive(false);
-        dropdown.value = 0;
+        backButton.SetActive(false);
 
         for (int i = 0; i < canvas.Length; i++)
         {
             canvas[i].enabled = false;
-            canvas[0].enabled = true;
+            canvas[1].enabled = true;
         }
+
+        SoundSelection();
+
+        dropdown.gameObject.SetActive(false);
+        dropdown.value = 0;
     }
 
     public void ToTopic(int index) // main menu function
     {
+        backButton.SetActive(true);
+
+        canvasInt += 1;
+
         SoundSelection();
 
         dropdown.gameObject.SetActive(true);
@@ -126,7 +115,8 @@ public class MenuManager : MonoBehaviour
             for (int i = 0; i < canvas.Length; i++)
             {
                 canvas[i].enabled = false;
-                canvas[1].enabled = true;
+                canvas[2].enabled = true;
+                canvas[2].GetComponent<Animation>().Play("Year4 Anim");
             }
 
             for (int i = 0; i < chapter.Length; i++)
@@ -136,7 +126,6 @@ public class MenuManager : MonoBehaviour
             }
 
             isSubject = 0;
-            canvas[1].GetComponent<Animation>().Play("Year4 Anim");
         }
         else if (index == 1) // math
         {
@@ -144,7 +133,8 @@ public class MenuManager : MonoBehaviour
             for (int i = 0; i < canvas.Length; i++)
             {
                 canvas[i].enabled = false;
-                canvas[2].enabled = true;
+                canvas[3].enabled = true;
+                canvas[3].GetComponent<Animation>().Play("Year4 Anim");
             }
 
             for (int i = 0; i < chapter.Length; i++)
@@ -152,8 +142,6 @@ public class MenuManager : MonoBehaviour
                 chapter[i].SetActive(false);
                 chapter[3].SetActive(true);
             }
-
-            canvas[2].GetComponent<Animation>().Play("Year4 Anim");
         }
     }
 
@@ -171,7 +159,7 @@ public class MenuManager : MonoBehaviour
                     chapter[0].SetActive(true);
                 }
 
-                canvas[1].GetComponent<Animation>().Play("Year4 Anim");
+                canvas[2].GetComponent<Animation>().Play("Year4 Anim");
             }
             else if (dropdown.value == 2)
             {
@@ -181,7 +169,7 @@ public class MenuManager : MonoBehaviour
                     chapter[1].SetActive(true);
                 }
 
-                canvas[1].GetComponent<Animation>().Play("Year5 Anim");
+                canvas[2].GetComponent<Animation>().Play("Year5 Anim");
             }
             else if (dropdown.value == 3)
             {
@@ -191,7 +179,7 @@ public class MenuManager : MonoBehaviour
                     chapter[2].SetActive(true);
                 }
 
-                canvas[1].GetComponent<Animation>().Play("Year6 Anim");
+                canvas[2].GetComponent<Animation>().Play("Year6 Anim");
             }
         }
         else if (isSubject == 1)
@@ -205,7 +193,7 @@ public class MenuManager : MonoBehaviour
                     chapter[3].SetActive(true);
                 }
 
-                canvas[2].GetComponent<Animation>().Play("Year4 Anim");
+                canvas[3].GetComponent<Animation>().Play("Year4 Anim");
             }
             else if (dropdown.value == 2)
             {
@@ -215,7 +203,7 @@ public class MenuManager : MonoBehaviour
                     chapter[4].SetActive(true);
                 }
 
-                canvas[2].GetComponent<Animation>().Play("Year5 Anim");
+                canvas[3].GetComponent<Animation>().Play("Year5 Anim");
             }
             else if (dropdown.value == 3)
             {
@@ -225,7 +213,7 @@ public class MenuManager : MonoBehaviour
                     chapter[5].SetActive(true);
                 }
 
-                canvas[2].GetComponent<Animation>().Play("Year6 Anim");
+                canvas[3].GetComponent<Animation>().Play("Year6 Anim");
             }
         }
     }
@@ -241,7 +229,7 @@ public class MenuManager : MonoBehaviour
 
         l = level;
 
-        if (l == 1)
+        if (l == 1) // for anatomy pop
         {
             normalPop.SetActive(false);
             anatomyPop.SetActive(true);
@@ -325,7 +313,6 @@ public class MenuManager : MonoBehaviour
         }
         else if (l == 27) // length
         {
-            //descriptionText.text = "y6 length";
             descriptionText.text = description[12].ToString();
 
             arOrFunFactBackground.transform.GetChild(4).GetChild(1).GetComponent<Button>().interactable = false;
@@ -333,7 +320,6 @@ public class MenuManager : MonoBehaviour
         }
         else if (l == 28) // space
         {
-            //descriptionText.text = "y6 space";
             descriptionText.text = description[16].ToString();
 
             arOrFunFactBackground.transform.GetChild(4).GetChild(1).GetComponent<Button>().interactable = false;
@@ -546,10 +532,6 @@ public class MenuManager : MonoBehaviour
         {
             SceneManager.LoadScene("Y6 - Space AR");
         }
-        //else if (l == 29) 
-        //{
-        //    //SceneManager.LoadScene("Y4 - Fractions AR");
-        //}
     }
 
     public void YesFuncFact()
@@ -601,10 +583,6 @@ public class MenuManager : MonoBehaviour
             // y6 constellation
             SceneManager.LoadScene("Y6 - Constellation Fun Fact"); // constellation fun fact
         }
-        //else if (l == 20)
-        //{
-        //    SceneManager.LoadScene("Y4 - Fractions Fun Fact"); // constellation fun fact
-        //}
     }
 
     public void YesGame()

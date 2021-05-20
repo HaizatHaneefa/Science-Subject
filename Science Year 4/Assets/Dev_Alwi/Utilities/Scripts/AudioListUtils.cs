@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Classroom.LuwiGeneralCode
 {
@@ -30,6 +31,11 @@ namespace Classroom.LuwiGeneralCode
         {
             audioSource.clip = dropWrongClip;
             audioSource.Play();
+        }
+
+        public void _ToMenu()
+        {
+            SceneManager.LoadScene("Menu");
         }
     }
 }

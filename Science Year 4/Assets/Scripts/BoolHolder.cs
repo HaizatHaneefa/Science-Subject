@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BoolHolder : MonoBehaviour
 {
-    private static BoolHolder _playerInstance;
+    private static BoolHolder instance;
 
     [SerializeField] public static int dropdownValue;
     public static bool[] menuChapter;
@@ -17,24 +17,28 @@ public class BoolHolder : MonoBehaviour
    
     void Awake()
     {
-        NoDestroy();   
-    }
+        NoDestroy();
 
-   
 
-    void NoDestroy()
-    {
-        DontDestroyOnLoad(this);
-
-        if (_playerInstance == null)
+        if (instance == null)
         {
-            _playerInstance = this;
+            instance = this;
         }
         else
         {
             Destroy(gameObject);
         }
+
+        DontDestroyOnLoad(this);
     }
+
+
+
+    void NoDestroy()
+    {
+        
+    }
+
     void Update()
     {
         

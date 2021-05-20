@@ -4923,7 +4923,7 @@ MonoBehaviour:
   sceneToLoad:
     sceneAsset: {fileID: 102900000, guid: ccf67554635b18a44815d068aad9be1e, type: 3}
     sceneName: Breathing
-    buildIndex: 44
+    buildIndex: 46
     assetPath: Assets/Dev_Imran/Breathing AR/Scenes/Breathing.unity
 --- !u!1 &554510208
 GameObject:
@@ -5440,7 +5440,7 @@ MonoBehaviour:
   sceneToLoad:
     sceneAsset: {fileID: 102900000, guid: 028095fb6ba4bb64aa7ed8da0868c725, type: 3}
     sceneName: Excretion
-    buildIndex: 45
+    buildIndex: 47
     assetPath: Assets/Dev_Imran/Excretion AR/Scene/Excretion.unity
 --- !u!1 &613826052
 GameObject:
@@ -7995,12 +7995,17 @@ PrefabInstance:
     - target: {fileID: 8343309172943226252, guid: 2c615519292850746a6dfcc74ae9f0a9,
         type: 3}
       propertyPath: otherSceneVolume
-      value: 0.1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8343309172943226252, guid: 2c615519292850746a6dfcc74ae9f0a9,
         type: 3}
       propertyPath: audioFadeDuration
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8343309172943226252, guid: 2c615519292850746a6dfcc74ae9f0a9,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9007630927270849432, guid: 2c615519292850746a6dfcc74ae9f0a9,
         type: 3}
@@ -13345,7 +13350,7 @@ MonoBehaviour:
   sceneToLoad:
     sceneAsset: {fileID: 102900000, guid: 59010522ba47a1f498b62d91bf1f7c1d, type: 3}
     sceneName: Heredity
-    buildIndex: 46
+    buildIndex: 48
     assetPath: Assets/Dev_Imran/Anatomy AR/Scenes/Heredity.unity
 --- !u!1 &1457250875
 GameObject:
@@ -18527,7 +18532,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1969126064
 RectTransform:
   m_ObjectHideFlags: 0
@@ -19227,6 +19232,17 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 800214345}
         m_MethodName: PlayClickClip
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 800214345}
+        m_MethodName: _ToMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

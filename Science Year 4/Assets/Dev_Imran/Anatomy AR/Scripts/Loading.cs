@@ -21,7 +21,7 @@ public class Loading : MonoBehaviour
 
     IEnumerator LoadAsynchronously (int sceneIndex)
     {
-        AsyncOperation operation = SceneManager.LoadSceneAsync(sceneIndex);
+        AsyncOperation operation = SceneManager.LoadSceneAsync("Menu");
 
         while (!operation.isDone)
         {
