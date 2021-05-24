@@ -42,11 +42,6 @@ public class Y4FractionsGame : MonoBehaviour
     [SerializeField] public AudioSource aSource;
     [SerializeField] public AudioClip[] clip;
 
-    //int[] intArray = new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19 };
-
-    //public List<int> intList;
-    //int index;
-
     void Start()
     {
         Time.timeScale = 1f;
@@ -63,8 +58,6 @@ public class Y4FractionsGame : MonoBehaviour
 
         pop.SetActive(false);
 
-        //LookForQuestion();
-
         tstbool = new bool[6];
         tstbool[0] = true;
 
@@ -79,9 +72,6 @@ public class Y4FractionsGame : MonoBehaviour
         {
             thingsToRemoveFirst[i].SetActive(false);
         }
-
-        //intList.AddRange(intArray);
-
     }
 
     void Update()
@@ -635,23 +625,6 @@ public class Y4FractionsGame : MonoBehaviour
     public void PlayAgain()
     {
         PressSFX();
-        //for (int i = 0; i < tstbool.Length; i++)
-        //{
-        //    tstbool[i] = false;
-        //    tstbool[0] = true;
-        //}
-
-        //Time.timeScale = 1;
-        //timerText.enabled = true;
-        //isTimer = true;
-
-        //pop.SetActive(false);
-
-        //player.transform.position = oriPos[0];
-        //bot.transform.position = oriPos[1];
-
-        //playerSpeed = speed;
-        //thingsToRemoveFirst[0].SetActive(false);
         SceneManager.LoadScene("Y4 - Fractions Game");
     }
 

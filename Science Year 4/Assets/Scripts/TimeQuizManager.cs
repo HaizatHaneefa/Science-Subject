@@ -86,19 +86,19 @@ public class TimeQuizManager : MonoBehaviour
     public void _BackToAR() // length AR
     {
         BackSFX();
-        SceneManager.LoadScene(""); // fill this when you actually made the damn scene
+        SceneManager.LoadScene("Menu"); // fill this when you actually made the damn scene
     }
 
     public void _BackToARMass() // mass AR
     {
         BackSFX();
-        SceneManager.LoadScene(""); // fill this when you actually made the damn scene
+        SceneManager.LoadScene("Menu"); // fill this when you actually made the damn scene
     }
 
     public void _BackToARVolume() // mass AR
     {
         BackSFX();
-        SceneManager.LoadScene(""); // fill this when you actually made the damn scene
+        SceneManager.LoadScene("Menu"); // fill this when you actually made the damn scene
     }
 
     public void Restart() // quiz time

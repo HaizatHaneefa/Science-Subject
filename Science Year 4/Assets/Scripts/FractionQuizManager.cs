@@ -149,11 +149,13 @@ public class FractionQuizManager : MonoBehaviour
     // ---------------------------- Scene Loaders ------------------------------ //
     public void BackToMenu()
     {
+        BackSFX();
         SceneManager.LoadScene("Menu");
     }
 
     public void Retry()
     {
+        PressSFX();
         SceneManager.LoadScene("Y4 - Fractions Quiz");
     }
 

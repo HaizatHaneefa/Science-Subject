@@ -138,12 +138,14 @@ public class MoneyQuizManager : MonoBehaviour
     // -------------------------- Scene Loaders ------------------------- //
     public void _Retry()
     {
+        PressSFX();
         SceneManager.LoadScene("Y4 - Money Quiz");
     }
 
     public void _BacktoAR()
     {
-        SceneManager.LoadScene("Y4 - Money AR");
+        BackSFX();
+        SceneManager.LoadScene("Menu");
     }
 
     // -------------------------- SFX ------------------------- //

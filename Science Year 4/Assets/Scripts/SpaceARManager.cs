@@ -228,6 +228,7 @@ public class SpaceARManager : MonoBehaviour
     public void _Lines(int index)
     {
         PressSFX();
+        Debug.Log("werr");
     }
 
     public void _TriangleButtons(int index)

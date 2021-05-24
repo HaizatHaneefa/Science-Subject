@@ -417,7 +417,7 @@ public class MenuManager : MonoBehaviour
         }
         else if (l == 23) // y5 length
         {
-            SceneManager.LoadScene("Y4 - Length Quiz"); // length
+            SceneManager.LoadScene("Y5 - Length Quiz"); // length
         }
         else if (l == 24) // y5 mass
         {
@@ -434,7 +434,7 @@ public class MenuManager : MonoBehaviour
         else if (l == 27) // y6 lenght
         {
             // disable
-            //SceneManager.LoadScene("Y6 - Data Handling Game"); // data
+            SceneManager.LoadScene("Y6 - Length Game"); // data
             //arOrFunFactBackground.transform.GetChild(4).GetChild(1).GetComponent<Button>().interactable = false;
         }
         else if (l == 28) // y6 space

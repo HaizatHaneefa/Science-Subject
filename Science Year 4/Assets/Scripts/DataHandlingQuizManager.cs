@@ -108,14 +108,17 @@ public class DataHandlingQuizManager : MonoBehaviour
         BackSFX();
         SceneManager.LoadScene("Menu");
     }
+
     public void _Retry()
     {
+        PressSFX();
         SceneManager.LoadScene("Y6 - Data Handling Quiz");
     }
 
     public void _BackAR()
     {
-        SceneManager.LoadScene("Y6 - Data Handling AR");
+        BackSFX();
+        SceneManager.LoadScene("Menu");
     }
 
     public void PressSFX() // button press yes

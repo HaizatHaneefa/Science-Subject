@@ -253,11 +253,13 @@ public class TimeARManager : MonoBehaviour
 
     public void ToQuiz()
     {
+        PressSFX();
         SceneManager.LoadScene("Y4 - Time Quiz"); // to quiz time
     }
 
     public void BackToMenu()
     {
+        BackSFX();
         SceneManager.LoadScene("Menu");
     }
 

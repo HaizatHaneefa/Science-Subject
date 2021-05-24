@@ -3,9 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using TMPro;
 
 public class RandomShootPlayer : MonoBehaviour
 {
+    [SerializeField] private TextMeshProUGUI healthText;
     [SerializeField] private float speed;
     [SerializeField] private float bulletSpeed;
     Rigidbody rb;
@@ -22,8 +24,8 @@ public class RandomShootPlayer : MonoBehaviour
 
     CharacterController charController;
 
-    bool canFire;
-    float timer;
+    bool canFire, cooldownHealth;
+    float timer, health;
 
     void Start()
     {
@@ -31,10 +33,14 @@ public class RandomShootPlayer : MonoBehaviour
         charController = GetComponent<CharacterController>();
 
         canFire = true;
+
+        health = 100f;
     }
 
     void Update()
     {
+        healthText.text = "Health: " + health.ToString();
+
         float moveForward = Input.GetAxis("Vertical");
 
         if (!canFire) // setting a fire rate
@@ -79,5 +85,20 @@ public class RandomShootPlayer : MonoBehaviour
                 return;
             }
         }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Up") && !cooldownHealth)
+        {
+            Debug.Log("jfjfjf");
+            health -= 10;
+            cooldownHealth = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        cooldownHealth = false;
     }
 }

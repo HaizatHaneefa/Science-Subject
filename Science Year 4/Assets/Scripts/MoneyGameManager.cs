@@ -76,7 +76,6 @@ public class MoneyGameManager : MonoBehaviour
         if (floatValue == moneylist[cur].change)
         {
             ChangeQuestion();
-            Debug.Log("qwqwewew");
             howMany += 1;
         }
         else if (floatValue != moneylist[cur].change)
