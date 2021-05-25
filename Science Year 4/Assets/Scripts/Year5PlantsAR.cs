@@ -131,7 +131,74 @@ public class Year5PlantsAR : MonoBehaviour
     {
         PressSFX();
 
-        if (index == 0) // jagung
+        if (index == 0) // cactus
+        {
+            for (int i = 0; i < plants.Length; i++)
+            {
+                plants[i].SetActive(false);
+                plants[2].SetActive(true);
+            }
+        }
+        if (index == 1) // pokok getah
+        {
+            for (int i = 0; i < plants.Length; i++)
+            {
+                plants[i].SetActive(false);
+                plants[5].SetActive(true);
+                plants[5].transform.GetChild(0).GetComponent<ParticleSystem>().Play();
+            }
+        }
+        if (index == 2) // bamboo
+        {
+            for (int i = 0; i < plants.Length; i++)
+            {
+                plants[i].SetActive(false);
+                plants[3].SetActive(true);
+            }
+        }
+        if (index == 3) // mushroom
+        {
+            for (int i = 0; i < plants.Length; i++)
+            {
+                plants[i].SetActive(false);
+                plants[6].SetActive(true);
+                plants[6].GetComponent<Animation>().Play("ss");
+            }
+        }
+        if (index == 4) // rafflesia
+        {
+            for (int i = 0; i < plants.Length; i++)
+            {
+                plants[i].SetActive(false);
+                plants[7].SetActive(true);
+                plants[7].transform.GetChild(0).GetComponent<ParticleSystem>().Play();
+            }
+        }
+        if (index == 5) // akar cactus
+        {
+            for (int i = 0; i < plants.Length; i++)
+            {
+                plants[i].SetActive(false);
+                plants[1].SetActive(true);
+            }
+        }
+        if (index == 6) // cactus
+        {
+            for (int i = 0; i < plants.Length; i++)
+            {
+                plants[i].SetActive(false);
+                plants[2].SetActive(true);
+            }
+        }
+        if (index == 7) // cactus tree
+        {
+            for (int i = 0; i < plants.Length; i++)
+            {
+                plants[i].SetActive(false);
+                plants[8].SetActive(true);
+            }
+        }
+        if (index == 8) // cactus tree
         {
             for (int i = 0; i < plants.Length; i++)
             {
@@ -140,31 +207,7 @@ public class Year5PlantsAR : MonoBehaviour
                 plants[0].GetComponent<Animation>().Play("Jagung_JagungAction");
             }
         }
-        else if (index == 1) // akar cactus
-        {
-            for (int i = 0; i < plants.Length; i++)
-            {
-                plants[i].SetActive(false);
-                plants[1].SetActive(true);
-            }
-        }
-        else if (index == 2) // cactus
-        {
-            for (int i = 0; i < plants.Length; i++)
-            {
-                plants[i].SetActive(false);
-                plants[2].SetActive(true);
-            }
-        }
-        else if (index == 3) // bamboo
-        {
-            for (int i = 0; i < plants.Length; i++)
-            {
-                plants[i].SetActive(false);
-                plants[3].SetActive(true);
-            }
-        }
-        else if (index == 4) // pokok getah
+        if (index == 9) // daun jatuh, tak tahu la pokok apa
         {
             for (int i = 0; i < plants.Length; i++)
             {
@@ -173,32 +216,20 @@ public class Year5PlantsAR : MonoBehaviour
                 plants[4].GetComponent<Animation>().Play("pokok-gugur");
             }
         }
-        else if (index == 5) // pokok getah
+        if (index == 10) // bamboo. again
         {
             for (int i = 0; i < plants.Length; i++)
             {
                 plants[i].SetActive(false);
-                plants[5].SetActive(true);
-                //plants[4].GetComponent<Animation>().Play("pokok-gugur");
+                plants[3].SetActive(true);
             }
         }
-        else if (index == 6) // mushroom
+        if (index == 11) // bamboo, you really need to stop this.
         {
             for (int i = 0; i < plants.Length; i++)
             {
                 plants[i].SetActive(false);
-                plants[6].SetActive(true);
-                plants[6].GetComponent<Animation>().Play("ss");
-                plants[6].transform.GetChild(0).GetComponent<ParticleSystem>().Play();
-            }
-        }
-        else if (index == 7) // rafflesia smoke
-        {
-            for (int i = 0; i < plants.Length; i++)
-            {
-                plants[i].SetActive(false);
-                plants[7].SetActive(true);
-                plants[7].GetComponent<ParticleSystem>().Play();
+                plants[3].SetActive(true);
             }
         }
     }
