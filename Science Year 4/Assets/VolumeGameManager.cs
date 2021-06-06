@@ -101,6 +101,7 @@ public class VolumeGameManager : MonoBehaviour
         }
 
         valueInt.Clear();
+
         foreach (GameObject go in _buttons)
         {
             int val;
