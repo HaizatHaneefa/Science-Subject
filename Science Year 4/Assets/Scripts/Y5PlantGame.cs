@@ -49,12 +49,6 @@ public class Y5PlantGame : MonoBehaviour
         spawntrack = GameObject.FindGameObjectWithTag("GameController").GetComponent<SpawnTrackPlantsGame>();
         spawntrack.enabled = false;
 
-
-        //oriPos = new Vector2[2];
-
-        //oriPos[0] = player.transform.position;
-        //oriPos[1] = bot.transform.position;
-
         pop.SetActive(false);
 
 

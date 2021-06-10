@@ -30,8 +30,16 @@ public class FinishRaceFractionsGame : MonoBehaviour
             ps.GetComponent<ParticleSystem>().Play();
         }
 
-        Time.timeScale = 0f;
+        StartCoroutine(DelayFreeze());
+        //Time.timeScale = 0f;
         manager.isPlaying = false;
         manager.timer = 3f;
+    }
+
+    IEnumerator DelayFreeze()
+    {
+        yield return new WaitForSeconds(2f);
+
+        Time.timeScale = 0f;
     }
 }

@@ -41,24 +41,12 @@ public class FiveAnimalGameManager : MonoBehaviour
     [SerializeField] private AudioSource aSource;
     [SerializeField] private AudioClip[] clip;
 
-    //int[] intArray = new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19 };
-
-    //public List<int> intList;
-    //int levelSelector;
-
     void Start()
     {
         spawntrack = GameObject.FindGameObjectWithTag("GameController").GetComponent<SpawnTrack>();
         spawntrack.enabled = false;
 
-        //intList.AddRange(intArray);
-
         aSource = GetComponent<AudioSource>();
-
-        //oriPos = new Vector2[2];
-
-        //oriPos[0] = player.transform.position;
-        //oriPos[1] = bot.transform.position;
 
         pop.SetActive(false);
 
@@ -136,12 +124,6 @@ public class FiveAnimalGameManager : MonoBehaviour
 
     void LookForQuestion()
     {
-        //Debug.Log(levelSelector);
-        //levelSelector = Random.Range(0, intList.Count);
-
-        //levelSelector = index;
-
-
         int index = Random.Range(0, 20);
 
         if (diff == index)
@@ -395,8 +377,6 @@ public class FiveAnimalGameManager : MonoBehaviour
             }
             #endregion
         }
-
-        //intList.RemoveAt(levelSelector);
     }
 
     void BotSpeed()

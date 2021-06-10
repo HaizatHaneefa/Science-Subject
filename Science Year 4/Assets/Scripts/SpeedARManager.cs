@@ -210,6 +210,11 @@ public class SpeedARManager : MonoBehaviour
 
         buttons[1].GetComponent<Image>().sprite = buttonSprite[1];
         buttons[2].GetComponent<Image>().sprite = buttonSprite[0];
+
+        for (int i = 0; i < models.Length; i++)
+        {
+            models[i].SetActive(false);
+        }
     }
 
     public void DistanceIsSet()

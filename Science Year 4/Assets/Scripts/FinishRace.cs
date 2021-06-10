@@ -8,6 +8,7 @@ public class FinishRace : MonoBehaviour
     public FiveAnimalGameManager manager;
 
     [SerializeField] private GameObject ps;
+
     private void Start()
     {
         ps.SetActive(false);
@@ -28,8 +29,15 @@ public class FinishRace : MonoBehaviour
             ps.GetComponent<ParticleSystem>().Play();
         }
 
-        Time.timeScale = 0f;
-        manager.isPlaying = false;
+        StartCoroutine(DelayFreeze());
+
         manager.timer = 3f;
+    }
+
+    IEnumerator DelayFreeze()
+    {
+        yield return new WaitForSeconds(2f);
+
+        Time.timeScale = 0f;
     }
 }

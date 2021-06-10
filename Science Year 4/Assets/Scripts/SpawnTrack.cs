@@ -15,8 +15,6 @@ public class SpawnTrack : MonoBehaviour
     private void Start()
     {
         manager = GameObject.FindGameObjectWithTag("GameController").GetComponent<FiveAnimalGameManager>();
-
-      
     }
 
     void Spawn()
