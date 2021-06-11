@@ -9,7 +9,6 @@ using UnityEngine.EventSystems;
 
 public class MenuManager : MonoBehaviour
 {
-    //public static MenuManager Instance;
     public static IntroChecker introCheck;
 
     [SerializeField] private Canvas[] canvas;
@@ -276,7 +275,7 @@ public class MenuManager : MonoBehaviour
         {
             descriptionText.text = description[8].ToString(); // y6 constellation
         }
-        // ---------- //
+        // ---------- // math section below
         else if (l == 20) // math section | fractions
         {
             descriptionText.text = description[9].ToString();
