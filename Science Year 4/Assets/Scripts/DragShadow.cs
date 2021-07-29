@@ -86,7 +86,6 @@ public class DragShadow : MonoBehaviour
                 rectTransform.anchoredPosition += new Vector2(76, 0);
 
                 shadowImage.rectTransform.anchoredPosition += new Vector2(100, 0);
-                //shadowImage.rectTransform.sizeDelta = new Vector2(100, 120);
 
                 theOtherShadowImage.rectTransform.anchoredPosition += new Vector2(100, 0);
                 theOtherShadowImage.sprite = shadowSprite[1];
@@ -184,16 +183,11 @@ public class DragShadow : MonoBehaviour
 
                 yayPop.SetActive(true);
                 yayPop.GetComponent<Animation>().Play("SuccessPop");
-
-                //CorrectSound();
             }
             else if (rectTransform.anchoredPosition.y != -80f)
             {
                 WrongPressSFX();
-                //IncorrectSound();
             }
-
-            //levelText.text = "Level 2";
         }
         else if (round[1])
         {
@@ -203,17 +197,13 @@ public class DragShadow : MonoBehaviour
                 yayPop.SetActive(true);
                 yayPop.GetComponent<Animation>().Play("SuccessPop");
 
-                //CorrectSound();
                 RightSFX();
 
             }
             else if (rectTransform.anchoredPosition.x != 76)
             {
-                //IncorrectSound();
                 WrongPressSFX();
             }
-
-            //levelText.text = "Level 2";
         }
         else if (round[2])
         {
@@ -226,12 +216,9 @@ public class DragShadow : MonoBehaviour
 
                 StartCoroutine(Stars());
                 RightSFX();
-
-                //levelText.text = "";
             }
             else if (shadowImage.rectTransform.anchoredPosition != new Vector2(-96, 0))
             {
-                //IncorrectSound();
                 WrongPressSFX();
             }
         }

@@ -31,7 +31,7 @@ public class FinishRaceFractionsGame : MonoBehaviour
         }
 
         StartCoroutine(DelayFreeze());
-        //Time.timeScale = 0f;
+
         manager.isPlaying = false;
         manager.timer = 3f;
     }

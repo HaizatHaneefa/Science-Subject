@@ -51,6 +51,7 @@ public class VolumeGameManager : MonoBehaviour
     public void _Button()
     {
         GameObject go = EventSystem.current.currentSelectedGameObject;
+
         int i = System.Array.IndexOf(_buttons, go);
 
         if (valueInt[i] == curInt)

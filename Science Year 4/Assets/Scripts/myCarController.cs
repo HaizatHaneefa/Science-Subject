@@ -8,41 +8,33 @@ using UnityEngine.SceneManagement;
 
 public class myCarController : MonoBehaviour
 {
-    //[SerializeField] private NOS nos;
     [SerializeField] private CarController carController;
-    //[SerializeField] private CarSelectionData carSelect;
-    //[SerializeField] private MeshFilter carMesh;
 
     [SerializeField] private Camera mainCam, inCam, rearCam;
 
     [SerializeField] private GameObject[] car;
     [SerializeField] private GameObject selectedCar;
+    [SerializeField] GameObject winButton, lostButton, startPop, startText, gameEndPop, pauseCanvas;
+    public GameObject enemyMarkerGO;
+
     [SerializeField] private Transform carSpwn;
-    //[SerializeField] private 
 
     [SerializeField] Button pauseButton;
 
     [SerializeField] RawImage rearImage;
 
-    [SerializeField] GameObject winButton, lostButton, startPop, startText, gameEndPop, pauseCanvas;
-    public GameObject enemyMarkerGO;
-
     [SerializeField] private TextMeshProUGUI playerTimeText, lapText, speedmeterText, winLoseText;
 
     [SerializeField] public float minFOV, maxFOV, _timer, _nosBoost, realSpeed;
+    [SerializeField] private float playerTime;
 
     [SerializeField] public bool isBoost, isReduce;
-
-    [SerializeField] private float playerTime;
-    //[SerializeField] private MeshFilter[] carMeshFilter;
-
     bool isCam;
     bool isRacing;
     bool isStarting;
 
     public int laps;
     public int enemyLaps;
-
     int timer;
     int[] placerNum;
 
@@ -50,10 +42,7 @@ public class myCarController : MonoBehaviour
     {
         mainCam.GetComponent<CarFollowCamera>().enabled = true;
 
-        //carSelect = GameObject.FindGameObjectWithTag("Respawn").GetComponent<CarSelectionData>();
-
         carController = GameObject.FindGameObjectWithTag("Car").GetComponent<CarController>();
-        //speedmeterText.text = carController.testSpeed.ToString("F0");
 
         timer = 3;
         Time.timeScale = 0f;
@@ -90,13 +79,6 @@ public class myCarController : MonoBehaviour
 
             lapText.text = laps + "/3";
             speedmeterText.text = carController.testSpeed.ToString("F0");
-
-            //if (_timer >= 3.0f || _timer == 0)
-            //{
-            //    isBoost = false;
-            //    _timer = 0f;
-            //    mainCam.fieldOfView = Mathf.Lerp(mainCam.fieldOfView, minFOV, Time.deltaTime);
-            //}
         }
     }
 
@@ -223,16 +205,4 @@ public class myCarController : MonoBehaviour
         }
     }
 }
-
-
-
-
-//int _seconds = (int)(AITime % 60);
-//int _minutes = (int)(AITime / 60);
-
-//string AItimerString = string.Format("{0:0}:{1:00}", _minutes, _seconds);
-//AITimeText.text = AItimerString; // time format for AI
-
-//realSpeed = car.velocity.magnitude * 3.6f; // speed on meter
-//carController.testSpeed = car.velocity.magnitude * 3.6f; // speed on meter
 

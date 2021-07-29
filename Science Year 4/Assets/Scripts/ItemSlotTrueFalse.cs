@@ -8,7 +8,9 @@ using TMPro;
 public class ItemSlotTrueFalse : MonoBehaviour, IDropHandler
 {
     YearFiveQuizManager manager;
+
     DragDropTwo dragScript;
+
     GameObject button;
 
     string[] dialogue;
@@ -32,7 +34,6 @@ public class ItemSlotTrueFalse : MonoBehaviour, IDropHandler
         if (eventData.pointerDrag != null)
         {
             StartCoroutine(PopNextQuestion(eventData));
-            //eventData = 
         }
     }
 

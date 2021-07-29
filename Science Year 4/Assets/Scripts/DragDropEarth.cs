@@ -33,8 +33,6 @@ public class DragDropEarth : MonoBehaviour, IPointerDownHandler, IBeginDragHandl
         transform.GetChild(0).GetComponent<TextMeshProUGUI>().enabled = false;
 
         rectTransform.position = eventData.pointerPressRaycast.worldPosition; // this is it!
-
-        //GetComponent<Image>().sprite = sprite[1];
     }
 
     public void OnPointerDown(PointerEventData eventData)
@@ -51,8 +49,6 @@ public class DragDropEarth : MonoBehaviour, IPointerDownHandler, IBeginDragHandl
         transform.position = startPos.position;
 
         transform.GetChild(0).GetComponent<TextMeshProUGUI>().enabled = true;
-
-        //GetComponent<Image>().sprite = sprite[0];
     }
 
     public void OnDrag(PointerEventData eventData)

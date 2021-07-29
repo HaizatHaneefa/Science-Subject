@@ -881,9 +881,7 @@ public class HangmanManager : MonoBehaviour
         }
     }
 
-
     // ---------------------------------------  sound effects ---------------------------------------  //
-
     public void PressSFX()
     {
         aSource.clip = clip[0];

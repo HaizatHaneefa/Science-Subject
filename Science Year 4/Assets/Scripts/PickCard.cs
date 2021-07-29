@@ -15,10 +15,6 @@ public class PickCard : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
         manager = GameObject.FindGameObjectWithTag("GameController").GetComponent<ConstellationGameManager>();
     }
 
-    private void Update()
-    {
-    }
-
     public void OnBeginDrag(PointerEventData eventData)
     {
     }
@@ -76,10 +72,5 @@ public class PickCard : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
         yield return new WaitForSeconds(1.2f);
 
         manager.Round();
-    }
-
-    void CheckCard()
-    {
-
     }
 }

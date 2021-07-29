@@ -9,9 +9,4 @@ public class PlantClose : MonoBehaviour, IPointerDownHandler
     {
         Debug.Log("te te te te");
     }
-
-    //private void Update()
-    //{
-        
-    //}
 }

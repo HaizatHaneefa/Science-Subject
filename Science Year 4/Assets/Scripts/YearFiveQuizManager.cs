@@ -9,11 +9,10 @@ using UnityEngine.EventSystems;
 public class YearFiveQuizManager : MonoBehaviour
 {
     [SerializeField] private GameObject[] mcq;
+    [SerializeField] public GameObject[] thingstoDisableEnd;
     [SerializeField] private GameObject secondQuestion, snakeImage, continueButton, instructPop, lowBarImage;
-
     public GameObject continueButtonSecondQuestion;
     [SerializeField] public GameObject signBoard, instructText;
-    [SerializeField] public GameObject[] thingstoDisableEnd;
 
     public GameObject thirdQuestion;
 

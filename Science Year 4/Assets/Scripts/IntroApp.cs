@@ -11,11 +11,6 @@ public class IntroApp : MonoBehaviour
         PlayerPrefs.DeleteAll();
     }
 
-    void Update()
-    {
-        
-    }
-
     IEnumerator Wait()
     {
         yield return new WaitForSeconds(1);

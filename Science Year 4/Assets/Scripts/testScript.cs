@@ -25,10 +25,7 @@ public class testScript : MonoBehaviour
 
         rowBool = new bool[3];
         rowBool[0] = true;
-        //ColorBlock c = row1[0].GetComponent<Button>().colors;
-        //c.normalColor = Color.green;
 
-        //row1[num].GetComponent<Image>().color = Color.green;
         for (int i = 0; i < row1.Length; i++)
         {
             r1.Add(row1[i]);
@@ -149,13 +146,11 @@ public class testScript : MonoBehaviour
         }
         else if (rowBool[1])
         {
-            //row2[num].SetActive(false);
             r2[num].SetActive(false);
             r2.Remove(r2[num]);
         }
         else if (rowBool[2])
         {
-            //row3[num].SetActive(false);
             r3[num].SetActive(false);
             r3.Remove(r3[num]);
         }

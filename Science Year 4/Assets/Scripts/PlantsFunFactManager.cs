@@ -12,7 +12,6 @@ public class PlantsFunFactManager : MonoBehaviour
     [SerializeField] private string[] explain;
     [SerializeField] private string[] dialogue;
 
-    //[SerializeField] private GameObject image;
     [SerializeField] private GameObject[] image;
     [SerializeField] private GameObject[] buttons, plantButtons;
 
@@ -78,7 +77,6 @@ public class PlantsFunFactManager : MonoBehaviour
         
         plantButtons[0].GetComponent<Image>().sprite = sprite[1];
         plantButtons[1].GetComponent<Image>().sprite = sprite[0];
-
     }
 
     public void PlantsTropism()
@@ -124,7 +122,6 @@ public class PlantsFunFactManager : MonoBehaviour
     {
         if (num == 1)
         {
-
             return;
         }
         if (num == 0)

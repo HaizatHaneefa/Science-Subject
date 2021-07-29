@@ -16,7 +16,6 @@ public class QuestionsHolderFractions : MonoBehaviour
 
         public int num = 3;
     }
-
     public First q1 = new First();
 
     // 2
@@ -31,7 +30,6 @@ public class QuestionsHolderFractions : MonoBehaviour
 
         public int num = 1;
     }
-
     public Second q2 = new Second();
 
     // 3
@@ -46,7 +44,6 @@ public class QuestionsHolderFractions : MonoBehaviour
 
         public int num = 2;
     }
-
     public Third q3 = new Third();
 
     // 4
@@ -61,7 +58,6 @@ public class QuestionsHolderFractions : MonoBehaviour
 
         public int num = 2;
     }
-
     public Forth q4 = new Forth();
 
     // 5
@@ -76,7 +72,6 @@ public class QuestionsHolderFractions : MonoBehaviour
 
         public int num = 1;
     }
-
     public Fifth q5 = new Fifth();
 
     // 6
@@ -91,7 +86,6 @@ public class QuestionsHolderFractions : MonoBehaviour
 
         public int num = 3;
     }
-
     public Sixth q6 = new Sixth();
 
     // 7
@@ -106,7 +100,6 @@ public class QuestionsHolderFractions : MonoBehaviour
 
         public int num = 1;
     }
-
     public Seventh q7 = new Seventh();
 
     // 8
@@ -121,7 +114,6 @@ public class QuestionsHolderFractions : MonoBehaviour
 
         public int num = 2;
     }
-
     public Eighth q8 = new Eighth();
 
     // 9
@@ -136,7 +128,6 @@ public class QuestionsHolderFractions : MonoBehaviour
 
         public int num = 1;
     }
-
     public Ninth q9 = new Ninth();
 
     // 10
@@ -151,7 +142,6 @@ public class QuestionsHolderFractions : MonoBehaviour
 
         public int num = 3;
     }
-
     public Tenth q10 = new Tenth();
 
     // 11
@@ -166,7 +156,6 @@ public class QuestionsHolderFractions : MonoBehaviour
 
         public int num = 2;
     }
-
     public Eleventh q11 = new Eleventh();
 
     // 12
@@ -181,7 +170,6 @@ public class QuestionsHolderFractions : MonoBehaviour
 
         public int num = 1;
     }
-
     public Twelveth q12 = new Twelveth();
 
     // 13
@@ -196,7 +184,6 @@ public class QuestionsHolderFractions : MonoBehaviour
 
         public int num = 2;
     }
-
     public Thirteenth q13 = new Thirteenth();
 
     // 14
@@ -211,7 +198,6 @@ public class QuestionsHolderFractions : MonoBehaviour
 
         public int num = 2;
     }
-
     public Forteenth q14 = new Forteenth();
 
     // 15
@@ -226,7 +212,6 @@ public class QuestionsHolderFractions : MonoBehaviour
 
         public int num = 1;
     }
-
     public Fifteenth q15 = new Fifteenth();
 
     // 16
@@ -241,7 +226,6 @@ public class QuestionsHolderFractions : MonoBehaviour
 
         public int num = 3;
     }
-
     public Sixteenth q16 = new Sixteenth();
 
     // 17
@@ -256,7 +240,6 @@ public class QuestionsHolderFractions : MonoBehaviour
 
         public int num = 2;
     }
-
     public Seventeenth q17 = new Seventeenth();
 
     // 18
@@ -271,7 +254,6 @@ public class QuestionsHolderFractions : MonoBehaviour
 
         public int num = 1;
     }
-
     public Eighteenth q18 = new Eighteenth();
 
     // 19
@@ -286,7 +268,6 @@ public class QuestionsHolderFractions : MonoBehaviour
 
         public int num = 2;
     }
-
     public Nineteenth q19 = new Nineteenth();
 
     // 20
@@ -301,7 +282,6 @@ public class QuestionsHolderFractions : MonoBehaviour
 
         public int num = 3;
     }
-
     public Twentieth q20 = new Twentieth();
 
     // 21
@@ -316,7 +296,6 @@ public class QuestionsHolderFractions : MonoBehaviour
 
         public int num = 1;
     }
-
     public Twentifirst q21 = new Twentifirst();
 
     // 22
@@ -331,7 +310,6 @@ public class QuestionsHolderFractions : MonoBehaviour
 
         public int num = 2;
     }
-
     public Twentisecond q22 = new Twentisecond();
 
     // 24
@@ -346,7 +324,6 @@ public class QuestionsHolderFractions : MonoBehaviour
 
         public int num = 1;
     }
-
     public Twentiforth q23 = new Twentiforth();
 
     // 25
@@ -361,7 +338,6 @@ public class QuestionsHolderFractions : MonoBehaviour
 
         public int num = 3;
     }
-
     public Twentififth q24 = new Twentififth();
 
     // 26
@@ -376,7 +352,6 @@ public class QuestionsHolderFractions : MonoBehaviour
 
         public int num = 2;
     }
-
     public Twentisixth q25 = new Twentisixth();
 
     // 27
@@ -391,7 +366,6 @@ public class QuestionsHolderFractions : MonoBehaviour
 
         public int num = 1;
     }
-
     public Twentiseventh q26 = new Twentiseventh();
 
     // 28
@@ -406,7 +380,6 @@ public class QuestionsHolderFractions : MonoBehaviour
 
         public int num = 1;
     }
-
     public Twentieighth q27 = new Twentieighth();
 
     // 29
@@ -421,6 +394,5 @@ public class QuestionsHolderFractions : MonoBehaviour
 
         public int num = 3;
     }
-
     public Twentininth q28 = new Twentininth();
 }

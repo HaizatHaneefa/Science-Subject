@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerLap : MonoBehaviour
 {
     [SerializeField] private GameObject[] lapConditions;
+
     [SerializeField] public int count;
 
     myCarController controller;

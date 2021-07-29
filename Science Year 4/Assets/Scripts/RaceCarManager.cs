@@ -8,7 +8,9 @@ using UnityEngine.SceneManagement;
 public class RaceCarManager : MonoBehaviour
 {
     [SerializeField] private RaceCarData data;
+
     [SerializeField] private CarSelectionData carSelect;
+
     [SerializeField] private GameObject carStatsHolder, goButton;
     [SerializeField] private GameObject[] cars;
 
@@ -17,7 +19,6 @@ public class RaceCarManager : MonoBehaviour
     [SerializeField] private Slider[] statsSlider;
 
     [SerializeField] private Material[] carMats;
-    //[SerializeField] private GameObject[] colorPalette;
     [SerializeField] private Material[] carTexture;
 
     void Start()
@@ -32,11 +33,6 @@ public class RaceCarManager : MonoBehaviour
         {
             cars[i].SetActive(false);
         }
-
-        //for (int i = 0; i < colorPalette.Length; i++)
-        //{
-        //    colorPalette[i].SetActive(false);
-        //}
     }
 
     public void ChooseCar(int index)

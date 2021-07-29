@@ -15,7 +15,6 @@ public class EarthItemSlot : MonoBehaviour, IDropHandler
 
     private void Start()
     {
-        //transform.GetChild(2).GetComponent<ParticleSystem>().Stop();
     }
 
     void Awake()
@@ -23,12 +22,6 @@ public class EarthItemSlot : MonoBehaviour, IDropHandler
         manager = GameObject.FindGameObjectWithTag("GameController").GetComponent<EarthQuiz>();
 
         dialogue = new string[5];
-
-        //dialogue[0] = "Earth’s rotation takes about one week to complete.";
-        //dialogue[1] = "Earth is orbiting around the Sun. Earth’s orbit around sun is elliptical.";
-        //dialogue[2] = "The rotation of the Earth on its axis causes the position and length of the shadow to change.";
-        //dialogue[3] = "The Sun moves from west to east in the sky.";
-        //dialogue[4] = "At 5.00 p.m., the length of a shadow is the shortest.";
 
         dialogue[0] = "Earth is orbiting around the Sun. Earth’s orbit around sun is elliptical.";
         dialogue[1] = "The rotation of the Earth on its axis causes the position and length of the shadow to change.";
@@ -153,7 +146,5 @@ public class EarthItemSlot : MonoBehaviour, IDropHandler
         yield return new WaitForSeconds(1f);
 
         manager.signBoard.SetActive(true);
-        //manager.gameOverPop.SetActive(true);
-        //manager.gameOverPop.GetComponent<Animation>().Play("GameOverPop");
     }
 }

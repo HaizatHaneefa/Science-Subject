@@ -23,7 +23,6 @@ public class ConstellationGameManager : MonoBehaviour
 
     [SerializeField] private Vector3[] a, b, c;
 
-    //[SerializeField] private Image[] roundMarkerImage;
     [SerializeField] public AudioSource aSource;
     [SerializeField] public AudioClip[] clip;
 
@@ -61,11 +60,6 @@ public class ConstellationGameManager : MonoBehaviour
         {
             cards[i].SetActive(false);
         }
-
-        //for (int i = 0; i < roundMarkerImage.Length; i++)
-        //{
-        //    roundMarkerImage[i].gameObject.SetActive(false);
-        //}
     }
 
     private void Update()
@@ -172,8 +166,6 @@ public class ConstellationGameManager : MonoBehaviour
 
                 DelegateSFX();
             }
-
-
         }
         else if (isTurn[0])
         {
@@ -202,6 +194,7 @@ public class ConstellationGameManager : MonoBehaviour
                 CancelInvoke("AIOneArrangeCards");
 
                 T1();
+
                 return;
             }
             else if (a1turn < a1count)
@@ -240,7 +233,9 @@ public class ConstellationGameManager : MonoBehaviour
             if (a2turn == a1count)
             {
                 CancelInvoke("AITwoArrangeCards");
+
                 T2();
+
                 return;
             }
             else if (a2turn < a1count)
@@ -367,6 +362,7 @@ public class ConstellationGameManager : MonoBehaviour
             aq[1].transform.position = storedeck.position;
             aq[1].transform.rotation = storedeck.rotation;
         }
+
         if (bd.Count == 2)
         {
             bd[0].transform.SetParent(storedeck);
@@ -384,6 +380,7 @@ public class ConstellationGameManager : MonoBehaviour
             bd[1].transform.position = storedeck.position;
             bd[1].transform.rotation = storedeck.rotation;
         }
+
         if (gm.Count == 2)
         {
             gm[0].transform.SetParent(storedeck);
@@ -401,6 +398,7 @@ public class ConstellationGameManager : MonoBehaviour
             gm[1].transform.position = storedeck.position;
             gm[1].transform.rotation = storedeck.rotation;
         }
+
         if (hercu.Count == 2)
         {
             hercu[0].transform.SetParent(storedeck);
@@ -418,6 +416,7 @@ public class ConstellationGameManager : MonoBehaviour
             hercu[1].transform.position = storedeck.position;
             hercu[1].transform.rotation = storedeck.rotation;
         }
+
         if (hyd.Count == 2)
         {
             hyd[0].transform.SetParent(storedeck);
@@ -435,6 +434,7 @@ public class ConstellationGameManager : MonoBehaviour
             hyd[1].transform.position = storedeck.position;
             hyd[1].transform.rotation = storedeck.rotation;
         }
+
         if (lib.Count == 2)
         {
             lib[0].transform.SetParent(storedeck);
@@ -452,6 +452,7 @@ public class ConstellationGameManager : MonoBehaviour
             lib[1].transform.position = storedeck.position;
             lib[1].transform.rotation = storedeck.rotation;
         }
+
         if (ld.Count == 2)
         {
             ld[0].transform.SetParent(storedeck);
@@ -469,6 +470,7 @@ public class ConstellationGameManager : MonoBehaviour
             ld[1].transform.position = storedeck.position;
             ld[1].transform.rotation = storedeck.rotation;
         }
+
         if (ophiu.Count == 2)
         {
             ophiu[0].transform.SetParent(storedeck);
@@ -486,6 +488,7 @@ public class ConstellationGameManager : MonoBehaviour
             ophiu[1].transform.position = storedeck.position;
             ophiu[1].transform.rotation = storedeck.rotation;
         }
+
         if (orion.Count == 2)
         {
             orion[0].transform.SetParent(storedeck);
@@ -503,6 +506,7 @@ public class ConstellationGameManager : MonoBehaviour
             orion[1].transform.position = storedeck.position;
             orion[1].transform.rotation = storedeck.rotation;
         }
+
         if (scor.Count == 2)
         {
             scor[0].transform.SetParent(storedeck);
@@ -520,6 +524,7 @@ public class ConstellationGameManager : MonoBehaviour
             scor[1].transform.position = storedeck.position;
             scor[1].transform.rotation = storedeck.rotation;
         }
+
         if (sc.Count == 2)
         {
             sc[0].transform.SetParent(storedeck);
@@ -537,6 +542,7 @@ public class ConstellationGameManager : MonoBehaviour
             sc[1].transform.position = storedeck.position;
             sc[1].transform.rotation = storedeck.rotation;
         }
+
         if (taurus.Count == 2)
         {
             taurus[0].transform.SetParent(storedeck);
@@ -1277,11 +1283,6 @@ public class ConstellationGameManager : MonoBehaviour
 
         introPop.SetActive(false);
 
-        //for (int i = 0; i < roundMarkerImage.Length; i++)
-        //{
-        //    roundMarkerImage[i].gameObject.SetActive(true);
-        //}
-
         for (int i = 0; i < cards.Count; i++)
         {
             cards[i].SetActive(true);
@@ -1297,8 +1298,6 @@ public class ConstellationGameManager : MonoBehaviour
         transitionImage.SetActive(true);
         transitionImage.GetComponent<Animation>().Play("TransitionCards");
 
-        //roundMarkerImage[0].color = Color.red;
-
         yield return new WaitForSeconds(2.5f);
 
         transitionImage.SetActive(false);
@@ -1311,7 +1310,6 @@ public class ConstellationGameManager : MonoBehaviour
 
         yield return new WaitForSeconds(0.1f);
         Time.timeScale = 0;
-        //pausePop.GetComponent<Animator>().Play("EndGamePop-NEW");
     }
 
     IEnumerator P2Delay()

@@ -12,11 +12,6 @@ public class FractionsInfoPop : MonoBehaviour
         manager = GameObject.FindGameObjectWithTag("GameController").GetComponent<FractionARManager>();
     }
 
-    void Update()
-    {
-        
-    }
-
     public void _Press()
     {
         manager.descriptiveSection.SetActive(true);

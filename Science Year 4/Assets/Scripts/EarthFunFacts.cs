@@ -41,16 +41,6 @@ public class EarthFunFacts : MonoBehaviour
         {
 
         }
-        //if (point == 0)
-        //{
-        //    nextButton.gameObject.SetActive(true);
-        //    prevButton.gameObject.SetActive(false);
-        //}
-        //else if (point == 1)
-        //{
-        //    nextButton.gameObject.SetActive(false);
-        //    prevButton.gameObject.SetActive(true);
-        //}
     }
 
     public void _EarthRotation()

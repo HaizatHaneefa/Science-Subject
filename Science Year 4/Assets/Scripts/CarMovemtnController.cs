@@ -114,18 +114,6 @@ public class CarMovemtnController : MonoBehaviour
         UpdateWheelPos(leftBackW, leftBackT);
     }
 
-    //public void ssss() // what the fuck is this shit
-    //{
-    //    if (!isPressing)
-    //    {
-    //        isPressing = true;
-    //    }
-    //    else if (isPressing)
-    //    {
-    //        isPressing = false;
-    //    }
-    //}
-
     public void OnPointerDown()
     {
         isPressing = true;

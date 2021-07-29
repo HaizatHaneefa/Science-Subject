@@ -74,9 +74,6 @@ public class ItemSlot : MonoBehaviour, IDropHandler
                     {
                         manager.thingstoDisableEnd[i].SetActive(false);
                     }
-                    //manager.signBoard.SetActive(true);
-                    //manager.yayPop.SetActive(true);
-                    //manager.yayPop.transform.GetChild(0).GetComponent<Animation>().Play("GameOverPop");
                 }
             }
             else if (manager.thirdBool[0] && eventData.pointerDrag.CompareTag("Animal 1") ||

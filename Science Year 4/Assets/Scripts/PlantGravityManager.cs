@@ -59,7 +59,6 @@ public class PlantGravityManager : MonoBehaviour
         RightSFX();
 
         StartCoroutine(ButtonChangeColor());
-
     }
 
     public void _QN()

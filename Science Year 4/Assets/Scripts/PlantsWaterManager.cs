@@ -9,17 +9,15 @@ using UnityEngine.EventSystems;
 public class PlantsWaterManager : MonoBehaviour
 {
     public GameObject exampleImage;
-
     public GameObject[] questions;
+    public GameObject congratsText;
+    [SerializeField] private GameObject ps;
 
     public TextMeshProUGUI questionText;
-    public GameObject congratsText;
 
     [SerializeField] private Button[] button;
 
     int cur;
-
-    [SerializeField] private GameObject ps;
 
     [SerializeField] private AudioSource aSource;
     [SerializeField] private AudioClip[] clip;
@@ -58,6 +56,7 @@ public class PlantsWaterManager : MonoBehaviour
         StartCoroutine(ShowGeotropism());
 
         RightSFX();
+
         cur += 1;
     }
 
@@ -67,6 +66,7 @@ public class PlantsWaterManager : MonoBehaviour
         StartCoroutine(End());
 
         RightSFX();
+
         cur += 1;
     }
 
@@ -96,7 +96,6 @@ public class PlantsWaterManager : MonoBehaviour
     IEnumerator End()
     {
         questions[2].GetComponent<Animation>().Play("Q1-Plants-Light-2");
-
        
         yield return new WaitForSeconds(1f);
 

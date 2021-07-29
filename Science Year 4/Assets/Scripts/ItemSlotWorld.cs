@@ -121,7 +121,6 @@ public class ItemSlotWorld : MonoBehaviour, IDropHandler
                     manager.conditionBool[2] = false;
                     manager.conditionBool[0] = true;
 
-                    //StartCoroutine(Delay());
                     manager.nextButton.SetActive(true);
                 }
             }

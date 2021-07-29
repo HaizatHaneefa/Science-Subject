@@ -39,7 +39,6 @@ public class PlantsHangmanManager : MonoBehaviour
     public GameObject scoreboardPop;
 
     public bool[] phase;
-    //public bool[] phaseMarker;
 
     public Image[] hangman;
     public Image[] star;
@@ -95,7 +94,6 @@ public class PlantsHangmanManager : MonoBehaviour
         introPop.GetComponent<Animation>().Play("Intro_Anim");
 
         phase = new bool[20];
-        //phaseMarker = new bool[20];
 
         scoreRound = new int[5];
          
@@ -676,7 +674,6 @@ public class PlantsHangmanManager : MonoBehaviour
         introPop.SetActive(false);
 
         levelSelector = Random.Range(0, intList.Count);
-        //levelSelector = Random.Range(0, phase.Length);
 
         LevelSelector();
     }
@@ -699,11 +696,9 @@ public class PlantsHangmanManager : MonoBehaviour
         hangmanCount = 6;
         HangmanImage();
 
-        //if (levelSelector == 0 && !phaseMarker[0])
-            if (levelSelector == 0 /*&& !phaseMarker[0]*/)
-
-            {
-                for (int i = 0; i < word1.Length; i++)
+        if (levelSelector == 0)
+        {
+            for (int i = 0; i < word1.Length; i++)
             {
                 word1[i].SetActive(true);
                 word1[0].transform.parent.GetComponent<Animation>().Play("Plants-Q1");
@@ -715,15 +710,12 @@ public class PlantsHangmanManager : MonoBehaviour
                 phase[0] = true;
             }
 
-            //phaseMarker[0] = true;
 
             hintText.text = plantClass.d1.hint1;
         }
-        //else if (levelSelector == 1 && !phaseMarker[1])
-                    else if (levelSelector == 1 /*&& !phaseMarker[1]*/)
-
-                {
-                    for (int i = 0; i < word2.Length; i++)
+        else if (levelSelector == 1)
+        {
+            for (int i = 0; i < word2.Length; i++)
             {
                 word2[i].SetActive(true);
                 word2[0].transform.parent.GetComponent<Animation>().Play("Plants-Q1");
@@ -735,15 +727,11 @@ public class PlantsHangmanManager : MonoBehaviour
                 phase[1] = true;
             }
 
-            //phaseMarker[1] = true;
-
             hintText.text = plantClass.d1.hint2;
         }
-        //else if (levelSelector == 2 && !phaseMarker[2])
-                    else if (levelSelector == 2/* && !phaseMarker[2]*/)
-
-                {
-                    for (int i = 0; i < word3.Length; i++)
+        else if (levelSelector == 2)
+        {
+            for (int i = 0; i < word3.Length; i++)
             {
                 word3[i].SetActive(true);
                 word3[0].transform.parent.GetComponent<Animation>().Play("Plants-Q1");
@@ -756,11 +744,9 @@ public class PlantsHangmanManager : MonoBehaviour
                 phase[2] = true;
             }
 
-            //phaseMarker[2] = true;
-
             hintText.text = plantClass.d1.hint3;
         }
-        else if (levelSelector == 3/* && !phaseMarker[3]*/)
+        else if (levelSelector == 3)
         {
             for (int i = 0; i < word4.Length; i++)
             {
@@ -775,11 +761,9 @@ public class PlantsHangmanManager : MonoBehaviour
                 phase[3] = true;
             }
 
-            //phaseMarker[3] = true;
-
             hintText.text = plantClass.d1.hint4;
         }
-        else if (levelSelector == 4/* && !phaseMarker[4]*/)
+        else if (levelSelector == 4)
         {
             for (int i = 0; i < word5.Length; i++)
             {
@@ -793,11 +777,9 @@ public class PlantsHangmanManager : MonoBehaviour
                 phase[4] = true;
             }
 
-            //phaseMarker[4] = true;
-
             hintText.text = plantClass.d1.hint5;
         }
-        else if (levelSelector == 5 /*&& !phaseMarker[5]*/)
+        else if (levelSelector == 5)
         {
             for (int i = 0; i < word6.Length; i++)
             {
@@ -811,11 +793,9 @@ public class PlantsHangmanManager : MonoBehaviour
                 phase[5] = true;
             }
 
-            //phaseMarker[5] = true;
-
             hintText.text = plantClass.d1.hint6;
         }
-        else if (levelSelector == 6 /*&& !phaseMarker[6]*/)
+        else if (levelSelector == 6)
         {
             for (int i = 0; i < word7.Length; i++)
             {
@@ -829,11 +809,9 @@ public class PlantsHangmanManager : MonoBehaviour
                 phase[6] = true;
             }
 
-            //phaseMarker[6] = true;
-
             hintText.text = plantClass.d1.hint7;
         }
-        else if (levelSelector == 7 /*&& !phaseMarker[7]*/)
+        else if (levelSelector == 7)
         {
             for (int i = 0; i < word8.Length; i++)
             {
@@ -847,11 +825,9 @@ public class PlantsHangmanManager : MonoBehaviour
                 phase[7] = true;
             }
 
-            //phaseMarker[7] = true;
-
             hintText.text = plantClass.d1.hint8;
         }
-        else if (levelSelector == 8 /*&& !phaseMarker[8]*/)
+        else if (levelSelector == 8)
         {
             for (int i = 0; i < word9.Length; i++)
             {
@@ -865,11 +841,9 @@ public class PlantsHangmanManager : MonoBehaviour
                 phase[8] = true;
             }
 
-            //phaseMarker[8] = true;
-
             hintText.text = plantClass.d1.hint9;
         }
-        else if (levelSelector == 9/* && !phaseMarker[9]*/)
+        else if (levelSelector == 9)
         {
             for (int i = 0; i < word10.Length; i++)
             {
@@ -883,11 +857,9 @@ public class PlantsHangmanManager : MonoBehaviour
                 phase[9] = true;
             }
 
-            //phaseMarker[9] = true;
-
             hintText.text = plantClass.d1.hint10;
         }
-        else if (levelSelector == 10 /*&& !phaseMarker[10]*/)
+        else if (levelSelector == 10)
         {
             for (int i = 0; i < word11.Length; i++)
             {
@@ -901,11 +873,9 @@ public class PlantsHangmanManager : MonoBehaviour
                 phase[10] = true;
             }
 
-            //phaseMarker[10] = true;
-
             hintText.text = plantClass.d1.hint11;
         }
-        else if (levelSelector == 11 /*&& !phaseMarker[11]*/)
+        else if (levelSelector == 11)
         {
             for (int i = 0; i < word12.Length; i++)
             {
@@ -919,11 +889,9 @@ public class PlantsHangmanManager : MonoBehaviour
                 phase[11] = true;
             }
 
-            //phaseMarker[11] = true;
-
             hintText.text = plantClass.d1.hint12;
         }
-        else if (levelSelector == 12 /*&& !phaseMarker[12]*/)
+        else if (levelSelector == 12)
         {
             for (int i = 0; i < word13.Length; i++)
             {
@@ -937,11 +905,9 @@ public class PlantsHangmanManager : MonoBehaviour
                 phase[12] = true;
             }
 
-            //phaseMarker[12] = true;
-
             hintText.text = plantClass.d1.hint13;
         }
-        else if (levelSelector == 13/* && !phaseMarker[13]*/)
+        else if (levelSelector == 13)
         {
             for (int i = 0; i < word14.Length; i++)
             {
@@ -955,11 +921,9 @@ public class PlantsHangmanManager : MonoBehaviour
                 phase[13] = true;
             }
 
-            //phaseMarker[13] = true;
-
             hintText.text = plantClass.d1.hint14;
         }
-        else if (levelSelector == 14/* && !phaseMarker[14]*/)
+        else if (levelSelector == 14)
         {
             for (int i = 0; i < word15.Length; i++)
             {
@@ -973,11 +937,9 @@ public class PlantsHangmanManager : MonoBehaviour
                 phase[14] = true;
             }
 
-            //phaseMarker[14] = true;
-
             hintText.text = plantClass.d1.hint15;
         }
-        else if (levelSelector == 15/* && !phaseMarker[15]*/)
+        else if (levelSelector == 15)
         {
             for (int i = 0; i < word16.Length; i++)
             {
@@ -991,11 +953,9 @@ public class PlantsHangmanManager : MonoBehaviour
                 phase[15] = true;
             }
 
-            //phaseMarker[15] = true;
-
             hintText.text = plantClass.d1.hint16;
         }
-        else if (levelSelector == 16 /*&& !phaseMarker[16]*/)
+        else if (levelSelector == 16)
         {
             for (int i = 0; i < word17.Length; i++)
             {
@@ -1009,11 +969,9 @@ public class PlantsHangmanManager : MonoBehaviour
                 phase[16] = true;
             }
 
-            //phaseMarker[16] = true;
-
             hintText.text = plantClass.d1.hint17;
         }
-        else if (levelSelector == 17 /*&& !phaseMarker[17]*/)
+        else if (levelSelector == 17)
         {
             for (int i = 0; i < word18.Length; i++)
             {
@@ -1027,11 +985,9 @@ public class PlantsHangmanManager : MonoBehaviour
                 phase[17] = true;
             }
 
-            //phaseMarker[17] = true;
-
             hintText.text = plantClass.d1.hint18;
         }
-        else if (levelSelector == 18 /*&& !phaseMarker[18]*/)
+        else if (levelSelector == 18)
         {
             for (int i = 0; i < word19.Length; i++)
             {
@@ -1045,11 +1001,9 @@ public class PlantsHangmanManager : MonoBehaviour
                 phase[18] = true;
             }
 
-            //phaseMarker[18] = true;
-
             hintText.text = plantClass.d1.hint19;
         }
-        else if (levelSelector == 19/* && !phaseMarker[19]*/)
+        else if (levelSelector == 19)
         {
             for (int i = 0; i < word20.Length; i++)
             {
@@ -1062,8 +1016,6 @@ public class PlantsHangmanManager : MonoBehaviour
                 phase[i] = false;
                 phase[19] = true;
             }
-
-            //phaseMarker[19] = true;
 
             hintText.text = plantClass.d1.hint20;
         }
@@ -1377,9 +1329,7 @@ public class PlantsHangmanManager : MonoBehaviour
         }
     }
 
-
     // ---------------------------------------  sound effects ---------------------------------------  //
-
     public void PressSFX()
     {
         aSource.clip = clip[0];

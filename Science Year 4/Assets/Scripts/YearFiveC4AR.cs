@@ -8,10 +8,9 @@ using TMPro;
 public class YearFiveC4AR : MonoBehaviour
 {
     [SerializeField] private GameObject signBoard;
+    [SerializeField] private GameObject[] canvas, animals;
 
     [SerializeField] private string[] explanation;
-
-    [SerializeField] private GameObject[] canvas, animals;
 
     [SerializeField] private TextMeshProUGUI explainText;
 
@@ -53,6 +52,7 @@ public class YearFiveC4AR : MonoBehaviour
         }
 
         PressSFX();
+
         signBoard.SetActive(true);
 
         for (int i = 0; i < buttons.Length; i++)
@@ -88,6 +88,7 @@ public class YearFiveC4AR : MonoBehaviour
         }
 
         BackSFX();
+
         signBoard.SetActive(false);
 
         for (int i = 0; i < buttons.Length; i++)
@@ -153,12 +154,13 @@ public class YearFiveC4AR : MonoBehaviour
 
     public void Behaviours()
     {
+        PressSFX();
+
         for (int i = 0; i < animals.Length; i++)
         {
             animals[i].SetActive(false);
         }
 
-        PressSFX();
         for (int i = 0; i < buttons.Length; i++)
         {
             buttons[0].GetComponent<Image>().sprite = buttonSprite[1];
@@ -190,6 +192,7 @@ public class YearFiveC4AR : MonoBehaviour
     public void ShowAnimal(int index)
     {
         PressSFX();
+
         if (index == 0) // bat
         {
             for (int i = 0; i < animals.Length; i++)

@@ -6,8 +6,10 @@ using UnityEngine.EventSystems;
 public class DataHandlingDragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndDragHandler, IDragHandler
 {
     private RectTransform thisTransform;
+
     private CanvasGroup canvasGroup;
     [SerializeField] private Canvas canvas;
+
     [SerializeField] private DataHandlingGameManager manager;
 
     private void Awake()

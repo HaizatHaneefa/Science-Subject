@@ -75,7 +75,6 @@ public class SpaceGameManager : MonoBehaviour
         {
             if (qNumber == 9)
             {
-                //RightSFX();
                 endPop.GetComponent<Animation>().Play("GameOverPop");
                 hasStarted = false;
 
@@ -84,6 +83,7 @@ public class SpaceGameManager : MonoBehaviour
             }
 
             NextQuestion();
+
             RightSFX();
         }
         else if (!intList.Contains((int)sliderValue))

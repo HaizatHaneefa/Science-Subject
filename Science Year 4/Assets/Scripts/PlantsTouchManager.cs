@@ -9,15 +9,11 @@ using UnityEngine.EventSystems;
 public class PlantsTouchManager : MonoBehaviour
 {
     public GameObject exampleImage;
-
     public GameObject[] questions;
+    public GameObject congratsText;
+    [SerializeField] private GameObject ps;
 
     public TextMeshProUGUI questionText;
-    public GameObject congratsText;
-
-    private AudioSource audioSource;
-
-    [SerializeField] private GameObject ps;
 
     [SerializeField] private AudioSource aSource;
     [SerializeField] private AudioClip[] clip;
@@ -144,8 +140,6 @@ public class PlantsTouchManager : MonoBehaviour
         {
             but.GetComponent<Button>().enabled = true;
         }
-
-        //cur += 1;
     }
 
     IEnumerator ChangeRedColor()

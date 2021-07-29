@@ -41,7 +41,6 @@ public class GameManager : MonoBehaviour
         WrongSFX();
     }
 
-
     IEnumerator RightAnswer()
     {
         RightSFX();

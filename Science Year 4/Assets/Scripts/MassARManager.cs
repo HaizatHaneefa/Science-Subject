@@ -114,7 +114,6 @@ public class MassARManager : MonoBehaviour
             }
 
             nextbtn.SetActive(true);
-
         }
         else if (cur == 1)
         {

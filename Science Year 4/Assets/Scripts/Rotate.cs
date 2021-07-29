@@ -11,9 +11,7 @@ public class Rotate : MonoBehaviour
     {
         if (activatePivotRotation)
         {
-            //transform.Rotate(transform.parent.position, speed * Time.deltaTime);
             transform.RotateAround(transform.parent.position, Vector3.up, speed * Time.deltaTime);
-            //return;
         }
         else if (!activatePivotRotation)
         {

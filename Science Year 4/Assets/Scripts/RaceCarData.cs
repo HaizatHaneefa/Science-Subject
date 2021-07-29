@@ -13,7 +13,6 @@ public class RaceCarData : MonoBehaviour
         public float control = 0.8f;
         public float strength = 0.8f;
     }
-
     public FirstCar c1 = new FirstCar();
 
     public class SecondCar
@@ -25,7 +24,6 @@ public class RaceCarData : MonoBehaviour
         public float control = 0.2f;
         public float strength = 0.4f;
     }
-
     public SecondCar c2 = new SecondCar();
 
     public class ThirdCar
@@ -37,6 +35,5 @@ public class RaceCarData : MonoBehaviour
         public float control = 0.4f;
         public float strength = 0.2f;
     }
-
     public ThirdCar c3 = new ThirdCar();
 }

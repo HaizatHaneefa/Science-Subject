@@ -7,8 +7,8 @@ using UnityEngine.UI;
 public class FunFactManager : MonoBehaviour
 {
     [SerializeField] private GameObject[] example;
-
     [SerializeField] private GameObject[] explanation, buttons;
+
     [SerializeField] private Sprite[] spriteButtons;
 
     [SerializeField] private AudioSource aSource;

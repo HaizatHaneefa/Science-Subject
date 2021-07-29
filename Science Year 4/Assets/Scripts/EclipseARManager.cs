@@ -385,6 +385,7 @@ public class EclipseARManager : MonoBehaviour
             popup.SetActive(false);
         }
     }
+
     // -------------- eclipse model ------------------- //
     public void OpenEclipseInfo()
     {
@@ -399,7 +400,6 @@ public class EclipseARManager : MonoBehaviour
 
         go.transform.parent.gameObject.SetActive(false);
     }
-
     // ---------------- end eclipse model ------------------- //
 
     public void SliderAnimation(int index)
@@ -416,6 +416,7 @@ public class EclipseARManager : MonoBehaviour
             sliderBut.SetActive(false);
         }
     }
+
     // -------------------------- coroutines -------------------------- //
     IEnumerator Delay()
     {

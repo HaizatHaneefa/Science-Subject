@@ -107,7 +107,6 @@ public class AITrackMarker : MonoBehaviour
         {
             transform.position = markers[21].transform.position;
         }
-
     }
 
     private IEnumerator OnTriggerEnter(Collider other)

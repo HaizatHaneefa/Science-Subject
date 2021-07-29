@@ -106,7 +106,7 @@ public class RandomEnemyBehaviour : MonoBehaviour
             // attack code here
             GameObject projectilePrefab = Instantiate(projectile, spawnBullet.position, Quaternion.identity);
             projectilePrefab.GetComponent<Rigidbody>().AddForce(spawnBullet.forward * 100f);
-            //
+            
             alreadyAttacked = true;
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
         }

@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 public class GillsManager : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI answerText;
+
     [SerializeField] private Button answerButton;
 
     [SerializeField] private GameObject nextButton, prevButton, example;

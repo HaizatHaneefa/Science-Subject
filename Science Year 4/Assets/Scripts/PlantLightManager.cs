@@ -60,7 +60,6 @@ public class PlantLightManager : MonoBehaviour
         RightSFX();
 
         StartCoroutine(ButtonChangeColor());
-
     }
 
     public void _QN()
@@ -173,8 +172,6 @@ public class PlantLightManager : MonoBehaviour
         {
             but.GetComponent<Button>().enabled = true;
         }
-
-        //cur += 1;
     }
 
     IEnumerator ChangeRedColor()

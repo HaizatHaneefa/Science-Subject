@@ -86,8 +86,7 @@ public class ARManager : MonoBehaviour
 
             if (touch0.phase == TouchPhase.Moved)
             {
-                GO.transform.Rotate(/*touch0.deltaPosition.y * rotationSpeed */0f,
-                    -touch0.deltaPosition.x * rotationSpeed, 0f, Space.World); // apply rotation to an object
+                GO.transform.Rotate(0f, -touch0.deltaPosition.x * rotationSpeed, 0f, Space.World); // apply rotation to an object
             }
         }
     }
@@ -95,7 +94,6 @@ public class ARManager : MonoBehaviour
     public void Backerrr()
     {
         BackSFX();
-        Debug.Log("wwqqq");
 
         imageBlocker.enabled = false;
         infoPop[0].SetActive(false);
@@ -108,11 +106,10 @@ public class ARManager : MonoBehaviour
 
     public void HandleInputData() // dropdown
     {
+        PressSFX();
 
         if (dropdown.GetComponent<TMP_Dropdown>().value == 1 && cur == 1) // lungs
         {
-            PressSFX();
-
             infoPop[1].transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = arClass.d1.showInfo1;
             infoPop[1].SetActive(true);
             infoPop[1].GetComponent<Animation>().Play("MoreInfoPop");
@@ -121,8 +118,6 @@ public class ARManager : MonoBehaviour
 
         if (dropdown.GetComponent<TMP_Dropdown>().value == 1 && cur == 2) // gills
         {
-            PressSFX();
-
             infoPop[1].transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = arClass.d2.showInfo1;
             infoPop[1].SetActive(true);
             infoPop[1].GetComponent<Animation>().Play("MoreInfoPop");
@@ -130,8 +125,6 @@ public class ARManager : MonoBehaviour
         }
         else if (dropdown.GetComponent<TMP_Dropdown>().value == 2 && cur == 2)
         {
-            PressSFX();
-
             infoPop[0].transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = arClass.d2.showInfo2;
             infoPop[0].SetActive(true);
             infoPop[0].GetComponent<Animation>().Play("MoreInfoPop");
@@ -141,8 +134,6 @@ public class ARManager : MonoBehaviour
 
         if (dropdown.GetComponent<TMP_Dropdown>().value == 1 && cur == 3) // spiracle
         {
-            PressSFX();
-
             infoPop[1].transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = arClass.d3.showInfo1;
             infoPop[1].SetActive(true);
             infoPop[1].GetComponent<Animation>().Play("MoreInfoPop");
@@ -150,8 +141,6 @@ public class ARManager : MonoBehaviour
         }
         else if (dropdown.GetComponent<TMP_Dropdown>().value == 2 && cur == 3)
         {
-            PressSFX();
-
             infoPop[1].transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = arClass.d3.showInfo2;
             infoPop[1].SetActive(true);
             infoPop[1].GetComponent<Animation>().Play("MoreInfoPop");
@@ -160,8 +149,6 @@ public class ARManager : MonoBehaviour
         
         if (dropdown.GetComponent<TMP_Dropdown>().value == 1 && cur == 4) // moist skin
         {
-            PressSFX();
-
             infoPop[1].transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = arClass.d4.showInfo1;
             infoPop[1].SetActive(true);
             infoPop[1].GetComponent<Animation>().Play("MoreInfoPop");
@@ -169,8 +156,6 @@ public class ARManager : MonoBehaviour
         }
         else if (dropdown.GetComponent<TMP_Dropdown>().value == 2 && cur == 4)
         {
-            PressSFX();
-
             infoPop[0].transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = arClass.d4.showInfo2;
             infoPop[0].SetActive(true);
             infoPop[0].GetComponent<Animation>().Play("MoreInfoPop");
@@ -179,8 +164,6 @@ public class ARManager : MonoBehaviour
 
         if (dropdown.GetComponent<TMP_Dropdown>().value == 1 && cur == 5) // moist skin
         {
-            PressSFX();
-
             infoPop[1].transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = arClass.d5.showInfo1;
             infoPop[1].SetActive(true);
             infoPop[1].GetComponent<Animation>().Play("MoreInfoPop");
@@ -188,8 +171,6 @@ public class ARManager : MonoBehaviour
         }
         else if (dropdown.GetComponent<TMP_Dropdown>().value == 2 && cur == 5)
         {
-            PressSFX();
-
             infoPop[1].transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = arClass.d5.showInfo2;
             infoPop[1].SetActive(true);
             infoPop[1].GetComponent<Animation>().Play("MoreInfoPop");

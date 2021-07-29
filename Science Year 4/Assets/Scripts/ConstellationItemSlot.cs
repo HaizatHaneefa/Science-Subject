@@ -19,13 +19,11 @@ public class ConstellationItemSlot : MonoBehaviour, IDropHandler
 
         dialogue = new string[7];
 
-        //dialogue[0] = "Constellation help people find directions and recognise seasons";
         dialogue[0] = "There are 89 constellations in space";
         dialogue[1] = "People in the Northern Hemisphere see the same constellations as the people in the Southern Hemisphere";
         dialogue[2] = "Constellations may be only visible during certain seasons due to the Earth's orbit around the Sun";
         dialogue[3] = "Ursa Major is 'Great Bear' in Latin and is one of the brightest constellations";
         dialogue[4] = "Southern Cross is formed of four stars which makes it a kite-shaped constellation";
-        //dialogue[5] = "Southern Cross is formed of four stars which makes it a kite-shaped constellation";
     }
 
     public void OnDrop(PointerEventData eventData)
@@ -101,8 +99,6 @@ public class ConstellationItemSlot : MonoBehaviour, IDropHandler
                 manager.secondBool[5] = false;
                 manager.secondBool[6] = true;
                 button.tag = "True";
-
-                //button.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = dialogue[5].ToString();
             }
 
             button.SetActive(false);

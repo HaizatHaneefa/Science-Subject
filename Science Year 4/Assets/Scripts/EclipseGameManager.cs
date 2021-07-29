@@ -44,12 +44,10 @@ public class EclipseGameManager : MonoBehaviour
         if (!isDone[0])
         {
             wrongPop.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "Please visit stage 1";
-            //popInfo.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "stage 1";
         }
         else if (isDone[0])
         {
             wrongPop.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "Please visit stage 2";
-            //popInfo.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "stage 2";
         }
 
         if (isDone[1])
@@ -89,31 +87,11 @@ public class EclipseGameManager : MonoBehaviour
                 infoPops[8].SetActive(true);
             }
         }
-        //popInfo.SetActive(true);
         confirmButton.gameObject.SetActive(false);
     }
 
     public void Continue() // info pop button
     {
-        //if (testBool)
-        //{
-        //    for (int i = 0; i < infoPops.Length; i++)
-        //    {
-        //        infoPops[i].SetActive(false);
-        //    }
-
-
-
-            //if (stageInt == 0)
-            //{
-            //    stageInt = 1;
-            //}
-            //else if (stageInt == 1)
-            //{
-            //    stageInt = 2;
-            //}
-        //}
-
         if (stageInt == 0 && !testBool)
         {
             for (int i = 0; i < infoPops.Length; i++)
@@ -123,7 +101,6 @@ public class EclipseGameManager : MonoBehaviour
             }
 
             testBool = true;
-            //isDone[0] = true;
         }
         else if (stageInt == 0 && testBool)
         {
@@ -141,7 +118,6 @@ public class EclipseGameManager : MonoBehaviour
 
             cur += 1;
             stageInt = 1;
-            //return;
         }
         else if (stageInt == 1 && !testBool)
         {
@@ -169,9 +145,7 @@ public class EclipseGameManager : MonoBehaviour
             }
             cur += 1;
 
-            //isDone[1] = true;
             stageInt = 2;
-            //return;
         }
         else if (stageInt == 2 && !testBool)
         {
@@ -222,8 +196,6 @@ public class EclipseGameManager : MonoBehaviour
                 infoPops[i].SetActive(false);
                 infoPops[3].SetActive(true);
             }
-
-            //testBool = false;
         }
         else if (stageInt == 1 && !testBool)
         {
@@ -232,8 +204,6 @@ public class EclipseGameManager : MonoBehaviour
                 infoPops[i].SetActive(false);
                 infoPops[5].SetActive(true);
             }
-
-            Debug.Log("ee");
         }
         else if (stageInt == 1 && testBool)
         {

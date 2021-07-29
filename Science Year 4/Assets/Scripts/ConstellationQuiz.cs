@@ -73,6 +73,7 @@ public class ConstellationQuiz : MonoBehaviour
     IEnumerator RightColor()
     {
         RightSFX();
+
         Image img = EventSystem.current.currentSelectedGameObject.GetComponent<Image>();
 
         img.color = Color.green;

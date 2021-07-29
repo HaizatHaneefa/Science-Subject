@@ -40,8 +40,6 @@ public class ItemSlotTime : MonoBehaviour, IDropHandler
             transform.GetChild(1).GetComponent<Image>().sprite = manager.rightWrongSprite[1];
             transform.GetChild(1).GetComponent<Animation>().Play("GameOverPop");
 
-            //transform.GetChild(1).GetComponent<ParticleSystem>().Play();
-
             if (manager.secondBool[0])
             {
                 manager.secondBool[1] = true;

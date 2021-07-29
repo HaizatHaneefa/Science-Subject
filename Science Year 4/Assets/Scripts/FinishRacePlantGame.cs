@@ -8,6 +8,7 @@ public class FinishRacePlantGame : MonoBehaviour
     public Y5PlantGame manager;
 
     [SerializeField] private GameObject ps;
+
     private void Start()
     {
         ps.SetActive(false);
@@ -30,7 +31,7 @@ public class FinishRacePlantGame : MonoBehaviour
         }
 
         StartCoroutine(DelayFreeze());
-        //Time.timeScale = 0f;
+
         manager.isPlaying = false;
         manager.timer = 3f;
     }

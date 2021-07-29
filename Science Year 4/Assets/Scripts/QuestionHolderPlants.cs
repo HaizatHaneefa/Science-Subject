@@ -14,7 +14,6 @@ public class QuestionHolderPlants : MonoBehaviour
 
         public int num = 3;
     }
-
     public First q1 = new First();
 
     public class Second
@@ -27,7 +26,6 @@ public class QuestionHolderPlants : MonoBehaviour
 
         public int num = 3;
     }
-
     public Second q2 = new Second();
 
     public class Third
@@ -40,7 +38,6 @@ public class QuestionHolderPlants : MonoBehaviour
 
         public int num = 2;
     }
-
     public Third q3 = new Third();
 
     public class Forth
@@ -53,7 +50,6 @@ public class QuestionHolderPlants : MonoBehaviour
 
         public int num = 2;
     }
-
     public Forth q4 = new Forth();
 
     public class Fifth
@@ -66,7 +62,6 @@ public class QuestionHolderPlants : MonoBehaviour
 
         public int num = 3;
     }
-
     public Fifth q5 = new Fifth();
 
     public class Sixth
@@ -79,7 +74,6 @@ public class QuestionHolderPlants : MonoBehaviour
 
         public int num = 2;
     }
-
     public Sixth q6 = new Sixth();
 
     public class Seventh
@@ -92,7 +86,6 @@ public class QuestionHolderPlants : MonoBehaviour
 
         public int num = 1;
     }
-
     public Seventh q7 = new Seventh();
 
     public class Eighth
@@ -105,7 +98,6 @@ public class QuestionHolderPlants : MonoBehaviour
 
         public int num = 2;
     }
-
     public Eighth q8 = new Eighth();
 
     public class Ninth
@@ -118,7 +110,6 @@ public class QuestionHolderPlants : MonoBehaviour
 
         public int num = 2;
     }
-
     public Ninth q9 = new Ninth();
 
     public class Tenth
@@ -131,7 +122,6 @@ public class QuestionHolderPlants : MonoBehaviour
 
         public int num = 1;
     }
-
     public Tenth q10 = new Tenth();
 
     public class Eleventh
@@ -144,7 +134,6 @@ public class QuestionHolderPlants : MonoBehaviour
 
         public int num = 1;
     }
-
     public Eleventh q11 = new Eleventh();
 
     public class Twelveth
@@ -157,7 +146,6 @@ public class QuestionHolderPlants : MonoBehaviour
 
         public int num = 2;
     }
-
     public Twelveth q12 = new Twelveth();
 
     public class Thirteenth
@@ -170,7 +158,6 @@ public class QuestionHolderPlants : MonoBehaviour
 
         public int num = 3;
     }
-
     public Thirteenth q13 = new Thirteenth();
 
     public class Forteenth
@@ -183,7 +170,6 @@ public class QuestionHolderPlants : MonoBehaviour
 
         public int num = 3;
     }
-
     public Forteenth q14 = new Forteenth();
 
     public class Fifteenth
@@ -196,7 +182,6 @@ public class QuestionHolderPlants : MonoBehaviour
 
         public int num = 1;
     }
-
     public Fifteenth q15 = new Fifteenth();
 
 
@@ -210,7 +195,6 @@ public class QuestionHolderPlants : MonoBehaviour
 
         public int num = 1;
     }
-
     public Sixteenth q16 = new Sixteenth();
 
     public class Seventeenth
@@ -223,7 +207,6 @@ public class QuestionHolderPlants : MonoBehaviour
 
         public int num = 1;
     }
-
     public Seventeenth q17 = new Seventeenth();
 
     public class Eighteenth
@@ -236,7 +219,6 @@ public class QuestionHolderPlants : MonoBehaviour
 
         public int num = 1;
     }
-
     public Eighteenth q18 = new Eighteenth();
 
     public class Nineteenth
@@ -249,7 +231,6 @@ public class QuestionHolderPlants : MonoBehaviour
 
         public int num = 1;
     }
-
     public Nineteenth q19 = new Nineteenth();
 
     public class Twentieth
@@ -262,6 +243,5 @@ public class QuestionHolderPlants : MonoBehaviour
 
         public int num = 1;
     }
-
     public Twentieth q20 = new Twentieth();
 }

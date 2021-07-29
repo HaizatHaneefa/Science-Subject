@@ -57,11 +57,6 @@ public class EclipseCollider : MonoBehaviour
         manager.wrongPop.SetActive(false);
     }
 
-    void Update()
-    {
-        
-    }
-
     public void Confirm()
     {
         gameObject.transform.GetChild(0).gameObject.SetActive(false);
